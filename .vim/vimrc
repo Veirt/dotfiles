@@ -1,0 +1,89 @@
+"PEP 8 Indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+" UTF-8 Encoding
+set encoding=utf-8
+
+syntax on
+set number
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+let python_highlight_all=1
+let g:ycm_autoclose_preview_window_after_completion=1
+
+
+
+" Plug
+call plug#begin('~/.vim/plugged')
+" Discord RPC
+Plug 'Stoozy/vimcord'
+" Language packs
+Plug 'sheerun/vim-polyglot'
+" Intellisense engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Nord theme
+Plug 'arcticicestudio/nord-vim'
+" Rainbow Brackets
+Plug 'luochen1990/rainbow'
+" tmux focus-event
+Plug 'tmux-plugins/vim-tmux-focus-events'
+" tmux.conf syntax highlighting
+Plug 'tmux-plugins/vim-tmux'
+" Python Mode
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop'  }
+call plug#end()
+
+
+let g:rainbow_active = 1
+colorscheme nord
+" New line when navigating
+set whichwrap+=<,>,[,]
+set whichwrap+=h,l
+
+" tmux esc delay fix
+set ttimeoutlen=100
+
+" Hide vim status line
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+" Shift H if wanna show status line 
+nnoremap<S-h> :call ToggleHiddenAll()<CR>
+" Pathogen.vim
+execute pathogen#infect()
+" Vim HardMode. disable arrow keys
