@@ -1,0 +1,9 @@
+add_newline = false
+
+[character]
+success_symbol = "[>](bold red)"
+error_symbol = "[! >](bold red)"
+vicmd_symbol = "[>](bold red)"
+
+[package]
+disabled = true
