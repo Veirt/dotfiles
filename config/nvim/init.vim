@@ -24,6 +24,7 @@ Plugin 'jiangmiao/auto-pairs' " Brackets auto pair
 Plugin 'tpope/vim-fugitive' " Vim git plugin
 Plugin 'itchyny/lightline.vim' " Lightline
 Plugin 'christoomey/vim-tmux-navigator' " Vim tmux
+Plugin 'wakatime/vim-wakatime' " WakaTime 
 call vundle#end() 
 
 filetype plugin indent on    " required
