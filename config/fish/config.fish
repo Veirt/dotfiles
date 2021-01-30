@@ -3,7 +3,6 @@ set -U fish_greeting
 
 # I use arch btw
 alias pacsyu="sudo pacman -Syu"
-alias yaysyu="yay -Syu"
 
 alias gs="git status"
 
