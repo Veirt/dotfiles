@@ -25,12 +25,14 @@ Plugin 'tpope/vim-fugitive' " Vim git plugin
 Plugin 'itchyny/lightline.vim' " Lightline
 Plugin 'christoomey/vim-tmux-navigator' " Vim tmux
 Plugin 'wakatime/vim-wakatime' " WakaTime 
+Plugin 'mattn/emmet-vim'
+Plugin 'connorholyday/vim-snazzy' " Snazzy theme
 call vundle#end() 
 
 filetype plugin indent on    " required
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'horizon',
+      \ 'colorscheme': 'snazzy',
       \ }
 
 " Plug
@@ -42,7 +44,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Fix focus issues vim with tmux
 Plug 'ntk148v/vim-horizon' " Horizon theme
 call plug#end()
 
-colorscheme horizon
+colorscheme snazzy
 let g:rainbow_active = 1 " Activating rainbow brackets
 
 " Prettier command
