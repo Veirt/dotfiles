@@ -17,5 +17,8 @@ alias ll="exa -ll"
 alias repo="cd ~/Repositories"
 alias dotfiles="cd ~/.dotfiles"
 
+alias vi="nvim"
+alias vim="nvim"
+
 # Starship prompt
 # starship init fish | source
