@@ -15,24 +15,23 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim' 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'jiangmiao/auto-pairs' " Brackets auto pair
 Plugin 'tpope/vim-fugitive' " Vim git plugin
 Plugin 'itchyny/lightline.vim' " Lightline
 Plugin 'christoomey/vim-tmux-navigator' " Vim tmux
-Plugin 'wakatime/vim-wakatime' " WakaTime 
+Plugin 'wakatime/vim-wakatime' " WakaTime
 Plugin 'mattn/emmet-vim'
 Plugin 'connorholyday/vim-snazzy' " Snazzy theme
-call vundle#end() 
+call vundle#end()
 
 filetype plugin indent on    " required
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'snazzy',
+      \ 'colorscheme': 'horizon',
       \ }
 
 " Plug
@@ -44,7 +43,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Fix focus issues vim with tmux
 Plug 'ntk148v/vim-horizon' " Horizon theme
 call plug#end()
 
-colorscheme snazzy
+colorscheme horizon
 let g:rainbow_active = 1 " Activating rainbow brackets
 
 " Prettier command
