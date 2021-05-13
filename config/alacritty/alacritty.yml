@@ -174,34 +174,40 @@ font:
     #dim_foreground: '#828482'
     #bright_foreground: '#eaeaea'
 
-# Colors (Snazzy)
+# falcon colorscheme for alacritty
+# by fenetikm, https://github.com/fenetikm/falcon
 colors:
   # Default colors
   primary:
-    background: '0x282a36'
-    foreground: '0xeff0eb'
+    background: '0x020221'
+    foreground: '0xb4b4b9'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x020221'
+    cursor: '0xffe8c0'
 
   # Normal colors
   normal:
-    black:   '0x282a36'
-    red:     '0xff5c57'
-    green:   '0x5af78e'
-    yellow:  '0xf3f99d'
-    blue:    '0x57c7ff'
-    magenta: '0xff6ac1'
-    cyan:    '0x9aedfe'
-    white:   '0xf1f1f0'
+    black:   '0x000004'
+    red:     '0xff3600'
+    green:   '0x718e3f'
+    yellow:  '0xffc552'
+    blue:    '0x635196'
+    magenta: '0xff761a'
+    cyan:    '0x34bfa4'
+    white:   '0xb4b4b9'
 
   # Bright colors
   bright:
-    black:   '0x686868'
-    red:     '0xff5c57'
-    green:   '0x5af78e'
-    yellow:  '0xf3f99d'
-    blue:    '0x57c7ff'
-    magenta: '0xff6ac1'
-    cyan:    '0x9aedfe'
-    white:   '0xf1f1f0'
+    black:   '0x020221'
+    red:     '0xff8e78'
+    green:   '0xb1bf75'
+    yellow:  '0xffd392'
+    blue:    '0x99a4bc'
+    magenta: '0xffb07b'
+    cyan:    '0x8bccbf'
+    white:   '0xf8f8ff'
 
   # Cursor colors
   #
@@ -339,7 +345,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.9
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
