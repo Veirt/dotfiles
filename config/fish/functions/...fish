@@ -1,3 +1,0 @@
-function ..
-cd .. $argv
-end
