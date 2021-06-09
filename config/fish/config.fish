@@ -28,5 +28,8 @@ alias dotfiles="cd ~/.dotfiles"
 alias vi="nvim"
 alias vim="nvim"
 
+alias py="python"
+alias cr="cargo run"
+
 # Starship prompt
 # starship init fish | source
