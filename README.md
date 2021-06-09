@@ -1,3 +1,3 @@
-# Linux dotfiles
+# dotfiles
 
-Just a repository to store my dotfiles.
+![Neofetch](neofetch.png)
