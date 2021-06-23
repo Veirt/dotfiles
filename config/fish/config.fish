@@ -9,9 +9,7 @@ function sudo --description "Replacement for Bash 'sudo !!' command to run last 
 else
     command sudo $argv
     end
-end
-
-# I use arch btw
+end # I use arch btw
 alias pacsyu="sudo pacman -Syu"
 
 alias bluetooth="bluetoothctl"
@@ -30,6 +28,8 @@ alias vim="nvim"
 
 alias py="python"
 alias cr="cargo run"
+alias cc="cargo check"
+alias cb="cargo build"
 
 # Starship prompt
 # starship init fish | source
