@@ -1,5 +1,4 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -118,10 +117,10 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'Fira Code'
+    family: 'Hasklig'
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
   bold_italic:
@@ -129,7 +128,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'Fira Code'
+    family: 'Hasklig'
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -159,6 +158,38 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
+# TokyoNight Alacritty Colors
+colors:
+  # Default colors
+  primary:
+    background: '0x1a1b26'
+    foreground: '0xc0caf5'
+
+  # Normal colors
+  normal:
+    black:   '0x15161E'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
+
+  # Bright colors
+  bright:
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
+
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 # Colors (Tomorrow Night)
 #colors:
   # Default colors
@@ -176,38 +207,38 @@ font:
 
 # falcon colorscheme for alacritty
 # by fenetikm, https://github.com/fenetikm/falcon
-colors:
-  # Default colors
-  primary:
-    background: '0x020221'
-    foreground: '0xb4b4b9'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x020221'
-    cursor: '0xffe8c0'
-
-  # Normal colors
-  normal:
-    black:   '0x000004'
-    red:     '0xff3600'
-    green:   '0x718e3f'
-    yellow:  '0xffc552'
-    blue:    '0x635196'
-    magenta: '0xff761a'
-    cyan:    '0x34bfa4'
-    white:   '0xb4b4b9'
-
-  # Bright colors
-  bright:
-    black:   '0x020221'
-    red:     '0xff8e78'
-    green:   '0xb1bf75'
-    yellow:  '0xffd392'
-    blue:    '0x99a4bc'
-    magenta: '0xffb07b'
-    cyan:    '0x8bccbf'
-    white:   '0xf8f8ff'
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x020221'
+#     foreground: '0xb4b4b9'
+# 
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x020221'
+#     cursor: '0xffe8c0'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '0x000004'
+#     red:     '0xff3600'
+#     green:   '0x718e3f'
+#     yellow:  '0xffc552'
+#     blue:    '0x635196'
+#     magenta: '0xff761a'
+#     cyan:    '0x34bfa4'
+#     white:   '0xb4b4b9'
+# 
+#   # Bright colors
+#   bright:
+#     black:   '0x020221'
+#     red:     '0xff8e78'
+#     green:   '0xb1bf75'
+#     yellow:  '0xffd392'
+#     blue:    '0x99a4bc'
+#     magenta: '0xffb07b'
+#     cyan:    '0x8bccbf'
+#     white:   '0xf8f8ff'
 
   # Cursor colors
   #
@@ -345,7 +376,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.9
+background_opacity: 1.0
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -731,3 +762,4 @@ background_opacity: 0.9
 
   # Print all received window events.
   #print_events: false
+  
