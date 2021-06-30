@@ -32,4 +32,4 @@ alias cc="cargo check"
 alias cb="cargo build"
 
 # Starship prompt
-# starship init fish | source
+starship init fish | source
