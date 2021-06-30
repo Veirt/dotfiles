@@ -5,7 +5,7 @@ set encoding=utf-8
 set relativenumber
 syntax on
 
-"PEP 8 Indentation
+" PEP 8 Indentation
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -14,7 +14,17 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
+" Rust
+au BufNewFile,BufRead *.rs
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -30,20 +40,19 @@ call vundle#end()
 
 filetype plugin indent on    " required
 set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'horizon',
-      \ }
+let g:lightline = {'colorscheme': 'nord'}
 
-" Plug
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
 Plug 'sheerun/vim-polyglot' " Collection of language packs for Vim
 Plug 'luochen1990/rainbow' " Rainbow Brackets
 Plug 'tmux-plugins/vim-tmux-focus-events' " Fix focus issues vim with tmux
 Plug 'ntk148v/vim-horizon' " Horizon theme
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
-colorscheme horizon
+colorscheme nord
 let g:rainbow_active = 1 " Activating rainbow brackets
 
 " Prettier command

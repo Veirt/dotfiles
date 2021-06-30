@@ -1,4 +1,5 @@
 {
     "rpc.detailsEditing": "{filename} {null}",
-    "rpc.workspaceElapsedTime": true
+    "rpc.workspaceElapsedTime": true,
+    "rpc.showProblems": false
 }
