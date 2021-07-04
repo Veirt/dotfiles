@@ -9,7 +9,8 @@ function sudo --description "Replacement for Bash 'sudo !!' command to run last 
 else
     command sudo $argv
     end
-end # I use arch btw
+end
+
 alias pacsyu="sudo pacman -Syu"
 
 alias bluetooth="bluetoothctl"
@@ -19,6 +20,7 @@ alias ga="git add"
 alias ls="exa"
 alias la="exa -la --icons"
 alias ll="exa -ll --icons"
+alias yeet="rm -rf"
 
 alias repo="cd ~/Repositories"
 alias dotfiles="cd ~/.dotfiles"
