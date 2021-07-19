@@ -14,7 +14,7 @@
 
 export HISTCONTROL=ignoreboth:erasedups
 
-# Make nano the default editor
+# Make neovim the default editor
 
 export EDITOR='nvim'
 export VISUAL='nvim'
