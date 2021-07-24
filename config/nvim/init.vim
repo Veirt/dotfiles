@@ -4,6 +4,8 @@ set encoding=utf-8
 set relativenumber
 syntax on
 
+set termguicolors
+
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -44,14 +46,15 @@ Plug 'ryanoasis/vim-devicons' " NERDTree with icons
 Plug 'bagrat/vim-buffet' " IDE-like Vim tabline 
 Plug 'tpope/vim-commentary' " comment with gcc
 Plug 'mhinz/vim-startify' " fancy start screen for vim
+Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
 call plug#end()
 
-colorscheme nord
+colorscheme tokyonight
 let g:rainbow_active = 1 " Activating rainbow brackets
 
 " Lightline config
 set laststatus=2
-let g:lightline = {'colorscheme': 'nord'}
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 " Prettier command
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
