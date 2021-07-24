@@ -43,21 +43,19 @@ Plug 'Xuyuanp/nerdtree-git-plugin' " NERDTree git icon
 Plug 'ryanoasis/vim-devicons' " NERDTree with icons
 Plug 'bagrat/vim-buffet' " IDE-like Vim tabline 
 Plug 'tpope/vim-commentary' " comment with gcc
+Plug 'mhinz/vim-startify' " fancy start screen for vim
 call plug#end()
 
 colorscheme nord
 let g:rainbow_active = 1 " Activating rainbow brackets
 
 " Lightline config
-set laststatus=2 "
+set laststatus=2
 let g:lightline = {'colorscheme': 'nord'}
 
 " Prettier command
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:rustfmt_autosave = 1 " Rustfmt when save
-
-" :W (capital w) to save
-nnoremap :W :w<cr>
 
 " NERDTree remap
 nnoremap <leader>n :NERDTreeFocus<CR>
