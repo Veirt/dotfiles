@@ -13,6 +13,8 @@ else
     end
 end
 
+thefuck --alias | source
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 
@@ -61,3 +63,4 @@ alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # Starship prompt
 starship init fish | source
+
