@@ -39,6 +39,7 @@ alias py="python"
 alias cr="cargo run"
 alias cc="cargo check"
 alias cb="cargo build"
+alias ct="cargo test"
 
 #get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
