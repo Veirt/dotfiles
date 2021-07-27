@@ -1,4 +1,6 @@
 {
-    "rpc.workspaceElapsedTime": true,
+    "rpc.lowerDetailsIdling": "zZz",
+    "rpc.largeImageIdle": "zZz",
+    "rpc.buttonActiveLabel": "Ur Mom",
     "rpc.showProblems": false
 }
