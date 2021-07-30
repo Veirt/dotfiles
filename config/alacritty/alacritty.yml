@@ -95,7 +95,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: 'Fira Code'
+    family: 'JetBrainsMono Nerd Font'
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -106,7 +106,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'Fira Code'
+    family: 'JetBrainsMono Nerd Font'
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -117,7 +117,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'Hasklig'
+    family: 'JetBrainsMono Nerd Font'
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -128,7 +128,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: 'Hasklig'
+    family: 'JetBrainsMono Nerd Font'
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -190,6 +190,8 @@ colors:
   indexed_colors:
     - { index: 16, color: '0xff9e64' }
     - { index: 17, color: '0xdb4b4b' }
+
+
 # Colors (Tomorrow Night)
 #colors:
   # Default colors
@@ -271,7 +273,6 @@ colors:
   #  background: CellForeground
 
   # Search colors
-  #
   # Colors used for the search bar and match highlighting.
   #
   # Allowed values are CellForeground and CellBackground, which reference the
@@ -387,14 +388,14 @@ background_opacity: 1.0
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
 
-#cursor:
+cursor:
   # Cursor style
   #
   # Values for `style`:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  #style: Block
+  style: Block
 
   # Vi mode cursor style
   #
@@ -402,7 +403,7 @@ background_opacity: 1.0
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  #vi_mode_style: None
+  vi_mode_style: None
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -762,4 +763,3 @@ background_opacity: 1.0
 
   # Print all received window events.
   #print_events: false
-  
