@@ -63,5 +63,5 @@ alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # Starship prompt
-starship init fish | source
+# starship init fish | source
 
