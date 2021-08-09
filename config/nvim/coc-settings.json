@@ -1,6 +1,17 @@
 {
+    "coc.preferences.formatOnSaveFiletypes": ["css", "javascript", "typescript", "html"],
     "rpc.lowerDetailsIdling": "zZz",
     "rpc.largeImageIdle": "zZz",
     "rpc.buttonActiveLabel": "Ur Mom",
-    "rpc.showProblems": false
+    "rpc.showProblems": false,
+    "languageserver": {
+      "intelephense": {
+        "command": "intelephense",
+        "args": ["--stdio"],
+        "filetypes": ["php"],
+        "initializationOptions": {
+          "storagePath": "/tmp/intelephense"
+        }
+      }
+    }
 }
