@@ -14,7 +14,8 @@ set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 
 set mouse=a                 " enable mouse click
-set ttyfast                 " Speed up scrolling in Vim
+set ttyfast                 " speed up scrolling in Vim
+set hidden                  " change buffer without save
 
 " Map space to leader
 map <Space> <Leader>
@@ -42,11 +43,12 @@ Plug 'christoomey/vim-tmux-navigator' " Vim tmux
 Plug 'tmux-plugins/vim-tmux-focus-events' " Fix focus issues vim with tmux
 
 " Additional features
-Plug 'tpope/vim-commentary' " comment with gcc
+Plug 'tpope/vim-commentary' " Comment with gcc
 Plug 'jiangmiao/auto-pairs' " Brackets auto pair
 Plug 'luochen1990/rainbow' " Rainbow Brackets
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' } " Modern generic interactive finder and dispatcher
-Plug 'folke/trouble.nvim'
+Plug 'nvim-lua/plenary.nvim' " Required by telescope.nvim
+Plug 'nvim-telescope/telescope.nvim' " A highly extendable fuzzy finder over lists
+" Plug 'folke/trouble.nvim'
 
 " Utilities
 Plug 'wakatime/vim-wakatime' " WakaTime
@@ -54,16 +56,21 @@ Plug 'wakatime/vim-wakatime' " WakaTime
 " Customization
 Plug 'Xuyuanp/nerdtree-git-plugin' " NERDTree git icon
 Plug 'ryanoasis/vim-devicons' " NERDTree with icons
-Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
+Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'romgrk/barbar.nvim' " Tabline plugin
 
-" Plug 'mhinz/vim-startify' " fancy start screen for vim
+" Plug 'mhinz/vim-startify' " Fancy start screen for vim
 Plug 'glepnir/dashboard-nvim' " Vim dashboard like startify
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
-Plug 'vim-airline/vim-airline' " Lean & mean status/tabline for vim that's light as air.
-Plug 'vim-airline/vim-airline-themes' " Airline theme
+Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
 call plug#end()
+
+lua << EOF
+require('lualine').setup {
+  options = {theme = 'nightfly'}
+}
+EOF
 
 let g:coc_global_extensions = [
   \'coc-discord-rpc',
@@ -89,9 +96,8 @@ let g:rainbow_active = 1 " Activating rainbow brackets
 let NERDTreeWinPos=1 " NERDTree right side
 
 let g:rustfmt_autosave = 1 " Rustfmt when save
+command! -nargs=0 Prettier :CocCommand prettier.formatFile " Prettier
 
-" Prettier command
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:dashboard_default_executive ='telescope'
 
-source ~/.config/nvim/airline.vim
 source ~/.config/nvim/remap.vim
