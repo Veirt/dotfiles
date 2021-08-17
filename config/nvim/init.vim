@@ -79,6 +79,7 @@ let g:coc_global_extensions = [
   \'coc-highlight',
   \'coc-markdownlint',
   \'coc-rust-analyzer',
+  \'coc-sql',
   \'coc-pyright',
   \'coc-prettier',
   \'coc-tsserver',
