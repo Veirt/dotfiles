@@ -53,7 +53,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+w exec firefox
     bindsym $mod+d exec discord
     bindsym $mod+e exec nautilus
-    bindsym $mod+r exec ulauncher toggle
+    bindsym $mod+r exec ulauncher-toggle
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
