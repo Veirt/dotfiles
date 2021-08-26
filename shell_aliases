@@ -1,0 +1,62 @@
+alias cd..="cd .."
+alias dir="ls"
+alias pdw="pwd"
+alias claer="clear"
+alias clae="clear"
+alias c="clear"
+alias update="yay -Syu --noconfirm"
+
+# quick open folders
+alias repo="cd ~/Repositories"
+alias dotfiles="cd ~/.dotfiles"
+
+# replacements
+alias l="exa"
+alias ls="exa"
+alias la="exa -la --group-directories-first"
+alias ll="exa -ll --group-directories-first"
+alias yeet="rm -rf"
+alias grep="rg"
+alias cat="bat"
+alias vi="nvim"
+alias vim="nvim"
+alias bluetooth="bluetoothctl"
+
+# dev stuffs
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias py="python"
+alias cr="cargo run"
+alias cc="cargo check"
+alias cb="cargo build"
+alias ct="cargo test"
+
+# quick edit stuffs
+alias vpacman="sudo -e /etc/pacman.conf"
+alias vconfgrub="sudo -e /boot/grub/grub.cfg"
+alias vmirrorlist="sudo -e /etc/pacman.d/mirrorlist"
+alias vc="$EDITOR ~/.config/fish/config.fish"
+alias vb="$EDITOR ~/.bashrc"
+alias vz="$EDITOR ~/.zshrc"
+
+# get fastest mirrors in your neighborhood
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
+alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+
+# youtube-dl
+alias yta-aac="youtube-dl --extract-audio --audio-format aac"
+alias yta-best="youtube-dl --extract-audio --audio-format best"
+alias yta-flac="youtube-dl --extract-audio --audio-format flac"
+alias yta-m4a="youtube-dl --extract-audio --audio-format m4a"
+alias yta-mp3="youtube-dl --extract-audio --audio-format mp3"
+alias yta-opus="youtube-dl --extract-audio --audio-format opus"
+alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis"
+alias yta-wav="youtube-dl --extract-audio --audio-format wav"
+alias ytv-best="youtube-dl -f bestvideo+bestaudio"
+
+
