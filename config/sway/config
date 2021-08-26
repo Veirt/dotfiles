@@ -13,7 +13,7 @@ font Ubuntu 12
 
 # Window borders
 default_border none
-default_floating_border normal
+default_floating_border none
 
 smart_gaps on
 gaps inner 10
@@ -117,6 +117,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+    
+    bindsym $mod+tab workspace next
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -151,7 +154,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -193,7 +196,17 @@ mode "resize" {
 
 bindsym $mod+shift+r mode "resize"
 
+for_window [title="Sharing Indicator"] floating enable;
+
 # Status Bar:
 exec_always ~/.config/waybar/waybar.sh
+
+set $gnome-schema org.gnome.desktop.interface
+exec always {
+    gsettings set $gnome-schema gtk-theme 'Orchis-grey-dark'
+    gsettings set $gnome-schema icon-theme 'Tela-black-dark'
+    gsettings set $gnome-schema cursor-theme 'Simp1e-dark'
+}
+
 
 include /etc/sway/config.d/*
