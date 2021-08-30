@@ -26,15 +26,6 @@ set hidden                  " change buffer without save
 " Map space to leader
 map <Space> <Leader>
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-
 call plug#begin('~/.vim/plugged')
 " Language supports
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
