@@ -3,6 +3,14 @@ exec --no-startup-id libinput-gestures
 exec --no-startup-id fcitx
 exec ulauncher --hide-window
 
+workspace 1
+exec firefox
+
+workspace 3
+exec discord
+
+workspace 10
+
 # Variables
 set $mod Mod4
 set $term alacritty -e fish
