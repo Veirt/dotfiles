@@ -1,4 +1,5 @@
 # Startups
+exec mako
 exec --no-startup-id libinput-gestures
 exec --no-startup-id fcitx
 exec ulauncher --hide-window
@@ -215,6 +216,7 @@ exec always {
     gsettings set $gnome-schema icon-theme 'Tela-black-dark'
     gsettings set $gnome-schema cursor-theme 'Simp1e-dark'
 }
+
 
 
 include /etc/sway/config.d/*
