@@ -4,8 +4,14 @@ syntax on
 
 set encoding=utf-8
 set relativenumber
+set nu
 set formatoptions-=cro
 set termguicolors
+set noerrorbells
+set nowrap
+set scrolloff=8
+set incsearch
+set signcolumn=yes
 
 set tabstop=4               " number of columns occupied by a tab
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
