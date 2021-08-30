@@ -42,7 +42,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Fix focus issues vim with tmux
 " Additional features
 Plug 'tpope/vim-commentary' " Comment with gcc
 Plug 'jiangmiao/auto-pairs' " Brackets auto pair
-Plug 'luochen1990/rainbow' " Rainbow Brackets
 Plug 'nvim-lua/plenary.nvim' " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim' " A highly extendable fuzzy finder over lists
 " Plug 'folke/trouble.nvim'
@@ -56,7 +55,6 @@ Plug 'ryanoasis/vim-devicons' " NERDTree with icons
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'romgrk/barbar.nvim' " Tabline plugin
 
-" Plug 'mhinz/vim-startify' " Fancy start screen for vim
 Plug 'glepnir/dashboard-nvim' " Vim dashboard like startify
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
@@ -83,13 +81,12 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-eslint',
   \'coc-css',
-  \'coc-html',
+  \'coc-html-css-support',
   \'coc-emmet',
-  \'coc-vetur',
+  \'@yaegassy/coc-volar',
   \]
 
 colorscheme tokyonight
-let g:rainbow_active = 1 " Activating rainbow brackets
 
 let NERDTreeWinPos=1 " NERDTree right side
 
