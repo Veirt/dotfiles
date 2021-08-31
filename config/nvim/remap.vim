@@ -1,5 +1,8 @@
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Autocomplete with tab
+inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+
 " gd - go to definition of word under cursor
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -27,16 +30,13 @@ nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 
 " List errors
-noremap <silent> <leader>cl  :<C-u>CocList locationlist<cr>
+nnoremap <silent> <leader>er  :<C-u>CocList diagnostics<cr>
 
 " list commands available in tsserver (and others)
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 
 " restart when tsserver gets wonky
 nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
-
-" view all errors
-nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<CR>
 
 " manage extensions
 nnoremap <silent> <leader>cx  :<C-u>CocList extensions<cr>
