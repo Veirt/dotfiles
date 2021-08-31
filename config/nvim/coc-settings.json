@@ -2,7 +2,7 @@
     "coc.preferences.formatOnSaveFiletypes": ["css", "javascript", "typescript", "html"],
     "rpc.lowerDetailsIdling": "zZz",
     "rpc.largeImageIdle": "zZz",
-    "rpc.buttonActiveLabel": "Ur Mom",
+    "rpc.buttonActiveLabel": "?",
     "rpc.showProblems": false,
     "languageserver": {
       "intelephense": {
