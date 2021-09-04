@@ -126,6 +126,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+0 workspace number 10
     
     bindsym $mod+tab workspace next
+    bindsym Mod1+tab workspace next_on_output
+    bindsym Mod1+Shift+tab workspace prev_on_output
 
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
