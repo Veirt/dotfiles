@@ -81,6 +81,7 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-eslint',
   \'coc-css',
+  \'coc-phpls',
   \'coc-html-css-support',
   \'coc-emmet',
   \'@yaegassy/coc-volar',
