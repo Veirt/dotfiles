@@ -33,7 +33,7 @@ map <Space> <Leader>
 call plug#begin('~/.vim/plugged')
 " Language supports
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
-Plug 'sheerun/vim-polyglot' " Collection of language packs for Vim
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'alexaandru/nvim-lspupdate'
 " Plug 'nvim-lua/completion-nvim'
