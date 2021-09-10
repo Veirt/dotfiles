@@ -2,10 +2,10 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
 
+autocmd FileType * setlocal formatoptions-=cro
 set encoding=utf-8
 set relativenumber
 set nu
-set formatoptions-=cro
 set termguicolors
 set noerrorbells
 set nowrap
