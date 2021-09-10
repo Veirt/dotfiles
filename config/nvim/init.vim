@@ -3,6 +3,10 @@ filetype off                  " required
 syntax on
 
 autocmd FileType * setlocal formatoptions-=cro
+
+command! W write
+command! Q quit
+
 set encoding=utf-8
 set relativenumber
 set nu
