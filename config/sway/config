@@ -48,6 +48,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options caps:escape
 }
 
+input "9610:22:BY_Tech_Usb_Gaming_Keyboard" {
+    xkb_options caps:escape
+}
+
 ### Key bindings
 #
 # Basics:
