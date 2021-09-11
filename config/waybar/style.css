@@ -9,8 +9,8 @@
 }
 
 window {
-  color: rgba(217, 216, 216, 1);
-  background: rgba(35, 31, 32, 0.85);
+  color: rgba(216, 228, 230, 1);
+  background: rgba(20, 17, 15, 0.8);
 }
 
 #workspaces {
@@ -19,16 +19,20 @@ window {
 
 #workspaces button {
   padding: 0 5px;
-  color: rgba(217, 216, 216, 0.4);
+  color: rgba(170, 187, 195, 1);
 }
 
 #workspaces button.visible {
-  color: rgba(217, 216, 216, 1);
+  color: rgba(170, 187, 195, 1);
 }
 
 #workspaces button.focused {
-  border-top: 3px solid rgba(217, 216, 216, 1);
-  border-bottom: 3px solid rgba(217, 216, 216, 0);
+  border-top: 3px solid rgba(243, 243, 244, 1);
+}
+
+#workspaces button:hover {
+  border-top: 3px solid rgba(243, 243, 244, 1);
+  color: rgba(217, 216, 216, 1);
 }
 
 #workspaces button.urgent {
@@ -44,10 +48,12 @@ window {
 #backlight {
   margin: 0px 6px 0px 10px;
   min-width: 25px;
+  border-bottom: 2px solid rgba(170, 187, 195, 1);
 }
 
 #clock {
   margin: 0px 16px 0px 10px;
+  border-bottom: 2px solid rgba(170, 187, 195, 1);
   min-width: 140px;
 }
 

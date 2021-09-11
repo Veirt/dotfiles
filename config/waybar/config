@@ -18,6 +18,8 @@
     },
     "pulseaudio": {
         "format": "{icon}  {volume}%",
+        "format-alt": "{icon} ",
+        "format-alt-click": "click-right",
         "format-bluetooth": "{icon}  {volume}%",
         "format-muted": "",
         "format-icons": {
@@ -32,7 +34,7 @@
         "on-click": "pavucontrol"
     },
     "backlight": {
-        "format": "{icon}  {percent}%",
+        "format": "{icon} {percent}%",
         "format-alt": "{icon}",
         "format-alt-click": "click-right",
         "format-icons": ["", ""],
@@ -45,7 +47,9 @@
     },
     "battery": {
         "format": "{icon}  {capacity}%",
-        "format-alt": "{time} {icon}",
+        "format-alt": "{icon} ",
+        "format-alt-click": "click-right",
+        "format-icons": ["", ""],
         "format-icons": ["", "", "", "", ""],
         "format-charging": " {capacity}%",
         "interval": 30,
@@ -57,6 +61,8 @@
     },
     "network": {
         "interval": 20,
+        "format-alt": " ",
+        "format-alt-click": "click-right",
         "format-wifi": "  {essid} ({signalStrength}%)",
         "format-ethernet": "  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
