@@ -62,12 +62,14 @@ Plug 'romgrk/barbar.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard like startify
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
+Plug 'wojciechkepka/vim-github-dark' " GitHub Dark theme
+Plug 'ntk148v/vim-horizon' " Horizon theme
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
 call plug#end()
 
 lua << EOF
 require('lualine').setup {
-  options = {theme = 'nightfly'}
+  options = {theme = 'horizon'}
 }
 EOF
 
