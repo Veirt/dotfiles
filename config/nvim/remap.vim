@@ -54,7 +54,6 @@ nmap <leader>ca  <Plug>(coc-codeaction-selected)
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 " Moove to previous/next
 nnoremap <silent>    <A-,> :BufferPrevious<CR>
@@ -75,7 +74,7 @@ nnoremap <silent>    <A-9> :BufferLast<CR>
 " Pin/unpin buffer
 nnoremap <silent>    <A-p> :BufferPin<CR>
 " Close buffer
-nnoremap <silent>    <A-c> :BufferClose<CR>
+nnoremap <silent>    <A-w> :BufferClose<CR>
 
 " move line or visually selected block - alt+j/k
 nnoremap <A-j> :m .+1<CR>==
@@ -89,5 +88,10 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>gc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Dashboard provides session support. With SessionLoad and SessionSave commands, you can define keymaps like below
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
 
