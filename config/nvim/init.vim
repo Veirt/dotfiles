@@ -48,6 +48,7 @@ Plug 'tpope/vim-commentary' " Comment with gcc
 Plug 'jiangmiao/auto-pairs' " Brackets auto pair
 Plug 'nvim-lua/plenary.nvim' " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim' " A highly extendable fuzzy finder over lists
+Plug 'nvim-telescope/telescope-project.nvim' " An extension for telescope.nvim that allows you to switch between projects.
 " Plug 'folke/trouble.nvim'
 
 " Utilities
@@ -66,12 +67,6 @@ Plug 'wojciechkepka/vim-github-dark' " GitHub Dark theme
 Plug 'ntk148v/vim-horizon' " Horizon theme
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
 call plug#end()
-
-lua << EOF
-require('lualine').setup {
-  options = {theme = 'horizon'}
-}
-EOF
 
 let g:coc_global_extensions = [
   \'coc-discord-rpc',
@@ -103,3 +98,4 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile " Prettier
 let g:dashboard_default_executive ='telescope'
 
 source ~/.config/nvim/remap.vim
+luafile ~/.config/nvim/ext.lua
