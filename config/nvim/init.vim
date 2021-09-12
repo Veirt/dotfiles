@@ -88,6 +88,7 @@ let g:coc_global_extensions = [
   \'@yaegassy/coc-volar',
   \]
 
+let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
 
 " If more than one window and previous buffer was NERDTree, go back to it.
