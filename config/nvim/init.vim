@@ -66,10 +66,10 @@ Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
 Plug 'wojciechkepka/vim-github-dark' " GitHub Dark theme
 Plug 'ntk148v/vim-horizon' " Horizon theme
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
-Plug 'andweeb/presence.nvim' " Rich presence for Discord
 call plug#end()
 
 let g:coc_global_extensions = [
+  \'coc-discord-rpc',
   \'coc-snippets',
   \'coc-lists',
   \'coc-highlight',
