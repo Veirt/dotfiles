@@ -1,4 +1,19 @@
+" Use alt + hjkl to resize windows
+nnoremap <M-j>    :resize -2<CR>
+nnoremap <M-k>    :resize +2<CR>
+nnoremap <M-h>    :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
+"
+" Ctrl + space to toggle autocompletion
 inoremap <silent><expr> <c-space> coc#refresh()
+" Better nav for omnicomplete
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+" Alternate way to save
+nnoremap <C-s> :w<CR>
+" Alternate way to quit
+nnoremap <C-Q> :wq!<CR>
 
 " Autocomplete with tab
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
@@ -92,6 +107,8 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>gc <cmd>Telescope git_commits<cr>
 nnoremap <leader>gs <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>fp :Neoformat<cr>
 
 " Dashboard provides session support. With SessionLoad and SessionSave commands, you can define keymaps like below
 nmap <Leader>ss :<C-u>SessionSave<CR>
