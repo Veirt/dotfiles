@@ -61,9 +61,9 @@
     },
     "network": {
         "interval": 20,
-        "format-alt": " ",
+        "format-alt": "  ({signalStrength}%)",
         "format-alt-click": "click-right",
-        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-wifi": "  {essid}",
         "format-ethernet": "  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
