@@ -1,7 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-syntax on
-
 command! W write
 command! Q quit
 
