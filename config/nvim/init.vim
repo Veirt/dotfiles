@@ -1,6 +1,3 @@
-command! W write
-command! Q quit
-
 set encoding=utf-8
 set fileencoding=utf-8
 set relativenumber
@@ -30,6 +27,8 @@ set updatetime=300
 set timeoutlen=500
 
 cmap w!! w !sudo tee %
+command! W write
+command! Q quit
 
 " Map space to leader
 map <Space> <Leader>
@@ -38,6 +37,7 @@ call plug#begin('~/.vim/plugged')
 " Language supports
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rafamadriz/friendly-snippets'
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'alexaandru/nvim-lspupdate'
 " Plug 'nvim-lua/completion-nvim'
@@ -57,6 +57,7 @@ Plug 'sbdchd/neoformat' " Format code/Prettier
 
 " Utilities
 Plug 'wakatime/vim-wakatime' " WakaTime
+Plug 'folke/which-key.nvim' " displays a popup with possible key bindings of the command you started typing.
 
 " Customization
 Plug 'Xuyuanp/nerdtree-git-plugin' " NERDTree with git indicator
@@ -67,6 +68,7 @@ Plug 'mhinz/vim-startify' " Code formatter
 
 Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
+
 call plug#end()
 
 let g:coc_global_extensions = [

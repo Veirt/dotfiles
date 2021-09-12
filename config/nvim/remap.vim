@@ -103,8 +103,3 @@ nnoremap <leader>gs <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <leader>fp :Neoformat<cr>
-
-" Dashboard provides session support. With SessionLoad and SessionSave commands, you can define keymaps like below
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-

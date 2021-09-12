@@ -2,6 +2,8 @@ require('lualine').setup {
   options = {theme = 'horizon'}
 }
 
+require('which-key').setup {}
+
 require'telescope'.load_extension('project')
 
 require'nvim-treesitter.configs'.setup {
