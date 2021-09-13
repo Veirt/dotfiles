@@ -184,3 +184,4 @@ exec always {
 
 
 include /etc/sway/config.d/*
+include $HOME/.config/sway/conf.d/*
