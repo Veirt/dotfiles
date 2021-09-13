@@ -1,7 +1,7 @@
 # Variables
 set $mod Mod4
 set $term alacritty -e fish
-set $background "/home/exlog/Pictures/Wallpapers/ina.jpg"
+set $background "/home/exlog/Pictures/Wallpapers/ehc4gnoda2f71.png "
 
 # Font
 font Ubuntu 12
