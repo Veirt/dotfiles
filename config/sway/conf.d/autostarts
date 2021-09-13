@@ -1,0 +1,12 @@
+# Startups
+exec mako
+exec --no-startup-id libinput-gestures
+exec --no-startup-id fcitx
+exec ulauncher --hide-window
+
+workspace 1
+exec firefox
+
+workspace 3
+exec discord
+
