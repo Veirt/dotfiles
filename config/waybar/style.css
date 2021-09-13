@@ -23,15 +23,15 @@ window {
 }
 
 #workspaces button.visible {
-  color: rgba(170, 187, 195, 1);
+  color: rgba(243, 243, 244, 1);
 }
 
 #workspaces button.focused {
-  border-top: 3px solid rgba(243, 243, 244, 1);
+  background: #96a8b4;
 }
 
 #workspaces button:hover {
-  border-top: 3px solid rgba(243, 243, 244, 1);
+  border-top: 3px solid #96a8b4;
   color: rgba(217, 216, 216, 1);
 }
 
