@@ -66,6 +66,7 @@ input "9610:22:BY_Tech_Usb_Gaming_Keyboard" {
     bindsym $mod+e exec nautilus
     bindsym $mod+r exec ulauncher-toggle
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+    bindsym Print exec grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')
     bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
