@@ -1,3 +1,3 @@
 # dotfiles
 
-![Neofetch](neofetch.png)
+![Desktop](desktop.png)
