@@ -1,0 +1,19 @@
+markup=1
+actions=1
+default-timeout=5000
+
+font=Ubuntu 11
+border-color=#212733E0
+border-size=2
+background-color=#212733E0
+text-color=#ffffff
+padding=10
+
+format=%s <span color="#AEC2C9">(%a)</span>\n%b
+
+# Hidden format
+[hidden]
+format=Hidden: %h [%t]
+
+[urgency=high]
+border-color=#9c2220
