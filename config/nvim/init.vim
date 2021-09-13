@@ -9,6 +9,7 @@ set scrolloff=8
 set incsearch
 set signcolumn=yes
 set formatoptions-=cro
+set shell=/usr/bin/fish
 
 set tabstop=4               " number of columns occupied by a tab
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
@@ -26,10 +27,14 @@ set nowritebackup
 set updatetime=300
 set timeoutlen=500
 
+autocmd TermOpen * setlocal nonumber norelativenumber
+
 cmap w!! w !sudo tee %
+
 command! W write
 command! Q quit
 
+autocmd TermOpen * setlocal nonumber norelativenumber
 " Map space to leader
 map <Space> <Leader>
 
@@ -92,9 +97,6 @@ let g:coc_global_extensions = [
 
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
-
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
 let NERDTreeWinPos=1 " NERDTree right side
 let NERDTreeAutoDeleteBuffer = 1 " Automatically delete the buffer of the file you just deleted with NERDTree
