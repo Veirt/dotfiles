@@ -6,3 +6,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 input "9610:22:BY_Tech_Usb_Gaming_Keyboard" {
     xkb_options caps:escape
 }
+
+input "1267:12433:ELAN0504:01_04F3:3091_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
