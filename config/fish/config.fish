@@ -1,5 +1,7 @@
 set -U fish_greeting
 fish_vi_key_bindings
+bind -M insert \cf 'tmux-sessionizer.sh'
+bind \cf 'tmux-sessionizer.sh'
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
     echo "fish: Unknown command '$argv'" 
