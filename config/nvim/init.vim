@@ -27,14 +27,21 @@ set nowritebackup
 set updatetime=300
 set timeoutlen=500
 
-autocmd TermOpen * setlocal nonumber norelativenumber
-
 cmap w!! w !sudo tee %
 
 command! W write
 command! Q quit
 
-autocmd TermOpen * setlocal nonumber norelativenumber
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/vendor/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+
 " Map space to leader
 map <Space> <Leader>
 
@@ -103,6 +110,7 @@ let NERDTreeAutoDeleteBuffer = 1 " Automatically delete the buffer of the file y
 let NERDTreeQuitOnOpen = 1 " Automatically close NERDTree when you open a file
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeShowHidden=1
 let g:NERDTreeGitStatusUseNerdFonts = 1 
 let g:NERDTreeGitStatusConcealBrackets = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {

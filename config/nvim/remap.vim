@@ -1,8 +1,8 @@
 " Ctrl + space to toggle autocompletion
 inoremap <silent><expr> <c-space> coc#refresh()
 " Better nav for omnicomplete
-inoremap <expr> <c-j> ("\<C-n>")
-inoremap <expr> <c-k> ("\<C-p>")
+inoremap <expr> <A-j> ("\<C-n>")
+inoremap <expr> <A-k> ("\<C-p>")
 
 " Alternate way to save
 nnoremap <C-s> :w<CR>
@@ -85,14 +85,6 @@ nnoremap <silent>    <A-p> :BufferPin<CR>
 " Close buffer
 nnoremap <silent>    <A-w> :BufferClose<CR>
 
-" move line or visually selected block - alt+j/k
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -103,3 +95,5 @@ nnoremap <leader>gs <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <leader>fp :Neoformat<cr>
+
+nnoremap <silent> <leader>z :silent !$HOME/.scripts/tmux-split-or-zoom.sh<cr>
