@@ -91,9 +91,10 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>ff <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>gc <cmd>Telescope git_commits<cr>
+nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 nnoremap <leader>gs <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <leader>fp :Neoformat<cr>
 
-nnoremap <silent> <leader>z :silent !$HOME/.scripts/tmux-split-or-zoom.sh<cr>
+nnoremap <silent> <C-\> :silent !$HOME/.scripts/tmux-vim-select-pane.sh<cr>
