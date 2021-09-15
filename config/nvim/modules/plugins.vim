@@ -28,7 +28,7 @@ Plug 'folke/which-key.nvim' " displays a popup with possible key bindings of the
 Plug 'Xuyuanp/nerdtree-git-plugin' " NERDTree with git indicator
 Plug 'ryanoasis/vim-devicons' " Add icons to NERDTree
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
-Plug 'romgrk/barbar.nvim' " Tabline plugin
+Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'mhinz/vim-startify' " Code formatter
 
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
