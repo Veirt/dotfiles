@@ -37,6 +37,7 @@ alias ct="cargo test"
 alias yd="yarn dev"
 alias ys="yarn start"
 alias yb="yarn build"
+alias ta="tmux a"
 
 # quick edit stuffs
 alias vpacman="sudo -e /etc/pacman.conf"
