@@ -31,6 +31,6 @@ Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'romgrk/barbar.nvim' " Tabline plugin
 Plug 'mhinz/vim-startify' " Code formatter
 
-Plug 'ghifarit53/tokyonight-vim' " Tokyo Night theme
+Plug 'folke/tokyonight.nvim' " Tokyo Night theme
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
 call plug#end()
