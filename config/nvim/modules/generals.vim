@@ -1,12 +1,3 @@
-" Ignore files
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*
-
 set encoding=utf-8
 set fileencoding=utf-8
 set relativenumber
@@ -17,7 +8,6 @@ set nowrap
 set scrolloff=8
 set incsearch
 set signcolumn=yes
-set formatoptions-=cro
 set shell=/usr/bin/fish
 
 set tabstop=4               " number of columns occupied by a tab

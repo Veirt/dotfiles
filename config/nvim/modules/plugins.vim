@@ -13,16 +13,19 @@ Plug 'christoomey/vim-tmux-navigator' " Vim tmux
 
 " Additional features
 Plug 'tpope/vim-commentary' " Comment with gcc
-Plug 'jiangmiao/auto-pairs' " Brackets auto pair
+Plug 'windwp/nvim-autopairs' " Brackets auto pair
 Plug 'nvim-lua/plenary.nvim' " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim' " A highly extendable fuzzy finder over lists
-Plug 'nvim-telescope/telescope-project.nvim' " An extension for telescope.nvim that allows you to switch between projects.
+Plug 'nvim-lua/popup.nvim'
+Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'} " Native fzf
+Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
 " Plug 'folke/trouble.nvim'
 
 " Utilities
 Plug 'wakatime/vim-wakatime' " WakaTime
-Plug 'folke/which-key.nvim' " displays a popup with possible key bindings of the command you started typing.
+Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
 
 " Customization
 Plug 'Xuyuanp/nerdtree-git-plugin' " NERDTree with git indicator

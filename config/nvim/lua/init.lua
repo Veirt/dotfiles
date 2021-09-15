@@ -1,11 +1,16 @@
 require('lualine').setup {
-  options = {theme = 'horizon'}
+  options = {theme = 'tokyonight'}
 }
 
+require('nvim-autopairs').setup{}
+
 require("bufferline").setup{}
+
+require('gitsigns').setup()
+
 require('which-key').setup {}
 
-require'telescope'.load_extension('project')
+require'telescope'.load_extension('fzf')
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "python", "rust", "javascript", "typescript", "lua", "fish", "bash", "dockerfile", "graphql",

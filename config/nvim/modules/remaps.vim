@@ -1,8 +1,12 @@
+" leader + enter to reload configuration
+nnoremap <silent> <leader><CR> :so ~/.config/nvim/init.vim<cr>
+
 " Ctrl + space to toggle autocompletion
 inoremap <silent><expr> <c-space> coc#refresh()
+
 " Better nav for omnicomplete
-inoremap <expr> <A-j> ("\<C-n>")
-inoremap <expr> <A-k> ("\<C-p>")
+inoremap <expr> <C-j> ("\<C-n>")
+inoremap <expr> <C-k> ("\<C-p>")
 
 " Alternate way to save
 nnoremap <C-s> :w<CR>
@@ -60,9 +64,9 @@ vmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
 
 " NERDTree remap
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>n :NERDTreeFocus<CR>
+nnoremap <silent> <C-n> :NERDTree<CR>
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " Moove to previous/next
 nnoremap <silent>    <A-,> :BufferLineCyclePrev<CR>
@@ -91,6 +95,8 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>gc <cmd>Telescope git_commits<cr>
 nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 nnoremap <leader>gs <cmd>Telescope git_status<cr>
+nnoremap <leader>gg <cmd>Git<cr>
+nnoremap <leader>gp <cmd>Git push<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <leader>fp :Neoformat<cr>
