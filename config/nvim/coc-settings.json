@@ -3,5 +3,6 @@
     "rpc.lowerDetailsIdling": "zZz",
     "rpc.largeImageIdle": "zZz",
     "rpc.buttonActiveLabel": "?",
-    "rpc.showProblems": false
+    "rpc.showProblems": false,
+    "rpc.ignoreWorkspaces": ["htdocs", "^belajar"]
 }
