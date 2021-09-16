@@ -16,8 +16,8 @@ Plug 'tpope/vim-commentary' " Comment with gcc
 Plug 'windwp/nvim-autopairs' " Brackets auto pair
 Plug 'nvim-lua/plenary.nvim' " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim' " A highly extendable fuzzy finder over lists
-Plug 'nvim-lua/popup.nvim'
-Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-lua/popup.nvim' " Required by harpoon
+Plug 'ThePrimeagen/harpoon' " Get you where you want with the fewest keystrokes.
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'} " Native fzf
 Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
