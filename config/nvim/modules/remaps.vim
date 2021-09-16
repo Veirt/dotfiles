@@ -1,9 +1,6 @@
 " leader + enter to reload configuration
 nnoremap <silent> <leader><CR> :so ~/.config/nvim/init.vim<cr>
 
-" Ctrl + space to toggle autocompletion
-inoremap <silent><expr> <c-space> coc#refresh()
-
 " Better nav for omnicomplete
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
@@ -12,61 +9,6 @@ inoremap <expr> <C-k> ("\<C-p>")
 nnoremap <C-s> :w<CR>
 " Alternate way to quit
 nnoremap <C-Q> :wq!<CR>
-
-" Autocomplete with tab
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
-
-" gd - go to definition of word under cursor
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-
-" gr - find references
-nmap <silent> gr <Plug>(coc-references)
-
-" gh - get hint on whatever's under the cursor
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
-
-" List errors
-nnoremap <silent> <leader>er  :<C-u>CocList diagnostics<cr>
-
-" list commands available in tsserver (and others)
-nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
-
-" restart when tsserver gets wonky
-nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
-
-" manage extensions
-nnoremap <silent> <leader>cx  :<C-u>CocList extensions<cr>
-
-" rename the current word in the cursor
-nmap <F2> <Plug>(coc-rename)
-nmap <leader>cf  <Plug>(coc-format-selected)
-vmap <leader>cf  <Plug>(coc-format-selected)
-
-" run code actions
-vmap <leader>ca  <Plug>(coc-codeaction-selected)
-nmap <leader>ca  <Plug>(coc-codeaction-selected)
-
-" NERDTree remap
-nnoremap <silent> <leader>n :NERDTreeFocus<CR>
-nnoremap <silent> <C-n> :NERDTree<CR>
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " Moove to previous/next
 nnoremap <silent>    <A-,> :BufferLineCyclePrev<CR>

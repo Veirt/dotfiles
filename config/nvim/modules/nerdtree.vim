@@ -1,3 +1,8 @@
+" NERDTree remap
+nnoremap <silent> <leader>n :NERDTreeFocus<CR>
+nnoremap <silent> <C-n> :NERDTree<CR>
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
 let NERDTreeWinPos=1 " NERDTree right side
 let NERDTreeAutoDeleteBuffer = 1 " Automatically delete the buffer of the file you just deleted with NERDTree
 let NERDTreeQuitOnOpen = 1 " Automatically close NERDTree when you open a file
