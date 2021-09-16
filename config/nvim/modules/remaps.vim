@@ -1,5 +1,5 @@
 " leader + enter to reload configuration
-nnoremap <silent> <leader><CR> :so ~/.config/nvim/init.vim<cr>
+nnoremap <silent> <leader><CR> :so ~/.config/nvim/init.vim<CR>
 
 " Better nav for omnicomplete
 inoremap <expr> <C-j> ("\<C-n>")
@@ -30,17 +30,24 @@ nnoremap <silent>    <A-9> :BufferLineGoToBuffer 9<CR>
 nnoremap <silent>    <A-w> :bdelete<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-p> <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>ff <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>gc <cmd>Telescope git_commits<cr>
-nnoremap <leader>gb <cmd>Telescope git_branches<cr>
-nnoremap <leader>gs <cmd>Telescope git_status<cr>
-nnoremap <leader>gg <cmd>Git<cr>
-nnoremap <leader>gp <cmd>Git push<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+silent! !git rev-parse --is-inside-work-tree
+if v:shell_error == 0
+    nnoremap <C-p> <cmd>Telescope git_files<CR>
+else
+    nnoremap <C-p> <cmd>Telescope find_files<CR>
+endif
 
-nnoremap <leader>fp :Neoformat<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>ff <cmd>Telescope current_buffer_fuzzy_find<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>gc <cmd>Telescope git_commits<CR>
+nnoremap <leader>gb <cmd>Telescope git_branches<CR>
+nnoremap <leader>gs <cmd>Telescope git_status<CR>
+nnoremap <leader>gg <cmd>Git<CR>
+nnoremap <leader>gp <cmd>Git push<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 
-nnoremap <silent> <C-\> :silent !$HOME/.scripts/tmux-vim-select-pane.sh<cr>
+
+nnoremap <leader>fp :Neoformat<CR>
+
+nnoremap <silent> <C-\> :silent !$HOME/.scripts/tmux-vim-select-pane.sh<CR>

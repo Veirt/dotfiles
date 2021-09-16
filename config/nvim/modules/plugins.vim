@@ -1,11 +1,12 @@
 call plug#begin("~/.vim/plugged")
 " Language supports
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'rafamadriz/friendly-snippets'
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'alexaandru/nvim-lspupdate'
-" Plug 'nvim-lua/completion-nvim'
+" Plug 'rafamadriz/friendly-snippets'
+Plug 'neovim/nvim-lspconfig'
+Plug 'alexaandru/nvim-lspupdate'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Fast as FUCK nvim completion.
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
 
 Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
@@ -27,6 +28,7 @@ Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
 " Utilities
 Plug 'wakatime/vim-wakatime' " WakaTime
 Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
+Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
