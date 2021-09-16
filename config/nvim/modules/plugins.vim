@@ -8,7 +8,7 @@ Plug 'rafamadriz/friendly-snippets'
 " Plug 'nvim-lua/completion-nvim'
 
 Plug 'tpope/vim-fugitive' " Vim git plugin
-Plug 'preservim/nerdtree' " NERDTree file explorer
+Plug 'kyazdani42/nvim-tree.lua' " File explorer
 Plug 'christoomey/vim-tmux-navigator' " Vim tmux
 
 " Additional features
@@ -29,8 +29,6 @@ Plug 'wakatime/vim-wakatime' " WakaTime
 Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
 
 " Customization
-Plug 'Xuyuanp/nerdtree-git-plugin' " NERDTree with git indicator
-Plug 'ryanoasis/vim-devicons' " Add icons to NERDTree
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'mhinz/vim-startify' " Code formatter
