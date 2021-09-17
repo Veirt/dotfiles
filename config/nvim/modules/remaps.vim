@@ -29,13 +29,7 @@ nnoremap <silent>    <A-9> :BufferLineGoToBuffer 9<CR>
 " Close buffer
 nnoremap <silent>    <A-w> :bdelete<CR>
 
-" Find files using Telescope command-line sugar.
-silent! !git rev-parse --is-inside-work-tree
-if v:shell_error == 0
-    nnoremap <C-p> <cmd>Telescope git_files<CR>
-else
-    nnoremap <C-p> <cmd>Telescope find_files<CR>
-endif
+nnoremap <silent> <C-p> :lua require'telescope-project'.project_files()<CR>
 
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>ff <cmd>Telescope current_buffer_fuzzy_find<CR>

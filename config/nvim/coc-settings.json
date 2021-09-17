@@ -1,13 +1,13 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "javascript",
-    "typescript",
-    "html"
-  ],
-  "rpc.lowerDetailsIdling": "zZz",
-  "rpc.largeImageIdle": "zZz",
-  "rpc.buttonActiveLabel": "?",
-  "rpc.showProblems": false,
-  "rpc.ignoreWorkspaces": [".+htdocs.+", "^belajar"]
+    "suggest.autoTrigger": "none",
+    "suggest.timeout": 1,
+    "diagnostic.enable": false,
+    "rpc.lowerDetailsIdling": "zZz",
+    "rpc.largeImageIdle": "zZz",
+    "rpc.buttonActiveLabel": "?",
+    "rpc.showProblems": false,
+    "rpc.ignoreWorkspaces": [
+        ".+htdocs.+",
+        "^belajar"
+    ]
 }

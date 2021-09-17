@@ -4,15 +4,20 @@ require('lualine').setup {
 
 require('nvim-autopairs').setup{}
 
-require'colorizer'.setup()
+require("trouble").setup{
+    action_keys = {
+        close = "<esc>",
+    }
+}
+
+require('colorizer').setup{}
 
 require("bufferline").setup{}
 
-require('gitsigns').setup()
+require('gitsigns').setup{}
 
 require('which-key').setup {}
 
-require'telescope'.load_extension('fzf')
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "python", "rust", "javascript", "typescript", "lua", "fish", "bash", "dockerfile", "graphql",

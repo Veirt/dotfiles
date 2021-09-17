@@ -10,6 +10,7 @@ source $HOME/.config/nvim/modules/harpoon.vim
 luafile $HOME/.config/nvim/lua/init.lua
 luafile $HOME/.config/nvim/lua/lsp.lua
 source $HOME/.config/nvim/modules/lsp.vim
+luafile $HOME/.config/nvim/lua/telescope-config.lua
 
 au FileType * set fo-=c fo-=r fo-=o
 

@@ -1,6 +1,6 @@
 call plug#begin("~/.vim/plugged")
 " Language supports
-" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'rafamadriz/friendly-snippets'
 Plug 'neovim/nvim-lspconfig'
@@ -23,7 +23,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'} " Native fzf
 Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
 Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
-" Plug 'folke/trouble.nvim'
+Plug 'folke/trouble.nvim'
 
 " Utilities
 Plug 'wakatime/vim-wakatime' " WakaTime
