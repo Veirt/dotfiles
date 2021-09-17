@@ -1,33 +1,35 @@
 #!/usr/bin/env bash
-# Like `tmux select-pane`, but if Vim is running in the current pane it sends
-# a `<C-h/j/k/l>` keystroke to Vim instead.
 set -e
 
 cmd="$(tmux display -p '#{pane_current_command}')"
 cmd="$(basename "$cmd" | tr A-Z a-z)"
 
+# if in nvim
 if [ "${cmd}" = "nvim" ]; then
     direction="$(echo "${1#-}" | tr 'lLDUR' '\\hjkl')"
 
+    # if Ctrl-\
     if [ $direction == "\\" ]; then
-        # count lines
+        # check tmux panes count
         TMUX_PANES=$(tmux list-panes | wc -l)
 
-        if [ $TMUX_PANES == 1 ]
-        then
+        if [ $TMUX_PANES == 1 ]; then
             tmux split-window -v -l 13
         else
-            tmux resize-pane -Z
             tmux select-pane -D
         fi
+
+    else
+        tmux send-keys "C-$direction"
     fi
-
-
-    tmux send-keys "C-$direction"
 
 else
-    tmux select-pane "$@"
-    if [ "$@" == "-l" ]; then
-      tmux resize-pane -Z
+    #if not in nvim
+    if [ $@ == "-l" ]; then
+        tmux select-pane -U
+        tmux resize-pane -Z
+    else
+        tmux select-pane "$@"
     fi
+
 fi
