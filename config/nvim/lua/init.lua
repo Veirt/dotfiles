@@ -28,6 +28,12 @@ require'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = true
     },
     indent = {
+        enable = false
+    },
+    incremental_selection = {
         enable = true
-    }
+    },
+    textobjects = {
+        enable = true
+    },
 }
