@@ -6,7 +6,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Fast as FUCK nvim completion.
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
+" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
 
 Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
@@ -37,4 +37,7 @@ Plug 'mhinz/vim-startify' " Code formatter
 
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
+
+" Games
+Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
