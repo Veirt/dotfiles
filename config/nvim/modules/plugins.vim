@@ -34,10 +34,12 @@ Plug 'lervag/vimtex' " Syntax plugin for LaTeX files.
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
-Plug 'mhinz/vim-startify' " Code formatter
+Plug 'glepnir/dashboard-nvim' " VIm dashboard
 
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
+Plug 'Pocco81/Catppuccino.nvim'
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
+Plug 'nvim-lua/lsp-status.nvim' " Neovim plugin/library for generating statusline components
 
 " Games
 Plug 'ThePrimeagen/vim-be-good'
