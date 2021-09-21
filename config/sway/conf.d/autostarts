@@ -1,7 +1,6 @@
 # Startups
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec mako
-exec --no-startup-id libinput-gestures
 exec --no-startup-id fcitx
 exec ulauncher --hide-window
 
