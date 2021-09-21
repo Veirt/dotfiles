@@ -33,7 +33,7 @@ nnoremap <silent> <C-b> :NvimTreeToggle<CR>
 let g:nvim_tree_side = 'right' " left by default
 let g:nvim_tree_lsp_diagnostics = 1
 let g:nvim_tree_hide_dotfiles = 0 " 0 by default, this option hides files and folders starting with a dot `.`
-let g:nvim_tree_ignore = [ '.git', '.cache', '.idea', '.vscode' ] " empty by default
+let g:nvim_tree_ignore = [ '.git', '.cache', '.idea', '.vscode', '.pytest_cache' ] " empty by default
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
     \ 'folders': 1,
