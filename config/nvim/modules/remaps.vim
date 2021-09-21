@@ -41,7 +41,5 @@ nnoremap <leader>gg <cmd>Git<CR>
 nnoremap <leader>gp <cmd>Git push<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 
-
 nnoremap <leader>fp :Neoformat<CR>
 
-nnoremap <silent> <C-\> :silent !$HOME/.scripts/tmux-vim-select-pane.sh<CR>
