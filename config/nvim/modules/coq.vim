@@ -1,6 +1,6 @@
 let g:coq_settings = {
     \ 'auto_start': 'shut-up',
-    \ 'keymap.bigger_preview': 'null',
+    \ 'keymap.bigger_preview': v:null,
     \ 'keymap.recommended': v:false,
     \ 'display.ghost_text.enabled': v:false
     \ }
