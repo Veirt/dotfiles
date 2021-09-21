@@ -6,7 +6,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Fast as FUCK nvim completion.
-" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
 
 Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
@@ -30,6 +30,7 @@ Plug 'wakatime/vim-wakatime' " WakaTime
 Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
 Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
 Plug 'lervag/vimtex' " Syntax plugin for LaTeX files.
+Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
@@ -39,7 +40,6 @@ Plug 'glepnir/dashboard-nvim' " VIm dashboard
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
 Plug 'Pocco81/Catppuccino.nvim'
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
-Plug 'nvim-lua/lsp-status.nvim' " Neovim plugin/library for generating statusline components
 
 " Games
 Plug 'ThePrimeagen/vim-be-good'
