@@ -29,6 +29,7 @@ Plug 'folke/trouble.nvim'
 Plug 'wakatime/vim-wakatime' " WakaTime
 Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
 Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
+Plug 'lervag/vimtex' " Syntax plugin for LaTeX files.
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons

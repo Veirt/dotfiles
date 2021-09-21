@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = { 'pyright', 'bashls', 'vimls', 'yamlls',
-                'dockerls', 'rust_analyzer', 'sqls',
+                'dockerls', 'rust_analyzer', 'texlab', 'sqls',
                 'tsserver', 'volar', 'intelephense' }
 
 local servers_caps = {'html', 'cssls', 'jsonls'}

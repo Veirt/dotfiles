@@ -20,7 +20,7 @@ require('which-key').setup {}
 
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "python", "rust", "javascript", "typescript", "lua", "fish", "bash", "dockerfile", "graphql",
+    ensure_installed = { "python", "rust", "javascript", "typescript", "lua", "fish", "bash", "latex", "dockerfile", "graphql",
     "cpp", "jsdoc", "java", "json", "php", "toml", "vim", "yaml", "html", "css" },
 
     highlight = {
