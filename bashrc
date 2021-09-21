@@ -269,4 +269,3 @@ ex ()
 #hfetch
 # install lolcat
 #sfetch | lolcat
-. "$HOME/.cargo/env"
