@@ -26,6 +26,7 @@ Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
 Plug 'folke/trouble.nvim'
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-endwise' " Auto insert endif or related stuffs
+Plug 'tpope/vim-sleuth' " Automatically adjusts indent
 
 " Utilities
 Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
