@@ -24,6 +24,7 @@ Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
 Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
 Plug 'folke/trouble.nvim'
+Plug 'glepnir/lspsaga.nvim' " LSP plugin with highly performant UI
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-endwise' " Auto insert endif or related stuffs
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent

@@ -11,6 +11,7 @@ source $HOME/.config/nvim/modules/dashboard.vim
 luafile $HOME/.config/nvim/lua/init.lua
 luafile $HOME/.config/nvim/lua/treesitter.lua
 luafile $HOME/.config/nvim/lua/lsp.lua
+luafile $HOME/.config/nvim/lua/lspsaga-config.lua
 luafile $HOME/.config/nvim/lua/telescope-config.lua
 luafile $HOME/.config/nvim/lua/themes.lua
 
