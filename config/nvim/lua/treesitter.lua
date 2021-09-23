@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "python", "rust", "javascript", "typescript", "lua", "fish", "bash", "latex", "dockerfile", "graphql",
-    "cpp", "jsdoc", "java", "json", "php", "toml", "vim", "yaml", "html", "css" },
+    "cpp", "jsdoc", "java", "json", "php", "toml", "vim", "vue", "yaml", "html", "css" },
 
     highlight = {
         enable = true,
@@ -9,10 +9,13 @@ require'nvim-treesitter.configs'.setup {
     indent = {
         enable = false
     },
+    autotag = {
+        enable = true
+    },
     incremental_selection = {
         enable = true
     },
     textobjects = {
         enable = true
-    },
+    }
 }

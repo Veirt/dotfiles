@@ -1,19 +1,20 @@
 call plug#begin("~/.vim/plugged")
 " Language supports
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intelisense engine
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Fast as FUCK nvim completion.
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
 
-Plug 'tpope/vim-fugitive' " Vim git plugin
+" Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
 Plug 'christoomey/vim-tmux-navigator' " Vim tmux
 
 " Additional features
 Plug 'tpope/vim-commentary' " Comment with gcc
 Plug 'windwp/nvim-autopairs' " Brackets auto pair
+Plug 'windwp/nvim-ts-autotag' " Use treesitter to autoclose and autorename html tag
 Plug 'nvim-lua/plenary.nvim' " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim' " A highly extendable fuzzy finder over lists
 Plug 'nvim-lua/popup.nvim' " Required by harpoon
@@ -34,6 +35,7 @@ Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Ne
 Plug 'lervag/vimtex' " Syntax plugin for LaTeX files.
 Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Preview markdown on your modern browser
+Plug 'tweekmonster/startuptime.vim' " Measure startup
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
@@ -44,5 +46,5 @@ Plug 'Pocco81/Catppuccino.nvim'
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
 
 " Games
-Plug 'ThePrimeagen/vim-be-good'
+" Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
