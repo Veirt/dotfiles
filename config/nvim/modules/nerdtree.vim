@@ -12,12 +12,13 @@ let NERDTreeShowHidden=1
 let g:NERDTreeGitStatusUseNerdFonts = 1 
 let g:NERDTreeGitStatusConcealBrackets = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'M',
-                \ 'Staged'    :'S',
-                \ 'Untracked' :'U',
-                \ 'Renamed'   :'R',
-                \ 'Deleted'   :'D',
-                \ 'Ignored'   :'I',
-                \ 'Clean'     :'C',
-                \ 'Unknown'   :'?',
-                \ }
+      \ 'Modified'  :'M',
+      \ 'Staged'    :'S',
+      \ 'Untracked' :'U',
+      \ 'Renamed'   :'R',
+      \ 'Deleted'   :'D',
+      \ 'Ignored'   :'I',
+      \ 'Clean'     :'C',
+      \ 'Unknown'   :'?',
+      \ }
+

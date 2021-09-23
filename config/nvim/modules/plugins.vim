@@ -26,7 +26,7 @@ Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
 Plug 'folke/trouble.nvim'
 Plug 'glepnir/lspsaga.nvim' " LSP plugin with highly performant UI
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
-Plug 'tpope/vim-endwise' " Auto insert endif or related stuffs
+" Plug 'tpope/vim-endwise' " Auto insert endif or related stuffs
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent
 
 " Utilities
@@ -36,6 +36,9 @@ Plug 'lervag/vimtex' " Syntax plugin for LaTeX files.
 Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Preview markdown on your modern browser
 Plug 'tweekmonster/startuptime.vim' " Measure startup
+Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+Plug 'andweeb/presence.nvim'
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons

@@ -40,5 +40,8 @@ nnoremap <leader>gs <cmd>Telescope git_status<CR>
 nnoremap <leader>gg <cmd>LazyGit<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 
+nnoremap <leader>tr <cmd>Ultest<CR>
+nnoremap <leader>ts <cmd>UltestClear<CR>
+
 nnoremap <leader>fp :Neoformat<CR>
 

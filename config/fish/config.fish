@@ -21,5 +21,5 @@ export VISUAL='nvim'
 source ~/.shell_aliases
 
 # Starship prompt
-starship init fish | source 
+# starship init fish | source 
 
