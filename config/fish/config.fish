@@ -1,7 +1,11 @@
 set -U fish_greeting
 fish_vi_key_bindings
+
 bind -M insert \cf 'tmux-sessionizer.sh'
 bind \cf 'tmux-sessionizer.sh'
+
+bind -M insert \cr 'ranger'
+bind \cr 'ranger'
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
     echo "fish: Unknown command '$argv'" 
@@ -20,6 +24,13 @@ export VISUAL='nvim'
 
 source ~/.shell_aliases
 
+export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
+if type fd &> /dev/null
+    export FZF_DEFAULT_COMMAND='fd --type f'
+end
+
 # Starship prompt
-# starship init fish | source 
+if type starship &> /dev/null
+    starship init fish | source 
+end
 
