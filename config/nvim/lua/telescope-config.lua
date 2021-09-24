@@ -21,18 +21,28 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 require('telescope').setup {
-    extensions = {
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-        }
+  defaults = {
+    buffer_previewer_maker = new_maker,
+    file_ignore_patterns = {"node_modules", "vendor"}
+  },
+  pickers = {
+    find_files = {
+      theme = "dropdown",
+      previewer = false
     },
-    defaults = {
-        buffer_previewer_maker = new_maker,
-        file_ignore_patterns = {"node_modules", "vendor"}
+    git_files = {
+      theme = "dropdown",
+      previewer = false
+    },
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "smart_case",
     }
+  },
 }
 
 require('telescope').load_extension('fzf')
