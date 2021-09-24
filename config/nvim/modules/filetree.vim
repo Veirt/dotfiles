@@ -32,6 +32,7 @@ nnoremap <silent> <C-b> :NvimTreeToggle<CR>
 
 let g:nvim_tree_side = 'right' " left by default
 let g:nvim_tree_lsp_diagnostics = 1
+let g:nvim_tree_follow = 1 "0 by default, will update the path of the current dir if the file is not inside the tree.
 let g:nvim_tree_hide_dotfiles = 0 " 0 by default, this option hides files and folders starting with a dot `.`
 let g:nvim_tree_ignore = [ '.git', '.cache', '.idea', '.vscode', '.pytest_cache' ] " empty by default
 let g:nvim_tree_show_icons = {
