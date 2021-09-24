@@ -24,8 +24,8 @@ set hidden                  " change buffer without save
 set noswapfile
 set nobackup
 set nowritebackup
-set updatetime=300
-set timeoutlen=500
+set updatetime=50
+set shortmess+=c
 
 cmap w!! w !sudo tee %
 
