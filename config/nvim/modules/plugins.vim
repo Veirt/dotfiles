@@ -29,14 +29,14 @@ Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in p
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent
 
 " Utilities
-Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
+" Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
 Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
 Plug 'lervag/vimtex', {'for': 'latex'} " Syntax plugin for LaTeX files.
 Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Preview markdown on your modern browser
 Plug 'tweekmonster/startuptime.vim' " Measure startup
-Plug 'vim-test/vim-test', {'for': ['python', 'javascript', 'typescript', 'rust']}
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'javascript', 'typescript', 'rust'] }
+" Plug 'vim-test/vim-test', {'for': ['python', 'javascript', 'typescript', 'rust']}
+" Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'javascript', 'typescript', 'rust'] }
 Plug 'andweeb/presence.nvim'
 
 " Customization

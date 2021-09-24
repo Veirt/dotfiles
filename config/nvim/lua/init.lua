@@ -27,7 +27,7 @@ require("bufferline").setup{
 
 require('gitsigns').setup{}
 
-require('which-key').setup {}
+-- require('which-key').setup {}
 
 require("presence"):setup({
   -- Oh gosh i'm fucking evil
