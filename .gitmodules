@@ -1,0 +1,3 @@
+[submodule "config/fish/base16-fzf"]
+	path = config/fish/base16-fzf
+	url = https://github.com/fnune/base16-fzf.git

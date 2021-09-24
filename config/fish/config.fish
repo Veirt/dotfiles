@@ -23,8 +23,9 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 source ~/.shell_aliases
+source ~/.config/fish/base16-fzf/fish/base16-tomorrow-night.fish
 
-export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
+set -a FZF_DEFAULT_OPTS --bind alt-j:down,alt-k:up
 if type fd &> /dev/null
     export FZF_DEFAULT_COMMAND='fd --type f'
 end
