@@ -7,7 +7,7 @@ source $HOME/.config/nvim/modules/filetree.vim
 source $HOME/.config/nvim/modules/remaps.vim
 source $HOME/.config/nvim/modules/harpoon.vim
 source $HOME/.config/nvim/modules/lsp.vim
-source $HOME/.config/nvim/modules/dashboard.vim
+luafile $HOME/.config/nvim/lua/dashboard.lua
 luafile $HOME/.config/nvim/lua/init.lua
 luafile $HOME/.config/nvim/lua/treesitter.lua
 luafile $HOME/.config/nvim/lua/lsp.lua
