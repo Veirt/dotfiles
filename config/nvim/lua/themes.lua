@@ -42,14 +42,14 @@
 
 -- vim.cmd[[colorscheme catppuccino]]
 
--- vim.g.tokyonight_style = "night"
--- vim.cmd[[colorscheme tokyonight]]
+vim.g.tokyonight_style = "night"
+vim.cmd[[colorscheme tokyonight]]
 
 -- vim.cmd[[colorscheme falcon]]
-vim.cmd[[colorscheme substrata]]
+-- vim.cmd[[colorscheme substrata]]
 
 -- Hide tilde (~)
-vim.cmd[[hi EndOfBuffer guifg=#191C25]]
+-- vim.cmd[[hi EndOfBuffer guifg=#191C25]]
 
 -- require("github-theme").setup({
 --   theme_style = "dark",

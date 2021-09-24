@@ -43,7 +43,7 @@ Plug 'andweeb/presence.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'romgrk/barbar.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard
-" Plug 'folke/tokyonight.nvim' " Tokyo Night theme
+Plug 'folke/tokyonight.nvim' " Tokyo Night theme
 " Plug 'Pocco81/Catppuccino.nvim'
 " Plug 'norcalli/nvim-base16.lua' " Programmatic lua library for setting base16 themes in Neovim.
 Plug 'kvrohit/substrata.nvim'
