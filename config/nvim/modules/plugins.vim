@@ -26,29 +26,28 @@ Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
 Plug 'folke/trouble.nvim'
 Plug 'glepnir/lspsaga.nvim' " LSP plugin with highly performant UI
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
-" Plug 'tpope/vim-endwise' " Auto insert endif or related stuffs
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent
 
 " Utilities
 Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
 Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
-Plug 'lervag/vimtex' " Syntax plugin for LaTeX files.
+Plug 'lervag/vimtex', {'for': 'latex'} " Syntax plugin for LaTeX files.
 Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Preview markdown on your modern browser
 Plug 'tweekmonster/startuptime.vim' " Measure startup
-Plug 'vim-test/vim-test'
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-test/vim-test', {'for': ['python', 'javascript', 'typescript', 'rust']}
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'javascript', 'typescript', 'rust'] }
 Plug 'andweeb/presence.nvim'
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
-Plug 'glepnir/dashboard-nvim' " VIm dashboard
-Plug 'folke/tokyonight.nvim' " Tokyo Night theme
+Plug 'glepnir/dashboard-nvim' " Vim dashboard
+" Plug 'folke/tokyonight.nvim' " Tokyo Night theme
 " Plug 'Pocco81/Catppuccino.nvim'
 " Plug 'norcalli/nvim-base16.lua' " Programmatic lua library for setting base16 themes in Neovim.
-" Plug 'projekt0n/github-nvim-theme'
-Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
+Plug 'kvrohit/substrata.nvim'
+Plug 'famiu/feline.nvim' " A minimal, stylish and customizable statusline for Neovim written in Lua
 
 " Games
 " Plug 'ThePrimeagen/vim-be-good'
