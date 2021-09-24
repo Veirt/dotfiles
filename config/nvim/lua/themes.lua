@@ -48,6 +48,8 @@
 -- vim.cmd[[colorscheme falcon]]
 vim.cmd[[colorscheme substrata]]
 
+-- Hide tilde (~)
+vim.cmd[[hi EndOfBuffer guifg=#191C25]]
 
 -- require("github-theme").setup({
 --   theme_style = "dark",
