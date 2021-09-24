@@ -8,7 +8,7 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'filetype', 'filename'},
+    lualine_b = {'filename'},
     lualine_c = {''},
     lualine_x = {''},
     lualine_y = {'branch','encoding'},
@@ -25,7 +25,7 @@ require("trouble").setup{
   }
 }
 
-require('colorizer').setup{}
+require('colorizer').setup()
 
 require("bufferline").setup{
   options = {

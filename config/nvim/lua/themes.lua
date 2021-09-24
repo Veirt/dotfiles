@@ -35,10 +35,18 @@
 --         ts_rainbow = false,
 --         hop = false,
 --     }
-
 -- }
 
-vim.g.tokyonight_style = "night"
+
+-- local base16 = require 'base16'
+-- base16(base16.themes["tomorrow-night"], true)
 
 -- vim.cmd[[colorscheme catppuccino]]
+
+vim.g.tokyonight_style = "night"
 vim.cmd[[colorscheme tokyonight]]
+
+-- require("github-theme").setup({
+--   theme_style = "dark",
+--   -- other config
+-- })

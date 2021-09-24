@@ -45,7 +45,9 @@ Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " VIm dashboard
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
-Plug 'Pocco81/Catppuccino.nvim'
+" Plug 'Pocco81/Catppuccino.nvim'
+" Plug 'norcalli/nvim-base16.lua' " Programmatic lua library for setting base16 themes in Neovim.
+" Plug 'projekt0n/github-nvim-theme'
 Plug 'hoob3rt/lualine.nvim' " Blazing fast and easy to configure neovim statusline
 
 " Games
