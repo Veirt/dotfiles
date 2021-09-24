@@ -3,4 +3,5 @@ for_window [title="zoom"] floating enable;
 
 set $opacity 0.9
 for_window [app_id="Alacritty"] opacity $opacity
+for_window [app_id="foot"] opacity $opacity
 for_window [class="Tauon Music Box"] opacity $opacity
