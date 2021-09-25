@@ -41,7 +41,7 @@ Plug 'andweeb/presence.nvim'
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
-Plug 'romgrk/barbar.nvim' " Tabline plugin
+Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
 " Plug 'Pocco81/Catppuccino.nvim'
