@@ -15,6 +15,9 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 
+nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+
 " Alternate way to save
 nnoremap <C-s> :w<CR>
 " Alternate way to quit
