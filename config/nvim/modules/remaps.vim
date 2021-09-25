@@ -5,6 +5,16 @@ nnoremap <silent> <leader><CR> :so ~/.config/nvim/init.vim<CR>
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
 
+" ThePrimeagen remaps
+nnoremap Y yg$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+yG
+
 " Alternate way to save
 nnoremap <C-s> :w<CR>
 " Alternate way to quit
