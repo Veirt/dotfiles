@@ -3,7 +3,8 @@ require('nvim-autopairs').setup{}
 require("trouble").setup{
   action_keys = {
     close = "<esc>",
-  }
+  },
+  auto_preview = false
 }
 
 require('colorizer').setup()
