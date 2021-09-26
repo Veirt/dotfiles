@@ -14,4 +14,6 @@ npm install -g vim-language-server \
 
 yarn global add yaml-language-server
 
+pip install --user 'python-lsp-server[all]'
+
 go install github.com/lighttiger2505/sqls@latest

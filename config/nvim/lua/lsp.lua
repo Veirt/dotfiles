@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-local servers = { 'pyright', 'bashls', 'vimls', 'yamlls',
+local servers = { 'pylsp', 'bashls', 'vimls', 'yamlls',
                 'dockerls', 'rust_analyzer', 'texlab', 'sqls',
                 'tsserver', 'flow', 'volar', 'intelephense' }
 
