@@ -44,7 +44,7 @@ Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard
 Plug 'folke/tokyonight.nvim' " Tokyo Night theme
-" Plug 'Pocco81/Catppuccino.nvim'
+Plug 'Pocco81/Catppuccino.nvim'
 " Plug 'norcalli/nvim-base16.lua' " Programmatic lua library for setting base16 themes in Neovim.
 Plug 'kvrohit/substrata.nvim'
 Plug 'famiu/feline.nvim' " A minimal, stylish and customizable statusline for Neovim written in Lua
