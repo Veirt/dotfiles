@@ -220,7 +220,7 @@ components.active[3][6] = {
   end,
   right_sep = ' '
 }
--- -- fileType
+-- fileType
 components.active[3][7] = {
   provider = 'file_type',
   hl = function()
@@ -239,17 +239,6 @@ components.active[3][7] = {
   end,
   right_sep = ' '
 }
--- fileSize
--- components.active[3][3] = {
---   provider = 'file_size',
---   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
---   hl = {
---     fg = 'skyblue',
---     bg = 'bg',
---     style = 'bold'
---   },
---   right_sep = ' '
--- }
 -- fileFormat
 -- components.active[3][4] = {
 --   provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
@@ -270,16 +259,16 @@ components.active[3][8] = {
   },
   right_sep = ' '
 }
--- -- lineInfo
--- components.active[3][6] = {
---   provider = 'position',
---   hl = {
---     fg = 'white',
---     bg = 'bg',
---     style = 'bold'
---   },
---   right_sep = ' '
--- }
+-- lineInfo
+components.active[3][9] = {
+  provider = 'position',
+  hl = {
+    fg = 'white',
+    bg = 'bg',
+    style = 'bold'
+  },
+  right_sep = ' '
+}
 
 -- INACTIVE
 
