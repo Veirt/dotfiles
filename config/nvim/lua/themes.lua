@@ -44,7 +44,8 @@ require('catppuccino').setup {
 -- vim.cmd[[colorscheme substrata]]
 
 vim.cmd[[colorscheme catppuccino]]
--- vim.cmd[[highlight LineNr guifg=#fafafa]]
+vim.cmd[[highlight LineNr guifg=##FDEBC3]]
+vim.cmd[[highlight CursorLineNr guifg=#fafafa]]
 
 -- vim.g.tokyonight_style = "night"
 -- vim.cmd[[colorscheme tokyonight]]
