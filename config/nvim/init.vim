@@ -3,7 +3,7 @@ source $HOME/.config/nvim/modules/plugins.vim
 " source $HOME/.config/nvim/modules/coc.vim
 source $HOME/.config/nvim/modules/coq.vim
 " source $HOME/.config/nvim/modules/nerdtree.vim
-source $HOME/.config/nvim/modules/filetree.vim
+luafile $HOME/.config/nvim/lua/nvimtree.lua
 source $HOME/.config/nvim/modules/remaps.vim
 source $HOME/.config/nvim/modules/harpoon.vim
 source $HOME/.config/nvim/modules/lsp.vim
