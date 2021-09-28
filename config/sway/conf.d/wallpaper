@@ -1,0 +1,2 @@
+set $background '/home/exlog/Pictures/Wallpapers/wallhaven-rd7pv7.jpg'
+output * bg $background fill
