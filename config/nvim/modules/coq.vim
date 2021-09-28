@@ -3,6 +3,7 @@ let g:coq_settings = {
     \ 'keymap.bigger_preview': v:null,
     \ 'keymap.pre_select': v:true,
     \ 'keymap.recommended': v:false,
+    \ 'keymap.jump_to_mark': '<A-h>',
     \ 'display.ghost_text.enabled': v:false
     \ }
 
