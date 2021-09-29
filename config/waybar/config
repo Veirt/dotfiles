@@ -3,7 +3,7 @@
     "position": "top",
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
-    "modules-right": ["network", "backlight", "pulseaudio", "battery", "clock", "tray"],
+    "modules-right": ["network", "backlight", "custom/night_mode", "pulseaudio", "battery", "clock",  "tray"],
     "sway/mode": {
         "format": " {}"
     },
@@ -78,6 +78,17 @@
     "tray": {
         "icon-size": 13,
         "spacing": 10
+    },
+    "custom/night_mode": {
+        "tooltip": false,
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "on": "ﯦ",
+            "off": "ﯧ"
+        },
+        "exec": "$HOME/.config/waybar/modules/night-mode.sh init",
+        "on-click": "$HOME/.config/waybar/modules/night-mode.sh toggle"
     }
 }
 

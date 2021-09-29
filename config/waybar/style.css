@@ -45,6 +45,7 @@ window {
 #memory,
 #network,
 #pulseaudio,
+#custom-night_mode,
 #backlight {
   margin: 0px 6px 0px 10px;
   min-width: 25px;
@@ -67,12 +68,4 @@ window {
 
 #battery.charging {
   color: rgba(217, 216, 216, 1);
-}
-
-#custom-storage.warning {
-  color: rgba(255, 210, 4, 1);
-}
-
-#custom-storage.critical {
-  color: rgba(238, 46, 36, 1);
 }
