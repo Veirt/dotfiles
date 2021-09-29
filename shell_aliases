@@ -40,6 +40,7 @@ alias yd="yarn dev"
 alias ys="yarn start"
 alias yb="yarn build"
 alias ta="tmux a"
+alias lg="lazygit"
 
 # quick edit stuffs
 alias vpacman="sudo -e /etc/pacman.conf"
