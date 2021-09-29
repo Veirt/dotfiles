@@ -16,7 +16,7 @@
         "tooltip": false
     },
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
         "format-alt": "{icon} ",
         "format-alt-click": "click-right",
         "format-bluetooth": "{icon}  {volume}%",
@@ -48,7 +48,6 @@
         "format": "{icon}  {capacity}%",
         "format-alt": "{icon} ",
         "format-alt-click": "click-right",
-        "format-icons": ["", ""],
         "format-icons": ["", "", "", "", ""],
         "format-charging": " {capacity}%",
         "interval": 30,
