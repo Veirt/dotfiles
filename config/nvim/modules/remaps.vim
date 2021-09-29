@@ -50,6 +50,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>gc <cmd>Telescope git_commits<CR>
 nnoremap <leader>gb <cmd>Telescope git_branches<CR>
 nnoremap <leader>gs <cmd>Telescope git_status<CR>
+
 nnoremap <leader>gg <cmd>LazyGit<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 
