@@ -26,6 +26,7 @@ Plug 'editorconfig/editorconfig-vim' " EditorConfig integration with Vim
 Plug 'tami5/lspsaga.nvim' " LSP plugin with highly performant UI
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent
+Plug 'mattn/emmet-vim'
 
 " Utilities
 " Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
