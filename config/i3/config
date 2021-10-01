@@ -162,7 +162,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 bindsym $mod+Shift+r mode "resize"
 
-default_border none
+default_border pixel 2
+hide_edge_borders smart
 default_floating_border none
 smart_gaps on
 gaps inner 10
@@ -192,3 +193,9 @@ mode "resize" {
 }
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh --docky
+
+# Window settings
+for_window [title="Sharing Indicator"] floating enable;
+for_window [title="Motrix"] floating enable;
+for_window [title="zoom"] floating enable;
+
