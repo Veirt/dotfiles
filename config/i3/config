@@ -47,6 +47,7 @@ bindsym $mod+m exec tauon
 bindsym $mod+d exec discord
 bindsym $mod+e exec nautilus
 bindsym $mod+Shift+s exec flameshot gui
+bindsym $mod+p exec sh -c "$HOME/.scripts/toggle-picom.sh"
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
