@@ -191,4 +191,4 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 
-exec_always $HOME/.config/polybar/launch.sh --docky
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --docky
