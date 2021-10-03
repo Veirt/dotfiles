@@ -1,7 +1,7 @@
 require('catppuccino').setup {
     colorscheme = "soft_manilo",
     transparency = true,
-    term_colors = false,
+    term_colors = true,
     integrations = {
         treesitter = true,
         native_lsp = {
@@ -24,7 +24,7 @@ require('catppuccino').setup {
         gitsigns = true,
         telescope = true,
         nvimtree = {
-            enabled = true,
+            enabled = false,
             show_root = true,
         },
         which_key = true,
