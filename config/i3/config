@@ -2,8 +2,8 @@
 
 set $mod Mod4
 
-set $background '/home/exlog/Pictures/Wallpapers/shelter_waifu2x_art_noise3_scale_tta_1.png'
-exec_always --no-startup-id nitrogen --set-zoom-fill $background
+set $background '$HOME/Pictures/Wallpapers/aqua.png'
+exec --no-startup-id nitrogen --restore
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -42,19 +42,19 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-bindsym $mod+w exec firefox
-bindsym $mod+m exec tauon
-bindsym $mod+d exec discord
-bindsym $mod+e exec nautilus
-bindsym $mod+Shift+s exec flameshot gui
-bindsym $mod+p exec sh -c "$HOME/.scripts/toggle-picom.sh"
+bindsym $mod+w exec --no-startup-id firefox
+bindsym $mod+m exec --no-startup-id tauon
+bindsym $mod+d exec --no-startup-id discord
+bindsym $mod+e exec --no-startup-id nautilus
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+bindsym $mod+p exec --no-startup-id sh -c "$HOME/.scripts/toggle-picom.sh"
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty -e fish
+bindsym $mod+Return exec --no-startup-id alacritty -e fish
 
 # kill focused window
 bindsym $mod+q kill
