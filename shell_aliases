@@ -22,7 +22,6 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias bluetooth="bluetoothctl"
-alias ranger="SHELL=/usr/bin/fish command ranger"
 
 # dev stuffs
 alias gs="git status"
