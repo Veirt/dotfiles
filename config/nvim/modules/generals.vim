@@ -15,6 +15,7 @@ set softtabstop=4           " see multiple spaces as tabstops so <BS> does the r
 set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set smartindent
+set autoindent
 
 set noshowmode
 set mouse=a                 " enable mouse click

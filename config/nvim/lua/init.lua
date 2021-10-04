@@ -1,5 +1,3 @@
-require('nvim-autopairs').setup{}
-
 require('colorizer').setup()
 
 require('gitsigns').setup{}
