@@ -1,2 +1,2 @@
-set $background '/home/exlog/Pictures/Wallpapers/shelter_waifu2x_art_noise3_scale_tta_1.png'
+set $background '$HOME/Pictures/Wallpapers/shelter_waifu2x_art_noise3_scale_tta_1.png'
 output * bg $background fill
