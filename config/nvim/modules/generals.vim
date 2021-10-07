@@ -28,8 +28,6 @@ set nowritebackup
 set updatetime=50
 set shortmess+=c
 
-cmap w!! w !sudo tee %
-
 command! W write
 command! Q quit
 
