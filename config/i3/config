@@ -2,7 +2,6 @@
 
 set $mod Mod4
 
-set $background '$HOME/Pictures/Wallpapers/aqua.png'
 exec --no-startup-id nitrogen --restore
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -20,11 +19,13 @@ font pango:monospace 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id redshift-gtk
+
 exec --no-startup-id ulauncher --hide-window
 exec --no-startup-id fcitx
 exec --no-startup-id flameshot
 exec --no-startup-id dunst
-exec --no-startup-id $HOME/.scripts/caps-esc.sh
 exec --no-startup-id picom --experimental-backends -CGb
 
 # Use pactl to adjust volume in PulseAudio.
