@@ -83,7 +83,7 @@ super + {_,shift + }q
 
 # set the window state
 super + {t,shift + t,shift+space,f}
-    bspc node -t {tiled && polybar-msg cmd show,pseudo_tiled,\~floating,\~fullscreen && polybar-msg cmd toggle}
+    bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}

@@ -6,14 +6,15 @@ xsetroot -cursor_name left_ptr
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 $HOME/.config/polybar/launch.sh --docky &
+pgrep -x cleanfullscreen > /dev/null || $HOME/.local/bin/cleanfullscreen &
 pgrep -x nitrogen > /dev/null || nitrogen --restore &
-pgrep -x /usr/lib/geoclue-2.0/demos/agent > /dev/null || /usr/lib/geoclue-2.0/demos/agent &
+pgrep -x agent > /dev/null || /usr/lib/geoclue-2.0/demos/agent &
 pgrep -x redshift-gtk > /dev/null || redshift-gtk &
 pgrep -x ulauncher > /dev/null || ulauncher --hide-window &
 pgrep -x fcitx > /dev/null || fcitx &
 pgrep -x flameshot > /dev/null || flameshot &
 pgrep -x dunst > /dev/null || dunst &
-pgrep -x picom --experimental-backends -CGb > /dev/null || picom --experimental-backends -CGb &
+pgrep -x picom > /dev/null || picom --experimental-backends -CGb &
 
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10 
