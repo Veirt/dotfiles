@@ -1,4 +1,6 @@
 nnoremap <leader>er <cmd>Telescope lsp_document_diagnostics<CR>
+nnoremap <leader>el <cmd>Lspsaga show_line_diagnostics<CR>
+vnoremap <leader>el <cmd>Lspsaga show_cursor_diagnostics<CR>
 nnoremap <leader>eR <cmd>Telescope lsp_workspace_diagnostics<CR>
 
 nnoremap <silent><F2> <cmd>lua require('lspsaga.rename').rename()<CR>
