@@ -19,8 +19,9 @@ else
     end
 end
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+set -gx EDITOR 'nvim'
+set -gx VISUAL 'nvim'
+set -gx GPG_TTY (tty)
 
 source ~/.shell_aliases
 source ~/.config/fish/base16-fzf/fish/base16-tomorrow-night.fish
