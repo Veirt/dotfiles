@@ -41,9 +41,9 @@ super+w
     firefox
 
 super+m
-    tauon
+    alacritty -e ncmpcpp
 
-super+d
+super+shift+d
     discord
 
 super+e
@@ -82,7 +82,7 @@ super + {_,shift + }q
 #
 
 # set the window state
-super + {t,shift + t,shift+space,f}
+super + {t,shift + t,shift+space,shift+f}
     bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # set the node flags
@@ -107,10 +107,19 @@ super + {p,b,comma,period}
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
+super + {_,shift + }{a,s,d,f}
+    bspc {desktop -f,node -d} '^{5-8}'
+
+super + ctrl + {h,l}
+    bspc desktop -f {prev,next}.occupied.local
+
+alt + {_, shift} + Tab
+    bspc desktop -f {next,prev}.occupied.local
+
+
 
 #
 # move/resize
-#
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
