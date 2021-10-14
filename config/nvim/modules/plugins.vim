@@ -6,6 +6,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Fast as FUCK nvim completion.
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
+Plug 'jwalton512/vim-blade' " uh
 
 " Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
