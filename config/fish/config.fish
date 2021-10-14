@@ -24,7 +24,6 @@ set -gx VISUAL 'nvim'
 set -gx GPG_TTY (tty)
 
 source ~/.shell_aliases
-source ~/.config/fish/base16-fzf/fish/base16-tomorrow-night.fish
 
 set -a FZF_DEFAULT_OPTS --bind alt-j:down,alt-k:up
 if type fd &> /dev/null
