@@ -1,9 +1,4 @@
 add_newline = false
 
-[character]
-success_symbol = "[>](bold #9DBAC2)"
-error_symbol = "[! >](bold red)"
-vicmd_symbol = "[<](bold #9DBAC2)"
-
 [package]
 disabled = true
