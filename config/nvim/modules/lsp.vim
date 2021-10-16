@@ -9,3 +9,5 @@ vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_a
 nnoremap <leader>cs <cmd>Telescope lsp_document_symbols<CR>
 nnoremap gr <cmd>Lspsaga lsp_finder<CR>
 nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
+
+nnoremap <leader>lr <cmd>LspRestart<CR>
