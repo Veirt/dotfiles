@@ -4,8 +4,13 @@ call plug#begin("~/.vim/plugged")
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Fast as FUCK nvim completion.
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " 9000+ snippets
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'jwalton512/vim-blade' " uh
 
 " Plug 'tpope/vim-fugitive' " Vim git plugin
@@ -43,6 +48,8 @@ Plug 'andweeb/presence.nvim'
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
+
+Plug 'onsails/lspkind-nvim' " vscode-like pictograms
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard
 " Plug 'folke/tokyonight.nvim' " Tokyo Night theme

@@ -1,6 +1,5 @@
 source $HOME/.config/nvim/modules/generals.vim
 source $HOME/.config/nvim/modules/plugins.vim
-source $HOME/.config/nvim/modules/coq.vim
 luafile $HOME/.config/nvim/lua/nvimtree.lua
 source $HOME/.config/nvim/modules/remaps.vim
 source $HOME/.config/nvim/modules/harpoon.vim
