@@ -54,6 +54,22 @@ require('telescope').setup {
                 }
             }
         },
+        jumplist = {
+            theme = "ivy",
+            initial_mode = "normal",
+            previewer = false,
+            layout_config = {
+                bottom_pane = {
+                    height = 10
+                }
+            }
+        },
+        lsp_document_symbols = {
+            theme = "dropdown"
+        },
+        lsp_dynamic_workspace_symbols = {
+            theme = "dropdown"
+        },
 
     },
     extensions = {
