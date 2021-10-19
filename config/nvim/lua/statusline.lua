@@ -64,7 +64,8 @@ force_inactive.filetypes = {
   'packer',
   'startify',
   'fugitive',
-  'fugitiveblame'
+  'fugitiveblame',
+  'help'
 }
 
 force_inactive.buftypes = {
@@ -274,7 +275,13 @@ components.active[3][9] = {
 
 -- fileType
 components.inactive[1][1] = {
-  provider = 'file_type',
+  -- provider = 'file_type',
+  provider = function()
+    if vim.bo.filetype == "" then
+      return string.format('NEW FILE', vim.bo.filetype)
+    end
+    return string.format('%s', vim.bo.filetype:upper())
+  end,
   hl = {
     fg = 'black',
     bg = 'cyan',
@@ -308,4 +315,3 @@ require('feline').setup({
   force_inactive = force_inactive,
 })
 
- 
