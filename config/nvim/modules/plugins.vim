@@ -18,7 +18,7 @@ Plug 'kyazdani42/nvim-tree.lua' " File explorer
 Plug 'christoomey/vim-tmux-navigator' " Vim tmux
 
 " Additional features
-Plug 'tpope/vim-commentary' " Comment with gcc
+Plug 'tomtom/tcomment_vim' " Comment with gcc
 " Plug 'windwp/nvim-autopairs' " Brackets auto pair
 Plug 'jiangmiao/auto-pairs'
 Plug 'windwp/nvim-ts-autotag' " Use treesitter to autoclose and autorename html tag
