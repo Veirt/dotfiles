@@ -14,7 +14,7 @@ if [ "${cmd}" = "nvim" ]; then
         TMUX_PANES=$(tmux list-panes | wc -l)
 
         if [ $TMUX_PANES == 1 ]; then
-            tmux split-window -v -l 11
+            tmux split-window -v -l 11 -c "#{pane_current_path}"
         else
             tmux select-pane -D
         fi
