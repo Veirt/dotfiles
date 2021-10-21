@@ -36,6 +36,7 @@ Plug 'RishabhRD/nvim-lsputils'
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent
 Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'php', 'javascript', 'typescript', 'vue']}
+Plug 'rmagatti/auto-session'
 
 " Utilities
 " Plug 'folke/which-key.nvim' " Displays a popup with possible key bindings of the command you started typing.
