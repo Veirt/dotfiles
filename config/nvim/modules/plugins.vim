@@ -35,7 +35,6 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-sleuth' " Automatically adjusts indent
-Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'php', 'javascript', 'typescript', 'vue']}
 Plug 'rmagatti/auto-session'
 
 " Utilities

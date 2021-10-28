@@ -1,5 +1,9 @@
 local nvim_lsp = require('lspconfig')
+local configs = require'lspconfig/configs'
 local cmp = require'cmp'
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.g.completeopt="menu,menuone,noinsert"
 local has_words_before = function()
@@ -164,4 +168,18 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
+
+configs.ls_emmet = {
+  default_config = {
+    cmd = { 'ls_emmet', '--stdio' };
+    filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'haml',
+      'xml', 'xsl', 'pug', 'slim', 'sass', 'stylus', 'less', 'sss', 'vue', 'blade', 'php'};
+    root_dir = function(fname)
+      return vim.loop.cwd()
+    end;
+    settings = {};
+  };
+}
+
+nvim_lsp.ls_emmet.setup{ capabilities = capabilities }
 
