@@ -12,6 +12,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'jwalton512/vim-blade' " uh
+Plug 'posva/vim-vue'
 
 " Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
@@ -42,7 +43,6 @@ Plug 'rmagatti/auto-session'
 Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
 Plug 'lervag/vimtex', {'for': 'latex'} " Syntax plugin for LaTeX files.
 Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Preview markdown on your modern browser
 Plug 'tweekmonster/startuptime.vim' " Measure startup
 " Plug 'vim-test/vim-test', {'for': ['python', 'javascript', 'typescript', 'rust']}
 " Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'javascript', 'typescript', 'rust'] }
@@ -50,7 +50,6 @@ Plug 'andweeb/presence.nvim'
 
 " Customization
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
-
 Plug 'onsails/lspkind-nvim' " vscode-like pictograms
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard
