@@ -17,3 +17,6 @@ require("presence"):setup({
   -- Sometimes my genius is almost frightening
   buttons = { { label="?", url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" } } 
 })
+
+require("persistence").setup {}
+

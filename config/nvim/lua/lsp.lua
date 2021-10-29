@@ -104,16 +104,13 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    -- flags = {
-    --   debounce_text_changes = 150,
-    -- },
   }
 end
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json',
-  'typescript', 'typescriptreact', 'vue', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript',
+  'typescriptreact', 'vue', 'css', 'less', 'scss', 'markdown', 'pandoc' },
   init_options = {
     linters = {
       eslint = {
@@ -149,37 +146,39 @@ nvim_lsp.diagnosticls.setup {
         args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
         rootPatterns = { '.git' },
       },
-      prettierd = {
-        command = 'prettierd',
-        args = { '--stdin-filepath', '%filename' }
+      prettier = {
+        command = 'prettier_d_slim',
+        args = { '--stdin', '--stdin-filepath', '%filename' },
+        rootPatterns = { '.git' },
       }
     },
     formatFiletypes = {
-      css = 'prettierd',
-      javascript = 'eslint_d',
-      javascriptreact = 'eslint_d',
-      json = 'prettierd',
-      scss = 'prettierd',
-      less = 'prettierd',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
-      json = 'prettierd',
-      markdown = 'prettierd',
+      css = 'prettier',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
+      json = 'prettier',
+      scss = 'prettier',
+      less = 'prettier',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
+      json = 'prettier',
+      markdown = 'prettier',
     }
   }
 }
 
-configs.ls_emmet = {
-  default_config = {
-    cmd = { 'ls_emmet', '--stdio' };
-    filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'haml',
-      'xml', 'xsl', 'pug', 'slim', 'sass', 'stylus', 'less', 'sss', 'vue', 'blade', 'php'};
-    root_dir = function(fname)
-      return vim.loop.cwd()
-    end;
-    settings = {};
-  };
-}
-
+if not nvim_lsp.ls_emmet then
+    configs.ls_emmet = {
+      default_config = {
+        cmd = { 'ls_emmet', '--stdio' };
+        filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'haml',
+          'xml', 'xsl', 'pug', 'slim', 'sass', 'stylus', 'less', 'sss', 'vue', 'blade', 'php'};
+        root_dir = function(fname)
+          return vim.loop.cwd()
+        end;
+        settings = {};
+      };
+    }
+end
 nvim_lsp.ls_emmet.setup{ capabilities = capabilities }
 

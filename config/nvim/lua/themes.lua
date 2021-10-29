@@ -36,25 +36,14 @@ require('catppuccino').setup {
         hop = false,
     }
 }
-
--- local base16 = require 'base16'
--- base16(base16.themes["tomorrow-night"], true)
-
--- vim.cmd[[colorscheme falcon]]
--- vim.cmd[[colorscheme substrata]]
-
 vim.cmd[[colorscheme catppuccino]]
-vim.cmd[[highlight LineNr guifg=##FDEBC3]]
-vim.cmd[[highlight CursorLineNr guifg=#fafafa]]
+
+-- vim.cmd[[colorscheme substrata]]
+-- vim.cmd[[highlight LineNr guibg=NONE guifg=##FDEBC3]]
+-- vim.cmd[[highlight CursorLineNr guifg=#fafafa]]
+-- Hide tilde (~)
+-- And set background to none
+-- vim.cmd[[hi EndOfBuffer guibg=NONE guifg=#191C25]]
 
 -- vim.g.tokyonight_style = "night"
 -- vim.cmd[[colorscheme tokyonight]]
-
-
--- Hide tilde (~)
--- vim.cmd[[hi EndOfBuffer guifg=#191C25]]
-
--- require("github-theme").setup({
---   theme_style = "dark",
---   -- other config
--- })
