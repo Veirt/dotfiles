@@ -2,10 +2,9 @@ local nvim_lsp = require('lspconfig')
 local configs = require'lspconfig/configs'
 local cmp = require'cmp'
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-vim.g.completeopt="menu,menuone,noinsert"
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -16,6 +15,9 @@ local feedkey = function(key, mode)
 end
 
 cmp.setup({
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
@@ -49,11 +51,13 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'buffer' },
+    { name = 'path' }
   },
   formatting = {
     format = require('lspkind').cmp_format({with_text = true, maxwidth = 50})
   }
 })
+
 
 -- Disable annoying error messages
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -103,7 +107,7 @@ local servers = { 'pylsp', 'bashls', 'vimls', 'yamlls',
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = capabilities
   }
 end
 

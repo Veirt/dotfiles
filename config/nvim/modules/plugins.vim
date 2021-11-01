@@ -5,8 +5,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
@@ -29,7 +31,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'} " Native fzf
 Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
 Plug 'mhartington/formatter.nvim'
-Plug 'rinx/lspsaga.nvim' " LSP plugin with highly performant UI
+Plug 'tami5/lspsaga.nvim', { 'branch': 'nvim51' } " LSP plugin with highly performant UI
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
