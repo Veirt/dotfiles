@@ -59,7 +59,7 @@ end
 
 force_inactive.filetypes = {
   'NvimTree',
-  'dashboard',
+  'alpha',
   'dbui',
   'packer',
   'startify',

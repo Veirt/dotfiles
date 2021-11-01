@@ -28,7 +28,6 @@ require('catppuccino').setup {
             show_root = true,
         },
         which_key = true,
-        dashboard = true,
         bufferline = true,
         markdown = false,
         lightspeed = false,

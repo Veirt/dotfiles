@@ -6,14 +6,13 @@ Plug 'alexaandru/nvim-lspupdate'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'jwalton512/vim-blade' " uh
-Plug 'leafOfTree/vim-vue-plugin'
+Plug 'jwalton512/vim-blade', {'for': 'blade'} " uh
+Plug 'posva/vim-vue', {'for': 'vue'}
 
 " Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
@@ -42,7 +41,7 @@ Plug 'tpope/vim-sleuth' " Automatically adjusts indent
 Plug 'norcalli/nvim-colorizer.lua' " A high-performance color highlighter for Neovim
 Plug 'lervag/vimtex', {'for': 'latex'} " Syntax plugin for LaTeX files.
 Plug 'kdheepak/lazygit.nvim' " Call lazygit within neovim
-Plug 'tweekmonster/startuptime.vim' " Measure startup
+Plug 'lewis6991/impatient.nvim' " Speed up loading Lua modules in Neovim to improve startup time.
 Plug 'andweeb/presence.nvim'
 Plug 'folke/persistence.nvim' " Automated session management.
 
@@ -50,7 +49,7 @@ Plug 'folke/persistence.nvim' " Automated session management.
 Plug 'kyazdani42/nvim-web-devicons' " A lua fork of vim-devicons
 Plug 'onsails/lspkind-nvim' " vscode-like pictograms
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
-Plug 'glepnir/dashboard-nvim' " Vim dashboard
+Plug 'goolord/alpha-nvim' " Vim dashboard
 Plug 'Pocco81/Catppuccino.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'famiu/feline.nvim' " A minimal, stylish and customizable statusline for Neovim written in Lua
