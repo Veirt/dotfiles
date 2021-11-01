@@ -149,7 +149,6 @@ nvim_lsp.diagnosticls.setup {
       prettier = {
         command = 'prettier_d_slim',
         args = { '--stdin', '--stdin-filepath', '%filename' },
-        rootPatterns = { '.git' },
       }
     },
     formatFiletypes = {

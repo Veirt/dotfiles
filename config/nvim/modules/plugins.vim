@@ -11,7 +11,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'jwalton512/vim-blade' " uh
-Plug 'posva/vim-vue'
+Plug 'leafOfTree/vim-vue-plugin'
 
 " Plug 'tpope/vim-fugitive' " Vim git plugin
 Plug 'kyazdani42/nvim-tree.lua' " File explorer
@@ -28,9 +28,8 @@ Plug 'ThePrimeagen/harpoon' " Get you where you want with the fewest keystrokes.
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'} " Native fzf
 Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
-Plug 'creativenull/diagnosticls-configs-nvim'
 Plug 'mhartington/formatter.nvim'
-Plug 'tami5/lspsaga.nvim' " LSP plugin with highly performant UI
+Plug 'rinx/lspsaga.nvim' " LSP plugin with highly performant UI
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'tpope/vim-surround' " Easily delete, change and add such surroundings in pairs.
@@ -51,6 +50,7 @@ Plug 'onsails/lspkind-nvim' " vscode-like pictograms
 Plug 'akinsho/bufferline.nvim' " Tabline plugin
 Plug 'glepnir/dashboard-nvim' " Vim dashboard
 Plug 'Pocco81/Catppuccino.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'famiu/feline.nvim' " A minimal, stylish and customizable statusline for Neovim written in Lua
 
 " Games

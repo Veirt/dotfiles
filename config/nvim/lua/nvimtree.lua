@@ -31,8 +31,6 @@ local g = vim.g
 
 vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
-g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', '__pycache__', 'vendor'   }
-g.nvim_tree_side = 'right'
 g.nvim_tree_icons = {
     default = '',
     git = {
@@ -44,12 +42,6 @@ g.nvim_tree_icons = {
       deleted = "D",
       ignored = "◌"
     },
-    lsp =  {
-        hint = "",
-        info = "",
-        warning = "",
-        error = "",
-    }
 }
 
 
@@ -102,6 +94,19 @@ require'nvim-tree'.setup {
             custom_only = false,
             -- list of mappings to set on the tree manually
             list = {}
+        }
+    },
+    filters = {
+        custom = { '.git', 'node_modules', '.cache', '__pycache__', 'vendor'   }
+    },
+
+    diagnostics = {
+        enable = true,
+        icons = {
+            hint = "",
+            info = "",
+            warning = "",
+            error = "",
         }
     }
 }
