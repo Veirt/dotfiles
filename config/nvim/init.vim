@@ -1,5 +1,7 @@
+lua require('impatient')
+lua require('plugins')
+
 source $HOME/.config/nvim/modules/generals.vim
-source $HOME/.config/nvim/modules/plugins.vim
 luafile $HOME/.config/nvim/lua/nvimtree.lua
 source $HOME/.config/nvim/modules/remaps.vim
 source $HOME/.config/nvim/modules/harpoon.vim
