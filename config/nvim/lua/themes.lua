@@ -35,7 +35,7 @@ require('catppuccino').setup {
         hop = false,
     }
 }
-vim.cmd[[colorscheme catppuccino]]
+
 
 -- vim.cmd[[colorscheme substrata]]
 vim.cmd[[highlight LineNr guibg=NONE guifg=##FDEBC3]]
@@ -43,7 +43,13 @@ vim.cmd[[highlight CursorLineNr guifg=#fafafa]]
 -- Hide tilde (~)
 -- And set background to none
 -- vim.cmd[[hi EndOfBuffer guibg=NONE guifg=#191C25]]
+vim.cmd[[colorscheme catppuccino]]
 
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_transparent = true
 -- vim.cmd[[colorscheme tokyonight]]
+
+vim.cmd[[sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=]]
+vim.cmd[[sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=]]
+vim.cmd[[sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=]]
+vim.cmd[[sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=]]
