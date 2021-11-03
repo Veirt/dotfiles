@@ -15,7 +15,7 @@ require("bufferline").setup{
 require("presence"):setup({
   -- Oh gosh i'm fucking evil
   -- Sometimes my genius is almost frightening
-  buttons = { { label="?", url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" } } 
+  buttons = { { label="?", url="https://www.youtube.com/watch?v=h1cs8EEe8Bo" } } 
 })
 
 require("persistence").setup {}
