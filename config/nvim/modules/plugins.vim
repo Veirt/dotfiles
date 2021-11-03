@@ -29,7 +29,6 @@ Plug 'ThePrimeagen/harpoon' " Get you where you want with the fewest keystrokes.
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'} " Native fzf
 Plug 'lewis6991/gitsigns.nvim' " Super fast git decorations
 Plug 'sbdchd/neoformat' " Format code/Prettier
-Plug 'mhartington/formatter.nvim'
 Plug 'tami5/lspsaga.nvim', { 'branch': 'nvim51' } " LSP plugin with highly performant UI
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
