@@ -1,4 +1,4 @@
-local saga = require 'lspsaga'
+local saga = require("lspsaga")
 
 -- add your config value here
 -- default value
@@ -36,9 +36,9 @@ local saga = require 'lspsaga'
 -- like server_filetype_map = {metals = {'sbt', 'scala'}}
 -- server_filetype_map = {}
 
-saga.init_lsp_saga {
-    code_action_keys = {
-      quit = '<Esc>',exec = '<CR>'
-    },
-}
-
+saga.init_lsp_saga({
+	code_action_keys = {
+		quit = "<Esc>",
+		exec = "<CR>",
+	},
+})

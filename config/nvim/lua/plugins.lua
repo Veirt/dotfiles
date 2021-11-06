@@ -27,7 +27,9 @@ return require('packer').startup(function()
   use 'christoomey/vim-tmux-navigator'
 
   use 'tomtom/tcomment_vim' -- Comment with gcc
-  use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-ts-autotag'
+  -- use 'jiangmiao/auto-pairs'
+  use "steelsojka/pears.nvim"
   use { 'nvim-telescope/telescope.nvim', requires = {
       {'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Native fzf
@@ -38,10 +40,12 @@ return require('packer').startup(function()
   use 'sbdchd/neoformat' -- Format code/Prettier
   use 'mhartington/formatter.nvim'
   use { 'tami5/lspsaga.nvim', branch = 'nvim51' } -- LSP plugin with highly performant UI
+  use "ray-x/lsp_signature.nvim"
   use 'RishabhRD/popfix'
   use 'RishabhRD/nvim-lsputils'
   use 'tpope/vim-surround' -- Easily delete, change and add such surroundings in pairs.
   use 'tpope/vim-sleuth' -- Automatically adjusts indent
+  use 'davidgranstrom/nvim-markdown-preview'
 
   use 'norcalli/nvim-colorizer.lua' -- A high-performance color highlighter for Neovim
   use { 'lervag/vimtex', ft = 'latex' } -- Syntax plugin for LaTeX files.
