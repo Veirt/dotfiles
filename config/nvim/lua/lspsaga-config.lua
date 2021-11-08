@@ -13,7 +13,7 @@ local saga = require("lspsaga")
 --   enable = true,
 --   sign = true,
 --   sign_priority = 20,
---   virtual_text = true,
+-- virtual_text = true,
 -- },
 -- finder_definition_icon = '  ',
 -- finder_reference_icon = '  ',
@@ -37,8 +37,12 @@ local saga = require("lspsaga")
 -- server_filetype_map = {}
 
 saga.init_lsp_saga({
+	use_saga_diagnostic_sign = false,
 	code_action_keys = {
 		quit = "<Esc>",
 		exec = "<CR>",
+	},
+	code_action_prompt = {
+		virtual_text = false,
 	},
 })

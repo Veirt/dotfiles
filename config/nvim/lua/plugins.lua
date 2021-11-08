@@ -21,15 +21,17 @@ return require('packer').startup(function()
   }
  
   use { 'jwalton512/vim-blade', ft = 'blade' } 
-  use { 'posva/vim-vue', ft = 'vue' }
+  -- use { 'posva/vim-vue', ft = 'vue' }
+  use 'leafgarland/typescript-vim'
+  use 'peitalin/vim-jsx-typescript'
+
 
   use 'kyazdani42/nvim-tree.lua'
   use 'christoomey/vim-tmux-navigator'
 
   use 'tomtom/tcomment_vim' -- Comment with gcc
   use 'windwp/nvim-ts-autotag'
-  -- use 'jiangmiao/auto-pairs'
-  use "steelsojka/pears.nvim"
+  use 'jiangmiao/auto-pairs'
   use { 'nvim-telescope/telescope.nvim', requires = {
       {'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Native fzf
@@ -51,6 +53,7 @@ return require('packer').startup(function()
   use { 'lervag/vimtex', ft = 'latex' } -- Syntax plugin for LaTeX files.
   use 'kdheepak/lazygit.nvim' -- Call lazygit within neovim
   use 'lewis6991/impatient.nvim' -- Speed up loading Lua modules in Neovim to improve startup time.
+  use 'tweekmonster/startuptime.vim'
   use 'andweeb/presence.nvim'
   use 'folke/persistence.nvim' -- Automated session management.
 
