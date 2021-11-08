@@ -19,4 +19,3 @@ require("presence"):setup({
 })
 
 require("persistence").setup({})
-

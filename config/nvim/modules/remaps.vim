@@ -59,3 +59,22 @@ nnoremap <leader>fp :Neoformat<CR>
 inoremap <c-v> <esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia
 
 nnoremap <leader>sl <cmd>lua require("persistence").load()<CR>
+
+" lsp
+nnoremap <leader>er <cmd>Telescope lsp_document_diagnostics<CR>
+nnoremap <leader>eR <cmd>Telescope lsp_workspace_diagnostics<CR>
+nnoremap <leader>ss <cmd>Telescope lsp_document_symbols<CR>
+nnoremap <leader>sd <cmd>Telescope lsp_dynamic_workspace_symbols<CR>
+nnoremap <leader>jl <cmd>Telescope jumplist<CR>
+nnoremap <F2> <cmd>Lspsaga rename<CR>
+nnoremap <leader>el <cmd>Lspsaga show_line_diagnostics<CR>
+nnoremap <leader>lr <cmd>LspRestart<CR>
+
+" harpoon
+noremap <leader>a :lua require("harpoon.mark").add_file()<CR>
+nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <silent> <leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent> <leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent> <leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent> <leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <silent> <leader>5 :lua require("harpoon.ui").nav_file(5)<CR>
