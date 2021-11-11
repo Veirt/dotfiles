@@ -25,7 +25,7 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-	dashboard.button("SPC f n", "  New File", "<cmd>DashboardNewFile<CR>"),
+	dashboard.button("SPC f n", "  New File", ":ene <BAR><CR>"),
 	dashboard.button("SPC f o", "  Recents", "<cmd>Telescope oldfiles<CR>"),
 	dashboard.button("SPC f g", "  Find Word", "<cmd>Telescope live_grep<CR>"),
 	dashboard.button("SPC f f", "  Find File", "<cmd>Telescope find_files<CR>"),
