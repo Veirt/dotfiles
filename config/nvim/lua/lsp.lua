@@ -43,9 +43,9 @@ local on_attach = function(client, bufnr)
 		})
 		ts_utils.setup_client(client)
 
-		-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-		-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-		-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsi", ":TSLspOrganize<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsr", ":TSLspRenameFile<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsa", ":TSLspImportAll<CR>", opts)
 	end
 
 	if client.resolved_capabilities.document_formatting then
