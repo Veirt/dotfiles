@@ -1,6 +1,6 @@
 # Variables
 set $mod Mod4
-set $term alacritty -e fish
+set $term kitty -e fish
 
 # Font
 font Ubuntu 12
@@ -84,7 +84,7 @@ exec swayidle -w \
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
-    
+
     bindsym $mod+tab workspace next
     bindsym Mod1+tab workspace next_on_output
     bindsym Mod1+Shift+tab workspace prev_on_output

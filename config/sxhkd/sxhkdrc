@@ -3,7 +3,7 @@
 #
 
 super + Return
-    alacritty -e fish
+    kitty -e fish
 
 XF86AudioRaiseVolume
     amixer set Master 5%+
@@ -41,7 +41,7 @@ super+w
     firefox
 
 super+m
-    alacritty -e ncmpcpp
+    kitty -e ncmpcpp
 
 super+shift+d
     discord
