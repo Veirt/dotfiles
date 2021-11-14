@@ -32,7 +32,8 @@ return require("packer").startup(function()
 	use("kyazdani42/nvim-tree.lua")
 	use("christoomey/vim-tmux-navigator")
 
-	use("tomtom/tcomment_vim") -- Comment with gcc
+	use("terrortylor/nvim-comment")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("windwp/nvim-ts-autotag")
 	use("jiangmiao/auto-pairs")
 	use({
@@ -50,7 +51,7 @@ return require("packer").startup(function()
 	use("ray-x/lsp_signature.nvim")
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
-	use("tpope/vim-surround") -- Easily delete, change and add such surroundings in pairs.
+	use("blackCauldron7/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
 	use("tpope/vim-sleuth") -- Automatically adjusts indent
 	use("davidgranstrom/nvim-markdown-preview")
 
@@ -67,5 +68,7 @@ return require("packer").startup(function()
 	use("akinsho/bufferline.nvim") -- Tabline plugin
 	use("goolord/alpha-nvim") -- Vim dashboard
 	use("folke/tokyonight.nvim")
+	use("marko-cerovac/material.nvim")
+	use("EdenEast/nightfox.nvim")
 	use("famiu/feline.nvim") -- A minimal, stylish and customizable statusline for Neovim written in Lua
 end)

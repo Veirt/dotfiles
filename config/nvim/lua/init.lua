@@ -19,3 +19,7 @@ require("presence"):setup({
 })
 
 require("persistence").setup({})
+
+require("nvim_comment").setup()
+
+require("surround").setup({ mappings_style = "surround" })
