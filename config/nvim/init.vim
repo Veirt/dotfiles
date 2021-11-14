@@ -15,5 +15,4 @@ luafile $HOME/.config/nvim/lua/lspsaga-config.lua
 luafile $HOME/.config/nvim/lua/telescope-config.lua
 luafile $HOME/.config/nvim/lua/statusline.lua
 
-autocmd! FileType * set fo-=c fo-=r fo-=o
-
+autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
