@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # set X cursor to left pointer
 xsetroot -cursor_name left_ptr
