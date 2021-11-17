@@ -26,14 +26,14 @@ return require("packer").startup(function()
 	use({ "jwalton512/vim-blade", ft = "blade" })
 	use({ "lervag/vimtex", ft = "latex" }) -- Syntax plugin for LaTeX files.
 	use({ "posva/vim-vue", ft = "vue" }) -- Syntax with indent for Vue
-	use("leafgarland/typescript-vim")
-	use("peitalin/vim-jsx-typescript")
+	use("MaxMEllon/vim-jsx-pretty")
 
 	use("kyazdani42/nvim-tree.lua")
 	use("christoomey/vim-tmux-navigator")
 
 	use("terrortylor/nvim-comment")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("p00f/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
 	use("jiangmiao/auto-pairs")
 	use({
