@@ -106,7 +106,11 @@ null_ls.config({
 		null_ls.builtins.formatting.shfmt, -- shell
 		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.formatting.black, -- python
+		null_ls.builtins.diagnostics.flake8,
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.markdownlint,
+		null_ls.builtins.formatting.prismaFmt, -- prisma
+		null_ls.builtins.diagnostics.hadolint, -- docker
 		null_ls.builtins.formatting.trim_whitespace,
 	},
 })
