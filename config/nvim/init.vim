@@ -13,7 +13,7 @@ lua require('treesitter')
 lua require('lsp')
 lua require('lsp.utils')
 lua require('lsp.lspsaga')
-lua require('telescope.config')
+lua require('telescope.custom')
 lua require('nvim-cmp')
 
 autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
