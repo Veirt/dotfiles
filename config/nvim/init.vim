@@ -1,18 +1,19 @@
+source $HOME/.config/nvim/modules/generals.vim
+source $HOME/.config/nvim/modules/remaps.vim
+
 lua require('impatient')
 lua require('plugins')
 
-source $HOME/.config/nvim/modules/generals.vim
-source $HOME/.config/nvim/modules/remaps.vim
-luafile $HOME/.config/nvim/lua/nvimtree.lua
-luafile $HOME/.config/nvim/lua/dashboard.lua
-luafile $HOME/.config/nvim/lua/themes.lua
-luafile $HOME/.config/nvim/lua/init.lua
-luafile $HOME/.config/nvim/lua/treesitter.lua
-luafile $HOME/.config/nvim/lua/lsp.lua
-luafile $HOME/.config/nvim/lua/nvim-cmp.lua
-luafile $HOME/.config/nvim/lua/lsp-utils.lua
-luafile $HOME/.config/nvim/lua/lspsaga-config.lua
-luafile $HOME/.config/nvim/lua/telescope-config.lua
-luafile $HOME/.config/nvim/lua/statusline.lua
+lua require('init')
+lua require('nvimtree')
+lua require('dashboard')
+lua require('statusline')
+lua require('themes')
+lua require('treesitter')
+lua require('lsp')
+lua require('lsp.utils')
+lua require('lsp.lspsaga')
+lua require('telescope.config')
+lua require('nvim-cmp')
 
 autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro

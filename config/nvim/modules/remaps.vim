@@ -42,7 +42,7 @@ nnoremap <silent>    <A-9> :BufferLast<CR>
 " Close buffer
 nnoremap <silent>    <A-w> :bdelete<CR>
 
-nnoremap <silent> <C-p> :lua require'telescope-project'.project_files()<CR>
+nnoremap <silent> <C-p> :lua require'telescope.project'.project_files()<CR>
 
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>ff <cmd>Telescope current_buffer_fuzzy_find<CR>
