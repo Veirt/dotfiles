@@ -1,3 +1,0 @@
-[submodule "config/alacritty/base16-alacritty"]
-	path = config/alacritty/base16-alacritty
-	url = https://github.com/aarowill/base16-alacritty.git
