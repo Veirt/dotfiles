@@ -71,6 +71,7 @@ local servers = {
 	"html",
 	"cssls",
 	"jsonls",
+	"prismals",
 	"intelephense",
 }
 for _, lsp in ipairs(servers) do
