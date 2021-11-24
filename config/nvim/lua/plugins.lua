@@ -28,6 +28,7 @@ return require("packer").startup(function()
 	use({ "posva/vim-vue", ft = "vue" }) -- Syntax with indent for Vue
 	use({ "othree/html5.vim", ft = "html" })
 	use("MaxMEllon/vim-jsx-pretty")
+	use({ "pantharshit00/vim-prisma", ft = "prisma" })
 
 	use("kyazdani42/nvim-tree.lua")
 	use("christoomey/vim-tmux-navigator")
