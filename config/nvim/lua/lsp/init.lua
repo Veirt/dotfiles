@@ -70,6 +70,7 @@ local servers = {
 	"sqls",
 	"html",
 	"cssls",
+	"emmet_ls",
 	"jsonls",
 	"prismals",
 	"intelephense",
@@ -118,29 +119,3 @@ null_ls.config({
 nvim_lsp["null-ls"].setup({
 	on_attach = on_attach,
 })
-
-if not nvim_lsp.ls_emmet then
-	configs.ls_emmet = {
-		default_config = {
-			cmd = { "ls_emmet", "--stdio" },
-			filetypes = {
-				"html",
-				"css",
-				"scss",
-				"sass",
-				"stylus",
-				"less",
-				"javascriptreact",
-				"typescriptreact",
-				"php",
-				"blade",
-			},
-			root_dir = function(fname)
-				return vim.loop.cwd()
-			end,
-			settings = {},
-		},
-	}
-end
-
-nvim_lsp.ls_emmet.setup({ capabilities = capabilities })
