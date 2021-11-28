@@ -42,8 +42,3 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-augroup ft_prisma
-    autocmd!
-    autocmd BufNewFile,BufRead *.prisma setlocal filetype=prisma
-augroup END
-
