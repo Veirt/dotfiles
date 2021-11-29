@@ -48,10 +48,9 @@ return require("packer").startup(function()
 	use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
 	use("lewis6991/gitsigns.nvim") -- Super fast git decorations
 	use("sbdchd/neoformat") -- Format code/Prettier
-	use({ "tami5/lspsaga.nvim", branch = "nvim51" }) -- LSP plugin with highly performant UI
+	use({ "tami5/lspsaga.nvim" }) -- LSP plugin with highly performant UI
 	use("ray-x/lsp_signature.nvim")
 	use("RishabhRD/popfix")
-	use("RishabhRD/nvim-lsputils")
 	use("blackCauldron7/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
 	use("tpope/vim-sleuth") -- Automatically adjusts indent
 	use("davidgranstrom/nvim-markdown-preview")
