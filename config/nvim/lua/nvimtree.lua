@@ -5,8 +5,7 @@
 -- type r to rename a file
 -- type <C-r> to rename a file and omit the filename on input
 -- type x to add/remove file/directory to cut clipboard
--- type c to add/remove file/directory to copy clipboard
--- type y will copy name to system clipboard
+-- type c to add/remove file/directory to copy clipboard type y will copy name to system clipboard
 -- type Y will copy relative path to system clipboard
 -- type gy will copy absolute path to system clipboard
 -- type p to paste from clipboard. Cut clipboard has precedence over copy (will prompt for confirmation)
@@ -44,62 +43,19 @@ g.nvim_tree_icons = {
     },
 }
 
--- following options are the default
 require("nvim-tree").setup({
-    -- disables netrw completely
     disable_netrw = true,
-    -- hijack netrw window on startup
     hijack_netrw = true,
-    -- open the tree when running this setup function
     open_on_setup = false,
-    -- will not open on setup if the filetype is in this list
     ignore_ft_on_setup = {},
-    -- closes neovim automatically when the tree is the last **WINDOW** in the view
-    auto_close = false,
-    -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
+    auto_close = true,
     open_on_tab = false,
-    -- hijack the cursor in the tree to put it at the start of the filename
-    hijack_cursor = true,
-    -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
+    hijack_cursor = false,
     update_cwd = true,
-    -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-    update_focused_file = {
-        -- enables the feature
+    update_to_buf_dir = {
         enable = true,
-        -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
-        -- only relevant when `update_focused_file.enable` is true
-        update_cwd = true,
-        -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
-        -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-        ignore_list = {},
+        auto_open = true,
     },
-    -- configuration options for the system open command (`s` in the tree by default)
-    system_open = {
-        -- the command to run this, leaving nil should work in most cases
-        cmd = nil,
-        -- the command arguments as a list
-        args = {},
-    },
-    view = {
-        -- width of the window, can be either a number (columns) or a string in `%`
-        width = 30,
-        -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
-        side = "right",
-        -- if true the tree will resize itself after opening a file
-        auto_resize = false,
-        mappings = {
-            -- custom only false will merge the list with the default mappings
-            -- if true, it will only use your list to set the mappings
-            custom_only = false,
-            -- list of mappings to set on the tree manually
-            list = {},
-        },
-    },
-    filters = {
-        dotfiles = false,
-        custom = { ".git", "node_modules", ".cache", "__pycache__", "vendor" },
-    },
-
     diagnostics = {
         enable = true,
         icons = {
@@ -108,5 +64,40 @@ require("nvim-tree").setup({
             warning = "",
             error = "",
         },
+    },
+    update_focused_file = {
+        enable = true,
+        update_cwd = false,
+        ignore_list = {},
+    },
+    system_open = {
+        cmd = nil,
+        args = {},
+    },
+    filters = {
+        dotfiles = false,
+        custom = { ".git", "node_modules", ".cache", "__pycache__", "vendor" },
+    },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+    },
+    view = {
+        width = 30,
+        height = 30,
+        hide_root_folder = false,
+        side = "left",
+        auto_resize = false,
+        mappings = {
+            custom_only = false,
+            list = {},
+        },
+        number = false,
+        relativenumber = false,
+    },
+    trash = {
+        cmd = "trash",
+        require_confirm = true,
     },
 })

@@ -20,6 +20,7 @@ nnoremap <Leader>- :vertical resize -5<CR>
 
 " Alternate way to save
 nnoremap <C-s> :w<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
 " Alternate way to quit
 nnoremap <C-Q> :wq!<CR>
 
@@ -61,8 +62,8 @@ inoremap <c-v> <esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`
 nnoremap <leader>sl <cmd>lua require("persistence").load()<CR>
 
 " lsp
-nnoremap <leader>er <cmd>Telescope lsp_document_diagnostics<CR>
-nnoremap <leader>eR <cmd>Telescope lsp_workspace_diagnostics<CR>
+nnoremap <leader>er <cmd>Telescope diagnostics bufnr=0<CR>
+nnoremap <leader>eR <cmd>Telescope diagnostics<CR>
 nnoremap <leader>ss <cmd>Telescope lsp_document_symbols<CR>
 nnoremap <leader>sd <cmd>Telescope lsp_dynamic_workspace_symbols<CR>
 nnoremap <leader>jl <cmd>Telescope jumplist<CR>

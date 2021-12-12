@@ -27,6 +27,7 @@ return require("packer").startup(function()
     use({ "lervag/vimtex", ft = "latex" }) -- Syntax plugin for LaTeX files.
     use({ "posva/vim-vue", ft = "vue" }) -- Syntax with indent for Vue
     use({ "othree/html5.vim", ft = "html" })
+    use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
     use("MaxMEllon/vim-jsx-pretty")
     use({ "pantharshit00/vim-prisma", ft = "prisma" })
 

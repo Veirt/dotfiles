@@ -1,10 +1,17 @@
 local nvim_lsp = require("lspconfig")
 local null_ls = require("null-ls")
-local configs = require("lspconfig/configs")
+local configs = require("lspconfig.configs")
 
 -- Disable annoying error messages
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--     virtual_text = false,
+-- })
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
 })
 
 local on_attach = function(client, bufnr)
@@ -21,7 +28,7 @@ local on_attach = function(client, bufnr)
     -- buf_set_keymap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     -- buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -37,10 +44,10 @@ local on_attach = function(client, bufnr)
         client.resolved_capabilities.document_range_formatting = false
 
         local ts_utils = require("nvim-lsp-ts-utils")
-        ts_utils.setup({
-            eslint_bin = "eslint_d",
-            eslint_enable_diagnostics = true,
-        })
+        -- ts_utils.setup({
+        --     eslint_bin = "eslint_d",
+        --     eslint_enable_diagnostics = true,
+        -- })
         ts_utils.setup_client(client)
 
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsi", ":TSLspOrganize<CR>", opts)
@@ -60,7 +67,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local servers = {
-    "pylsp",
+    "pyright",
     "bashls",
     "vimls",
     "yamlls",
@@ -70,7 +77,6 @@ local servers = {
     "sqls",
     "html",
     "cssls",
-    "emmet_ls",
     "jsonls",
     "prismals",
     "intelephense",
@@ -108,7 +114,7 @@ null_ls.config({
         null_ls.builtins.formatting.shfmt, -- shell
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.black, -- python
-        null_ls.builtins.diagnostics.flake8,
+        -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.markdownlint,
         null_ls.builtins.diagnostics.hadolint, -- docker
@@ -119,3 +125,35 @@ null_ls.config({
 nvim_lsp["null-ls"].setup({
     on_attach = on_attach,
 })
+
+if not configs.ls_emmet then
+    configs.ls_emmet = {
+        default_config = {
+            cmd = { "ls_emmet", "--stdio" },
+            filetypes = {
+                "html",
+                "css",
+                "scss",
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "haml",
+                "xml",
+                "xsl",
+                "pug",
+                "slim",
+                "sass",
+                "stylus",
+                "less",
+                "sss",
+            },
+            root_dir = function(fname)
+                return vim.loop.cwd()
+            end,
+            settings = {},
+        },
+    }
+end
+
+nvim_lsp.ls_emmet.setup({ capabilities = capabilities })
