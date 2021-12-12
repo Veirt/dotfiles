@@ -7,7 +7,7 @@ saga.init_lsp_saga({
     warn_sign = "",
     hint_sign = "",
     infor_sign = "",
-    dianostic_header_icon = "   ",
+    diagnostic_header_icon = "   ",
     -- code action title icon
     code_action_icon = " ",
     code_action_keys = {
