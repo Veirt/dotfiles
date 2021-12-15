@@ -55,7 +55,7 @@ bindsym $mod+p exec --no-startup-id sh -c "$HOME/.scripts/toggle-picom.sh"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty -e fish
+bindsym $mod+Return exec --no-startup-id kitty -e fish
 
 # kill focused window
 bindsym $mod+q kill
