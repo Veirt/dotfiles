@@ -101,13 +101,8 @@ nvim_lsp.volar.setup({
     },
 })
 
--- typescript
-nvim_lsp.tsserver.setup({
+null_ls.setup({
     on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-null_ls.config({
     sources = {
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.rustfmt,
@@ -120,10 +115,6 @@ null_ls.config({
         null_ls.builtins.diagnostics.hadolint, -- docker
         null_ls.builtins.formatting.trim_whitespace,
     },
-})
-
-nvim_lsp["null-ls"].setup({
-    on_attach = on_attach,
 })
 
 if not configs.ls_emmet then
