@@ -1,0 +1,1 @@
+EXCLUDES="README.md desktop.png setup*.sh stylua.toml"
