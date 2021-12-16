@@ -20,7 +20,6 @@ alias cat="bat"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
-alias bluetooth="bluetoothctl"
 
 # dev stuffs
 alias gs="git status"
