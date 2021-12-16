@@ -55,6 +55,7 @@ return require("packer").startup(function()
     use("blackCauldron7/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
     use("tpope/vim-sleuth") -- Automatically adjusts indent
     use("davidgranstrom/nvim-markdown-preview")
+    use("editorconfig/editorconfig-vim")
 
     use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim
     use("kdheepak/lazygit.nvim") -- Call lazygit within neovim

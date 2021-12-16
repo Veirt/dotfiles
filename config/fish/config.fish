@@ -8,7 +8,7 @@ bind -M insert \cr 'ranger'
 bind \cr 'ranger'
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
-    echo "fish: Unknown command '$argv'" 
+    echo "fish: Unknown command '$argv'"
 end
 
 function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
@@ -32,6 +32,6 @@ end
 
 # Starship prompt
 if type starship &> /dev/null
-    starship init fish | source 
+    starship init fish | source
 end
 
