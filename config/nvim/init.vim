@@ -11,8 +11,9 @@ lua require('statusline')
 lua require('themes')
 lua require('treesitter')
 lua require('lsp')
+lua require('lsp.tsutils')
 lua require('lsp.lspsaga')
 lua require('telescope.custom')
 lua require('nvim-cmp')
 
-autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
+autocmd! BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
