@@ -69,12 +69,6 @@ return require("packer").startup(function()
     use("onsails/lspkind-nvim") -- vscode-like pictograms
     use("akinsho/bufferline.nvim") -- Tabline plugin
     use("goolord/alpha-nvim") -- Vim dashboard
-    use("folke/tokyonight.nvim")
-    use("marko-cerovac/material.nvim")
     use("EdenEast/nightfox.nvim")
-    use({
-        "catppuccin/nvim",
-        as = "catppuccin",
-    })
     use("famiu/feline.nvim") -- A minimal, stylish and customizable statusline for Neovim written in Lua
 end)
