@@ -39,22 +39,6 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
     buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-    if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-
-        local ts_utils = require("nvim-lsp-ts-utils")
-        -- ts_utils.setup({
-        --     eslint_bin = "eslint_d",
-        --     eslint_enable_diagnostics = true,
-        -- })
-        ts_utils.setup_client(client)
-
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsi", ":TSLspOrganize<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsr", ":TSLspRenameFile<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsa", ":TSLspImportAll<CR>", opts)
-    end
-
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_command([[augroup Format]])
         vim.api.nvim_command([[autocmd! * <buffer>]])

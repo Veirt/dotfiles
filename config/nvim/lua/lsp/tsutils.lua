@@ -1,9 +1,5 @@
 local nvim_lsp = require("lspconfig")
 
--- enable null-ls integration (optional)
-require("null-ls").config({})
-require("lspconfig")["null-ls"].setup({})
-
 nvim_lsp.tsserver.setup({
     init_options = require("nvim-lsp-ts-utils").init_options,
 
@@ -60,8 +56,8 @@ nvim_lsp.tsserver.setup({
 
         -- no default maps, so you may want to define some here
         local opts = { silent = true }
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsi", ":TSLspOrganize<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsr", ":TSLspRenameFile<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsa", ":TSLspImportAll<CR>", opts)
     end,
 })
