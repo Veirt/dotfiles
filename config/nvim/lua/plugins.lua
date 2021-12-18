@@ -38,7 +38,7 @@ return require("packer").startup(function()
     use("JoosepAlviste/nvim-ts-context-commentstring")
     use("p00f/nvim-ts-rainbow")
     use("windwp/nvim-ts-autotag")
-    use("jiangmiao/auto-pairs")
+    use("windwp/nvim-autopairs")
     use({
         "nvim-telescope/telescope.nvim",
         requires = {
@@ -53,7 +53,7 @@ return require("packer").startup(function()
     use("ray-x/lsp_signature.nvim")
     use("RishabhRD/popfix")
     use("blackCauldron7/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
-    use("tpope/vim-sleuth") -- Automatically adjusts indent
+    -- use("tpope/vim-sleuth") -- Automatically adjusts indent
     use("davidgranstrom/nvim-markdown-preview")
     use("editorconfig/editorconfig-vim")
 

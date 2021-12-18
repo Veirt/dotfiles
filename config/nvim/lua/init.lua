@@ -21,3 +21,5 @@ require("persistence").setup({})
 require("nvim_comment").setup()
 
 require("surround").setup({ mappings_style = "surround" })
+
+require("nvim-autopairs").setup({ map_cr = true })
