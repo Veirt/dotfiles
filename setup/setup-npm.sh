@@ -14,6 +14,4 @@ elif [[ $PREFIX == "${HOME}/.npm-global" ]]; then
 else
     mkdir ~/.npm-global
     npm config set prefix '~/.npm-global'
-    echo 'export PATH=~/.npm-global/bin:$PATH' >>$HOME/.profile
-    echo 'export PATH=~/.npm-global/bin:$PATH' >>$HOME/.zprofile
 fi
