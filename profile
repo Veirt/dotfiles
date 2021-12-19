@@ -12,3 +12,8 @@ export GPG_TTY=(tty)
 
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/go/bin:$PATH
+
+if command -v fd &> /dev/null
+then
+    export FZF_DEFAULT_COMMAND='fd --type f'
+fi

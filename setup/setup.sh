@@ -16,6 +16,7 @@ sudo yay -Syu --noconfirm
 yay --noconfirm -S tmux \
     neovim \
     bat \
+    fd \
     ncmpcpp \
     i3-gaps \
     picom \
