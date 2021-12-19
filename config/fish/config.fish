@@ -19,10 +19,6 @@ else
     end
 end
 
-set -gx EDITOR 'nvim'
-set -gx VISUAL 'nvim'
-set -gx GPG_TTY (tty)
-
 source ~/.shell_aliases
 
 set -a FZF_DEFAULT_OPTS --bind alt-j:down,alt-k:up
