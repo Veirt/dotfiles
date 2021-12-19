@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
-if (($EUID != 0)); then
-    echo "Please run this script as root."
-    exit 1
-fi
-
 ## SETUP yay
+sudo pacman --needed -S git base-devel
 
-git clone https://aur.archlinux.org/yay.git $HOME/yay
-cd yay
+git clone https://aur.archlinux.org/yay-bin.git $HOME/yay
+cd $HOME/yay
 makepkg -si
 
-sudo yay -Syu --noconfirm
+yay -Syu --noconfirm
 
 yay --noconfirm -S tmux \
     neovim \
