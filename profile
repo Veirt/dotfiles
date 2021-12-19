@@ -2,6 +2,10 @@
 # export MOZ_ENABLE_WAYLAND=1
 # export XDG_CURRENT_DESKTOP=sway
 
+export GTK_IM_MODULE='fcitx'
+export QT_IM_MODULE='fcitx'
+export XMODIFIERS='@im=fcitx'
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='kitty'
@@ -17,3 +21,4 @@ if command -v fd &> /dev/null
 then
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi
+
