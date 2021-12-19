@@ -13,6 +13,7 @@ yay --noconfirm -S tmux \
     neovim \
     bat \
     fd \
+    exa \
     ncmpcpp \
     i3-gaps \
     picom \
