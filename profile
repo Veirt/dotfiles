@@ -8,5 +8,7 @@ export TERMINAL='kitty'
 export BROWSER='firefox'
 export MOZ_WEBRENDER=1
 
+export GPG_TTY=(tty)
+
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/go/bin:$PATH
