@@ -46,7 +46,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym $mod+w exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id tauon
 bindsym $mod+d exec --no-startup-id discord
-bindsym $mod+e exec --no-startup-id nautilus
+bindsym $mod+e exec --no-startup-id pcmanfm
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym $mod+p exec --no-startup-id sh -c "$HOME/.scripts/toggle-picom.sh"
 
