@@ -28,6 +28,8 @@ exec --no-startup-id flameshot
 exec --no-startup-id dunst
 exec --no-startup-id picom --experimental-backends -CGb
 
+exec --no-startup-id $HOME/.scripts/i3-alternating-layout/alternating_layouts.py
+
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
 
