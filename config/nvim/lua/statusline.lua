@@ -26,20 +26,20 @@ local colors = {
 }
 
 local vi_mode_colors = {
-    NORMAL = "green",
-    OP = "green",
-    INSERT = "red",
-    VISUAL = "skyblue",
-    BLOCK = "skyblue",
-    REPLACE = "violet",
-    ["V-REPLACE"] = "violet",
-    ENTER = "cyan",
-    MORE = "cyan",
-    SELECT = "orange",
-    COMMAND = "green",
-    SHELL = "green",
-    TERM = "green",
-    NONE = "yellow",
+    NORMAL = colors.green,
+    OP = colors.green,
+    INSERT = colors.red,
+    VISUAL = colors.skyblue,
+    BLOCK = colors.skyblue,
+    REPLACE = colors.violet,
+    ["V-REPLACE"] = colors.violet,
+    ENTER = colors.cyan,
+    MORE = colors.cyan,
+    SELECT = colors.orange,
+    COMMAND = colors.green,
+    SHELL = colors.green,
+    TERM = colors.green,
+    NONE = colors.yellow,
 }
 
 local buffer_not_empty = function()
@@ -157,7 +157,7 @@ components.active[3][1] = {
 components.active[3][2] = {
     provider = "diagnostic_warnings",
     enabled = function()
-        return lsp.diagnostics_exist("Warning")
+        return lsp.diagnostics_exist("Warn")
     end,
     hl = {
         fg = "yellow",
@@ -181,7 +181,7 @@ components.active[3][3] = {
 components.active[3][4] = {
     provider = "diagnostic_info",
     enabled = function()
-        return lsp.diagnostics_exist("Information")
+        return lsp.diagnostics_exist("Info")
     end,
     hl = {
         fg = "skyblue",
@@ -261,7 +261,7 @@ components.active[3][7] = {
 components.active[3][8] = {
     provider = "file_encoding",
     hl = {
-        fg = "white",
+        fg = colors.white,
         bg = "bg",
         style = "bold",
     },
@@ -271,7 +271,7 @@ components.active[3][8] = {
 components.active[3][9] = {
     provider = "position",
     hl = {
-        fg = "white",
+        fg = colors.white,
         bg = "bg",
         style = "bold",
     },
@@ -290,15 +290,15 @@ components.inactive[1][1] = {
         return string.format("%s", vim.bo.filetype:upper())
     end,
     hl = {
-        fg = "black",
-        bg = "cyan",
+        fg = colors.black,
+        bg = colors.cyan,
         style = "bold",
     },
     left_sep = {
         str = " ",
         hl = {
             fg = "NONE",
-            bg = "cyan",
+            bg = colors.cyan,
         },
     },
     right_sep = {
@@ -306,7 +306,7 @@ components.inactive[1][1] = {
             str = " ",
             hl = {
                 fg = "NONE",
-                bg = "cyan",
+                bg = colors.cyan,
             },
         },
         " ",
