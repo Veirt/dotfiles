@@ -57,6 +57,19 @@ local checkwidth = function()
     return false
 end
 
+local function file_osinfo()
+    local os = vim.bo.fileformat:upper()
+    local icon
+    if os == "UNIX" then
+        icon = " "
+    elseif os == "MAC" then
+        icon = " "
+    else
+        icon = " "
+    end
+    return icon .. os
+end
+
 force_inactive.filetypes = {
     "NvimTree",
     "alpha",
@@ -83,90 +96,61 @@ components.active[1][1] = {
         local val = {}
 
         val.bg = vi_mode_utils.get_mode_color()
-        val.fg = "black"
+        val.fg = colors.black
         val.style = "bold"
 
         return val
     end,
     right_sep = " ",
 }
+
 -- gitBranch
 components.active[1][2] = {
     provider = "git_branch",
     hl = {
-        fg = "yellow",
-        bg = "bg",
+        fg = colors.green,
+        bg = colors.bg,
         style = "bold",
     },
 }
+
 -- filename
 components.active[1][3] = {
-    provider = function()
-        return vim.fn.expand("%:F")
-    end,
+    provider = "file_info",
     hl = {
-        fg = "white",
-        bg = "bg",
+        fg = colors.white,
+        bg = colors.bg,
         style = "bold",
     },
     left_sep = " ",
 }
--- diffAdd
-components.active[1][4] = {
-    provider = "git_diff_added",
-    hl = {
-        fg = "green",
-        bg = "bg",
-        style = "bold",
-    },
-}
--- diffModified
-components.active[1][5] = {
-    provider = "git_diff_changed",
-    hl = {
-        fg = "orange",
-        bg = "bg",
-        style = "bold",
-    },
-}
--- diffRemove
-components.active[1][6] = {
-    provider = "git_diff_removed",
-    hl = {
-        fg = "red",
-        bg = "bg",
-        style = "bold",
-    },
-}
-
--- RIGHT
 
 -- diagnosticErrors
-components.active[3][1] = {
+components.active[1][4] = {
     provider = "diagnostic_errors",
     enabled = function()
         return lsp.diagnostics_exist("Error")
     end,
     hl = {
-        fg = "red",
+        fg = colors.red,
         style = "bold",
     },
     right_sep = " ",
 }
 -- diagnosticWarn
-components.active[3][2] = {
+components.active[1][5] = {
     provider = "diagnostic_warnings",
     enabled = function()
         return lsp.diagnostics_exist("Warn")
     end,
     hl = {
-        fg = "yellow",
+        fg = colors.yellow,
         style = "bold",
     },
     right_sep = " ",
 }
 -- diagnosticHint
-components.active[3][3] = {
+components.active[1][6] = {
     provider = "diagnostic_hints",
     enabled = function()
         return lsp.diagnostics_exist("Hint")
@@ -178,7 +162,7 @@ components.active[3][3] = {
     right_sep = " ",
 }
 -- diagnosticInfo
-components.active[3][4] = {
+components.active[1][7] = {
     provider = "diagnostic_info",
     enabled = function()
         return lsp.diagnostics_exist("Info")
@@ -190,89 +174,72 @@ components.active[3][4] = {
     right_sep = " ",
 }
 
+-- RIGHT
+
 -- LspName
-components.active[3][5] = {
+components.active[3][1] = {
     provider = "lsp_client_names",
     hl = {
-        fg = "yellow",
-        bg = "bg",
+        fg = colors.yellow,
+        bg = colors.bg,
         style = "bold",
     },
     right_sep = " ",
 }
 
--- fileIcon
-components.active[3][6] = {
-    provider = function()
-        local filename = vim.fn.expand("%:t")
-        local extension = vim.fn.expand("%:e")
-        local icon = require("nvim-web-devicons").get_icon(filename, extension)
-        if icon == nil then
-            icon = ""
-        end
-        return icon
-    end,
-    hl = function()
-        local val = {}
-        local filename = vim.fn.expand("%:t")
-        local extension = vim.fn.expand("%:e")
-        local icon, name = require("nvim-web-devicons").get_icon(filename, extension)
-        if icon ~= nil then
-            val.fg = vim.fn.synIDattr(vim.fn.hlID(name), "fg")
-        else
-            val.fg = "white"
-        end
-        val.bg = "bg"
-        val.style = "bold"
-        return val
-    end,
+-- diffAdd
+components.active[3][2] = {
+    provider = "git_diff_added",
+    hl = {
+        fg = colors.green,
+        bg = colors.bg,
+        style = "bold",
+    },
+}
+-- diffModified
+components.active[3][3] = {
+    provider = "git_diff_changed",
+    hl = {
+        fg = colors.orange,
+        bg = colors.bg,
+        style = "bold",
+    },
+}
+-- diffRemove
+components.active[3][4] = {
+    provider = "git_diff_removed",
+    hl = {
+        fg = colors.red,
+        bg = colors.bg,
+        style = "bold",
+    },
     right_sep = " ",
 }
--- fileType
-components.active[3][7] = {
-    provider = "file_type",
-    hl = function()
-        local val = {}
-        local filename = vim.fn.expand("%:t")
-        local extension = vim.fn.expand("%:e")
-        local icon, name = require("nvim-web-devicons").get_icon(filename, extension)
-        if icon ~= nil then
-            val.fg = vim.fn.synIDattr(vim.fn.hlID(name), "fg")
-        else
-            val.fg = "white"
-        end
-        val.bg = "bg"
-        val.style = "bold"
-        return val
-    end,
-    right_sep = " ",
-}
--- fileFormat
--- components.active[3][4] = {
---   provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
---   hl = {
---     fg = 'white',
---     bg = 'bg',
---     style = 'bold'
---   },
---   right_sep = ' '
--- }
+
 -- fileEncode
-components.active[3][8] = {
+components.active[3][5] = {
     provider = "file_encoding",
     hl = {
         fg = colors.white,
-        bg = "bg",
+        bg = colors.bg,
+        style = "bold",
+    },
+    right_sep = " ",
+}
+components.active[3][6] = {
+    provider = file_osinfo,
+    hl = {
+        fg = colors.magenta,
         style = "bold",
     },
     right_sep = " ",
 }
 -- lineInfo
-components.active[3][9] = {
+components.active[3][7] = {
     provider = "position",
     hl = {
         fg = colors.white,
-        bg = "bg",
+        bg = colors.bg,
         style = "bold",
     },
     right_sep = " ",
