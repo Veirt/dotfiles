@@ -9,7 +9,6 @@ bind \cr 'ranger'
 
 source ~/.shell_aliases
 
-# Starship prompt
-if type starship &> /dev/null
-    starship init fish | source
+if type zoxide &> /dev/null
+    zoxide init fish | source
 end
