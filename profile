@@ -22,3 +22,4 @@ then
     export FZF_DEFAULT_COMMAND='fd --type f'
 fi
 
+export FZF_DEFAULT_OPTS='--height 50% --layout reverse --border'
