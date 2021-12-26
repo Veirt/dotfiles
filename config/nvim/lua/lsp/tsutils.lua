@@ -47,7 +47,7 @@ nvim_lsp.tsserver.setup({
             filter_out_diagnostics_by_code = {},
 
             -- inlay hints
-            auto_inlay_hints = true,
+            auto_inlay_hints = false,
             inlay_hints_highlight = "Comment",
         })
 
