@@ -1,6 +1,9 @@
-# https://i3wm.org/docs/userguide.html
-
 set $mod Mod4
+
+set $browser firefox
+set $terminal kitty
+set $launcher rofi -show drun
+set $filemanager nautilus
 
 exec --no-startup-id nitrogen --restore
 
@@ -22,7 +25,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
 
-exec --no-startup-id ulauncher --hide-window
 exec --no-startup-id fcitx
 exec --no-startup-id flameshot
 exec --no-startup-id dunst
@@ -37,18 +39,15 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# bindsym XF86MonBrightnessUp exec sh -c "brightnessctl set +5%; ~/.scripts/brightness_notification.sh"
-# bindsym XF86MonBrightnessDown exec sh -c "brightnessctl set 5%-; ~/.scripts/brightness_notification.sh"
 bindsym XF86MonBrightnessUp exec --no-startup-id sh -c "brightnessctl set +5%"
 bindsym XF86MonBrightnessDown exec --no-startup-id sh -c "brightnessctl set 5%-"
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-bindsym $mod+w exec --no-startup-id firefox
-bindsym $mod+m exec --no-startup-id tauon
+bindsym $mod+w exec --no-startup-id $browser
 bindsym $mod+d exec --no-startup-id discord
-bindsym $mod+e exec --no-startup-id pcmanfm
+bindsym $mod+e exec --no-startup-id $filemanager
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym $mod+p exec --no-startup-id sh -c "$HOME/.scripts/toggle-picom.sh"
 
@@ -57,13 +56,13 @@ bindsym $mod+p exec --no-startup-id sh -c "$HOME/.scripts/toggle-picom.sh"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id kitty -e fish
+bindsym $mod+Return exec --no-startup-id $terminal -e fish
 
 # kill focused window
 bindsym $mod+q kill
 
 # start a program launcher
-bindsym $mod+r exec --no-startup-id ulauncher-toggle
+bindsym $mod+r exec --no-startup-id $launcher
 
 # change focus
 bindsym $mod+h focus left
@@ -93,7 +92,7 @@ bindsym $mod+Shift+Right move right
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -174,14 +173,10 @@ gaps inner 10
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
 
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
     bindsym Left resize shrink width 10 px or 10 ppt
