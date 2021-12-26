@@ -195,6 +195,7 @@ components.active[3][2] = {
         bg = colors.bg,
         style = "bold",
     },
+    right_sep = " ",
 }
 -- diffModified
 components.active[3][3] = {
@@ -204,6 +205,7 @@ components.active[3][3] = {
         bg = colors.bg,
         style = "bold",
     },
+    right_sep = " ",
 }
 -- diffRemove
 components.active[3][4] = {
