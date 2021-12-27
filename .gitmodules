@@ -4,3 +4,12 @@
 [submodule "config/polybar/modules/pulseaudio-control"]
 	path = config/polybar/modules/pulseaudio-control
 	url = https://github.com/marioortizmanero/polybar-pulseaudio-control
+[submodule "zsh/zsh-autosuggestions"]
+	path = zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/powerlevel10k"]
+	path = zsh/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+[submodule "zsh/zsh-syntax-highlighting"]
+	path = zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
