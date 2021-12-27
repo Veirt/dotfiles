@@ -1,3 +1,6 @@
 [submodule "scripts/i3-alternating-layout"]
 	path = scripts/i3-alternating-layout
 	url = https://github.com/olemartinorg/i3-alternating-layout
+[submodule "config/polybar/modules/pulseaudio-control"]
+	path = config/polybar/modules/pulseaudio-control
+	url = https://github.com/marioortizmanero/polybar-pulseaudio-control
