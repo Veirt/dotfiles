@@ -1,7 +1,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: SauceCodePro Nerd Font;
+  font-family: JetBrainsMono Nerd Font;
   font-size: 14px;
   box-shadow: none;
   text-shadow: none;
@@ -10,7 +10,7 @@
 
 window {
   color: rgba(216, 228, 230, 1);
-  background: rgba(20, 17, 15, 0.8);
+  background: #1f1f1f;
 }
 
 #workspaces {
@@ -18,7 +18,7 @@ window {
 }
 
 #workspaces button {
-  padding: 0 5px;
+  padding: 0 0;
   color: rgba(170, 187, 195, 1);
 }
 
@@ -27,11 +27,10 @@ window {
 }
 
 #workspaces button.focused {
-  background: #96a8b4;
+  border-top: 3px solid #757575;
 }
 
 #workspaces button:hover {
-  border-top: 3px solid #96a8b4;
   color: rgba(217, 216, 216, 1);
 }
 
@@ -45,16 +44,13 @@ window {
 #memory,
 #network,
 #pulseaudio,
-#custom-night_mode,
 #backlight {
-  margin: 0px 6px 0px 10px;
+  margin: 0px 20px 0px 10px;
   min-width: 25px;
-  border-bottom: 2px solid rgba(170, 187, 195, 1);
 }
 
 #clock {
   margin: 0px 16px 0px 10px;
-  border-bottom: 2px solid rgba(170, 187, 195, 1);
   min-width: 140px;
 }
 

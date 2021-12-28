@@ -1,9 +1,9 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 30,
-    "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
-    "modules-right": ["network", "backlight", "custom/night_mode", "pulseaudio", "battery", "clock",  "tray"],
+    "height": 40,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "network", "clock",  "tray"],
     "sway/mode": {
         "format": " {}"
     },
@@ -11,12 +11,8 @@
         "format": "{name}",
         "disable-scroll": true
     },
-    "sway/window": {
-        "max-length": 80,
-        "tooltip": false
-    },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-alt": "{icon} ",
         "format-alt-click": "click-right",
         "format-bluetooth": "{icon}  {volume}%",
@@ -37,11 +33,11 @@
         "format-alt": "{icon}",
         "format-alt-click": "click-right",
         "format-icons": ["", ""],
-        "on-scroll-down": "brightnessctl set 1%-",
-        "on-scroll-up": "brightnessctl set +1%"
+        "on-scroll-down": "brightnessctl set 5%-",
+        "on-scroll-up": "brightnessctl set +5%"
     },
     "clock": {
-        "format": "{:%a, %d %b %H:%M}",
+        "format": " {:%a, %d %b %Y %H:%M}",
         "tooltip": false
     },
     "battery": {
@@ -79,17 +75,6 @@
         "icon-size": 13,
         "spacing": 10
     },
-    "custom/night_mode": {
-        "tooltip": false,
-        "return-type": "json",
-        "format": "{icon}",
-        "format-icons": {
-            "on": "ﯦ",
-            "off": "ﯧ"
-        },
-        "exec": "$HOME/.config/waybar/modules/night-mode.sh init",
-        "on-click": "$HOME/.config/waybar/modules/night-mode.sh toggle"
-    }
 }
 
 

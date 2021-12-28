@@ -1,12 +1,7 @@
 # Startups
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec mako
 exec --no-startup-id fcitx
 exec ulauncher --hide-window
 
-workspace 1
-exec firefox
-
-workspace 3
-exec discord
-
+exec /usr/lib/geoclue-2.0/demos/agent
+exec redshift-gtk

@@ -2,7 +2,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+w exec firefox
 bindsym $mod+m exec tauon
 bindsym $mod+d exec discord
-bindsym $mod+e exec pcmanfm
+bindsym $mod+e exec nemo
 bindsym $mod+r exec ulauncher-toggle
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 bindsym Print exec grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')

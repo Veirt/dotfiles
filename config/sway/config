@@ -170,14 +170,5 @@ mode "resize" {
 # Status Bar:
 exec_always ~/.config/waybar/waybar.sh
 
-set $gnome-schema org.gnome.desktop.interface
-exec always {
-    gsettings set $gnome-schema gtk-theme 'Orchis-grey-dark'
-    gsettings set $gnome-schema icon-theme 'Tela-black-dark'
-    gsettings set $gnome-schema cursor-theme 'Simp1e-dark'
-}
-
-
-
 include /etc/sway/config.d/*
 include $HOME/.config/sway/conf.d/*
