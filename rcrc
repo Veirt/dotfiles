@@ -1,1 +1,1 @@
-EXCLUDES="README.md LICENSE desktop.png setup*.sh stylua.toml"
+EXCLUDES="*.md spec test* docs LICENSE desktop.png setup*.sh stylua.toml .vscode"
