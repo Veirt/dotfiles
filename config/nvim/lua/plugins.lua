@@ -70,5 +70,9 @@ return require("packer").startup(function()
     use("akinsho/bufferline.nvim") -- Tabline plugin
     use("goolord/alpha-nvim") -- Vim dashboard
     use("EdenEast/nightfox.nvim")
+    use({
+        "catppuccin/nvim",
+        as = "catppuccin",
+    })
     use("famiu/feline.nvim") -- A minimal, stylish and customizable statusline for Neovim written in Lua
 end)

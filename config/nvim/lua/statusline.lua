@@ -42,6 +42,14 @@ local vi_mode_colors = {
     NONE = colors.yellow,
 }
 
+-- reusable
+local separator = {
+    str = " ",
+    hl = {
+        bg = "NONE",
+    },
+}
+
 local buffer_not_empty = function()
     if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
         return true
@@ -101,7 +109,7 @@ components.active[1][1] = {
 
         return val
     end,
-    right_sep = " ",
+    right_sep = separator,
 }
 
 -- gitBranch
@@ -109,7 +117,7 @@ components.active[1][2] = {
     provider = "git_branch",
     hl = {
         fg = colors.green,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
 }
@@ -119,10 +127,10 @@ components.active[1][3] = {
     provider = "file_info",
     hl = {
         fg = colors.white,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    left_sep = " ",
+    left_sep = separator,
 }
 
 -- diagnosticErrors
@@ -135,7 +143,7 @@ components.active[1][4] = {
         fg = colors.red,
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 -- diagnosticWarn
 components.active[1][5] = {
@@ -147,7 +155,7 @@ components.active[1][5] = {
         fg = colors.yellow,
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 -- diagnosticHint
 components.active[1][6] = {
@@ -159,7 +167,7 @@ components.active[1][6] = {
         fg = "cyan",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 -- diagnosticInfo
 components.active[1][7] = {
@@ -171,7 +179,7 @@ components.active[1][7] = {
         fg = "skyblue",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 
 -- RIGHT
@@ -181,10 +189,10 @@ components.active[3][1] = {
     provider = "lsp_client_names",
     hl = {
         fg = colors.yellow,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 
 -- diffAdd
@@ -192,30 +200,30 @@ components.active[3][2] = {
     provider = "git_diff_added",
     hl = {
         fg = colors.green,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 -- diffModified
 components.active[3][3] = {
     provider = "git_diff_changed",
     hl = {
         fg = colors.orange,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 -- diffRemove
 components.active[3][4] = {
     provider = "git_diff_removed",
     hl = {
         fg = colors.red,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 
 -- fileEncode
@@ -223,28 +231,30 @@ components.active[3][5] = {
     provider = "file_encoding",
     hl = {
         fg = colors.white,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
+-- osInfo
 components.active[3][6] = {
     provider = file_osinfo,
     hl = {
         fg = colors.magenta,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 -- lineInfo
 components.active[3][7] = {
     provider = "position",
     hl = {
         fg = colors.white,
-        bg = colors.bg,
+        bg = "NONE",
         style = "bold",
     },
-    right_sep = " ",
+    right_sep = separator,
 }
 
 -- INACTIVE
@@ -263,22 +273,29 @@ components.inactive[1][1] = {
         bg = colors.cyan,
         style = "bold",
     },
+
     left_sep = {
         str = " ",
         hl = {
-            fg = "NONE",
+            fg = colors.red,
             bg = colors.cyan,
         },
     },
+
     right_sep = {
         {
             str = " ",
             hl = {
-                fg = "NONE",
+                fg = colors.red,
                 bg = colors.cyan,
             },
         },
-        " ",
+        {
+            str = " ",
+            hl = {
+                bg = "NONE",
+            },
+        },
     },
 }
 
