@@ -3,6 +3,7 @@ source $HOME/.config/nvim/modules/remaps.vim
 
 lua require('impatient')
 lua require('plugins')
+lua require('packer_compiled')
 
 lua require('init')
 lua require('nvimtree')
