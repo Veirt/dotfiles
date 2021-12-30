@@ -1,2 +1,2 @@
-set $background '$HOME/Pictures/Wallpapers/aqua.png'
+set $background '$HOME/Pictures/Wallpapers/1600795836883.jpeg'
 output * bg $background fill

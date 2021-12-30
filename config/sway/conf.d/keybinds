@@ -1,14 +1,15 @@
 bindsym $mod+Return exec $term
-bindsym $mod+w exec firefox
-bindsym $mod+m exec tauon
+bindsym $mod+w exec $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec nemo
-bindsym $mod+r exec ulauncher-toggle
+bindsym $mod+r exec rofi -x11 -show drun
+
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
-bindsym Print exec grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')
+bindsym Print exec grim $HOME/Pictures/Screenshots/$(date +'%s_grim.png')
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec sh -c "brightnessctl set +5%; ~/.scripts/brightness_notification.sh"
