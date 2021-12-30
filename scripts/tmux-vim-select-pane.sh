@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
 set -e
 
 cmd="$(tmux display -p '#{pane_current_command}')"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 selected=$(cat ~/.tmux/tmux-cht-languages ~/.tmux/tmux-cht-command | fzf --print-query | tail -1 | xargs -r)
 echo "Selected: $selected"

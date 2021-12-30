@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 BRIGHTNESS=$(brightnessctl get)
 MAX_BRIGHTNESS=$(brightnessctl max)
