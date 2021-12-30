@@ -13,10 +13,6 @@ window {
   background: #1f1f1f;
 }
 
-#workspaces {
-  margin: 0 5px;
-}
-
 #workspaces button {
   padding: 0 0;
   color: rgba(170, 187, 195, 1);
@@ -39,12 +35,11 @@ window {
 }
 
 #mode,
-#battery,
-#cpu,
-#memory,
-#network,
 #pulseaudio,
-#backlight {
+#backlight,
+#battery,
+#network,
+#tray {
   margin: 0px 20px 0px 10px;
   min-width: 25px;
 }
@@ -64,4 +59,8 @@ window {
 
 #battery.charging {
   color: rgba(217, 216, 216, 1);
+}
+
+#tray {
+  font-family: Ubuntu;
 }

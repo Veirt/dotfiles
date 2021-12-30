@@ -45,7 +45,7 @@
         "format-alt": "{icon} ",
         "format-alt-click": "click-right",
         "format-icons": ["", "", "", "", ""],
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "interval": 30,
         "states": {
             "warning": 25,
