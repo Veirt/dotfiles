@@ -1,7 +1,8 @@
 # Startups
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
+
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id fcitx
-exec ulauncher --hide-window
 
 exec /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
