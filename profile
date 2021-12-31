@@ -1,5 +1,4 @@
 # export QT_QPA_PLATFORM=wayland
-# export MOZ_ENABLE_WAYLAND=1
 # export XDG_CURRENT_DESKTOP=sway
 
 export GTK_IM_MODULE='fcitx'
@@ -10,14 +9,14 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='kitty'
 export BROWSER='firefox'
+
 export MOZ_WEBRENDER=1
+export MOZ_ENABLE_WAYLAND=1
 
-export GPG_TTY=(tty)
+# export GPG_TTY=(tty)
 
-export PATH=~/.npm-global/bin:$PATH
-
-export GOPATH=$HOME/.go/
-export PATH=~/.go/bin:$PATH
+export PATH=$XDG_DATA_HOME/npm/bin:$PATH
+export PATH=$XDG_DATA_HOME/go/bin:$PATH
 
 if command -v fd &>/dev/null; then
     export FZF_DEFAULT_COMMAND='fd --type f'

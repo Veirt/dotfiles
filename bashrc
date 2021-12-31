@@ -66,4 +66,4 @@ ex() {
     fi
 }
 
-source $HOME/.shell_aliases
+source ~/.config/shell_aliases

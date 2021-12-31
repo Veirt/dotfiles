@@ -7,7 +7,7 @@ bind \cf 'tmux-sessionizer.sh'
 bind -M insert \cr 'ranger'
 bind \cr 'ranger'
 
-source ~/.shell_aliases
+source ~/.config/shell_aliases
 
 if type zoxide &> /dev/null
     zoxide init fish | source

@@ -12,7 +12,7 @@ set -U fish_user_paths $HOME/.local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.scripts $fish_user_paths
 
 # npm
-set -U fish_user_paths $HOME/.npm-global/bin $fish_user_paths
+set -U fish_user_paths $HOME/.local/share/npm/bin $fish_user_paths
 
 # go
-set -U fish_user_paths $HOME/go/bin $fish_user_paths
+set -U fish_user_paths $HOME/.local/share/go/bin $fish_user_paths
