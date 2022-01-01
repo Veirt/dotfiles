@@ -1,6 +1,9 @@
 # fuck beep
 unsetopt BEEP
 
+# i hate slow
+KEYTIMEOUT=1
+
 source ~/.config/shell_aliases
 
 bindkey -s "^F" 'tmux-sessionizer.sh^M'
@@ -14,3 +17,18 @@ if [[ ! -f ~/.local/share/zpm/zpm.zsh ]]; then
 fi
 source ~/.local/share/zpm/zpm.zsh
 
+AUTOPAIR_INHIBIT_INIT=1
+
+zpm load zsh-users/zsh-autosuggestions
+zpm load zdharma-continuum/fast-syntax-highlighting
+zpm load hlissner/zsh-autopair
+zpm load jeffreytse/zsh-vi-mode
+
+autopair-init
+
+eval `starship init zsh`
+fpath=($fpath "/home/veirt/.config/zsh/.zfunctions")
+
+# Set typewritten ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt typewritten
