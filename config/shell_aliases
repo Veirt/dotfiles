@@ -41,6 +41,7 @@ alias yb="yarn build"
 alias t="tmux"
 alias ta="tmux a"
 alias lg="lazygit"
+alias a="z"
 
 # quick edit stuffs
 alias vpacman="sudo -e /etc/pacman.conf"
@@ -69,5 +70,4 @@ alias yta-opus="youtube-dl --extract-audio --audio-format opus"
 alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis"
 alias yta-wav="youtube-dl --extract-audio --audio-format wav"
 alias ytv-best="youtube-dl -f bestvideo+bestaudio"
-
 
