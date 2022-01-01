@@ -26,7 +26,7 @@ set cursorline              " highlight current line
 set noswapfile
 set nobackup
 set nowritebackup
-set undodir=~/.vim/undodir
+set undodir=~/.local/vim/undodir
 set undofile
 set updatetime=50
 set shortmess+=c
