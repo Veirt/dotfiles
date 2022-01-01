@@ -19,7 +19,8 @@ export PATH=$XDG_DATA_HOME/npm/bin:$PATH
 export PATH=$XDG_DATA_HOME/go/bin:$PATH
 
 if command -v fd &>/dev/null; then
-    export FZF_DEFAULT_COMMAND='fd --type f'
+    export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 fi
 
-export FZF_DEFAULT_OPTS='--height 50% --layout reverse --border'
+
+export FZF_DEFAULT_OPTS="--prompt='❱ ' --layout reverse --border --bind alt-j:down,alt-k:up"
