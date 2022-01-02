@@ -4,6 +4,7 @@
     "height": 40,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-right": ["pulseaudio", "backlight", "battery", "network", "clock",  "tray"],
+
     "sway/mode": {
         "format": " {}"
     },
@@ -55,21 +56,13 @@
     },
     "network": {
         "interval": 20,
-        "format-alt": "  ({signalStrength}%)",
+        "format-alt": "  ({essid})",
         "format-alt-click": "click-right",
-        "format-wifi": "  {essid}",
+        "format-wifi": "  Connected",
         "format-ethernet": "  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "nm-connection-editor"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": false
     },
     "tray": {
         "icon-size": 13,
