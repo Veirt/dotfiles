@@ -6,3 +6,5 @@ exec --no-startup-id fcitx
 
 exec /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
+
+exec ~/.scripts/import-gsettings
