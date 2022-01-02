@@ -3,7 +3,7 @@
 #
 
 super + Return
-    kitty -e fish
+    $TERMINAL -e fish
 
 XF86AudioRaiseVolume
     amixer set Master 5%+
@@ -38,16 +38,16 @@ XF86AudioPrev
 #
 
 super+w
-    firefox
+    $BROWSER
 
 super+m
-    kitty -e ncmpcpp
+    $TERMINAL -e ncmpcpp
 
 super+shift+d
     discord
 
 super+e
-    nemo
+    $GUIFM
 
 super+shift+s
     flameshot gui
