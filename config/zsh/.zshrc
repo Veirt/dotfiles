@@ -18,6 +18,7 @@ fi
 source ~/.local/share/zpm/zpm.zsh
 
 AUTOPAIR_INHIBIT_INIT=1
+ZVM_CURSOR_STYLE_ENABLED=false
 
 zpm load zsh-users/zsh-autosuggestions
 zpm load zdharma-continuum/fast-syntax-highlighting
@@ -26,9 +27,5 @@ zpm load jeffreytse/zsh-vi-mode
 
 autopair-init
 
+eval "$(zoxide init zsh)"
 eval `starship init zsh`
-fpath=($fpath "/home/veirt/.config/zsh/.zfunctions")
-
-# Set typewritten ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt typewritten
