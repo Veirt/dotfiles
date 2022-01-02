@@ -32,6 +32,7 @@ return require("packer").startup({
         use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
         use("MaxMEllon/vim-jsx-pretty")
         use({ "pantharshit00/vim-prisma", ft = "prisma" })
+        use({ "dag/vim-fish", ft = "fish" })
 
         use("kyazdani42/nvim-tree.lua")
         use("christoomey/vim-tmux-navigator")
