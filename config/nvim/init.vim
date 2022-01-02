@@ -6,6 +6,7 @@ lua require('plugins')
 lua require('packer_compiled')
 
 lua require('init')
+lua require('filetype-nvim')
 lua require('nvimtree')
 lua require('dashboard')
 lua require('statusline')
