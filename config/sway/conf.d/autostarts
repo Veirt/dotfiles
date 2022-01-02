@@ -7,4 +7,6 @@ exec --no-startup-id fcitx
 exec /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
 
+exec mailspring --background
+
 exec ~/.scripts/import-gsettings
