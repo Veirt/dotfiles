@@ -3,7 +3,6 @@ export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-export ZDOTDIR=$HOME/.config/zsh
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
