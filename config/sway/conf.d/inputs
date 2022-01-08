@@ -11,9 +11,24 @@ input "9610:22:BY_Tech_Usb_Gaming_Keyboard" {
     xkb_options caps:escape
 }
 
+# Nitro 5
 input "1267:12433:ELAN0504:01_04F3:3091_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
 }
+
+# MSI Modern 14 B5m
+input "1739:32382:PNP0C50:0e_06CB:7E7E_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+# toggle touchpad
+bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
+
+# fix brightness ghost
+input 0:6:Video_Bus events disabled
