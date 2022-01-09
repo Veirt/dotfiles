@@ -58,7 +58,7 @@ local servers = {
     "cssls",
     "jsonls",
     "prismals",
-    "intelephense",
+    "phpactor",
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({
