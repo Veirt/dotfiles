@@ -44,7 +44,7 @@ return require("packer").startup({
         use("kyazdani42/nvim-tree.lua")
         use("christoomey/vim-tmux-navigator")
 
-        use("terrortylor/nvim-comment")
+        use("numToStr/Comment.nvim")
         use("JoosepAlviste/nvim-ts-context-commentstring")
         use("p00f/nvim-ts-rainbow")
         use("windwp/nvim-ts-autotag")

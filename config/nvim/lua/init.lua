@@ -18,8 +18,6 @@ require("presence"):setup({
 
 require("persistence").setup({})
 
-require("nvim_comment").setup()
-
 require("surround").setup({ mappings_style = "surround", map_insert_mode = false })
 
 require("nvim-autopairs").setup({ map_cr = true })
