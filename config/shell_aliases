@@ -4,7 +4,7 @@ alias pdw="pwd"
 alias claer="clear"
 alias clae="clear"
 alias c="clear"
-alias update="yay -Syu --noconfirm"
+alias update="yay -Syu --noconfirm --removemake"
 
 # quick open folders
 alias repo="cd ~/Repositories"
