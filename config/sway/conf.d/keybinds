@@ -3,6 +3,7 @@ bindsym $mod+w exec $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec $GUIFM
 bindsym $mod+r exec rofi -x11 -show drun
+bindsym $mod+m exec mailspring
 
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 bindsym Print exec grim $HOME/Pictures/Screenshots/$(date +'%s_grim.png')
@@ -12,8 +13,8 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp exec sh -c "brightnessctl set +5%; ~/.scripts/brightness_notification.sh"
-bindsym XF86MonBrightnessDown exec sh -c "brightnessctl set 5%-; ~/.scripts/brightness_notification.sh"
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
