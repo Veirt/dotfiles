@@ -50,21 +50,6 @@ local separator = {
     },
 }
 
-local buffer_not_empty = function()
-    if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
-        return true
-    end
-    return false
-end
-
-local checkwidth = function()
-    local squeeze_width = vim.fn.winwidth(0) / 2
-    if squeeze_width > 40 then
-        return true
-    end
-    return false
-end
-
 local function file_osinfo()
     local os = vim.bo.fileformat:upper()
     local icon
@@ -141,6 +126,7 @@ components.active[1][4] = {
     end,
     hl = {
         fg = colors.red,
+        bg = "NONE",
         style = "bold",
     },
     right_sep = separator,
@@ -153,6 +139,7 @@ components.active[1][5] = {
     end,
     hl = {
         fg = colors.yellow,
+        bg = "NONE",
         style = "bold",
     },
     right_sep = separator,
@@ -165,6 +152,7 @@ components.active[1][6] = {
     end,
     hl = {
         fg = "cyan",
+        bg = "NONE",
         style = "bold",
     },
     right_sep = separator,
@@ -177,6 +165,7 @@ components.active[1][7] = {
     end,
     hl = {
         fg = "skyblue",
+        bg = "NONE",
         style = "bold",
     },
     right_sep = separator,
@@ -277,7 +266,6 @@ components.inactive[1][1] = {
     left_sep = {
         str = " ",
         hl = {
-            fg = colors.red,
             bg = colors.cyan,
         },
     },
@@ -286,7 +274,6 @@ components.inactive[1][1] = {
         {
             str = " ",
             hl = {
-                fg = colors.red,
                 bg = colors.cyan,
             },
         },
