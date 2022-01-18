@@ -77,6 +77,8 @@ exec swayidle -w \
     bindsym $mod+0 workspace number 10
 
     bindsym $mod+tab workspace next
+    bindsym $mod+period workspace next
+    bindsym $mod+comma workspace prev
     bindsym Mod1+tab workspace next_on_output
     bindsym Mod1+Shift+tab workspace prev_on_output
 
