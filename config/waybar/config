@@ -2,9 +2,18 @@
     "layer": "bottom",
     "position": "top",
     "height": 40,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "network", "clock",  "tray"],
-
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "network",
+        "clock",
+        "tray"
+    ],
     "sway/mode": {
         "format": " {}"
     },
@@ -25,7 +34,10 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", ""]
+            "default": [
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
@@ -33,7 +45,10 @@
         "format": "{icon} {percent}%",
         "format-alt": "{icon}",
         "format-alt-click": "click-right",
-        "format-icons": ["", ""],
+        "format-icons": [
+            "",
+            ""
+        ],
         "on-scroll-down": "brightnessctl set 5%-",
         "on-scroll-up": "brightnessctl set +5%"
     },
@@ -45,7 +60,13 @@
         "format": "{icon}  {capacity}%",
         "format-alt": "{icon} ",
         "format-alt-click": "click-right",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
         "format-charging": " {capacity}%",
         "interval": 30,
         "states": {
@@ -67,7 +88,5 @@
     "tray": {
         "icon-size": 13,
         "spacing": 10
-    },
+    }
 }
-
-
