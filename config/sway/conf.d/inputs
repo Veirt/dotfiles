@@ -27,6 +27,9 @@ input "1739:32382:PNP0C50:0e_06CB:7E7E_Touchpad" {
     middle_emulation enabled
 }
 
+# disable touchpad if there is no external mouse by default
+input type:touchpad events disabled_on_external_mouse
+
 # toggle touchpad
 bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
 
