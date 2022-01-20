@@ -1,7 +1,7 @@
 set $mod Mod4
 
 set $browser firefox
-set $terminal kitty
+set $terminal $TERMINAL
 set $launcher rofi -show drun
 set $filemanager nemo
 

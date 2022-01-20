@@ -10,7 +10,7 @@ export XMODIFIERS='@im=fcitx'
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='kitty'
+export TERMINAL='alacritty'
 export BROWSER='firefox'
 export GUIFM='nemo'
 export TUIFM='lf'
