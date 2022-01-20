@@ -8,6 +8,7 @@ return require("packer").startup({
         use("neovim/nvim-lspconfig")
         use("alexaandru/nvim-lspupdate")
         use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "jose-elias-alvarez/null-ls.nvim" } })
+        use("ThePrimeagen/refactoring.nvim")
         use("nathom/filetype.nvim")
 
         use({

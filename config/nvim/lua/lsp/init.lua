@@ -88,11 +88,14 @@ null_ls.setup({
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },
         }),
+        null_ls.builtins.formatting.nginx_beautifier,
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.black, -- python
-        -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.formatting.stylua,
+        -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.hadolint, -- docker
+        null_ls.builtins.code_actions.eslint_d,
+        null_ls.builtins.code_actions.refactoring,
     },
 })
 

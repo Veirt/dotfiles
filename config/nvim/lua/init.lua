@@ -1,3 +1,5 @@
+require("refactoring").setup({})
+
 require("colorizer").setup()
 
 require("gitsigns").setup({})
