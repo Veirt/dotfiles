@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 7
+    y: 7
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -356,8 +356,7 @@ font:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-# background_opacity: 0.9
-
+background_opacity: 0.95
 #selection:
 # This string contains all characters that are used as separators for
 # "semantic words" in Alacritty.
@@ -366,26 +365,24 @@ font:
 # When set to `true`, selected text will be copied to the primary clipboard.
 #save_to_clipboard: false
 
-#cursor:
-# Cursor style
-#style:
-# Cursor shape
-#
-# Values for `shape`:
-#   - ▇ Block
-#   - _ Underline
-#   - | Beam
-#shape: Block
-
-# Cursor blinking state
-#
-# Values for `blinking`:
-#   - Never: Prevent the cursor from ever blinking
-#   - Off: Disable blinking by default
-#   - On: Enable blinking by default
-#   - Always: Force the cursor to always blink
-#blinking: Off
-
+cursor:
+  # Cursor style
+  style:
+    # Cursor shape
+    #
+    # Values for `shape`:
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Block
+    # Cursor blinking state
+    #
+    # Values for `blinking`:
+    #   - Never: Prevent the cursor from ever blinking
+    #   - Off: Disable blinking by default
+    #   - On: Enable blinking by default
+    #   - Always: Force the cursor to always blink
+    blinking: On
 # Vi mode cursor style
 #
 # If the vi mode cursor style is `None` or not specified, it will fall back to
@@ -418,8 +415,8 @@ font:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /usr/bin/fish
 #  args:
 #    - --login
 
