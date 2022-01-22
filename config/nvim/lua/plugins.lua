@@ -46,10 +46,10 @@ return require("packer").startup({
         use({
             "nvim-telescope/telescope.nvim",
             requires = {
-                { "nvim-lua/plenary.nvim" },
                 { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }, -- Native fzf
             },
         }) -- A highly extendable fuzzy finder over lists
+        use("nvim-lua/plenary.nvim")
         use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
         use("lewis6991/gitsigns.nvim") -- Super fast git decorations
         use("sbdchd/neoformat") -- Format code/Prettier
