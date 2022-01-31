@@ -68,6 +68,7 @@ return require("packer").startup({
         use("tweekmonster/startuptime.vim")
         use("andweeb/presence.nvim")
         use("folke/persistence.nvim") -- Automated session management.
+        use("ethanholz/nvim-lastplace")
 
         -- Customization
         use("kyazdani42/nvim-web-devicons") -- A lua fork of vim-devicons
