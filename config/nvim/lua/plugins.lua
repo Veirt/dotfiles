@@ -22,6 +22,7 @@ return require("packer").startup({
                     "hrsh7th/vim-vsnip",
                     "hrsh7th/vim-vsnip-integ",
                     "rafamadriz/friendly-snippets",
+                    "lukas-reineke/cmp-under-comparator",
                 },
             },
         })
@@ -78,6 +79,7 @@ return require("packer").startup({
             "catppuccin/nvim",
             as = "catppuccin",
         })
+        use("sainnhe/gruvbox-material")
         use("famiu/feline.nvim") -- A minimal, stylish and customizable statusline for Neovim written in Lua
     end,
     config = {

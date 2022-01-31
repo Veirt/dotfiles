@@ -94,8 +94,8 @@ null_ls.setup({
         null_ls.builtins.formatting.stylua,
         -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.hadolint, -- docker
-        null_ls.builtins.code_actions.eslint_d,
-        null_ls.builtins.code_actions.refactoring,
+        -- null_ls.builtins.code_actions.eslint_d,
+        -- null_ls.builtins.code_actions.refactoring,
     },
 })
 
