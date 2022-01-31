@@ -79,3 +79,8 @@ nnoremap <silent> <leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent> <leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent> <leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <silent> <leader>5 :lua require("harpoon.ui").nav_file(5)<CR>
+
+" gitsigns
+nnoremap <silent> <leader>hr <cmd>Gitsigns reset_hunk<CR>
+nnoremap <silent> <leader>hR <cmd>Gitsigns reset_buffer<CR>
+nnoremap <silent> <leader>hb <cmd>Gitsigns blame_line<CR>
