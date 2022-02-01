@@ -10,6 +10,7 @@ return require("packer").startup({
         use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "jose-elias-alvarez/null-ls.nvim" } })
         use("ThePrimeagen/refactoring.nvim")
         use("nathom/filetype.nvim")
+        use("mfussenegger/nvim-dap")
 
         use({
             "hrsh7th/nvim-cmp",
@@ -54,7 +55,10 @@ return require("packer").startup({
         use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
         use("lewis6991/gitsigns.nvim") -- Super fast git decorations
         use("sbdchd/neoformat") -- Format code/Prettier
-        use({ "tami5/lspsaga.nvim" }) -- LSP plugin with highly performant UI
+        use({
+            "tami5/lspsaga.nvim",
+            branch = "fix/code_action.indicator/attaching_to_buffer_that_doesnt_support_code_actions",
+        }) -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
         use("RishabhRD/popfix")
         use("blackCauldron7/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
