@@ -19,6 +19,7 @@ export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 export REDISCLI_HISTFILE="$XDG_DATA_HOME/redis/rediscli_history"
 export REDISCLI_RCFILE="$XDG_CONFIG_HOME/redis/redisclirc"
+export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql_history"
 
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
