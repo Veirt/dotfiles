@@ -18,7 +18,7 @@ require("presence"):setup({
 
 require("persistence").setup({})
 
-require("surround").setup({ mappings_style = "surround", map_insert_mode = false })
+require("surround").setup({ mappings_style = "surround", map_insert_mode = false, prompt = false })
 
 require("nvim-autopairs").setup({ map_cr = true })
 
