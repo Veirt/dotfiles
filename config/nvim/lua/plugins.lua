@@ -57,7 +57,6 @@ return require("packer").startup({
         use("sbdchd/neoformat") -- Format code/Prettier
         use({
             "tami5/lspsaga.nvim",
-            branch = "fix/code_action.indicator/attaching_to_buffer_that_doesnt_support_code_actions",
         }) -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
         use("RishabhRD/popfix")
