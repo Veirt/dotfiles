@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Repositories -mindepth 1 -maxdepth 1 -type d -or -type l | fzf)
+    selected=$(fd . ~/dev/ --exact-depth 1 -t d -t l -j 8 --hidden | fzf)
 fi
 
 if [[ -z $selected ]]; then
