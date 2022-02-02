@@ -107,8 +107,6 @@ if not configs.ls_emmet then
                 "html",
                 "css",
                 "scss",
-                "javascriptreact",
-                "typescriptreact",
                 "haml",
                 "xml",
                 "xsl",
