@@ -1,5 +1,3 @@
-local nightfox = require("nightfox")
-
 vim.api.nvim_command([[augroup Color]])
 vim.api.nvim_command([[autocmd!]])
 vim.api.nvim_command([[au ColorScheme * hi LineNr guibg=NONE ctermbg=NONE guifg=#fff]])
@@ -11,8 +9,7 @@ vim.api.nvim_command([[augroup END]])
 -- vim.g.tokyonight_transparent = true
 -- vim.g.tokyonight_transparent_sidebar = true
 
-local catppuccin = require("catppuccin")
-
+-- local catppuccin = require("catppuccin")
 -- -- configure it
 -- catppuccin.setup({
 --     transparent_background = false,
@@ -56,6 +53,7 @@ local catppuccin = require("catppuccin")
 --     },
 -- })
 
+-- local nightfox = require("nightfox")
 -- nightfox.setup({
 --     fox = "nordfox", -- change the colorscheme to use nordfox
 --     transparent = true, -- Disable setting the background color
@@ -76,6 +74,5 @@ vim.g.gruvbox_material_enable_italic = 1
 vim.g.gruvbox_material_enable_bold = 1
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_show_eob = 0
--- vim.g.gruvbox_material_diagnostic_text_highlight = 1
 vim.g.gruvbox_material_diagnostic_line_highlight = 1
 vim.cmd([[colorscheme gruvbox-material]])
