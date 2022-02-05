@@ -23,8 +23,6 @@
     },
     "pulseaudio": {
         "format": "{icon}  {volume}%",
-        "format-alt": "{icon} ",
-        "format-alt-click": "click-right",
         "format-bluetooth": "{icon}  {volume}%",
         "format-muted": "",
         "format-icons": {
@@ -43,8 +41,6 @@
     },
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-alt": "{icon}",
-        "format-alt-click": "click-right",
         "format-icons": [
             "",
             ""
