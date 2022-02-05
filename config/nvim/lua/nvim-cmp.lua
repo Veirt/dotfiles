@@ -10,7 +10,7 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     mapping = {
@@ -20,23 +20,13 @@ cmp.setup({
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.confirm({ select = true })
-            elseif vim.fn["vsnip#available"]() == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif luasnip and luasnip.expand_or_jumpable() then
+                return t("<Plug>luasnip-expand-or-jump")
             else
                 fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-            end
-        end, {
-            "i",
-            "s",
-        }),
-
-        ["<S-Tab>"] = cmp.mapping(function()
-            if vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
             end
         end, {
             "i",
@@ -45,7 +35,7 @@ cmp.setup({
     },
     sources = {
         { name = "nvim_lsp" },
-        { name = "vsnip" },
+        { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
     },
@@ -53,3 +43,6 @@ cmp.setup({
         format = require("lspkind").cmp_format({ with_text = true, maxwidth = 50 }),
     },
 })
+
+-- snippets
+require("luasnip.loaders.from_vscode").load()
