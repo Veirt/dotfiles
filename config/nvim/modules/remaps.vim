@@ -59,7 +59,7 @@ nnoremap <leader>fp :Neoformat<CR>
 
 inoremap <c-v> <esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia
 
-nnoremap <leader>sl <cmd>lua require("persistence").load()<CR>
+nnoremap <leader>sl <cmd>SessionManager load_current_dir_session<CR>
 
 " lsp
 nnoremap <leader>er <cmd>Telescope diagnostics bufnr=0<CR>

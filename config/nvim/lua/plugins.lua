@@ -28,7 +28,6 @@ return require("packer").startup({
         })
 
         use({ "jwalton512/vim-blade", ft = "blade" })
-        use({ "lervag/vimtex", ft = "latex" }) -- Syntax plugin for LaTeX files.
         use({ "posva/vim-vue", ft = "vue" }) -- Syntax with indent for Vue
         use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
         use("MaxMEllon/vim-jsx-pretty")
@@ -66,7 +65,7 @@ return require("packer").startup({
         use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
         use("tweekmonster/startuptime.vim")
         use("andweeb/presence.nvim")
-        use("folke/persistence.nvim") -- Automated session management.
+        use("Shatur/neovim-session-manager")
 
         -- Customization
         use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim
