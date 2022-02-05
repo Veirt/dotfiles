@@ -42,6 +42,7 @@ nnoremap <silent>    <A-8> :BufferLineGoToBuffer 8<CR>
 nnoremap <silent>    <A-9> :BufferLast<CR>
 " Close buffer
 nnoremap <silent>    <A-w> :bdelete<CR>
+nnoremap <silent>    <A-W> :bdelete!<CR>
 
 nnoremap <silent> <C-p> :lua require'telescope.project'.project_files()<CR>
 
@@ -54,8 +55,6 @@ nnoremap <leader>gs <cmd>Telescope git_status<CR>
 
 nnoremap <leader>gg <cmd>LazyGit<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
-
-nnoremap <leader>fp :Neoformat<CR>
 
 inoremap <c-v> <esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia
 

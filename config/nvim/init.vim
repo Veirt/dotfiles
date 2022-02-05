@@ -2,8 +2,8 @@ source $HOME/.config/nvim/modules/generals.vim
 source $HOME/.config/nvim/modules/remaps.vim
 
 lua require('impatient')
-lua require('plugins')
 lua require('packer_compiled')
+lua require('plugins')
 
 lua require('init')
 lua require('filetype-nvim')
@@ -22,3 +22,4 @@ lua require('nvim-cmp')
 lua require('nvim-dap')
 
 autocmd! BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
+autocmd! BufNewFile,BufRead,FileType,OptionSet * setlocal formatoptions-=cro

@@ -22,6 +22,7 @@ set mouse=a                 " enable mouse click
 set ttyfast                 " speed up scrolling in Vim
 set hidden                  " change buffer without save
 set cursorline              " highlight current line
+set nofoldenable
 
 set noswapfile
 set nobackup
