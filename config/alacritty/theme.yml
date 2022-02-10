@@ -26,35 +26,33 @@
 #     cyan: '0x6be4e6'
 #     white: '0xd5d8da'
 
-
 # Colors (One Dark)
 
-colors:
-  # Default colors
-  primary:
-    background: '0x1e2127'
-    foreground: '0xabb2bf'
-  # Normal colors
-  normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
-  # Bright colors
-  bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
-
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x1e2127'
+#     foreground: '0xabb2bf'
+#   # Normal colors
+#   normal:
+#     black:   '0x1e2127'
+#     red:     '0xe06c75'
+#     green:   '0x98c379'
+#     yellow:  '0xd19a66'
+#     blue:    '0x61afef'
+#     magenta: '0xc678dd'
+#     cyan:    '0x56b6c2'
+#     white:   '0xabb2bf'
+#   # Bright colors
+#   bright:
+#     black:   '0x5c6370'
+#     red:     '0xe06c75'
+#     green:   '0x98c379'
+#     yellow:  '0xd19a66'
+#     blue:    '0x61afef'
+#     magenta: '0xc678dd'
+#     cyan:    '0x56b6c2'
+#     white:   '0xffffff'
 
 # # Colors (Nord)
 
@@ -83,3 +81,38 @@ colors:
 #     magenta: '0xB48EAD'
 #     cyan:    '0x8FBCBB'
 #     white:   '0xECEFF4'
+
+# Colors (Tomorrow Night)
+
+colors:
+  # Default colors
+  primary:
+    background: "0x1d1f21"
+    foreground: "0xc5c8c6"
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: "0x1d1f21"
+    cursor: "0xffffff"
+
+  # Normal colors
+  normal:
+    black: "0x1d1f21"
+    red: "0xcc6666"
+    green: "0xb5bd68"
+    yellow: "0xe6c547"
+    blue: "0x81a2be"
+    magenta: "0xb294bb"
+    cyan: "0x70c0ba"
+    white: "0x373b41"
+
+  # Bright colors
+  bright:
+    black: "0x666666"
+    red: "0xff3334"
+    green: "0x9ec400"
+    yellow: "0xf0c674"
+    blue: "0x81a2be"
+    magenta: "0xb77ee0"
+    cyan: "0x54ced6"
+    white: "0x282a2e"
