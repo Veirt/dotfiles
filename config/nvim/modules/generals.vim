@@ -27,7 +27,7 @@ set nofoldenable
 set noswapfile
 set nobackup
 set nowritebackup
-set undodir=~/.local/vim/undodir
+set undodir=~/.local/share/vim/undodir
 set undofile
 set updatetime=50
 set shortmess+=c
@@ -40,6 +40,6 @@ map <Space> <Leader>
 
 augroup highlight_yank
     autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+    autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({timeout = 40})
 augroup END
 

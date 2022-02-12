@@ -1,6 +1,7 @@
 -- Dont preview binaries
 local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
+
 local new_maker = function(filepath, bufnr, opts)
     filepath = vim.fn.expand(filepath)
     Job

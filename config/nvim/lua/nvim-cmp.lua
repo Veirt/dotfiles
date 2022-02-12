@@ -1,9 +1,5 @@
 local cmp = require("cmp")
 
-local feedkey = function(key, mode)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 cmp.setup({
     completion = {
         completeopt = "menu,menuone,noinsert",
@@ -40,7 +36,7 @@ cmp.setup({
         { name = "path" },
     },
     formatting = {
-        format = require("lspkind").cmp_format({ with_text = true, maxwidth = 50 }),
+        format = require("lspkind").cmp_format({ maxwidth = 50 }),
     },
 })
 

@@ -2,8 +2,19 @@ local lsp = require("feline.providers.lsp")
 local vi_mode_utils = require("feline.providers.vi_mode")
 
 local force_inactive = {
-    filetypes = {},
-    buftypes = {},
+    filetypes = {
+        "NvimTree",
+        "alpha",
+        "dbui",
+        "packer",
+        "startify",
+        "fugitive",
+        "fugitiveblame",
+        "help",
+    },
+    buftypes = {
+        "terminal",
+    },
     bufnames = {},
 }
 
@@ -62,21 +73,6 @@ local function file_osinfo()
     end
     return icon .. os
 end
-
-force_inactive.filetypes = {
-    "NvimTree",
-    "alpha",
-    "dbui",
-    "packer",
-    "startify",
-    "fugitive",
-    "fugitiveblame",
-    "help",
-}
-
-force_inactive.buftypes = {
-    "terminal",
-}
 
 -- LEFT
 

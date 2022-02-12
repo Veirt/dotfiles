@@ -1,12 +1,12 @@
 local nvim_lsp = require("lspconfig")
 local null_ls = require("null-ls")
 local configs = require("lspconfig.configs")
+local utils = require("utils")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
     signs = true,
     update_in_insert = false,
-    underline = true,
 })
 
 local on_attach = function(client, bufnr)
@@ -14,25 +14,26 @@ local on_attach = function(client, bufnr)
         floating_window = false,
     })
 
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+    local buf_set_keymap = utils.buf_map(bufnr)
 
-    local opts = { noremap = true, silent = true }
+    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+    buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
+    buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
+    buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
-    -- buf_set_keymap('n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    -- buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-    buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<leader>D", "<cmd>Telescope lsp_definitions<CR>")
+    buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
+    buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+    buf_set_keymap("n", "<F2>", "<cmd>Lspsaga rename<CR>")
+    buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+    buf_set_keymap("n", "<leader>er", "<cmd>Telescope diagnostic bufnr=0<CR>")
+    buf_set_keymap("n", "<leader>eR", "<cmd>Telescope diagnostic<CR>")
+    buf_set_keymap("n", "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>")
+    buf_set_keymap("n", "<leader>sd", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>")
+    buf_set_keymap("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>")
+    buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
+    buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_command([[augroup Format]])
@@ -90,7 +91,7 @@ null_ls.setup({
         }),
         null_ls.builtins.formatting.nginx_beautifier,
         null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.black, -- python
+        null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.stylua,
         -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.hadolint, -- docker
