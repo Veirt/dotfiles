@@ -62,9 +62,11 @@ utils.map("n", "<leader>rc", "<cmd>lua require('refactoring').debug.cleanup({})<
 utils.map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>")
 
 -- Session
-utils.map("n", "<leader>sl", [[<cmd>lua require("persistence").load()<cr>]])
+utils.map("n", "<leader>sl", [[<cmd>lua require("persisted").load()<cr>]])
 
 -- Git
+utils.map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>")
+utils.map("n", "]c", "<cmd>Gitsigns next_hunk<CR>")
 utils.map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
 utils.map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
 utils.map("n", "<leader>hb", "<cmd>Gitsigns blame_line<CR>")
