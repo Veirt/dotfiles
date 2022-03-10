@@ -58,7 +58,7 @@ return require("packer").startup({
         use("lewis6991/gitsigns.nvim") -- Super fast git decorations
         use("tami5/lspsaga.nvim") -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
-        use("blackCauldron7/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
+        use("ur4ltz/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
         -- use("tpope/vim-sleuth") -- Automatically adjusts indent
         use("davidgranstrom/nvim-markdown-preview")
         use("gpanders/editorconfig.nvim")
