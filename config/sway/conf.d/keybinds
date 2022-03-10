@@ -3,7 +3,7 @@ bindsym $mod+w exec $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec $GUIFM
 bindsym $mod+r exec rofi -x11 -show drun
-bindsym $mod+m exec mailspring
+bindsym $mod+m exec geary
 
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 bindsym Print exec grim $HOME/Pictures/Screenshots/$(date +'%s_grim.png')
