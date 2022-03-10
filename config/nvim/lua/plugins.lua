@@ -41,6 +41,7 @@ return require("packer").startup({
         use("MaxMEllon/vim-jsx-pretty")
         use({ "pantharshit00/vim-prisma", ft = "prisma" })
         use({ "dag/vim-fish", ft = "fish" })
+        use("nikvdp/ejs-syntax")
 
         use("kyazdani42/nvim-tree.lua")
         use("numToStr/Navigator.nvim")
