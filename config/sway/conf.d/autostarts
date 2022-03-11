@@ -9,6 +9,4 @@ exec /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
 exec batsignal -b
 
-exec mailspring --background
-
 exec ~/.scripts/import-gsettings
