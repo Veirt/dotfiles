@@ -53,12 +53,10 @@ local servers = {
     "yamlls",
     "dockerls",
     "rust_analyzer",
-    "texlab",
     "sqls",
     "html",
     "cssls",
     "jsonls",
-    "prismals",
     "intelephense",
 }
 for _, lsp in ipairs(servers) do
@@ -100,30 +98,8 @@ null_ls.setup({
     },
 })
 
-if not configs.ls_emmet then
-    configs.ls_emmet = {
-        default_config = {
-            cmd = { "ls_emmet", "--stdio" },
-            filetypes = {
-                "html",
-                "css",
-                "scss",
-                "haml",
-                "xml",
-                "xsl",
-                "pug",
-                "slim",
-                "sass",
-                "stylus",
-                "less",
-                "sss",
-            },
-            root_dir = function(fname)
-                return vim.loop.cwd()
-            end,
-            settings = {},
-        },
-    }
-end
-
-nvim_lsp.ls_emmet.setup({ capabilities = capabilities })
+nvim_lsp.emmet_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "html", "css", "ejs", "typescriptreact", "javascriptreact" },
+})
