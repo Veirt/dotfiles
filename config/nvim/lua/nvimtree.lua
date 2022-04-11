@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_indent_markers = 1
 g.nvim_tree_icons = {
     default = "",
     git = {
@@ -15,6 +14,7 @@ g.nvim_tree_icons = {
 }
 
 require("nvim-tree").setup({
+    nvim_tree_indent_markers = 1,
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
