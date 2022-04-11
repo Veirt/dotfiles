@@ -1,26 +1,18 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-## SETUP yay
 sudo pacman --needed -S git base-devel
 
-git clone https://aur.archlinux.org/yay-bin.git $HOME/yay
-cd $HOME/yay
+git clone https://aur.archlinux.org/paru.git $HOME/paru
+cd $HOME/paru
 makepkg -si
 
-yay -Syu --noconfirm
+paru -Syu --noconfirm
 
-yay --noconfirm -S tmux \
+paru --noconfirm -S tmux \
     neovim \
     bat \
     fd \
     exa \
-    ncmpcpp \
-    i3-gaps \
-    picom \
-    starship \
-    dunst \
     fish \
-    polybar \
-    kitty \
     ripgrep \
     rcm
