@@ -6,7 +6,7 @@ configuration {
   modi: "window,run,drun";
   kb-remove-to-eol: "";
   kb-accept-entry: "Control+m,Return,KP_Enter";
-  kb-row-up: "Up,Control+p,Control+k,ISO_Left_Tab";
+  kb-row-up: "Up,Control+p,Control+k";
   kb-row-down: "Down,Control+n,Control+j";
 }
 
