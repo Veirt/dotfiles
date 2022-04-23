@@ -6,6 +6,7 @@ bindsym $mod+r exec rofi -x11 -show drun
 bindsym $mod+m exec geary
 
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+bindsym Mod1+Shift+s exec flameshot gui
 bindsym Print exec grim $HOME/Pictures/Screenshots/$(date +'%s_grim.png')
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
