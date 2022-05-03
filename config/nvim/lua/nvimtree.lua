@@ -17,7 +17,6 @@ require("nvim-tree").setup({
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
-    ignore_ft_on_setup = {},
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = true,
@@ -36,7 +35,7 @@ require("nvim-tree").setup({
     },
     update_focused_file = {
         enable = true,
-        update_cwd = false,
+        update_cwd = true,
         ignore_list = {},
     },
     system_open = {
@@ -45,7 +44,7 @@ require("nvim-tree").setup({
     },
     filters = {
         dotfiles = false,
-        custom = { ".git", "node_modules", ".cache", "__pycache__", "vendor" },
+        custom = { ".git", ".cache", "__pycache__", "vendor" },
     },
     git = {
         enable = true,
@@ -54,9 +53,9 @@ require("nvim-tree").setup({
     },
     renderer = {
         indent_markers = {
-            enable = false,
+            enable = true,
             icons = {
-                corner = "└ ",
+                corner = " ",
                 edge = "│ ",
                 none = "  ",
             },
@@ -69,13 +68,6 @@ require("nvim-tree").setup({
         width = 30,
         height = 30,
         hide_root_folder = true,
-        side = "left",
-        mappings = {
-            custom_only = false,
-            list = {},
-        },
-        number = false,
-        relativenumber = false,
     },
     trash = {
         cmd = "trash",
