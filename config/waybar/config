@@ -24,11 +24,11 @@
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon}  {volume}%",
-        "format-muted": "",
+        "format-muted": "  Muted",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
-            "headset": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -40,10 +40,11 @@
         "on-click": "pavucontrol"
     },
     "backlight": {
-        "format": "{icon} {percent}%",
+        "format": "{icon}  {percent}%",
         "format-icons": [
-            "",
-            ""
+            "",
+            "",
+            ""
         ],
         "on-scroll-down": "brightnessctl set 5%-",
         "on-scroll-up": "brightnessctl set +5%"
@@ -76,7 +77,7 @@
         "format-alt": "  ({essid})",
         "format-alt-click": "click-right",
         "format-wifi": "  Connected",
-        "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-ethernet": "  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "nm-connection-editor"
