@@ -39,7 +39,10 @@ command! Q quit
 map <Space> <Leader>
 
 augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({timeout = 40})
+    au! TextYankPost * silent! lua require('vim.highlight').on_yank({timeout = 40})
+augroup END
+
+augroup ft_config
+    au! BufNewFile,BufRead *config$* set ft=config
 augroup END
 
