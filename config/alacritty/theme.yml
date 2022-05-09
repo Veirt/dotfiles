@@ -1,5 +1,4 @@
 # # Colors (Horizon Dark)
-
 # colors:
 #   # Primary colors
 #   primary:
@@ -26,8 +25,7 @@
 #     cyan: '0x6be4e6'
 #     white: '0xd5d8da'
 
-# Colors (One Dark)
-
+# # Colors (One Dark)
 # colors:
 #   # Default colors
 #   primary:
@@ -55,7 +53,6 @@
 #     white:   '0xffffff'
 
 # # Colors (Nord)
-
 # colors:
 #   # Default colors
 #   primary:
@@ -82,37 +79,68 @@
 #     cyan:    '0x8FBCBB'
 #     white:   '0xECEFF4'
 
-# Colors (Tomorrow Night)
+# # Colors (Tomorrow Night)
+# colors:
+#   # Default colors
+#   primary:
+#     background: "0x1d1f21"
+#     foreground: "0xc5c8c6"
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: "0x1d1f21"
+#     cursor: "0xffffff"
+#
+#   # Normal colors
+#   normal:
+#     black: "0x1d1f21"
+#     red: "0xcc6666"
+#     green: "0xb5bd68"
+#     yellow: "0xe6c547"
+#     blue: "0x81a2be"
+#     magenta: "0xb294bb"
+#     cyan: "0x70c0ba"
+#     white: "0x373b41"
+#
+#   # Bright colors
+#   bright:
+#     black: "0x666666"
+#     red: "0xff3334"
+#     green: "0x9ec400"
+#     yellow: "0xf0c674"
+#     blue: "0x81a2be"
+#     magenta: "0xb77ee0"
+#     cyan: "0x54ced6"
+#     white: "0x282a2e"
 
-colors:
-  # Default colors
-  primary:
-    background: "0x1d1f21"
-    foreground: "0xc5c8c6"
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: "0x1d1f21"
-    cursor: "0xffffff"
-
-  # Normal colors
-  normal:
-    black: "0x1d1f21"
-    red: "0xcc6666"
-    green: "0xb5bd68"
-    yellow: "0xe6c547"
-    blue: "0x81a2be"
-    magenta: "0xb294bb"
-    cyan: "0x70c0ba"
-    white: "0x373b41"
-
-  # Bright colors
-  bright:
-    black: "0x666666"
-    red: "0xff3334"
-    green: "0x9ec400"
-    yellow: "0xf0c674"
-    blue: "0x81a2be"
-    magenta: "0xb77ee0"
-    cyan: "0x54ced6"
-    white: "0x282a2e"
+# # Colors (Taerminal)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x26282a'
+#     foreground: '0xf0f0f0'
+#   cursor:
+#     background: '0xf0f0f0'
+#     foreground: '0x26282a'
+#
+#       # Normal colors
+#     normal:
+#       black:   '0x26282a'
+#     red:     '0xff8878'
+#     green:   '0xb4fb73'
+#     yellow:  '0xfffcb7'
+#     blue:    '0x8bbce5'
+#     magenta: '0xffb2fe'
+#     cyan:    '0xa2e1f8'
+#     white:   '0xf1f1f1'
+#
+#       # Bright colors
+#     bright:
+#       black:   '0x6f6f6f'
+#       red:     '0xfe978b'
+#       green:   '0xd6fcba'
+#       yellow:  '0xfffed5'
+#       blue:    '0xc2e3ff'
+#       magenta: '0xffc6ff'
+#       cyan:    '0xc0e9f8'
+#       white:   '0xffffff'
