@@ -44,5 +44,6 @@ augroup END
 
 augroup ft_config
     au! BufNewFile,BufRead *config$* set ft=config
+    au! BufNewFile,BufRead *profile$* set ft=bash
 augroup END
 
