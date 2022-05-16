@@ -53,22 +53,11 @@ alias vc="$EDITOR ~/.config/fish/config.fish"
 alias vb="$EDITOR ~/.bashrc"
 alias vz="$EDITOR ~/.zshrc"
 
-# get fastest mirrors in your neighborhood
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
-alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
-alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
-
-# youtube-dl
-alias yta-aac="youtube-dl --extract-audio --audio-format aac"
-alias yta-best="youtube-dl --extract-audio --audio-format best"
-alias yta-flac="youtube-dl --extract-audio --audio-format flac"
-alias yta-m4a="youtube-dl --extract-audio --audio-format m4a"
-alias yta-mp3="youtube-dl --extract-audio --audio-format mp3"
-alias yta-opus="youtube-dl --extract-audio --audio-format opus"
-alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis"
-alias yta-wav="youtube-dl --extract-audio --audio-format wav"
-alias ytv-best="youtube-dl -f bestvideo+bestaudio"
-
+alias ua-drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
+alias ua-update-all='export TMPFILE="$(mktemp)"; \
+    sudo true; \
+    rate-mirrors --save=$TMPFILE arch --max-delay=21600 \
+      && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
+      && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
+      && ua-drop-caches \
+      && paru -Syyu --noconfirm'
