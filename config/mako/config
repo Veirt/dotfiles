@@ -3,9 +3,9 @@ actions=1
 default-timeout=5000
 
 font=Ubuntu 11
-border-color=#212733E0
 border-size=2
-background-color=#212733E0
+border-color=#121214E0
+background-color=#121214E0
 progress-color= #7A7A7A
 text-color=#ffffff
 padding=10

@@ -10,12 +10,15 @@ bindsym Mod1+Shift+s exec flameshot gui
 bindsym Print exec grim $HOME/pictures/screenshots/$(date +'%s_grim.png')
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec ~/.local/bin/volume-notification up
+bindsym XF86AudioLowerVolume exec ~/.local/bin/volume-notification down
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+bindsym XF86MonBrightnessUp exec ~/.local/bin/backlight-notification up
+bindsym XF86MonBrightnessDown exec ~/.local/bin/backlight-notification down
+bindsym $mod+Shift+o exec ~/.local/bin/backlight-toggle
+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous

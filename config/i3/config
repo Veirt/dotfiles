@@ -30,7 +30,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id dunst
 exec --no-startup-id picom --experimental-backends -CGb
 
-exec --no-startup-id $HOME/.scripts/i3-alternating-layout/alternating_layouts.py
+exec --no-startup-id ~/.scripts/i3-alternating-layout/alternating_layouts.py
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -49,7 +49,7 @@ bindsym $mod+w exec --no-startup-id $browser
 bindsym $mod+d exec --no-startup-id discord
 bindsym $mod+e exec --no-startup-id $filemanager
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
-bindsym $mod+p exec --no-startup-id sh -c "$HOME/.scripts/toggle-picom.sh"
+bindsym $mod+p exec --no-startup-id sh -c toggle-picom
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position

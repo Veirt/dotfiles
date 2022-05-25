@@ -14,24 +14,20 @@
         "clock",
         "tray"
     ],
-    "sway/mode": {
-        "format": " {}"
-    },
     "sway/workspaces": {
         "format": "{name}",
         "disable-scroll": true
     },
+    "sway/mode": {
+        "format": " {}"
+    },
     "pulseaudio": {
         "format": "{icon}  {volume}%",
-        "format-bluetooth": "{icon}  {volume}%",
         "format-muted": "  Muted",
         "format-icons": {
             "headphones": "",
-            "handsfree": "",
             "headset": "",
             "phone": "",
-            "portable": "",
-            "car": "",
             "default": [
                 "",
                 ""
@@ -49,38 +45,41 @@
         "on-scroll-down": "brightnessctl set 5%-",
         "on-scroll-up": "brightnessctl set +5%"
     },
-    "clock": {
-        "format": " {:%a, %d %b %Y %H:%M}",
-        "tooltip": false
-    },
     "battery": {
-        "format": "{icon}  {capacity}%",
+        "format": "{icon} {capacity}%",
         "format-alt": "{icon} ",
         "format-alt-click": "click-right",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
         ],
-        "format-charging": " {capacity}%",
+        "format-charging": "  {capacity}%",
         "interval": 30,
         "states": {
-            "warning": 25,
+            "warning": 30,
             "critical": 10
-        },
-        "tooltip": false
+        }
     },
     "network": {
         "interval": 20,
-        "format-alt": "  ({essid})",
+        "format-alt": "  {essid}",
         "format-alt-click": "click-right",
         "format-wifi": "  Connected",
         "format-ethernet": "  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "nm-connection-editor"
+    },
+    "clock": {
+        "format": " {:%a, %d %b %H:%M}"
     },
     "tray": {
         "icon-size": 13,

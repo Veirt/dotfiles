@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ "$1" = "up" ]; then
+    brightnessctl set +5%
+elif [ "$1" = "down" ]; then
+    brightnessctl set 5%-
+fi
+
 BRIGHTNESS=$(brightnessctl get)
 MAX_BRIGHTNESS=$(brightnessctl max)
 PCT=$(echo $BRIGHTNESS $MAX_BRIGHTNESS | awk '{printf "%4.0f\n",($1/$2)*100}' | tr -d '[:space:]')

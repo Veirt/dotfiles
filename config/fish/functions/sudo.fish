@@ -1,4 +1,4 @@
-function sudo --description Replacement\ for\ Bash\ \'sudo\ !!\'\ command\ to\ run\ last\ command\ using\ sudo.
+function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
     if test "$argv" = !!
     eval command sudo $history[1]
 else

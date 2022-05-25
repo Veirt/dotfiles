@@ -41,8 +41,12 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME/go"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 
+# configurations
+export PF_INFO="ascii os kernel uptime pkgs"
+
 if command -v fd &>/dev/null; then
     export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 fi
 
 export FZF_DEFAULT_OPTS="--prompt='❱ ' --bind alt-j:down,alt-k:up"
+

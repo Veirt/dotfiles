@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$1" = "up" ]; then
+    pamixer -i 5
+elif [ "$1" = "down" ]; then
+    pamixer -d 5
+fi
+
+VOLUME=$(pamixer --get-volume)
+
+# Send the notification with the icon:
+notify-send.sh "Volume ${VOLUME}%" \
+    --replace-file=/tmp/volume-notification \
+    -t 2000 \
+    --icon ~/.icons/volume.png \
+    -h int:value:${VOLUME} \
+    -h string:synchronous:volume-change

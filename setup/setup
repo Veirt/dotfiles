@@ -15,4 +15,5 @@ paru --noconfirm -S tmux \
     exa \
     fish \
     ripgrep \
-    rcm
+    rcm \
+    notify-send.sh

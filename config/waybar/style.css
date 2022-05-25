@@ -3,8 +3,6 @@
   border-radius: 0;
   font-family: JetBrainsMono Nerd Font;
   font-size: 14px;
-  box-shadow: none;
-  text-shadow: none;
   transition-duration: 0.25s;
 }
 
@@ -14,8 +12,9 @@ window {
 }
 
 #workspaces button {
+  margin: 5px;
+  border-radius: 5px;
   padding: 0px 0px;
-  color: rgba(170, 187, 195, 1);
 }
 
 #workspaces button.visible {
@@ -23,7 +22,8 @@ window {
 }
 
 #workspaces button.focused {
-  border-top: 3px solid #757575;
+  background-color: #212126;
+  color: #fff;
 }
 
 #workspaces button:hover {
@@ -39,14 +39,13 @@ window {
 #backlight,
 #battery,
 #network,
+#clock,
 #tray {
-  margin: 0px 20px 0px 10px;
-  min-width: 25px;
-}
-
-#clock {
-  margin: 0px 16px 0px 10px;
-  min-width: 140px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #1A1A1F;
+  padding: 10px 15px;
+  min-width: 50px;
 }
 
 #battery.warning {
@@ -57,10 +56,3 @@ window {
   color: rgba(238, 46, 36, 1);
 }
 
-#battery.charging {
-  color: rgba(217, 216, 216, 1);
-}
-
-#tray {
-  font-family: Ubuntu;
-}

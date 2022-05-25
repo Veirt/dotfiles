@@ -8,9 +8,12 @@ font Ubuntu 12
 default_border pixel 2
 default_floating_border none
 
+# class                 border  backgr. text    indicator child_border
+client.focused          #343945 #343945 #ffffff #2e9ef4   #343945
+client.unfocused        #333333 #222222 #888888 #333845   #1A1A1F
+
 smart_borders on
 smart_gaps on
-
 gaps inner 10
 
 # Home row direction keys, like vim
@@ -20,7 +23,10 @@ set $up k
 set $right l
 
 exec swayidle -w \
-        timeout 3600 'systemctl suspend'
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 3600 'systemctl suspend' \
+    resume 'swaymsg "output * dpms on"'
 
 
 ### Key bindings

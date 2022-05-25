@@ -53,7 +53,7 @@ super+shift+s
     flameshot gui
 
 super+shift+p
-    sh -c "$HOME/.scripts/toggle-picom.sh"
+    toggle-picom
 
 super+r
     ulauncher-toggle
