@@ -1,18 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_icons = {
-    default = "",
-    git = {
-        unstaged = "U",
-        staged = "S",
-        unmerged = "",
-        renamed = "R",
-        untracked = "*",
-        deleted = "D",
-        ignored = "◌",
-    },
-}
-
 require("nvim-tree").setup({
     disable_netrw = true,
     hijack_netrw = true,
@@ -62,6 +49,18 @@ require("nvim-tree").setup({
         },
         icons = {
             webdev_colors = true,
+            glyphs = {
+                default = "",
+                git = {
+                    unstaged = "U",
+                    staged = "S",
+                    unmerged = "",
+                    renamed = "R",
+                    untracked = "*",
+                    deleted = "D",
+                    ignored = "◌",
+                },
+            },
         },
     },
     view = {
