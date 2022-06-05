@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 if pgrep picom; then
     killall -q picom

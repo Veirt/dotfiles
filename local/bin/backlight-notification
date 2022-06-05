@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 if [ "$1" = "up" ]; then
     brightnessctl set +5%
