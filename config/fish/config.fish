@@ -4,9 +4,6 @@ fish_vi_key_bindings
 bind -M insert \cf 'tmux-sessionizer'
 bind \cf 'tmux-sessionizer'
 
-bind -M insert \cr 'ranger'
-bind \cr 'ranger'
-
 source ~/.config/shell_aliases
 
 # fish only aliases
