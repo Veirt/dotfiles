@@ -1,7 +1,6 @@
 export EDITOR='nvim'
 export VISUAL='nvim'
-# export TERMINAL='alacritty msg create-window || alacritty'
-export TERMINAL='foot'
+export TERMINAL='alacritty msg create-window || alacritty'
 export BROWSER='firefox'
 export GUIFM='nemo'
 export TUIFM='ranger'
