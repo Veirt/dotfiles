@@ -9,4 +9,4 @@ exec /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
 exec batsignal -b
 
-exec dash import-gsettings
+exec dash ~/.config/sway/scripts/import-gsettings
