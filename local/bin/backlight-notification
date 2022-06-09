@@ -1,19 +1,15 @@
 #!/bin/dash
 
 if [ "$1" = "up" ]; then
-    brightnessctl set +5%
+    light -A 5
 elif [ "$1" = "down" ]; then
-    brightnessctl set 5%-
+    light -U 5
 fi
 
-BRIGHTNESS=$(brightnessctl get)
-MAX_BRIGHTNESS=$(brightnessctl max)
-PCT=$(echo $BRIGHTNESS $MAX_BRIGHTNESS | awk '{printf "%4.0f\n",($1/$2)*100}' | tr -d '[:space:]')
+BACKLIGHT=$(light)
 
-# Send the notification with the icon:
-notify-send.sh "Brightness ${PCT}%" \
+notify-send.sh "Backlight ${BACKLIGHT}%" \
     --replace-file=/tmp/brightness-notification \
     -t 2000 \
     --icon ~/.icons/brightness.png \
-    -h int:value:${PCT} \
     -h string:synchronous:brightness-change
