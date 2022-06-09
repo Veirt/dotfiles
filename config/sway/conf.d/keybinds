@@ -1,5 +1,5 @@
 bindsym $mod+Return exec eval $TERMINAL
-bindsym $mod+w exec $BROWSER
+bindsym $mod+w exec eval $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec $GUIFM
 bindsym $mod+r exec rofi -x11 -show drun
