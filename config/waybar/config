@@ -42,8 +42,8 @@
             "",
             ""
         ],
-        "on-scroll-down": "brightnessctl set 5%-",
-        "on-scroll-up": "brightnessctl set +5%"
+        "on-scroll-up": "~/.local/bin/backlight-notification up",
+        "on-scroll-down": "~/.local/bin/backlight-notification down"
     },
     "battery": {
         "format": "{icon} {capacity}%",
