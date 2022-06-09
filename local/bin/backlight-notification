@@ -6,7 +6,7 @@ elif [ "$1" = "down" ]; then
     light -U 5
 fi
 
-BACKLIGHT=$(light)
+BACKLIGHT=$(printf "%.0f" $(light))
 
 notify-send.sh "Backlight ${BACKLIGHT}%" \
     --replace-file=/tmp/brightness-notification \
