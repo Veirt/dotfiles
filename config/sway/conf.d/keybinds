@@ -19,6 +19,6 @@ bindsym XF86MonBrightnessUp exec ~/.local/bin/backlight-notification up
 bindsym XF86MonBrightnessDown exec ~/.local/bin/backlight-notification down
 bindsym $mod+Shift+o exec ~/.local/bin/backlight-toggle
 
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause || mpc toggle
+bindsym XF86AudioNext exec playerctl next || mpc next
+bindsym XF86AudioPrev exec playerctl previous || mpc prev
