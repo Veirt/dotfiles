@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mkdir -p ~/.local/share/gnupg && find ~/.local/share/gnupg -type f -exec chmod 600 {} \; && find ~/.local/share/gnupg -type d -exec chmod 700 {} \;
+
+mkdir -p ~/.config/gtk-2.0
+
+echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >>"$XDG_CONFIG_HOME/wgetrc"
