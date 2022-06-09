@@ -6,7 +6,6 @@ KEYTIMEOUT=1
 source ~/.config/shell_aliases
 
 bindkey -s "^F" 'tmux-sessionizer^M'
-bindkey -s "^R" 'ranger^M'
 
 if [[ ! -f ~/.local/share/zpm/zpm.zsh ]]; then
   git clone --recursive https://github.com/zpm-zsh/zpm ~/.local/share/zpm
