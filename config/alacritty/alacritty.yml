@@ -13,7 +13,7 @@ window:
     x: 7
     y: 7
 
-  opacity: 0.95
+  # opacity: 0.95
   dynamic_padding: true
   dynamic_title: true
   gtk_theme_variant: dark
