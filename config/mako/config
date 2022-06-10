@@ -2,10 +2,9 @@ markup=1
 actions=1
 default-timeout=5000
 
-font=Ubuntu 11
-border-size=2
-border-color=#121214E0
-background-color=#121214E0
+font=JetBrains Mono Nerd Font 11
+border-size=0
+background-color=#1A1A1F
 progress-color= #7A7A7A
 text-color=#ffffff
 padding=10
