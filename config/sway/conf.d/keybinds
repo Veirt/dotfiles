@@ -1,4 +1,4 @@
-bindsym $mod+Return exec eval $TERMINAL
+bindsym $mod+Return exec eval $LAUNCH_TERMINAL
 bindsym $mod+w exec eval $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec $GUIFM

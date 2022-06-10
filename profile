@@ -1,8 +1,9 @@
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='alacritty msg create-window || alacritty'
+export TERMINAL='alacritty'
+export LAUNCH_TERMINAL='alacritty msg create-window || alacritty'
 export BROWSER='firefox || firefox-bin'
-export GUIFM='nemo'
+export GUIFM='thunar'
 export TUIFM='ranger'
 
 export PATH=$XDG_DATA_HOME/npm/bin:$PATH
@@ -16,7 +17,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_QPA_PLATFORM=wayland
+# export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export MOZ_WEBRENDER=1
