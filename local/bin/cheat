@@ -1,3 +1,3 @@
 #!/bin/dash
 
-curl cheat.sh/$1
+curl -s cheat.sh/$1
