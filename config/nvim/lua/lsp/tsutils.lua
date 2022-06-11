@@ -6,8 +6,8 @@ nvim_lsp.tsserver.setup({
 
     on_attach = function(client, bufnr)
         -- disable tsserver formatting if you plan on formatting via null-ls
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
 
         ts_utils.setup({
             enable_import_on_completion = true,
