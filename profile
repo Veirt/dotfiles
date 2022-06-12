@@ -2,7 +2,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='alacritty'
 export LAUNCH_TERMINAL='alacritty msg create-window || alacritty'
-export BROWSER='firefox || firefox-bin'
+export BROWSER='firefox'
 export GUIFM='thunar'
 export TUIFM='ranger'
 
