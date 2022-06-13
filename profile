@@ -28,7 +28,7 @@ export QT_IM_MODULE='fcitx'
 export XMODIFIERS='@im=fcitx'
 
 # home dir cleanups
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
 
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
