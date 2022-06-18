@@ -1,1 +1,1 @@
-EXCLUDES="*.md spec test* docs LICENSE desktop.png screenshot* setup*.sh stylua.toml .vscode"
+EXCLUDES="*.md spec test* docs LICENSE desktop.png screenshot* setup* stylua.toml .vscode"
