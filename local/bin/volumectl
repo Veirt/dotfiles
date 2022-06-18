@@ -8,12 +8,16 @@ if [ "$1" = "up" ]; then
     fi
 elif [ "$1" = "down" ]; then
     pactl -- set-sink-volume 0 -5%
+elif [ "$1" = "mute" ]; then
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+elif [ "$1" = "mic-mute" ]; then
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
 fi
 
 CURRENT_VOLUME=$(pamixer --get-volume)
 
 notify-send.sh "Volume ${CURRENT_VOLUME}%" \
-    --replace-file=/tmp/volume-notification \
+    --replace-file=/tmp/volumectl \
     -t 2000 \
     --icon ~/.icons/volume.png \
     -h string:synchronous:volume-change
