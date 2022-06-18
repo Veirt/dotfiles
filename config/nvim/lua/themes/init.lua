@@ -5,4 +5,4 @@ vim.api.nvim_command([[au ColorScheme * hi CursorLineNr guifg=#fefefe]])
 vim.api.nvim_command([[au ColorScheme * hi NvimTreeNormal guibg=NONE]])
 vim.api.nvim_command([[augroup END]])
 
-require("themes.nightfox")
+require("themes.gruvbox")
