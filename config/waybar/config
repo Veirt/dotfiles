@@ -16,7 +16,7 @@
     ],
     "sway/workspaces": {
         "format": "{name}",
-        "disable-scroll": true
+        "disable-scroll": true,
     },
     "sway/mode": {
         "format": " {}"
@@ -24,6 +24,8 @@
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": "  Muted",
+        "format-alt": "{icon}",
+        "format-alt-click": "click-right",
         "format-icons": {
             "headphones": "",
             "headset": "",
@@ -37,17 +39,20 @@
     },
     "backlight": {
         "format": "{icon}  {percent}%",
+        "format-alt": "{icon}",
+        "format-alt-click": "click-right",
         "format-icons": [
             "",
             "",
             ""
         ],
-        "on-scroll-up": "~/.local/bin/backlight-notification up",
-        "on-scroll-down": "~/.local/bin/backlight-notification down"
+        "on-scroll-up": "~/.local/bin/backlightctl up",
+        "on-scroll-down": "~/.local/bin/backlightctl down"
     },
     "battery": {
-        "format": "{icon} {capacity}%",
-        "format-alt": "{icon} ",
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-alt": "{icon}",
         "format-alt-click": "click-right",
         "format-icons": [
             "",
@@ -61,7 +66,6 @@
             "",
             ""
         ],
-        "format-charging": "  {capacity}%",
         "interval": 30,
         "states": {
             "warning": 30,
@@ -70,19 +74,21 @@
     },
     "network": {
         "interval": 20,
-        "format-alt": "  {essid}",
+        "format-alt": " ",
         "format-alt-click": "click-right",
-        "format-wifi": "  Connected",
+        "format-wifi": "   Connected",
         "format-ethernet": "  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}",
+        "tooltip-format": "{ifname}: ({essid}) {ipaddr}",
         "on-click": "nm-connection-editor"
     },
     "clock": {
-        "format": " {:%a, %d %b %H:%M}"
+        "format": "  {:%a, %d %b %H:%M}",
+        "format-alt": "  {:%I:%M %p}",
+        "format-alt-click": "click-right"
     },
     "tray": {
-        "icon-size": 13,
+        "icon-size": 15,
         "spacing": 10
     }
 }
