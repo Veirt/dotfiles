@@ -12,7 +12,7 @@ input "9610:22:BY_Tech_Usb_Gaming_Keyboard" {
 }
 
 # Nitro 5
-input "1267:12433:ELAN0504:01_04F3:3091_Touchpad" {
+input "2:14:ETPS/2_Elantech_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
