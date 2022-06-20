@@ -4,7 +4,7 @@ default-timeout=5000
 
 font=JetBrains Mono Nerd Font 11
 border-size=0
-background-color=#1A1A1F
+background-color=#121214
 progress-color= #7A7A7A
 text-color=#ffffff
 padding=10
@@ -16,4 +16,4 @@ format=%s\n%b
 format=Hidden: %h [%t]
 
 [urgency=high]
-border-color=#9c2220
+background-color=#9c2220
