@@ -19,5 +19,5 @@ CURRENT_VOLUME=$(pamixer --get-volume)
 notify-send.sh "Volume ${CURRENT_VOLUME}%" \
     --replace-file=/tmp/volumectl \
     -t 2000 \
-    --icon ~/.icons/volume.png \
+    --icon $XDG_DATA_HOME/icons/volume.png \
     -h string:synchronous:volume-change
