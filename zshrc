@@ -23,4 +23,3 @@ zpm load jeffreytse/zsh-vi-mode
 autopair-init
 
 eval "$(zoxide init zsh)"
-eval `starship init zsh`
