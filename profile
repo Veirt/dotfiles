@@ -23,9 +23,9 @@ export XDG_SESSION_DESKTOP=sway
 export MOZ_WEBRENDER=1
 export MOZ_ENABLE_WAYLAND=1
 
-export GTK_IM_MODULE='fcitx'
-export QT_IM_MODULE='fcitx'
-export XMODIFIERS='@im=fcitx'
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
 
 # home dir cleanups
 export HISTFILE="$XDG_STATE_HOME/bash/history"
@@ -48,9 +48,11 @@ export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql_history"
 
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME/go"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 
 # configurations
