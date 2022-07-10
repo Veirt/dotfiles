@@ -8,7 +8,7 @@ set nowrap
 set scrolloff=8
 set incsearch
 set signcolumn=yes
-set shell=/usr/bin/bash
+set shell=/bin/bash
 
 set tabstop=4               " number of columns occupied by a tab
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing

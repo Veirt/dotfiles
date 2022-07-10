@@ -9,6 +9,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     update_in_insert = false,
 })
 
+local function lspSymbol(name, icon)
+    vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, numhl = "DiagnosticDefault" .. name })
+end
+
+lspSymbol("Error", "")
+lspSymbol("Information", "")
+lspSymbol("Hint", "")
+lspSymbol("Info", "")
+lspSymbol("Warning", "")
+
 local on_attach = function(client, bufnr)
     require("lsp_signature").on_attach({
         floating_window = false,
@@ -35,7 +45,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
     buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
-    vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
+    -- vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
 end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())

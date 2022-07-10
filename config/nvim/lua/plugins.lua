@@ -56,7 +56,7 @@ return require("packer").startup({
         })
         use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
         use("lewis6991/gitsigns.nvim") -- Super fast git decorations
-        use("tami5/lspsaga.nvim") -- LSP plugin with highly performant UI
+        use("glepnir/lspsaga.nvim") -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
         use("ur4ltz/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
         -- use("tpope/vim-sleuth") -- Automatically adjusts indent

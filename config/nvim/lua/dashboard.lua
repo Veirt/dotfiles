@@ -1,29 +1,5 @@
 local dashboard = require("alpha.themes.dashboard")
 
--- dashboard.section.header.val = {
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠌⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⠛⠿⣿⣇⣀⠀⠀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠉⠠⡄⠀⠀⠀⠈⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠰⠁⠉⠀⠀⠄",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠁⣠⢊⢵⢽⢄⠀⠀⠀⠀⠈⠙⠻⠿⣿⣿⣿⣿⡿⢟⠁⢀⠀⠀⠀⠀⡀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⢐⠇⠌⡠⡆⠀⠗⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡀⠀⠑⠠⠤⠒⠀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⢰⠁⣼⢴⠈⡔⣴⠀⢰⠀⢀⡑⠢⠄⢀⡀⠀⠀⠀⠀⠀⠀⣀⢇⣀⡀⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⠀⠀⠀⠀⢸⣸⢸⡍⠘⣼⢸⠀⠘⣁⣘⠑⠀⣀⢼⠇⠈⡉⢉⣆⣈⡏⢰⡿⠟⠀⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⠀⠀⢴⣶⣦⣷⠞⣚⣢⠆⠀⠀⠀⢈⣿⣿⣿⠂⠀⠀⠀⠘⣿⣿⡇⡇⢸⣿⠄⠂⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⠀⢀⠔⠉⢀⣿⡈⢀⠀⠀⠀⠀⡆⠸⣿⣿⣿⠀⠀⠀⠀⠸⣿⣿⡆⠣⢸⠈⢰⠀⢁⠀⠀⠀",
---     "⠀⠀⠀⠀⢠⠊⠀⡰⠙⠿⠑⢄⡉⠀⠀⠀⢔⡀⠙⠛⠃⠠⠤⠤⠤⢄⠙⠛⠀⢠⢹⠀⠈⠀⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⡌⠀⠀⡇⠀⠀⠀⠀⠈⠉⠲⠀⣧⣀⣀⣀⣀⣇⠀⠀⣀⣆⡀⠤⠒⢹⡄⠀⠇⠀⠀⠀⠀⠀",
---     "⠀⠀⠀⠀⡇⠀⠀⡧⠤⢀⡀⠀⠀⠀⢀⠥⢿⣿⣿⣿⣿⣿⣿⣿⣿⣆⡀⠀⠀⠸⠤⡜⠀⠀⠰⠀⠀⠀",
---     "⠀⠀⢠⠊⢇⠀⠀⠘⢦⡀⠈⢢⠀⠀⠧⢄⡀⠀⠉⠉⠋⠛⠛⠋⠛⠁⠑⡔⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀",
---     "⠀⠀⠇⠀⠸⠢⢄⡀⠀⠀⢀⠼⡀⢀⣠⣼⣿⣿⣿⣷⣶⣶⡒⠒⠲⣿⣯⡈⠠⠀⠀⠀⢐⠁⠘⠀⠀⠀",
---     "⢀⠊⢆⠠⣄⣇⠀⠀⠉⠉⠀⠀⠈⠻⣿⡿⠿⠿⠿⠿⣿⣿⡇⠀⠀⢹⣿⣿⣷⣦⣀⣠⣂⠀⠀⠀⠀⠀",
---     "⡇⠀⠈⠐⠓⠈⠀⠀⠀⠀⠀⠈⠑⢄⢱⠀⣀⣀⣀⣀⡈⣿⡇⠀⠀⠀⣿⣿⣿⣿⠿⠇⢌⠀⠀⠀⠀⠀",
---     "⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣳⠉⢗⢫⣉⠐⠂⠱⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⠀⠀",
---     "⠡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠪⠊⠉⠹⠁⠀⠁⣏⣀⣀⣀⣀⣠⠤⠤⠔⠒⠒⠒⠉⠁⠀⠀⠀⠀",
---     "⠀⠑⠢⢄⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡠⠔⠁⠀⠀⠀⠀⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
--- }
-
 dashboard.section.header.val = {
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠤⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠔⠋⠈⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⢃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
@@ -52,12 +28,10 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-    dashboard.button("SPC f n", "  New File", ":ene <BAR><CR>"),
-    dashboard.button("SPC f o", "  Recents", "<cmd>Telescope oldfiles<CR>"),
-    dashboard.button("SPC b m", "  Bookmarks", "<cmd>Telescope marks<CR>"),
-    dashboard.button("SPC s l", "ﴬ  Open Last Session", "<cmd>lua require('persisted').load()<cr>"),
+    dashboard.button("<Space> fn", "  New", ":ene <BAR><CR>"),
+    dashboard.button("<Space> fo", "  Recents", "<cmd>Telescope oldfiles<CR>"),
+    dashboard.button("<Space> bm", "  Bookmarks", "<cmd>Telescope marks<CR>"),
+    dashboard.button("<Space> sl", "ﴬ  Last", "<cmd>lua require('persisted').load()<CR>"),
 }
-
-dashboard.section.footer.val = { "" }
 
 require("alpha").setup(dashboard.opts)
