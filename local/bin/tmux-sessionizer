@@ -3,7 +3,7 @@
 if [ $# -eq 1 ]; then
     selected=$1
 else
-    selected=$(fd . ~/dev/ --exact-depth 1 -t d -t l -j 8 --hidden | fzf)
+    selected=$(fd . $HOME/dev --exact-depth 1 -t d -t l --hidden --exec basename {} \; | fzf)
 fi
 
 if [ -z $selected ]; then
@@ -11,6 +11,7 @@ if [ -z $selected ]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
+selected="$HOME/dev/${selected}"
 tmux_running=$(pgrep tmux)
 if [ -z "$TMUX" ] && [ -z "$tmux_running" ]; then
     tmux new-session -s $selected_name -c $selected

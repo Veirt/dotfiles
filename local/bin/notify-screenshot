@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    OUTPUT=$(~/.local/bin/screenshot-wayland)
+fi
+
+if [ -v "$OUTPUT" ]; then
+    notify-send.sh -u critical "Something went wrong." "Can't take a screenshot."
+else
+    notify-send.sh -d "$GUIFM $(dirname $OUTPUT)" -i "$OUTPUT" "Screenshot has taken"
+
+fi

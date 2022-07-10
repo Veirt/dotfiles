@@ -1,0 +1,6 @@
+#!/bin/sh
+
+readonly output=$(xdg-user-dir PICTURES)/screenshots/$(date +"%Y-%m-%d-%s_grim.png")
+grim $output
+
+echo $output
