@@ -1,3 +1,7 @@
+@define-color background #151515;
+@define-color urgent #b66467;
+@define-color warning #d9bc8c;
+
 * {
   border: none;
   border-radius: 0;
@@ -8,12 +12,12 @@
 
 window {
   color: rgba(216, 228, 230, 1);
-  background: #121214;
+  background: @background;
 }
 
 #workspaces button {
   color: #a1a6a6;
-  padding: 0px 0px;
+  padding: 5px 15px;
 }
 
 #workspaces button.focused {
@@ -25,7 +29,7 @@ window {
 }
 
 #workspaces button.urgent {
-  color: #d8e4e6;
+  color: @urgent;
 }
 
 #mode,
@@ -41,8 +45,9 @@ window {
 
 #battery.warning {
   color: rgba(255, 210, 4, 1);
+  color: @warning;
 }
 
 #battery.critical {
-  color: rgba(238, 46, 36, 1);
+  color: @urgent;
 }

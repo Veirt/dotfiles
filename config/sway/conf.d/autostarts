@@ -1,13 +1,12 @@
 # Startups
-exec thunar --daemon
+exec --no-startup-id thunar --daemon
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-exec --no-startup-id fcitx
+exec --no-startup-id wlsunset -l $LATITUDE -L $LONGITUDE
 
-exec /usr/lib/geoclue-2.0/demos/agent
-exec redshift-gtk
-exec batsignal -b
+exec --no-startup-id fcitx5 --verbose 0
 
-exec /usr/lib/tumbler-1/tumblerd
+exec --no-startup-id batsignal -b
+
 
 exec dash ~/.config/sway/scripts/import-gsettings

@@ -8,12 +8,14 @@ font Ubuntu 12
 default_border pixel 2
 default_floating_border none
 
+focus_follows_mouse no
+
 # class                 border  backgr. text    indicator child_border
 client.focused          #343945 #343945 #ffffff #2e9ef4   #343945
 client.unfocused        #333333 #222222 #888888 #333845   #1A1A1F
 
 smart_borders on
-smart_gaps on
+smart_gaps off
 gaps inner 10
 
 # Home row direction keys, like vim
