@@ -10,4 +10,44 @@
 	<startup-notify/>
 	<directories/>
 </action>
+<action>
+	<icon></icon>
+	<name>Convert *.wav to *.flac</name>
+	<unique-id>1657084900758321-1</unique-id>
+	<command>~/.config/Thunar/scripts/wavtoflac.sh %F</command>
+	<description></description>
+	<patterns>*.wav</patterns>
+	<audio-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>waifu2x</name>
+	<unique-id>1657180460579554-1</unique-id>
+	<command>~/.config/Thunar/scripts/waifu2x.sh %F</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>md5namer</name>
+	<unique-id>1657183143771405-1</unique-id>
+	<command>md5namer %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>Set as Sway wallpaper</name>
+	<unique-id>1657275605545804-1</unique-id>
+	<command>setpape %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>
