@@ -1,0 +1,9 @@
+[Unit]
+Description=Discord Rich Presence for MPD
+Requires=mpd.service
+
+[Service]
+ExecStart=/usr/bin/mpd-discord-rpc
+
+[Install]
+WantedBy=default.target
