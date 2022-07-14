@@ -1,4 +1,4 @@
-require("colorizer").setup()
+-- require("colorizer").setup()
 
 require("gitsigns").setup()
 
@@ -10,9 +10,9 @@ require("bufferline").setup({
     },
 })
 
-require("presence"):setup({
-    buttons = false,
-})
+-- require("presence"):setup({
+--     buttons = false,
+-- })
 
 require("surround").setup({ mappings_style = "surround", map_insert_mode = false, prompt = false })
 

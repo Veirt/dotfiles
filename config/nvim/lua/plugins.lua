@@ -35,7 +35,6 @@ return require("packer").startup({
             },
         })
 
-        use({ "jwalton512/vim-blade", ft = "blade" })
         use({ "posva/vim-vue", ft = "vue" }) -- Syntax with indent for Vue
         use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
         use("MaxMEllon/vim-jsx-pretty")
@@ -66,11 +65,11 @@ return require("packer").startup({
 
         use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
         use("tweekmonster/startuptime.vim")
-        use("andweeb/presence.nvim")
+        -- use("andweeb/presence.nvim")
         use("olimorris/persisted.nvim")
 
         -- Customization
-        use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim
+        -- use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim
         use("kyazdani42/nvim-web-devicons") -- A lua fork of vim-devicons
         use("akinsho/bufferline.nvim") -- Tabline plugin
         use("goolord/alpha-nvim") -- Vim dashboard
