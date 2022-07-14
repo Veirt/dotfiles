@@ -45,7 +45,17 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
     buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
-    -- vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                vim.lsp.buf.formatting_seq_sync()
+            end,
+        })
+    end
 end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -57,7 +67,6 @@ local servers = {
     "vimls",
     "yamlls",
     "dockerls",
-    "rust_analyzer",
     "sqls",
     "html",
     "cssls",
@@ -70,6 +79,19 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     })
 end
+
+nvim_lsp.rust_analyzer.setup({
+
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy",
+            },
+        },
+    },
+})
 
 -- vue
 nvim_lsp.volar.setup({
@@ -88,7 +110,7 @@ null_ls.setup({
     on_attach = on_attach,
     sources = {
         null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.formatting.rustfmt,
+        -- null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },
         }),
