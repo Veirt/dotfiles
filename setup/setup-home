@@ -9,15 +9,14 @@ mkdir -p ~/.local/share/gnupg && find ~/.local/share/gnupg -type f -exec chmod 6
 mkdir -p ~/.config/gtk-2.0
 
 # wget
-if ! grep -q "hsts-file" ~/.config/wgetrc 2> /dev/null ; then
+if ! grep -q "hsts-file" ~/.config/wgetrc 2>/dev/null; then
     echo hsts-file \= "$XDG_CACHE_HOME"/wget-hsts >>"$XDG_CONFIG_HOME/wgetrc"
 else
     echo "Skipping wget"
 fi
 
-
 # npm
-if ! grep -q -E "prefix=|cache=" ~/.npmrc 2> /dev/null ; then
+if ! grep -q -E "prefix=|cache=" ~/.npmrc 2>/dev/null; then
     echo "prefix=$XDG_DATA_HOME/npm" >>~/.npmrc
     echo "cache=$XDG_CACHE_HOME/npm" >>~/.npmrc
 else
@@ -29,3 +28,6 @@ mkdir -p "$XDG_STATE_HOME/bash"
 
 # postgresql
 mkdir -p "$XDG_CONFIG_HOME/pg" && mkdir -p "$XDG_STATE_HOME"
+
+# wine
+mkdir -p "$XDG_DATA_HOME"/wineprefixes

@@ -29,6 +29,7 @@ export XMODIFIERS=@im=fcitx5
 
 # home dir cleanups
 export HISTFILE="$XDG_STATE_HOME/bash/history"
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"

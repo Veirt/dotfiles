@@ -21,4 +21,5 @@ if [[ -z "$wallpaper" ]]; then
     fi
 fi
 
-setpape $wallpaper
+wallpaper=$(printf %q "$wallpaper")
+setpape "$wallpaper"
