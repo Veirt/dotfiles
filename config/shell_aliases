@@ -1,8 +1,3 @@
-alias cd..="cd .."
-alias dir="ls"
-alias pdw="pwd"
-alias claer="clear"
-alias clae="clear"
 alias c="clear"
 alias update="paru -Syu --noconfirm --removemake"
 
