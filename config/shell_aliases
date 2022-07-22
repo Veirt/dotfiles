@@ -7,7 +7,6 @@ alias dotfiles="cd ~/.dotfiles"
 
 # replacements
 alias l="exa"
-alias ls="exa"
 alias la="exa -la --git --icons --group-directories-first"
 alias ll="exa -ll --git --icons --group-directories-first"
 alias yeet="rm -rf"
@@ -37,15 +36,6 @@ alias t="tmux"
 alias ta="tmux a"
 alias lg="lazygit"
 alias a="z"
-
-# quick edit stuffs
-alias vpacman="sudo -e /etc/pacman.conf"
-alias vconfgrub="sudo -e /boot/grub/grub.cfg"
-alias vmirrorlist="sudo -e /etc/pacman.d/mirrorlist"
-alias vnginx="$EDITOR /etc/nginx/nginx.conf"
-alias vc="$EDITOR ~/.config/fish/config.fish"
-alias vb="$EDITOR ~/.bashrc"
-alias vz="$EDITOR ~/.zshrc"
 
 alias ua-drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
 alias ua-update-all='export TMPFILE="$(mktemp)"; \
