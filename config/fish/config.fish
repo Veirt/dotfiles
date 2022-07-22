@@ -10,7 +10,3 @@ source ~/.config/shell_aliases
 alias google="web-search google"
 alias github="web-search github"
 alias stackoverflow="web-search stackoverflow"
-
-if type zoxide &> /dev/null
-    zoxide init fish | source
-end
