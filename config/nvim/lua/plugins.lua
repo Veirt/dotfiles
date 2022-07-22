@@ -78,6 +78,7 @@ return require("packer").startup({
         use({ "catppuccin/nvim", as = "catppuccin" })
         use("sainnhe/gruvbox-material")
         use("EdenEast/nightfox.nvim")
+        use("RRethy/nvim-base16")
     end,
     config = {
         compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

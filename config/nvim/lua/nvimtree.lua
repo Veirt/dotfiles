@@ -39,14 +39,6 @@ require("nvim-tree").setup({
         timeout = 500,
     },
     renderer = {
-        indent_markers = {
-            enable = true,
-            icons = {
-                corner = "│ ",
-                edge = "│ ",
-                none = "  ",
-            },
-        },
         icons = {
             webdev_colors = true,
             glyphs = {
