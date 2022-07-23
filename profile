@@ -6,26 +6,14 @@ export BROWSER='firefox'
 export GUIFM='thunar'
 export TUIFM='ranger'
 
-export PATH=$XDG_DATA_HOME/npm/bin:$PATH
-export PATH=$XDG_DATA_HOME/go/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-export SDL_VIDEODRIVER=wayland
-export _JAVA_AWT_WM_NONREPARENTING=1
-# export QT_QPA_PLATFORM=wayland
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
-export MOZ_WEBRENDER=1
-export MOZ_ENABLE_WAYLAND=1
-
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx5
+export PATH=$XDG_DATA_HOME/npm/bin:$PATH
+export PATH=$XDG_DATA_HOME/go/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 # home dir cleanups
 export HISTFILE="$XDG_STATE_HOME/bash/history"
@@ -55,6 +43,19 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GOPATH="$XDG_DATA_HOME/go"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
+
+# wayland stuffs
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+# export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export MOZ_WEBRENDER=1
+export MOZ_ENABLE_WAYLAND=1
+
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
 
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"

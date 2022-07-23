@@ -1,3 +1,2 @@
 for_window [title="Sharing Indicator"] floating enable
 for_window [title="Motrix"] floating enable
-for_window [title="zoom"] floating enable
