@@ -1,1 +1,2 @@
+# vim: ft=bash
 EXCLUDES="*.md spec test* docs LICENSE desktop.png setup* stylua.toml"
