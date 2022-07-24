@@ -83,7 +83,7 @@
         "on-click": "nm-connection-editor"
     },
     "clock": {
-        "format": "  {:%a, %d %b %H:%M}",
+        "format": "  {:%a, %d %b %H:%M}",
         "format-alt": "  {:%I:%M %p}",
         "format-alt-click": "click-right"
     },

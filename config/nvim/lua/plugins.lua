@@ -1,5 +1,3 @@
-vim.cmd([[packadd packer.nvim]])
-
 return require("packer").startup({
     function()
         use("wbthomason/packer.nvim")
@@ -70,7 +68,10 @@ return require("packer").startup({
 
         -- Customization
         -- use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim
-        use("kyazdani42/nvim-web-devicons") -- A lua fork of vim-devicons
+        use({
+            "nvim-lualine/lualine.nvim",
+            requires = { "kyazdani42/nvim-web-devicons" },
+        })
         use("akinsho/bufferline.nvim") -- Tabline plugin
         use("goolord/alpha-nvim") -- Vim dashboard
         use("famiu/feline.nvim") -- A minimal, stylish and customizable statusline for Neovim written in Lua

@@ -27,17 +27,17 @@ dap.configurations.javascript = {
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "red" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "green" })
 
-vim.cmd([[nnoremap <leader>dt <cmd>lua require('dap').toggle_breakpoint()<CR>]])
-vim.cmd([[nnoremap <leader>dk <cmd>lua require('dap').step_out()<CR>]])
-vim.cmd([[nnoremap <leader>dl <cmd>lua require('dap').step_into()<CR>]])
-vim.cmd([[nnoremap <leader>dj <cmd>lua require('dap').step_over()<CR>]])
-vim.cmd([[nnoremap <leader>dn <cmd>lua require('dap').continue()<CR>]])
-vim.cmd([[nnoremap <leader>d_ <cmd>lua require('dap').run_last()<CR>]])
-vim.cmd([[nnoremap <leader>dr <cmd>lua require('dap').repl.open({}, 'split')<CR>]])
-vim.cmd(
+cmd([[nnoremap <leader>dt <cmd>lua require('dap').toggle_breakpoint()<CR>]])
+cmd([[nnoremap <leader>dk <cmd>lua require('dap').step_out()<CR>]])
+cmd([[nnoremap <leader>dl <cmd>lua require('dap').step_into()<CR>]])
+cmd([[nnoremap <leader>dj <cmd>lua require('dap').step_over()<CR>]])
+cmd([[nnoremap <leader>dn <cmd>lua require('dap').continue()<CR>]])
+cmd([[nnoremap <leader>d_ <cmd>lua require('dap').run_last()<CR>]])
+cmd([[nnoremap <leader>dr <cmd>lua require('dap').repl.open({}, 'split')<CR>]])
+cmd(
     [[nnoremap <leader>dh <cmd>lua require('dap.ui.variables').hover(function() return vim.fn.expand("<cexpr>") end)<CR>]]
 )
-vim.cmd([[nnoremap <leader>da <cmd>lua require('nvim-dap').attach()<CR>]])
+cmd([[nnoremap <leader>da <cmd>lua require('nvim-dap').attach()<CR>]])
 
 local function attach()
     print("Attaching debugger")

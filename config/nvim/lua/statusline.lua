@@ -15,7 +15,6 @@ local force_inactive = {
     buftypes = {
         "terminal",
     },
-    bufnames = {},
 }
 
 local components = {
@@ -23,21 +22,37 @@ local components = {
     inactive = { {}, {}, {} },
 }
 
+-- local colors = {
+--     black = "#2e313d",
+--     red = "#cf8164",
+--     green = "#76a065",
+--     yellow = "#ab924c",
+--     blue = "#8296b0",
+--     magenta = "#a18daf",
+--     cyan = "#659ea2",
+--     white = "#b5b4c9",
+--     fg = "#a89984",
+--     bg = "#1E2127",
+-- }
+
 local colors = {
-    black = "#2e313d",
-    red = "#cf8164",
-    green = "#76a065",
-    yellow = "#ab924c",
-    blue = "#8296b0",
-    magenta = "#a18daf",
-    cyan = "#659ea2",
-    white = "#b5b4c9",
-    fg = "#a89984",
-    bg = "#1E2127",
+    fg = "#D0D0D0",
+    bg = "#151515",
+    black = "#424242",
+    skyblue = "#8DA3B9",
+    cyan = "#8AA6A2",
+    green = "#8C977D",
+    oceanblue = "#8DA3B9",
+    magenta = "#A988B0",
+    orange = "#D9BC8C",
+    red = "#B66467",
+    violet = "#A988B0",
+    white = "#E8E3E3",
+    yellow = "#D9BC8C",
 }
 
 local vi_mode_colors = {
-    NORMAL = colors.green,
+    NORMAL = colors.white,
     OP = colors.green,
     INSERT = colors.red,
     VISUAL = colors.skyblue,
@@ -46,7 +61,7 @@ local vi_mode_colors = {
     ["V-REPLACE"] = colors.violet,
     ENTER = colors.cyan,
     MORE = colors.cyan,
-    SELECT = colors.orange,
+    SELECT = colors.yellow,
     COMMAND = colors.green,
     SHELL = colors.green,
     TERM = colors.green,
@@ -61,19 +76,6 @@ local separator = {
     },
 }
 
-local function file_osinfo()
-    local os = vim.bo.fileformat:upper()
-    local icon
-    if os == "UNIX" then
-        icon = " "
-    elseif os == "MAC" then
-        icon = " "
-    else
-        icon = " "
-    end
-    return icon .. os
-end
-
 -- LEFT
 
 -- vi-mode
@@ -82,11 +84,11 @@ components.active[1][1] = {
         return string.format(" %s ", vi_mode_utils.get_vim_mode())
     end,
     hl = function()
-        local val = {}
-
-        val.bg = vi_mode_utils.get_mode_color()
-        val.fg = colors.black
-        val.style = "bold"
+        local val = {
+            bg = vi_mode_utils.get_mode_color(),
+            fg = colors.black,
+            style = "bold",
+        }
 
         return val
     end,
@@ -97,25 +99,40 @@ components.active[1][1] = {
 components.active[1][2] = {
     provider = "git_branch",
     hl = {
-        fg = colors.green,
-        bg = "NONE",
-        style = "bold",
-    },
-}
-
--- filename
-components.active[1][3] = {
-    provider = "file_info",
-    hl = {
         fg = colors.white,
         bg = "NONE",
-        style = "bold",
     },
-    left_sep = separator,
 }
 
--- diagnosticErrors
+-- diffAdd
+components.active[1][3] = {
+    provider = "git_diff_added",
+    hl = {
+        fg = colors.green,
+        bg = "NONE",
+    },
+}
+-- diffModified
 components.active[1][4] = {
+    provider = "git_diff_changed",
+    hl = {
+        fg = colors.yellow,
+        bg = "NONE",
+    },
+}
+-- diffRemove
+components.active[1][5] = {
+    provider = "git_diff_removed",
+    hl = {
+        fg = colors.red,
+        bg = "NONE",
+    },
+}
+
+-- RIGHT
+
+-- diagnosticErrors
+components.active[3][1] = {
     provider = "diagnostic_errors",
     enabled = function()
         return lsp.diagnostics_exist("Error")
@@ -123,12 +140,11 @@ components.active[1][4] = {
     hl = {
         fg = colors.red,
         bg = "NONE",
-        style = "bold",
     },
     right_sep = separator,
 }
 -- diagnosticWarn
-components.active[1][5] = {
+components.active[3][2] = {
     provider = "diagnostic_warnings",
     enabled = function()
         return lsp.diagnostics_exist("Warn")
@@ -136,12 +152,11 @@ components.active[1][5] = {
     hl = {
         fg = colors.yellow,
         bg = "NONE",
-        style = "bold",
     },
     right_sep = separator,
 }
 -- diagnosticHint
-components.active[1][6] = {
+components.active[3][3] = {
     provider = "diagnostic_hints",
     enabled = function()
         return lsp.diagnostics_exist("Hint")
@@ -149,12 +164,11 @@ components.active[1][6] = {
     hl = {
         fg = "cyan",
         bg = "NONE",
-        style = "bold",
     },
     right_sep = separator,
 }
 -- diagnosticInfo
-components.active[1][7] = {
+components.active[3][4] = {
     provider = "diagnostic_info",
     enabled = function()
         return lsp.diagnostics_exist("Info")
@@ -162,58 +176,19 @@ components.active[1][7] = {
     hl = {
         fg = "skyblue",
         bg = "NONE",
-        style = "bold",
     },
     right_sep = separator,
 }
 
--- RIGHT
-
--- LspName
-components.active[3][1] = {
-    provider = "lsp_client_names",
-    hl = {
-        fg = colors.yellow,
-        bg = "NONE",
-        style = "bold",
-    },
-    right_sep = separator,
-}
-
--- diffAdd
-components.active[3][2] = {
-    provider = "git_diff_added",
-    hl = {
-        fg = colors.green,
-        bg = "NONE",
-        style = "bold",
-    },
-    right_sep = separator,
-}
--- diffModified
-components.active[3][3] = {
-    provider = "git_diff_changed",
-    hl = {
-        fg = colors.orange,
-        bg = "NONE",
-        style = "bold",
-    },
-    right_sep = separator,
-}
--- diffRemove
-components.active[3][4] = {
-    provider = "git_diff_removed",
-    hl = {
-        fg = colors.red,
-        bg = "NONE",
-        style = "bold",
-    },
-    right_sep = separator,
-}
-
--- fileEncode
+-- fileName
 components.active[3][5] = {
-    provider = "file_encoding",
+    provider = {
+        name = "file_info",
+        opts = {
+            file_readonly_icon = "",
+            type = "relative",
+        },
+    },
     hl = {
         fg = colors.white,
         bg = "NONE",
@@ -221,72 +196,20 @@ components.active[3][5] = {
     },
     right_sep = separator,
 }
--- osInfo
-components.active[3][6] = {
-    provider = file_osinfo,
-    hl = {
-        fg = colors.magenta,
-        bg = "NONE",
-        style = "bold",
-    },
-    right_sep = separator,
-}
+
 -- lineInfo
-components.active[3][7] = {
+components.active[3][6] = {
     provider = "position",
     hl = {
         fg = colors.white,
         bg = "NONE",
-        style = "bold",
     },
     right_sep = separator,
 }
 
 -- INACTIVE
 
--- fileType
-components.inactive[1][1] = {
-    -- provider = 'file_type',
-    provider = function()
-        if vim.bo.filetype == "" then
-            return string.format("NEW FILE", vim.bo.filetype)
-        end
-        return string.format("%s", vim.bo.filetype:upper())
-    end,
-    hl = {
-        fg = colors.black,
-        bg = colors.cyan,
-        style = "bold",
-    },
-
-    left_sep = {
-        str = " ",
-        hl = {
-            bg = colors.cyan,
-        },
-    },
-
-    right_sep = {
-        {
-            str = " ",
-            hl = {
-                bg = colors.cyan,
-            },
-        },
-        {
-            str = " ",
-            hl = {
-                bg = "NONE",
-            },
-        },
-    },
-}
-
 require("feline").setup({
-    colors = colors,
-    default_bg = bg,
-    default_fg = fg,
-    vi_mode_colors = vi_mode_colors,
     components = components,
     force_inactive = force_inactive,
 })

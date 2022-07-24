@@ -1,5 +1,3 @@
--- require("colorizer").setup()
-
 require("gitsigns").setup()
 
 require("bufferline").setup({
@@ -9,10 +7,6 @@ require("bufferline").setup({
         show_close_icon = false,
     },
 })
-
--- require("presence"):setup({
---     buttons = false,
--- })
 
 require("surround").setup({ mappings_style = "surround", map_insert_mode = false, prompt = false })
 

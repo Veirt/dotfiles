@@ -1,3 +1,4 @@
+local utils = require("utils")
 local nvim_lsp = require("lspconfig")
 local ts_utils = require("nvim-lsp-ts-utils")
 
@@ -49,10 +50,11 @@ nvim_lsp.tsserver.setup({
         -- required to fix code action ranges and filter diagnostics
         ts_utils.setup_client(client)
 
-        -- no default maps, so you may want to define some here
         local opts = { silent = true }
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsi", ":TSLspOrganizeSync<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsr", ":TSLspRenameFile<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tsa", ":TSLspImportAll<CR>", opts)
+        local buf_set_keymap = utils.buf_map(bufnr)
+
+        buf_set_keymap("n", "<leader>tsi", ":TSLspOrganizeSync<CR>", opts)
+        buf_set_keymap("n", "<leader>tsr", ":TSLspRenameFile<CR>", opts)
+        buf_set_keymap("n", "<leader>tsa", ":TSLspImportAll<CR>", opts)
     end,
 })
