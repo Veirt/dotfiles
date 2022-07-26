@@ -11,6 +11,7 @@ export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$XDG_DATA_HOME/npm/bin:$PATH
 export PATH=$XDG_DATA_HOME/go/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
