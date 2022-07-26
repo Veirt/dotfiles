@@ -27,7 +27,7 @@ opt.foldenable = false
 opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
-opt.undodir = os.getenv("HOME") .. "/vim/undodir"
+opt.undodir = os.getenv("HOME") .. "/.local/share/vim/undodir"
 opt.undofile = true
 opt.updatetime = 50
 opt.shortmess:append("c")
