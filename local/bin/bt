@@ -1,5 +1,6 @@
 #!/bin/dash
 
+rfkill unblock bluetooth
 bluetoothctl power on
 
 SELECTED_DEVICE=$(bluetoothctl devices | fzf)

@@ -9,10 +9,8 @@ setpape() {
 if [[ -z "$wallpaper" ]]; then
     wallpaper=$(find ~/pictures/wallpapers -type f | fzf)
 
-    nohup imv $wallpaper &>/dev/null &
-
+    img2sixel $wallpaper
     read -p "Use as wallpaper [Y/n]: " query
-    pkill $!
 
     if [ -z "$query" ] || [ "$query" = "Y" ] || [ "$query" = "y" ]; then
         :

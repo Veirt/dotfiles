@@ -30,3 +30,5 @@ require("others")
 
 -- absolutely disable continuous comment frfr no cap.
 cmd([[au! BufEnter * set fo-=c fo-=r fo-=o]])
+
+vim.g.vimtex_view_method = "zathura"

@@ -15,8 +15,5 @@ input type:touchpad {
     events disabled_on_external_mouse
 }
 
-# toggle touchpad
-bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
-
 # fix brightness ghost
 input 0:6:Video_Bus events disabled

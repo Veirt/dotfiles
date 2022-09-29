@@ -76,7 +76,7 @@ hl("PmenuSel", nil, color.base02)
 -- hl("CmpItemMenu", color.base0E)
 
 -- Number
-hl("CursorLine")
+-- hl("CursorLine")
 hl("CursorLineNR")
 hl("LineNr", color.base03)
 

@@ -6,7 +6,7 @@ bindsym $mod+r exec rofi -x11 -show drun
 bindsym $mod+m exec geary
 
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
-bindsym Mod1+Shift+s exec flameshot gui
+bindsym Mod1+Shift+s exec QT_QPA_PLATFORM='wayland' flameshot gui
 bindsym Print exec ~/.local/bin/notify-screenshot
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d "[:space:]" | wl-copy
 
@@ -18,6 +18,9 @@ bindsym XF86AudioMicMute exec ~/.local/bin/volumectl mic-mute
 bindsym XF86MonBrightnessUp exec ~/.local/bin/backlightctl up
 bindsym XF86MonBrightnessDown exec ~/.local/bin/backlightctl down
 bindsym $mod+Shift+o exec ~/.local/bin/backlight-toggle
+
+# toggle touchpad
+bindsym Ctrl+$mod+XF86TouchpadToggle input type:touchpad events toggle enabled disabled
 
 bindsym XF86AudioPlay exec playerctl play-pause || mpc toggle
 bindsym XF86AudioNext exec playerctl next || mpc next
