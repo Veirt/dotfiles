@@ -13,3 +13,9 @@ require("surround").setup({ mappings_style = "surround", map_insert_mode = false
 require("nvim-autopairs").setup({ map_cr = true })
 
 require("Navigator").setup()
+
+require("presence"):setup({
+    neovim_image_text = "Neovim",
+    buttons = false,
+    -- file_assets = {},
+})

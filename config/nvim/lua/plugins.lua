@@ -63,7 +63,7 @@ return require("packer").startup({
 
         use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
         use("tweekmonster/startuptime.vim")
-        -- use("andweeb/presence.nvim")
+        use("andweeb/presence.nvim")
         use("olimorris/persisted.nvim")
         use("lervag/vimtex")
 
