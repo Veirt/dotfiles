@@ -65,7 +65,7 @@ return require("packer").startup({
         use("tweekmonster/startuptime.vim")
         use("andweeb/presence.nvim")
         use("olimorris/persisted.nvim")
-        use("lervag/vimtex")
+        use("frabjous/knap")
 
         -- Customization
         -- use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim

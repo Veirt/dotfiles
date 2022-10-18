@@ -83,3 +83,7 @@ utils.map("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>")
 utils.map("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
 utils.map("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
 utils.map("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>")
+
+-- Knap
+utils.map("n", "<leader>vt", "<cmd>lua require('knap').toggle_autopreviewing()<CR>")
+utils.map("n", "<F5>", "<cmd>lua require('knap').process_once()<CR>")

@@ -31,4 +31,10 @@ require("others")
 -- absolutely disable continuous comment frfr no cap.
 cmd([[au! BufEnter * set fo-=c fo-=r fo-=o]])
 
-vim.g.vimtex_view_method = "zathura"
+local gknapsettings = {
+    texoutputext = "pdf",
+    textopdf = "pdflatex -shell-escape -synctex=1 -halt-on-error -interaction=batchmode %docroot%",
+    textopdfviewerlaunch = "zathura %outputfile%",
+    textopdfviewerrefresh = "kill -HUP %pid%",
+}
+vim.g.knap_settings = gknapsettings
