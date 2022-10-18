@@ -17,7 +17,6 @@ window:
   # opacity: 0.95
   dynamic_padding: true
   dynamic_title: true
-  gtk_theme_variant: dark
 
 font:
   normal:
