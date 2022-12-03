@@ -1,19 +1,24 @@
 #!/bin/sh
 
-sudo pacman --needed -S git base-devel
+sudo su
+
+sudo pacman --needed --noconfirm -Syu git base-devel rustup
+
+exit
+
+rustup default stable
 
 git clone https://aur.archlinux.org/paru.git $HOME/paru
 cd $HOME/paru
 makepkg -si
 
-paru -Syu --noconfirm
-
-paru --noconfirm -S tmux \
+paru --noconfirm --needed -S tmux \
+    fish \
+    dash \
     neovim \
     bat \
     fd \
     exa \
     fish \
     ripgrep \
-    rcm \
-    notify-send.sh
+    rcm

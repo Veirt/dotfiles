@@ -1,4 +1,8 @@
-require("gitsigns").setup()
+require("gitsigns").setup({
+    signs = {
+        untracked = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    },
+})
 
 require("bufferline").setup({
     options = {
@@ -17,5 +21,7 @@ require("Navigator").setup()
 require("presence"):setup({
     neovim_image_text = "Neovim",
     buttons = false,
+    show_time = true,
+    blacklist = { "*posttest*" },
     -- file_assets = {},
 })
