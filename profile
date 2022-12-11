@@ -48,11 +48,12 @@ export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
 # wayland stuffs
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-# export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM="wayland;xcb"
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export MOZ_WEBRENDER=1
 export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland
 
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
