@@ -46,3 +46,8 @@ autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*config$*",
     command = "set ft=config",
 })
+
+autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.json",
+    command = "set ft=jsonc",
+})
