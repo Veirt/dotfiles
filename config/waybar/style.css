@@ -21,6 +21,7 @@ window {
 }
 
 #workspaces button.focused {
+  border-top: 2 solid #d8e4e6;
   color: #d8e4e6;
 }
 
