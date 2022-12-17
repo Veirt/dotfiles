@@ -5,9 +5,9 @@ opt = vim.opt
 command = api.nvim_create_user_command
 autocmd = api.nvim_create_autocmd
 
+require("plugins")
 require("impatient")
 require("packer_compiled")
-require("plugins")
 
 require("generals")
 require("remaps")
