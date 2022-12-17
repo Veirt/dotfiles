@@ -41,13 +41,3 @@ autocmd("TextYankPost", {
     pattern = "*",
     command = "lua vim.highlight.on_yank({timeout = 40})",
 })
-
-autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*config$*",
-    command = "set ft=config",
-})
-
-autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.json",
-    command = "set ft=jsonc",
-})
