@@ -133,7 +133,7 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
 })
 
-lsp.on_attach = on_attach
+lsp.on_attach(on_attach)
 
 vim.diagnostic.config({
     virtual_text = false,
