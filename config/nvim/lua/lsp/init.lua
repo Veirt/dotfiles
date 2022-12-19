@@ -1,23 +1,5 @@
-local nvim_lsp = require("lspconfig")
 local null_ls = require("null-ls")
-local configs = require("lspconfig.configs")
 local utils = require("utils")
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-})
-
-local function lspSymbol(name, icon)
-    vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, numhl = "DiagnosticDefault" .. name })
-end
-
-lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-lspSymbol("Info", "")
-lspSymbol("Warning", "")
 
 local on_attach = function(client, bufnr)
     require("lsp_signature").on_attach({
@@ -57,55 +39,6 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local servers = {
-    "clangd",
-    "pyright",
-    "bashls",
-    "vimls",
-    "yamlls",
-    "dockerls",
-    "sqls",
-    "html",
-    "cssls",
-    "jsonls",
-    "intelephense",
-}
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-    })
-end
-
-nvim_lsp.rust_analyzer.setup({
-
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        ["rust-analyzer"] = {
-            checkOnSave = {
-                command = "clippy",
-            },
-        },
-    },
-})
-
--- vue
-nvim_lsp.volar.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    documentFeatures = {
-        foldingRange = false,
-    },
-    languageFeatures = {
-        codeAction = false,
-        codeLens = false,
-    },
-})
-
 null_ls.setup({
     on_attach = on_attach,
     sources = {
@@ -125,8 +58,90 @@ null_ls.setup({
     },
 })
 
-nvim_lsp.emmet_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "html", "css", "ejs", "typescriptreact", "javascriptreact" },
+local lsp = require("lsp-zero")
+local luasnip = require("luasnip")
+
+lsp.set_preferences({
+    suggest_lsp_servers = true,
+    setup_servers_on_start = true,
+    set_lsp_keymaps = true,
+    configure_diagnostics = true,
+    cmp_capabilities = true,
+    manage_nvim_cmp = true,
+    call_servers = "local",
+    sign_icons = {
+        error = "",
+        warn = "",
+        hint = "",
+        info = "",
+    },
 })
+
+lsp.ensure_installed({
+    "pyright",
+    "rust_analyzer",
+    "tsserver",
+    "clangd",
+    "html",
+    "cssls",
+    "jsonls",
+    "emmet_ls",
+    "bashls",
+    "vimls",
+    "yamlls",
+    "dockerls",
+    "sqls",
+    "intelephense",
+})
+
+lsp.nvim_workspace()
+
+-- CMP
+local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+    ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+    ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.close(),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.confirm({ select = true })
+            -- elseif luasnip and luasnip.expand_or_jumpable() then
+            --     return t("<Plug>luasnip-expand-or-jump")
+        else
+            fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        end
+    end, {
+        "i",
+        "s",
+    }),
+})
+
+lsp.setup_nvim_cmp({
+    sources = {
+        { name = "nvim_lsp", keyword_length = 3 },
+        { name = "luasnip" },
+        { name = "buffer", keyword_length = 3 },
+        { name = "path" },
+    },
+    formatting = {
+        format = require("lspkind").cmp_format({ maxwidth = 50 }),
+    },
+    mapping = cmp_mappings,
+})
+
+lsp.on_attach = on_attach
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = false,
+    float = true,
+})
+
+lsp.setup()

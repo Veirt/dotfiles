@@ -24,7 +24,6 @@ require("lsp.tsutils")
 require("lsp.lspsaga")
 require("telescope.custom")
 require("nvim-comment")
-require("nvim-cmp")
 -- lua require('nvim-dap')
 require("others")
 

@@ -19,7 +19,7 @@ return require("packer").startup({
                 { "neovim/nvim-lspconfig" },
                 { "williamboman/mason.nvim" },
                 { "williamboman/mason-lspconfig.nvim" },
-                { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = {"jose-elias-alvarez/null-ls.nvim"} },
+                { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "jose-elias-alvarez/null-ls.nvim" } },
 
                 -- Completions
                 { "hrsh7th/nvim-cmp" },
@@ -33,7 +33,7 @@ return require("packer").startup({
                 { "L3MON4D3/LuaSnip" },
                 { "rafamadriz/friendly-snippets" },
 
-                { "onsails/lspkind-nvim" } -- vscode-like pictograms
+                { "onsails/lspkind-nvim" }, -- vscode-like pictograms
             },
         })
 

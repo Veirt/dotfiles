@@ -50,11 +50,10 @@ nvim_lsp.tsserver.setup({
         -- required to fix code action ranges and filter diagnostics
         ts_utils.setup_client(client)
 
-        local opts = { silent = true }
         local buf_set_keymap = utils.buf_map(bufnr)
 
-        buf_set_keymap("n", "<leader>tsi", ":TSLspOrganizeSync<CR>", opts)
-        buf_set_keymap("n", "<leader>tsr", ":TSLspRenameFile<CR>", opts)
-        buf_set_keymap("n", "<leader>tsa", ":TSLspImportAll<CR>", opts)
+        buf_set_keymap("n", "<leader>tsi", ":TSLspOrganizeSync<CR>")
+        buf_set_keymap("n", "<leader>tsr", ":TSLspRenameFile<CR>")
+        buf_set_keymap("n", "<leader>tsa", ":TSLspImportAll<CR>")
     end,
 })
