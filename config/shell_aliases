@@ -26,9 +26,12 @@ alias push="git push"
 alias pull="git pull"
 alias py="python"
 alias cr="cargo run"
+alias crr="cr --release"
 alias cc="cargo check"
 alias cb="cargo build"
+alias cbr="cb --release"
 alias ct="cargo test"
+alias ct="ct --release"
 alias yd="yarn dev"
 alias ys="yarn start"
 alias yb="yarn build"
@@ -38,6 +41,7 @@ alias lg="lazygit"
 alias a="z"
 
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias ua-drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
 alias ua-update-all='export TMPFILE="$(mktemp)"; \
     sudo true; \
@@ -47,4 +51,3 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
       && ua-drop-caches \
       && paru -Syyu --noconfirm'
 
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
