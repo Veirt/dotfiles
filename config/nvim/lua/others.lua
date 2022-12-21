@@ -25,3 +25,10 @@ require("presence"):setup({
     blacklist = { "*posttest*" },
     -- file_assets = {},
 })
+
+vim.g.knap_settings = {
+    texoutputext = "pdf",
+    textopdf = "pdflatex -shell-escape -synctex=1 -halt-on-error -interaction=batchmode %docroot%",
+    textopdfviewerlaunch = "zathura %outputfile%",
+    textopdfviewerrefresh = "kill -HUP %pid%",
+}

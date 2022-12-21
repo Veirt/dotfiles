@@ -22,19 +22,6 @@ local components = {
     inactive = { {}, {}, {} },
 }
 
--- local colors = {
---     black = "#2e313d",
---     red = "#cf8164",
---     green = "#76a065",
---     yellow = "#ab924c",
---     blue = "#8296b0",
---     magenta = "#a18daf",
---     cyan = "#659ea2",
---     white = "#b5b4c9",
---     fg = "#a89984",
---     bg = "#1E2127",
--- }
-
 local colors = {
     fg = "#D0D0D0",
     bg = "#151515",
@@ -49,23 +36,6 @@ local colors = {
     violet = "#A988B0",
     white = "#E8E3E3",
     yellow = "#D9BC8C",
-}
-
-local vi_mode_colors = {
-    NORMAL = colors.white,
-    OP = colors.green,
-    INSERT = colors.red,
-    VISUAL = colors.skyblue,
-    BLOCK = colors.skyblue,
-    REPLACE = colors.violet,
-    ["V-REPLACE"] = colors.violet,
-    ENTER = colors.cyan,
-    MORE = colors.cyan,
-    SELECT = colors.yellow,
-    COMMAND = colors.green,
-    SHELL = colors.green,
-    TERM = colors.green,
-    NONE = colors.yellow,
 }
 
 -- reusable

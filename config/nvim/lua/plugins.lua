@@ -4,14 +4,16 @@ return require("packer").startup({
 
         use({
             "nvim-treesitter/nvim-treesitter",
-            run = ":TSUpdate",
-            requires = {
-                "JoosepAlviste/nvim-ts-context-commentstring",
-                "numToStr/Comment.nvim",
-                "p00f/nvim-ts-rainbow",
-                "windwp/nvim-ts-autotag",
-            },
+            run = function()
+                require("nvim-treesitter.install").update({ with_sync = true })
+            end,
         })
+
+        use({ "windwp/nvim-ts-autotag", opt = true })
+        use({ "p00f/nvim-ts-rainbow", opt = true })
+        use({ "JoosepAlviste/nvim-ts-context-commentstring", opt = true })
+        use("numToStr/Comment.nvim")
+
         use({
             "VonHeikemen/lsp-zero.nvim",
             requires = {
