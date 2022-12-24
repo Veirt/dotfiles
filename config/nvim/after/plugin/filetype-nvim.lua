@@ -14,9 +14,10 @@ require("filetype").setup({
             ["*config$"] = "config",
         },
 
-        shebang = {
-            -- Set the filetype of files with a dash shebang to sh
-            dash = "sh",
+        detection_settings = {
+            shebang_map = {
+                dash = "sh",
+            },
         },
     },
 })

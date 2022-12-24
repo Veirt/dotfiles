@@ -39,16 +39,16 @@ return require("packer").startup({
             },
         })
 
-        use("nathom/filetype.nvim")
+        use("Xevnar/filetype.nvim")
         -- use("mfussenegger/nvim-dap")
         use("ThePrimeagen/refactoring.nvim")
 
-        use({ "posva/vim-vue", ft = "vue" }) -- Syntax with indent for Vue
-        use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
-        use("MaxMEllon/vim-jsx-pretty")
-        use({ "pantharshit00/vim-prisma", ft = "prisma" })
-        use({ "dag/vim-fish", ft = "fish" })
-        use("nikvdp/ejs-syntax")
+        use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
+        use({ "Vimjas/vim-python-pep8-indent", ft = "python", opt = true })
+        use({ "MaxMEllon/vim-jsx-pretty", opt = true })
+        use({ "pantharshit00/vim-prisma", ft = "prisma", opt = true })
+        use({ "dag/vim-fish", ft = "fish", opt = true })
+        use({ "nikvdp/ejs-syntax", opt = true })
 
         use("kyazdani42/nvim-tree.lua")
         use("numToStr/Navigator.nvim")
