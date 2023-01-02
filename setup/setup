@@ -1,21 +1,22 @@
 #!/bin/sh
 
-sudo su
+sudo true
 
 sudo pacman --needed --noconfirm -Syu git base-devel rustup
 
-exit
-
 rustup default stable
 
-git clone https://aur.archlinux.org/paru.git $HOME/paru
-cd $HOME/paru
-makepkg -si
+if ! command -v paru; then
+    git clone https://aur.archlinux.org/paru.git "$HOME/paru"
+    cd "$HOME/paru" || exit
+    makepkg -si
+fi
 
 paru --noconfirm --needed -S tmux \
     fish \
     dash \
-    neovim \
+    neovim-git \
+    nvim-packer-git \
     bat \
     fd \
     exa \

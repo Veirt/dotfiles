@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 rfkill unblock bluetooth
 bluetoothctl power on

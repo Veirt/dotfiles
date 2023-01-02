@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 if [ "$1" = "up" ]; then
     light -A 5
@@ -6,10 +6,10 @@ elif [ "$1" = "down" ]; then
     light -U 5
 fi
 
-BACKLIGHT=$(printf "%.0f" $(light))
+BACKLIGHT=$(printf "%.0f" "$(light)")
 
 notify-send.sh "Backlight ${BACKLIGHT}%" \
     --replace-file=/tmp/brightness-notification \
     -t 2000 \
-    --icon $XDG_DATA_HOME/icons/brightness.png \
+    --icon "$XDG_DATA_HOME/icons/brightness.png" \
     -h string:synchronous:brightness-change

@@ -1,4 +1,8 @@
-local dashboard = require("alpha.themes.dashboard")
+local present, dashboard = pcall(require, "alpha.themes.dashboard")
+
+if not present then
+    return
+end
 
 dashboard.section.header.val = {
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣴⠶⣶⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",

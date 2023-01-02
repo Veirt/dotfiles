@@ -1,4 +1,10 @@
-require("filetype").setup({
+local present, filetype = pcall(require, "filetype-nvim")
+
+if not present then
+    return
+end
+
+filetype.setup({
     overrides = {
         extensions = {
             -- Set the filetype of *.pn files to potion

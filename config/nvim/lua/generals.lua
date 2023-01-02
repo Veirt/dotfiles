@@ -3,6 +3,7 @@ opt.fileencoding = "utf-8"
 opt.relativenumber = true
 opt.nu = true
 opt.termguicolors = true
+opt.background = "dark"
 opt.errorbells = false
 opt.wrap = false
 opt.scrolloff = 8

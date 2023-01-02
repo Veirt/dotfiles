@@ -1,60 +1,23 @@
 local null_ls = require("null-ls")
-local utils = require("utils")
 local lsp = require("lsp-zero")
 local cmp_config = require("config.cmp")
 
-local on_attach = function(client, bufnr)
-    require("lsp_signature").on_attach({
-        floating_window = false,
-    })
-
-    local buf_set_keymap = utils.buf_map(bufnr)
-
-    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-    buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
-    buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
-    buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-
-    buf_set_keymap("n", "<leader>D", "<cmd>Telescope lsp_definitions<CR>")
-    buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
-    buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-    buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-    buf_set_keymap("n", "<F2>", "<cmd>Lspsaga rename<CR>")
-    buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-    buf_set_keymap("n", "<leader>er", "<cmd>Telescope diagnostics bufnr=0<CR>")
-    buf_set_keymap("n", "<leader>eR", "<cmd>Telescope diagnostics<CR>")
-    buf_set_keymap("n", "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>")
-    buf_set_keymap("n", "<leader>sd", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>")
-    buf_set_keymap("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>")
-    buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
-    buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
-
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-        })
-    end
-end
+local on_attach = require("config.on_attach")
 
 null_ls.setup({
     on_attach = on_attach,
     sources = {
-        null_ls.builtins.formatting.prettierd,
-        -- null_ls.builtins.formatting.rustfmt,
+        null_ls.builtins.formatting.prettier,
+        -- null_ls.builtins.formatting.prettierd,
+        -- null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },
         }),
         null_ls.builtins.formatting.nginx_beautifier,
-        null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.stylua,
-        -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.hadolint, -- docker
+        null_ls.builtins.diagnostics.eslint_d,
         -- null_ls.builtins.code_actions.eslint_d,
         -- null_ls.builtins.code_actions.refactoring,
     },
@@ -106,6 +69,9 @@ lsp.setup_nvim_cmp({
         format = require("lspkind").cmp_format({ maxwidth = 50 }),
     },
     mapping = cmp_config.cmp_mappings,
+    completion = {
+        completeopt = "menu,menuone,noinsert",
+    },
 })
 
 lsp.on_attach(on_attach)

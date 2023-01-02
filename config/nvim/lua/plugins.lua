@@ -21,7 +21,7 @@ return require("packer").startup({
                 { "neovim/nvim-lspconfig" },
                 { "williamboman/mason.nvim" },
                 { "williamboman/mason-lspconfig.nvim" },
-                { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "jose-elias-alvarez/null-ls.nvim" } },
+                { "jose-elias-alvarez/typescript.nvim", requires = { "jose-elias-alvarez/null-ls.nvim" } },
 
                 -- Completions
                 { "hrsh7th/nvim-cmp" },
@@ -62,12 +62,17 @@ return require("packer").startup({
             },
         })
         use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
-        use("lewis6991/gitsigns.nvim") -- Super fast git decorations
+        use({
+            "lewis6991/gitsigns.nvim",
+            setup = function()
+                require("core.lazy_load").gitsigns()
+            end,
+        }) -- Super fast git decorations
         use("glepnir/lspsaga.nvim") -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
         use("ur4ltz/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
         -- use("tpope/vim-sleuth") -- Automatically adjusts indent
-        use("davidgranstrom/nvim-markdown-preview")
+        use({ "davidgranstrom/nvim-markdown-preview", opt = true })
         use("gpanders/editorconfig.nvim")
         use("kdheepak/lazygit.nvim") -- Call lazygit within neovim
 
@@ -94,5 +99,6 @@ return require("packer").startup({
     end,
     config = {
         compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+        auto_clean = true,
     },
 })

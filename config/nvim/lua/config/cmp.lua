@@ -6,6 +6,9 @@ local M = {}
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 M.cmp_mappings = lsp.defaults.cmp_mappings({
+    ["<CR>"] = cmp.mapping(function(fallback)
+        fallback()
+    end), -- <CR> doesn't autocomplete
     ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
     ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -15,8 +18,6 @@ M.cmp_mappings = lsp.defaults.cmp_mappings({
     ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.confirm({ select = true })
-            -- elseif luasnip and luasnip.expand_or_jumpable() then
-            --     return t("<Plug>luasnip-expand-or-jump")
         else
             fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
         end
@@ -25,5 +26,4 @@ M.cmp_mappings = lsp.defaults.cmp_mappings({
         "s",
     }),
 })
-
 return M

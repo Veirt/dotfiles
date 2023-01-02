@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 # https://wiki.archlinux.org/title/Sway
 read lcd </tmp/lcd
 if [ "$lcd" -eq "0" ]; then

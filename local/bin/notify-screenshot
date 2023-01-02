@@ -8,5 +8,4 @@ if [ -v "$OUTPUT" ]; then
     notify-send.sh -u critical "Something went wrong." "Can't take a screenshot."
 else
     notify-send.sh -d "$GUIFM $(dirname $OUTPUT)" -i "$OUTPUT" "Screenshot has taken"
-
 fi

@@ -1,3 +1,9 @@
+local present, _ = pcall(require, "feline")
+
+if not present then
+    return
+end
+
 local lsp = require("feline.providers.lsp")
 local vi_mode_utils = require("feline.providers.vi_mode")
 

@@ -23,7 +23,6 @@ require("presence"):setup({
     buttons = false,
     show_time = true,
     blacklist = { "*posttest*" },
-    -- file_assets = {},
 })
 
 vim.g.knap_settings = {
