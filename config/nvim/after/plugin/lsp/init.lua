@@ -52,7 +52,6 @@ lsp.ensure_installed({
     "vimls",
     "yamlls",
     "dockerls",
-    "sqls",
     "intelephense",
 })
 
