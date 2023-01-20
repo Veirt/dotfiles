@@ -36,7 +36,7 @@ opt.shortmess:append("c")
 command("W", "write", {})
 command("Q", "quit", {})
 
-api.nvim_set_keymap("n", "<Space>", "<Leader>", {})
+vim.g.mapleader = " "
 
 autocmd("TextYankPost", {
     pattern = "*",

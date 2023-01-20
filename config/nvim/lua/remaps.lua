@@ -1,5 +1,10 @@
 local utils = require("utils")
 
+-- Packers
+utils.map("n", "<leader>ps", "<cmd>PackerSync<CR>")
+utils.map("n", "<leader>pi", "<cmd>PackerInstall<CR>")
+utils.map("n", "<leader>pc", "<cmd>PackerCompile<CR>")
+
 -- General
 utils.map("n", "<C-s>", ":w<CR>")
 utils.map("i", "<C-s>", "<C-O>:update<CR>")
@@ -83,6 +88,9 @@ utils.map("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>")
 utils.map("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
 utils.map("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
 utils.map("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>")
+
+-- Wildfire.vim
+utils.map("n", "<CR>", " <Plug>(wildfire-fuel)")
 
 -- Knap
 utils.map("n", "<leader>vt", "<cmd>lua require('knap').toggle_autopreviewing()<CR>")

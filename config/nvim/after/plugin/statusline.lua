@@ -30,7 +30,7 @@ local components = {
 
 local colors = {
     fg = "#D0D0D0",
-    bg = "#151515",
+    bg = "#1F1F1F",
     black = "#424242",
     skyblue = "#8DA3B9",
     cyan = "#8AA6A2",
@@ -48,7 +48,7 @@ local colors = {
 local separator = {
     str = " ",
     hl = {
-        bg = "NONE",
+        bg = "#1F1F1F",
     },
 }
 
@@ -57,12 +57,12 @@ local separator = {
 -- vi-mode
 components.active[1][1] = {
     provider = function()
-        return string.format(" %s ", vi_mode_utils.get_vim_mode())
+        return string.format("  %s ", vi_mode_utils.get_vim_mode())
     end,
     hl = function()
         local val = {
-            bg = vi_mode_utils.get_mode_color(),
-            fg = colors.black,
+            bg = "#181818",
+            fg = colors.white,
             style = "bold",
         }
 
@@ -76,7 +76,8 @@ components.active[1][2] = {
     provider = "git_branch",
     hl = {
         fg = colors.white,
-        bg = "NONE",
+        bg = colors.bg,
+        style = "bold",
     },
 }
 
@@ -85,24 +86,27 @@ components.active[1][3] = {
     provider = "git_diff_added",
     hl = {
         fg = colors.green,
-        bg = "NONE",
+        bg = colors.bg,
     },
+    left_sep = separator,
 }
 -- diffModified
 components.active[1][4] = {
     provider = "git_diff_changed",
     hl = {
         fg = colors.yellow,
-        bg = "NONE",
+        bg = colors.bg,
     },
+    left_sep = separator,
 }
 -- diffRemove
 components.active[1][5] = {
     provider = "git_diff_removed",
     hl = {
         fg = colors.red,
-        bg = "NONE",
+        bg = colors.bg,
     },
+    left_sep = separator,
 }
 
 -- RIGHT
@@ -115,7 +119,7 @@ components.active[3][1] = {
     end,
     hl = {
         fg = colors.red,
-        bg = "NONE",
+        bg = colors.bg,
     },
     right_sep = separator,
 }
@@ -127,7 +131,7 @@ components.active[3][2] = {
     end,
     hl = {
         fg = colors.yellow,
-        bg = "NONE",
+        bg = colors.bg,
     },
     right_sep = separator,
 }
@@ -139,7 +143,7 @@ components.active[3][3] = {
     end,
     hl = {
         fg = "cyan",
-        bg = "NONE",
+        bg = colors.bg,
     },
     right_sep = separator,
 }
@@ -151,7 +155,7 @@ components.active[3][4] = {
     end,
     hl = {
         fg = "skyblue",
-        bg = "NONE",
+        bg = colors.bg,
     },
     right_sep = separator,
 }
@@ -167,8 +171,7 @@ components.active[3][5] = {
     },
     hl = {
         fg = colors.white,
-        bg = "NONE",
-        style = "bold",
+        bg = colors.bg,
     },
     right_sep = separator,
 }
@@ -178,7 +181,7 @@ components.active[3][6] = {
     provider = "position",
     hl = {
         fg = colors.white,
-        bg = "NONE",
+        bg = colors.bg,
     },
     right_sep = separator,
 }

@@ -38,8 +38,6 @@ return require("packer").startup({
                 { "onsails/lspkind-nvim" }, -- vscode-like pictograms
             },
         })
-
-        use("Xevnar/filetype.nvim")
         -- use("mfussenegger/nvim-dap")
         use("ThePrimeagen/refactoring.nvim")
 
@@ -75,6 +73,7 @@ return require("packer").startup({
         use({ "davidgranstrom/nvim-markdown-preview", opt = true })
         use("gpanders/editorconfig.nvim")
         use("kdheepak/lazygit.nvim") -- Call lazygit within neovim
+        use("gcmt/wildfire.vim") -- Quickly select the closest text object among a group of candidates
 
         use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
         use("tweekmonster/startuptime.vim")
