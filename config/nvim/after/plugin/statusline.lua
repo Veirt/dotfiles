@@ -25,7 +25,7 @@ local force_inactive = {
 
 local components = {
     active = { {}, {}, {} },
-    inactive = { {}, {}, {} },
+    inactive = { {} },
 }
 
 local colors = {
@@ -42,6 +42,12 @@ local colors = {
     violet = "#A988B0",
     white = "#E8E3E3",
     yellow = "#D9BC8C",
+}
+
+components.inactive[1][1] = {
+    hl = {
+        bg = "none",
+    },
 }
 
 -- reusable

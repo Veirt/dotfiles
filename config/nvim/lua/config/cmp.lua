@@ -5,7 +5,14 @@ local M = {}
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-M.cmp_mappings = lsp.defaults.cmp_mappings({
+M.sources = {
+    { name = "nvim_lsp", keyword_length = 3 },
+    { name = "luasnip" },
+    { name = "buffer", keyword_length = 3 },
+    { name = "path" },
+}
+
+M.mapping = lsp.defaults.cmp_mappings({
     ["<CR>"] = cmp.mapping(function(fallback)
         fallback()
     end), -- <CR> doesn't autocomplete
@@ -26,4 +33,22 @@ M.cmp_mappings = lsp.defaults.cmp_mappings({
         "s",
     }),
 })
+
+M.formatting = {
+    format = require("lspkind").cmp_format({
+        mode = "symbol_text",
+        menu = {
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[Latex]",
+        },
+    }),
+}
+
+M.completion = {
+    completeopt = "menu,menuone,noinsert",
+}
+
 return M

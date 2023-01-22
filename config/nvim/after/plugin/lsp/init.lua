@@ -57,21 +57,7 @@ lsp.ensure_installed({
 
 lsp.nvim_workspace()
 
-lsp.setup_nvim_cmp({
-    sources = {
-        { name = "nvim_lsp", keyword_length = 3 },
-        { name = "luasnip" },
-        { name = "buffer", keyword_length = 3 },
-        { name = "path" },
-    },
-    formatting = {
-        format = require("lspkind").cmp_format({ maxwidth = 50 }),
-    },
-    mapping = cmp_config.cmp_mappings,
-    completion = {
-        completeopt = "menu,menuone,noinsert",
-    },
-})
+lsp.setup_nvim_cmp(cmp_config)
 
 lsp.on_attach(on_attach)
 

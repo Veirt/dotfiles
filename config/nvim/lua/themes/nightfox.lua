@@ -10,9 +10,11 @@ nightfox.setup({
             functions = "italic,bold",
         },
         inverse = {
-            match_paren = true, -- inverse the highlighting of match_parens
+            match_paren = false,
         },
     },
 })
 
 vim.cmd([[colorscheme nordfox]])
+vim.cmd([[hi CursorLine guibg=#1F1F1F]])
+vim.cmd([[hi PMenu guibg=#1F1F1F]])
