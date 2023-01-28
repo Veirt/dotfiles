@@ -1,8 +1,10 @@
+# vim: ft=config
 bindsym $mod+Return exec eval $LAUNCH_TERMINAL
 bindsym $mod+w exec eval $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec $GUIFM
 bindsym $mod+r exec rofi -x11 -show drun
+bindsym $mod+s exec rofi -x11 -show ssh -modes ssh
 bindsym $mod+m exec geary
 
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
