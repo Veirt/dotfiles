@@ -31,3 +31,5 @@ vim.g.knap_settings = {
     textopdfviewerlaunch = "zathura %outputfile%",
     textopdfviewerrefresh = "kill -HUP %pid%",
 }
+
+require("fidget").setup({})

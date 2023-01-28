@@ -40,8 +40,9 @@ return require("packer").startup({
         })
         -- use("mfussenegger/nvim-dap")
         use("ThePrimeagen/refactoring.nvim")
+        use("j-hui/fidget.nvim")
 
-        use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
+        -- use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
         use({ "Vimjas/vim-python-pep8-indent", ft = "python", opt = true })
         use({ "MaxMEllon/vim-jsx-pretty", opt = true })
         use({ "pantharshit00/vim-prisma", ft = "prisma", opt = true })

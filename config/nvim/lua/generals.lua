@@ -8,6 +8,7 @@ opt.errorbells = false
 opt.wrap = false
 opt.scrolloff = 8
 opt.incsearch = true
+opt.hlsearch = true
 opt.signcolumn = "yes"
 opt.shell = "/bin/bash"
 
@@ -32,6 +33,9 @@ opt.undodir = os.getenv("HOME") .. "/.local/share/vim/undodir"
 opt.undofile = true
 opt.updatetime = 50
 opt.shortmess:append("c")
+
+opt.ignorecase = true
+opt.smartcase = true
 
 command("W", "write", {})
 command("Q", "quit", {})

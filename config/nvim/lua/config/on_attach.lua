@@ -27,12 +27,11 @@ local M = function(client, bufnr)
     buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
+        autocmd("BufWritePre", {
+            group = api.nvim_create_augroup("LspFormatting", { clear = true }),
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
+                vim.lsp.buf.format()
             end,
         })
     end
