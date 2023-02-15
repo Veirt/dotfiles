@@ -39,6 +39,7 @@ alias t="tmux"
 alias ta="tmux a"
 alias lg="lazygit"
 alias a="z"
+alias stk="stklos -l ~/dev/sicp/simply.scm"
 
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"

@@ -12,9 +12,11 @@ require("bufferline").setup({
     },
 })
 
+require("gitsigns").setup()
+
 require("surround").setup({ mappings_style = "surround", map_insert_mode = false, prompt = false })
 
-require("nvim-autopairs").setup({ map_cr = true })
+require("nvim-autopairs").setup({ map_cr = true, disable_in_macro = true })
 
 require("Navigator").setup()
 

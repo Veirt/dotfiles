@@ -12,6 +12,7 @@ null_ls.setup({
 
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.eslint_d,
+        null_ls.builtins.formatting.emacs_scheme_mode,
 
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },

@@ -1,6 +1,6 @@
 local lsp = require("lsp-zero")
 
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
     -- You will have to adjust your values according to your system
     settings = {
         Lua = {

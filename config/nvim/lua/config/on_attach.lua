@@ -1,5 +1,7 @@
 local utils = require("utils")
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local M = function(client, bufnr)
     require("lsp_signature").on_attach({
         floating_window = false,
@@ -27,11 +29,12 @@ local M = function(client, bufnr)
     buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
     if client.supports_method("textDocument/formatting") then
-        autocmd("BufWritePre", {
-            group = api.nvim_create_augroup("LspFormatting", { clear = true }),
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format()
+                vim.lsp.buf.format({ bufnr = bufnr })
             end,
         })
     end

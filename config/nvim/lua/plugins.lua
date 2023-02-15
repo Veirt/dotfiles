@@ -10,7 +10,7 @@ return require("packer").startup({
         })
 
         use({ "windwp/nvim-ts-autotag", opt = true })
-        use({ "p00f/nvim-ts-rainbow", opt = true })
+        use({ "mrjones2014/nvim-ts-rainbow" })
         use({ "JoosepAlviste/nvim-ts-context-commentstring", opt = true })
         use("numToStr/Comment.nvim")
 
@@ -61,12 +61,7 @@ return require("packer").startup({
             },
         })
         use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
-        use({
-            "lewis6991/gitsigns.nvim",
-            setup = function()
-                require("core.lazy_load").gitsigns()
-            end,
-        }) -- Super fast git decorations
+        use("lewis6991/gitsigns.nvim") -- Super fast git decorations
         use("glepnir/lspsaga.nvim") -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
         use("ur4ltz/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
