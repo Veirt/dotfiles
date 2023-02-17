@@ -60,4 +60,15 @@
 	<patterns>*</patterns>
 	<image-files/>
 </action>
+<action>
+	<icon></icon>
+	<name>esrgan</name>
+	<submenu></submenu>
+	<unique-id>1676431419504809-1</unique-id>
+	<command>~/.config/Thunar/scripts/esrgan.sh %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>
