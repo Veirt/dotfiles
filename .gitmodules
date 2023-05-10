@@ -1,3 +1,6 @@
-[submodule "config/tmux/plugins/tmux-pain-control"]
-	path = config/tmux/plugins/tmux-pain-control
-	url = https://github.com/tmux-plugins/tmux-pain-control
+[submodule "tmux-pain-control"]
+	path = tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control.git
+[submodule "tmux/.config/tmux/plugins/tmux-pain-control"]
+	path = tmux/.config/tmux/plugins/tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control.git

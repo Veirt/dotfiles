@@ -1,5 +1,0 @@
-#!/bin/sh
-
-grim "$output"
-
-echo "$output"
