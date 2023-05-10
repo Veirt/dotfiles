@@ -10,9 +10,29 @@ null_ls.setup({
         -- null_ls.builtins.formatting.prettier,
         -- null_ls.builtins.diagnostics.eslint,
 
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd.with({
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+                "css",
+                "scss",
+                "less",
+                "html",
+                "json",
+                "jsonc",
+                "yaml",
+                "markdown.mdx",
+                "graphql",
+                "handlebars",
+            },
+        }),
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.emacs_scheme_mode,
+        null_ls.builtins.formatting.raco_fmt,
+        null_ls.builtins.formatting.clang_format,
 
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },
@@ -20,6 +40,7 @@ null_ls.setup({
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.diagnostics.hadolint, -- docker
+        -- null_ls.builtins.diagnostics.cpplint,
     },
 })
 
@@ -71,3 +92,5 @@ vim.diagnostic.config({
 })
 
 lsp.setup()
+
+require("luasnip.loaders.from_vscode").lazy_load()

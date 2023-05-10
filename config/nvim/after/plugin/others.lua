@@ -30,8 +30,10 @@ require("presence"):setup({
 vim.g.knap_settings = {
     texoutputext = "pdf",
     textopdf = "pdflatex -shell-escape -synctex=1 -halt-on-error -interaction=batchmode %docroot%",
-    textopdfviewerlaunch = "zathura %outputfile%",
-    textopdfviewerrefresh = "kill -HUP %pid%",
+    textopdfviewerlaunch =
+    "zathura --synctex-editor-command 'nvim --headless -es --cmd \"lua require('\"'\"'knaphelper'\"'\"').relayjump('\"'\"'%servername%'\"'\"','\"'\"'%{input}'\"'\"',%{line},0)\"' %outputfile%",
+    textopdfviewerrefresh = "none",
+    textopdfforwardjump = "zathura --synctex-forward=%line%:%column%:%srcfile% %outputfile%",
 }
 
 require("fidget").setup({})

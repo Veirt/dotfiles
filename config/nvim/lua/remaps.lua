@@ -11,6 +11,7 @@ utils.map("i", "<C-s>", "<C-O>:update<CR>")
 utils.map("n", "<C-Q>", ":wq!<CR>")
 utils.map("v", "<C-c>", '"+y')
 utils.map("i", "<C-v>", "<esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia")
+utils.map("n", "<C-c>", ':silent !foot -e bash -c "g++ "%" -o a.out; ./a.out; fish" 2> /dev/null &  <CR>')
 
 -- ThePrimeagen's remaps
 utils.map("n", "Y", "yg$")

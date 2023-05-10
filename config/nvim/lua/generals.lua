@@ -12,17 +12,18 @@ opt.hlsearch = true
 opt.signcolumn = "yes"
 opt.shell = "/bin/bash"
 
-opt.tabstop = 4 -- number of columns occupied by a tab
-opt.softtabstop = 4 -- see multiple spaces as tabstops so <BS> does the right thing
+opt.tabstop = 4      -- number of columns occupied by a tab
+opt.softtabstop = 4  -- see multiple spaces as tabstops so <BS> does the right thing
 opt.expandtab = true -- convert tabs to whitespaces
-opt.shiftwidth = 4 -- width for autoindent
+opt.shiftwidth = 4   -- width for autoindent
 opt.smartindent = true
 opt.autoindent = true
+opt.cinoptions:append("L0")
 
-opt.showmode = false -- hide built-in vim mode
-opt.mouse = "a" -- enable mouse click
-opt.ttyfast = true -- speed up scrolling
-opt.hidden = true -- change buffer without save
+opt.showmode = false  -- hide built-in vim mode
+opt.mouse = "a"       -- enable mouse click
+opt.ttyfast = true    -- speed up scrolling
+opt.hidden = true     -- change buffer without save
 opt.cursorline = true -- highlight currrent line
 opt.foldenable = false
 

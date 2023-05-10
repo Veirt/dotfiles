@@ -61,15 +61,15 @@ return require("packer").startup({
             },
         })
         use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
-        use("lewis6991/gitsigns.nvim") -- Super fast git decorations
-        use("glepnir/lspsaga.nvim") -- LSP plugin with highly performant UI
+        use("lewis6991/gitsigns.nvim")                                        -- Super fast git decorations
+        use("glepnir/lspsaga.nvim")                                           -- LSP plugin with highly performant UI
         use("ray-x/lsp_signature.nvim")
-        use("ur4ltz/surround.nvim") -- Easily delete, change and add such surroundings in pairs.
-        -- use("tpope/vim-sleuth") -- Automatically adjusts indent
+        use("ur4ltz/surround.nvim")                                           -- Easily delete, change and add such surroundings in pairs.
+        use("tpope/vim-sleuth")                                               -- Automatically adjusts indent
         use({ "davidgranstrom/nvim-markdown-preview", opt = true })
         use("gpanders/editorconfig.nvim")
-        use("kdheepak/lazygit.nvim") -- Call lazygit within neovim
-        use("gcmt/wildfire.vim") -- Quickly select the closest text object among a group of candidates
+        use("kdheepak/lazygit.nvim")    -- Call lazygit within neovim
+        use("gcmt/wildfire.vim")        -- Quickly select the closest text object among a group of candidates
 
         use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
         use("tweekmonster/startuptime.vim")
@@ -84,8 +84,8 @@ return require("packer").startup({
             requires = { "kyazdani42/nvim-web-devicons" },
         })
         use("akinsho/bufferline.nvim") -- Tabline plugin
-        use("goolord/alpha-nvim") -- Vim dashboard
-        use("famiu/feline.nvim") -- A minimal, stylish and customizable statusline for Neovim written in Lua
+        use("goolord/alpha-nvim")      -- Vim dashboard
+        use("famiu/feline.nvim")       -- A minimal, stylish and customizable statusline for Neovim written in Lua
 
         use({ "catppuccin/nvim", as = "catppuccin" })
         use("sainnhe/gruvbox-material")

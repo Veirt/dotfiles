@@ -23,7 +23,6 @@ require("nvim-treesitter.configs").setup({
         "yaml",
         "scheme",
     },
-
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = true,
