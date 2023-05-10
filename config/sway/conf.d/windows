@@ -1,2 +1,4 @@
 for_window [title="Sharing Indicator"] floating enable
 for_window [title="Motrix"] floating enable
+
+exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.9
