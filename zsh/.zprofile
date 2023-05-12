@@ -1,1 +1,1 @@
-../shared/profile
+.profile
