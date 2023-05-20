@@ -29,6 +29,6 @@ fi
 
 export FZF_DEFAULT_OPTS="--prompt='❱ ' --bind alt-j:down,alt-k:up"
 
-if  [[ -f "$HOME/.personal/profile" ]]; then
-    source $HOME/.personal/profile/*
+if [[ -d "$HOME/.personal/profile" ]]; then
+    for f in "$HOME"/.personal/profile/*; do source "$f"; done
 fi
