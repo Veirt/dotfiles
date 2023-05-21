@@ -35,6 +35,12 @@ require("telescope").setup({
             theme = "dropdown",
             previewer = false,
         },
+        live_grep = {
+            additional_args = function(opts)
+                return { "--hidden" }
+            end,
+        },
+
         diagnostics = {
             theme = "ivy",
             initial_mode = "normal",
