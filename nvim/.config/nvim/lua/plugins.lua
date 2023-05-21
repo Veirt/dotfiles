@@ -1,99 +1,101 @@
-return require("packer").startup({
-    function()
-        use("wbthomason/packer.nvim")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
-        use({
-            "nvim-treesitter/nvim-treesitter",
-            run = function()
-                require("nvim-treesitter.install").update({ with_sync = true })
-            end,
-        })
-
-        use({ "windwp/nvim-ts-autotag", opt = true })
-        use({ "mrjones2014/nvim-ts-rainbow" })
-        use({ "JoosepAlviste/nvim-ts-context-commentstring", opt = true })
-        use("numToStr/Comment.nvim")
-
-        use({
-            "VonHeikemen/lsp-zero.nvim",
-            requires = {
-                -- LSP Support
-                { "neovim/nvim-lspconfig" },
-                { "williamboman/mason.nvim" },
-                { "williamboman/mason-lspconfig.nvim" },
-                { "jose-elias-alvarez/typescript.nvim", requires = { "jose-elias-alvarez/null-ls.nvim" } },
-
-                -- Completions
-                { "hrsh7th/nvim-cmp" },
-                { "hrsh7th/cmp-buffer" },
-                { "hrsh7th/cmp-path" },
-                { "saadparwaiz1/cmp_luasnip" },
-                { "hrsh7th/cmp-nvim-lsp" },
-                { "hrsh7th/cmp-nvim-lua" },
-
-                -- Snippets
-                { "L3MON4D3/LuaSnip" },
-                { "rafamadriz/friendly-snippets" },
-
-                { "onsails/lspkind-nvim" }, -- vscode-like pictograms
-            },
-        })
-        -- use("mfussenegger/nvim-dap")
-        use("ThePrimeagen/refactoring.nvim")
-        use("j-hui/fidget.nvim")
-
-        -- use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
-        use({ "Vimjas/vim-python-pep8-indent", ft = "python", opt = true })
-        use({ "MaxMEllon/vim-jsx-pretty", opt = true })
-        use({ "pantharshit00/vim-prisma", ft = "prisma", opt = true })
-        use({ "dag/vim-fish", ft = "fish", opt = true })
-        use({ "nikvdp/ejs-syntax", opt = true })
-
-        use("kyazdani42/nvim-tree.lua")
-        use("numToStr/Navigator.nvim")
-
-        use("windwp/nvim-autopairs")
-        use({
-            "nvim-telescope/telescope.nvim",
-            requires = {
-                { "nvim-lua/plenary.nvim" },
-                { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }, -- Native fzf
-            },
-        })
-        use({ "ThePrimeagen/harpoon", requires = { "nvim-lua/popup.nvim" } }) -- Get you where you want with the fewest keystrokes.
-        use("lewis6991/gitsigns.nvim")                                        -- Super fast git decorations
-        use("glepnir/lspsaga.nvim")                                           -- LSP plugin with highly performant UI
-        use("ray-x/lsp_signature.nvim")
-        use("ur4ltz/surround.nvim")                                           -- Easily delete, change and add such surroundings in pairs.
-        use("tpope/vim-sleuth")                                               -- Automatically adjusts indent
-        use({ "davidgranstrom/nvim-markdown-preview", opt = true })
-        use("gpanders/editorconfig.nvim")
-        use("kdheepak/lazygit.nvim")    -- Call lazygit within neovim
-        use("gcmt/wildfire.vim")        -- Quickly select the closest text object among a group of candidates
-
-        use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
-        use("tweekmonster/startuptime.vim")
-        use("andweeb/presence.nvim")
-        use("olimorris/persisted.nvim")
-        use("frabjous/knap")
-
-        -- Customization
-        -- use("norcalli/nvim-colorizer.lua") -- A high-performance color highlighter for Neovim
-        use({
-            "nvim-lualine/lualine.nvim",
-            requires = { "kyazdani42/nvim-web-devicons" },
-        })
-        use("akinsho/bufferline.nvim") -- Tabline plugin
-        use("goolord/alpha-nvim")      -- Vim dashboard
-        use("famiu/feline.nvim")       -- A minimal, stylish and customizable statusline for Neovim written in Lua
-
-        use({ "catppuccin/nvim", as = "catppuccin" })
-        use("sainnhe/gruvbox-material")
-        use("EdenEast/nightfox.nvim")
-        use("RRethy/nvim-base16")
-    end,
-    config = {
-        compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-        auto_clean = true,
+local plugins = {
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
     },
-})
+    { "windwp/nvim-ts-autotag" },
+    { "mrjones2014/nvim-ts-rainbow" },
+    { "JoosepAlviste/nvim-ts-context-commentstring" },
+    "numToStr/Comment.nvim",
+
+    -- lsp
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        dependencies = {
+            -- LSP Support
+            { "neovim/nvim-lspconfig" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
+            { "jose-elias-alvarez/typescript.nvim", dependencies = { "jose-elias-alvarez/null-ls.nvim" } },
+
+            -- Completions
+            { "hrsh7th/nvim-cmp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
+
+            -- Snippets
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
+
+            { "onsails/lspkind-nvim" }, -- vscode-like pictograms
+        },
+    },
+
+    "mfussenegger/nvim-dap",
+    "ThePrimeagen/refactoring.nvim",
+    "j-hui/fidget.nvim",
+
+    -- use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
+    { "Vimjas/vim-python-pep8-indent", ft = "python", lazy = true },
+    { "MaxMEllon/vim-jsx-pretty",      lazy = true },
+    { "pantharshit00/vim-prisma",      ft = "prisma", lazy = true },
+    { "dag/vim-fish",                  ft = "fish",   lazy = true },
+    { "nikvdp/ejs-syntax",             ft = "ejs",    lazy = true },
+
+    "kyazdani42/nvim-tree.lua",
+    "numToStr/Navigator.nvim",
+    "windwp/nvim-autopairs",
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- Native fzf
+        },
+    },
+    { "ThePrimeagen/harpoon", dependencies = { "nvim-lua/popup.nvim" } }, -- Get you where you want with the fewest keystrokes.
+    "lewis6991/gitsigns.nvim",                                            -- Super fast git decorations
+    "glepnir/lspsaga.nvim",                                               -- LSP plugin with highly performant UI
+    "ray-x/lsp_signature.nvim",
+    "ur4ltz/surround.nvim",                                               -- Easily delete, change and add such surroundings in pairs.
+    "tpope/vim-sleuth",                                                   -- Automatically adjusts indent
+    "gpanders/editorconfig.nvim",
+    "kdheepak/lazygit.nvim",                                              -- Call lazygit within neovim
+    "gcmt/wildfire.vim",                                                  -- Quickly select the closest text object among a group of candidates
+    "lewis6991/impatient.nvim",                                           -- Speed up loading Lua modules in Neovim to improve startup time.("tweekmonster/startuptime.vim")
+    "andweeb/presence.nvim",                                              -- Discord Rich Presence
+    "olimorris/persisted.nvim",                                           -- Session
+    "frabjous/knap",                                                      -- LaTeX preview
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+    },
+    "akinsho/bufferline.nvim", -- Tabline plugin
+    "goolord/alpha-nvim",      -- Vim dashboard
+    "famiu/feline.nvim",       -- A minimal, stylish and customizable statusline for Neovim written in Lua
+
+    -- Themes
+    { "catppuccin/nvim",      name = "catppuccin" },
+    "sainnhe/gruvbox-material",
+    "EdenEast/nightfox.nvim",
+    "RRethy/nvim-base16",
+}
+
+require("lazy").setup(plugins)

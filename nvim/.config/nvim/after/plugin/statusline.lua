@@ -4,6 +4,8 @@ if not present then
     return
 end
 
+opt.termguicolors = true
+
 local lsp = require("feline.providers.lsp")
 local vi_mode_utils = require("feline.providers.vi_mode")
 

@@ -9,7 +9,6 @@ vim.defer_fn(function()
 end, 0)
 
 require("plugins")
-pcall(require("packer_compiled"))
 
 require("generals")
 require("remaps")
