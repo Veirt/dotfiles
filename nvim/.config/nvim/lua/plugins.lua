@@ -71,7 +71,7 @@ local plugins = {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- Native fzf
         },
     },
-    { "ThePrimeagen/harpoon", dependencies = { "nvim-lua/popup.nvim" } }, -- Get you where you want with the fewest keystrokes.
+    { "ThePrimeagen/harpoon",      dependencies = { "nvim-lua/popup.nvim" } }, -- Get you where you want with the fewest keystrokes.
     "lewis6991/gitsigns.nvim",                                            -- Super fast git decorations
     "glepnir/lspsaga.nvim",                                               -- LSP plugin with highly performant UI
     "ray-x/lsp_signature.nvim",
@@ -82,8 +82,9 @@ local plugins = {
     "gcmt/wildfire.vim",                                                  -- Quickly select the closest text object among a group of candidates
     "lewis6991/impatient.nvim",                                           -- Speed up loading Lua modules in Neovim to improve startup time.("tweekmonster/startuptime.vim")
     "andweeb/presence.nvim",                                              -- Discord Rich Presence
-    "olimorris/persisted.nvim",                                           -- Session
-    "frabjous/knap",                                                      -- LaTeX preview
+    -- "olimorris/persisted.nvim",                                           -- Session
+    { dir = "~/dev/persisted.nvim" },
+    "frabjous/knap", -- LaTeX preview
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
@@ -93,7 +94,7 @@ local plugins = {
     "famiu/feline.nvim",       -- A minimal, stylish and customizable statusline for Neovim written in Lua
 
     -- Themes
-    { "catppuccin/nvim",      name = "catppuccin" },
+    { "catppuccin/nvim", name = "catppuccin" },
     "sainnhe/gruvbox-material",
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
