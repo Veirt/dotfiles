@@ -21,6 +21,8 @@ bindsym XF86MonBrightnessUp exec ~/.config/sway/scripts/backlightctl up
 bindsym XF86MonBrightnessDown exec ~/.config/sway/scripts/backlightctl down
 bindsym $mod+Shift+o exec ~/.config/sway/scripts/backlight-toggle
 
+bindsym Mod4+p exec "killall wl-mirror; wl-mirror -b screencopy --stream eDP-1"
+
 # toggle touchpad
 bindsym Ctrl+$mod+XF86TouchpadToggle input type:touchpad events toggle enabled disabled
 
