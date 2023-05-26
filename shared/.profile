@@ -16,9 +16,9 @@ export PATH=$XDG_DATA_HOME/npm/bin:$PATH
 export PATH=$XDG_DATA_HOME/go/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx5
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"
