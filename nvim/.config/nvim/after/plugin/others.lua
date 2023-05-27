@@ -24,7 +24,7 @@ require("presence"):setup({
     neovim_image_text = "Neovim",
     buttons = false,
     show_time = true,
-    blacklist = { "*posttest*" },
+    blacklist = { "%posttest", "%apl" },
 })
 
 vim.g.knap_settings = {
@@ -37,3 +37,19 @@ vim.g.knap_settings = {
 }
 
 require("fidget").setup({})
+
+require("copilot").setup({
+    suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        debounce = 75,
+        keymap = {
+            accept = "<M-l>",
+            accept_word = false,
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+        },
+    },
+})

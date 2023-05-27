@@ -89,11 +89,11 @@ local plugins = {
         "nvim-lualine/lualine.nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
     },
+    "zbirenbaum/copilot.lua",
+
     "akinsho/bufferline.nvim", -- Tabline plugin
     "goolord/alpha-nvim",      -- Vim dashboard
     "famiu/feline.nvim",       -- A minimal, stylish and customizable statusline for Neovim written in Lua
-
-    -- Themes
     { "catppuccin/nvim", name = "catppuccin" },
     "sainnhe/gruvbox-material",
     "EdenEast/nightfox.nvim",
