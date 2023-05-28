@@ -24,7 +24,7 @@ require("presence"):setup({
     neovim_image_text = "Neovim",
     buttons = false,
     show_time = true,
-    blacklist = { "%posttest", "%apl" },
+    blacklist = { "%i(posttest)", "%i(apl)" },
 })
 
 vim.g.knap_settings = {
@@ -39,6 +39,10 @@ vim.g.knap_settings = {
 require("fidget").setup({})
 
 require("copilot").setup({
+    filetypes = {
+        cpp = true,
+        ["*"] = false,
+    },
     suggestion = {
         enabled = true,
         auto_trigger = true,

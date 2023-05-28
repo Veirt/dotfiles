@@ -29,7 +29,8 @@ null_ls.setup({
                 "handlebars",
             },
         }),
-        null_ls.builtins.formatting.eslint_d,
+        -- null_ls.builtins.formatting.eslint_d,
+
         null_ls.builtins.formatting.emacs_scheme_mode,
         null_ls.builtins.formatting.raco_fmt,
         null_ls.builtins.formatting.clang_format,
@@ -74,6 +75,7 @@ lsp.ensure_installed({
     "yamlls",
     "dockerls",
     "intelephense",
+    "lua_ls",
 })
 
 lsp.nvim_workspace()
@@ -90,6 +92,8 @@ vim.diagnostic.config({
     severity_sort = false,
     float = true,
 })
+
+lsp.skip_server_setup({ "tsserver" })
 
 lsp.setup()
 

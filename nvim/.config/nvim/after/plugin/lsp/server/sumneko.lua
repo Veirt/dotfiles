@@ -1,25 +1,23 @@
 local lsp = require("lsp-zero")
 
 lsp.configure("lua_ls", {
-    -- You will have to adjust your values according to your system
     settings = {
         Lua = {
             runtime = {
-                version = "Lua 5.4",
-                path = {
-                    "?.lua",
-                    "?/init.lua",
-                    vim.fn.expand("~/.luarocks/share/lua/5.4/?.lua"),
-                    vim.fn.expand("~/.luarocks/share/lua/5.4/?/init.lua"),
-                    "/usr/share/5.4/?.lua",
-                    "/usr/share/lua/5.4/?/init.lua",
-                },
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim" },
             },
             workspace = {
-                library = {
-                    vim.fn.expand("~/.luarocks/share/lua/5.4"),
-                    "/usr/share/lua/5.4",
-                },
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
             },
         },
     },

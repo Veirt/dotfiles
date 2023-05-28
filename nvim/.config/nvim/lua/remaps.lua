@@ -1,10 +1,5 @@
 local utils = require("utils")
 
--- Packers
-utils.map("n", "<leader>ps", "<cmd>PackerSync<CR>")
-utils.map("n", "<leader>pi", "<cmd>PackerInstall<CR>")
-utils.map("n", "<leader>pc", "<cmd>PackerCompile<CR>")
-
 -- General
 utils.map("n", "<C-s>", ":w<CR>")
 utils.map("i", "<C-s>", "<C-O>:update<CR>")
@@ -43,7 +38,7 @@ utils.map("n", "<A-5>", "<cmd>BufferLineGoToBuffer 5<CR>")
 utils.map("n", "<A-6>", "<cmd>BufferLineGoToBuffer 6<CR>")
 utils.map("n", "<A-7>", "<cmd>BufferLineGoToBuffer 7<CR>")
 utils.map("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>")
-utils.map("n", "<A-9>", "<cmd>BufferLast<CR>")
+utils.map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>")
 
 -- Telescope
 utils.map("n", "<C-p>", "<cmd>lua require('telescope.project').project_files()<CR>")
@@ -71,8 +66,8 @@ utils.map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>")
 utils.map("n", "<leader>sl", [[<cmd>lua require("persisted").load()<cr>]])
 
 -- Git
-utils.map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>")
-utils.map("n", "]c", "<cmd>Gitsigns next_hunk<CR>")
+utils.map("n", "[h", "<cmd>Gitsigns prev_hunk<CR>")
+utils.map("n", "]h", "<cmd>Gitsigns next_hunk<CR>")
 utils.map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
 utils.map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
 utils.map("n", "<leader>hb", "<cmd>Gitsigns blame_line<CR>")
@@ -96,3 +91,8 @@ utils.map("n", "<CR>", " <Plug>(wildfire-fuel)")
 -- Knap
 utils.map("n", "<leader>vt", "<cmd>lua require('knap').toggle_autopreviewing()<CR>")
 utils.map("n", "<F5>", "<cmd>lua require('knap').process_once()<CR>")
+
+-- Copilot
+
+utils.map("n", "<leader>cpe", "<cmd>Copilot! attach<CR> <cmd>lua print('Copilot attached')<CR>")
+utils.map("n", "<leader>cpd", "<cmd>Copilot! detach<CR> <cmd>lua print('Copilot detached')<CR>")
