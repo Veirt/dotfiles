@@ -11,6 +11,8 @@ bindsym $mod+Shift+s  exec ~/.config/sway/scripts/notify-screenshot custom
 bindsym Mod1+Shift+s exec flameshot gui
 bindsym Print exec ~/.config/sway/scripts/notify-screenshot screen
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d "[:space:]" | wl-copy
+# ocr
+bindsym $mod+o exec grim -g "$(slurp)" - | tesseract -l "idn+eng+jpn" stdin stdout | wl-copy
 
 bindsym XF86AudioRaiseVolume exec ~/.config/sway/scripts/volumectl up
 bindsym XF86AudioLowerVolume exec ~/.config/sway/scripts/volumectl down
