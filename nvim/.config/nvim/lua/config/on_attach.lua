@@ -1,6 +1,20 @@
 local utils = require("utils")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local toggleFormattingStatus = true
+
+local function formatOnSave(bufnr)
+    if toggleFormattingStatus == true then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({ bufnr = bufnr })
+            end,
+        })
+    end
+end
 
 local M = function(client, bufnr)
     require("lsp_signature").on_attach({
@@ -29,14 +43,21 @@ local M = function(client, bufnr)
     buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-        })
+        formatOnSave(bufnr)
+    end
+end
+
+function ToggleFormatting()
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    if toggleFormattingStatus == false then
+        toggleFormattingStatus = true
+        formatOnSave()
+        vim.cmd("lua print('Formatting enabled')")
+    else
+        toggleFormattingStatus = false
+        vim.api.nvim_clear_autocmds({ group = augroup })
+        vim.cmd("lua print('Formatting disabled')")
     end
 end
 

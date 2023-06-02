@@ -93,6 +93,8 @@ utils.map("n", "<leader>vt", "<cmd>lua require('knap').toggle_autopreviewing()<C
 utils.map("n", "<F5>", "<cmd>lua require('knap').process_once()<CR>")
 
 -- Copilot
-
 utils.map("n", "<leader>cpe", "<cmd>Copilot! attach<CR> <cmd>lua print('Copilot attached')<CR>")
 utils.map("n", "<leader>cpd", "<cmd>Copilot! detach<CR> <cmd>lua print('Copilot detached')<CR>")
+
+-- Formatting
+utils.map("n", "<leader>df", "<cmd>lua ToggleFormatting()<CR>")
