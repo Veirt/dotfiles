@@ -4,9 +4,7 @@ opt = vim.opt
 command = api.nvim_create_user_command
 autocmd = api.nvim_create_autocmd
 
-vim.defer_fn(function()
-    pcall(require, "impatient")
-end, 0)
+vim.loader.enable()
 
 require("plugins")
 

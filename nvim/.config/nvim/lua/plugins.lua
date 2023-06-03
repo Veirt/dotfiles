@@ -77,10 +77,8 @@ local plugins = {
     "ray-x/lsp_signature.nvim",
     "ur4ltz/surround.nvim",                                               -- Easily delete, change and add such surroundings in pairs.
     "tpope/vim-sleuth",                                                   -- Automatically adjusts indent
-    "gpanders/editorconfig.nvim",
     "kdheepak/lazygit.nvim",                                              -- Call lazygit within neovim
     "gcmt/wildfire.vim",                                                  -- Quickly select the closest text object among a group of candidates
-    "lewis6991/impatient.nvim",                                           -- Speed up loading Lua modules in Neovim to improve startup time.("tweekmonster/startuptime.vim")
     "andweeb/presence.nvim",                                              -- Discord Rich Presence
     -- "olimorris/persisted.nvim",                                           -- Session
     { dir = "~/dev/persisted.nvim" },
