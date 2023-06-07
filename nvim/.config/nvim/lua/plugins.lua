@@ -82,6 +82,7 @@ local plugins = {
     "andweeb/presence.nvim",                                              -- Discord Rich Presence
     -- "olimorris/persisted.nvim",                                           -- Session
     { dir = "~/dev/persisted.nvim" },
+    "lervag/vimtex",
     "frabjous/knap", -- LaTeX preview
     {
         "nvim-lualine/lualine.nvim",
