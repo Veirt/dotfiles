@@ -3,7 +3,7 @@ export VISUAL='nvim'
 export TERMINAL='foot'
 export LAUNCH_TERMINAL='foot'
 export BROWSER='firefox'
-export GUIFM='thunar'
+export GUIFM='nautilus'
 export TUIFM='ranger'
 
 export XDG_CONFIG_HOME=$HOME/.config
