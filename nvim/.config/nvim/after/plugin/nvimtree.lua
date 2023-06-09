@@ -34,7 +34,7 @@ nvim_tree.setup({
     },
     filters = {
         dotfiles = false,
-        custom = { "^.git$", ".cache", "__pycache__", "vendor" },
+        custom = { "^.git$", "^.cache", "__pycache__", "vendor" },
     },
     git = {
         enable = true,
