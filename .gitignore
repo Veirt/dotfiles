@@ -1,2 +1,4 @@
 .luarc.json
 packer_compiled.lua
+__pycache__
+cached_layouts
