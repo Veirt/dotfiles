@@ -51,14 +51,14 @@ local plugins = {
 
     "mfussenegger/nvim-dap",
     "ThePrimeagen/refactoring.nvim",
-    "j-hui/fidget.nvim",
+    { "j-hui/fidget.nvim",             branch = "legacy" },
 
     -- use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
-    { "Vimjas/vim-python-pep8-indent", ft = "python", lazy = true },
+    { "Vimjas/vim-python-pep8-indent", ft = "python",    lazy = true },
     { "MaxMEllon/vim-jsx-pretty",      lazy = true },
-    { "pantharshit00/vim-prisma",      ft = "prisma", lazy = true },
-    { "dag/vim-fish",                  ft = "fish",   lazy = true },
-    { "nikvdp/ejs-syntax",             ft = "ejs",    lazy = true },
+    { "pantharshit00/vim-prisma",      ft = "prisma",    lazy = true },
+    { "dag/vim-fish",                  ft = "fish",      lazy = true },
+    { "nikvdp/ejs-syntax",             ft = "ejs",       lazy = true },
 
     "kyazdani42/nvim-tree.lua",
     "numToStr/Navigator.nvim",
