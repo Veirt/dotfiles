@@ -15,5 +15,9 @@ input type:touchpad {
     events disabled_on_external_mouse
 }
 
+input 1133:49298:Logitech_G102_LIGHTSYNC_Gaming_Mouse {
+        left_handed enabled
+}
+
 # fix brightness ghost
 input 0:6:Video_Bus events disabled
