@@ -1,18 +1,21 @@
 local cmp = require("cmp")
-local lsp = require("lsp-zero")
-
-local M = {}
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-M.sources = {
+local snippet = {
+    expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+    end,
+}
+
+local sources = {
     { name = "nvim_lsp", keyword_length = 3 },
     { name = "luasnip" },
-    { name = "buffer", keyword_length = 3 },
+    { name = "buffer",   keyword_length = 3 },
     { name = "path" },
 }
 
-M.mapping = lsp.defaults.cmp_mappings({
+local mapping = cmp.mapping.preset.insert({
     ["<CR>"] = cmp.mapping(function(fallback)
         fallback()
     end), -- <CR> doesn't autocomplete
@@ -26,7 +29,7 @@ M.mapping = lsp.defaults.cmp_mappings({
         if cmp.visible() then
             cmp.confirm({ select = true })
         else
-            fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            fallback() -- The fallback function sends an already mapped key. In this case, it's probably `<Tab>`.
         end
     end, {
         "i",
@@ -34,9 +37,10 @@ M.mapping = lsp.defaults.cmp_mappings({
     }),
 })
 
-M.formatting = {
+local formatting = {
     format = require("lspkind").cmp_format({
         mode = "symbol_text",
+        preset = "codicons",
         menu = {
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
@@ -47,8 +51,14 @@ M.formatting = {
     }),
 }
 
-M.completion = {
+local completion = {
     completeopt = "menu,menuone,noinsert",
 }
 
-return M
+cmp.setup({
+    snippet = snippet,
+    mapping = mapping,
+    completion = completion,
+    sources = sources,
+    formatting = formatting,
+})

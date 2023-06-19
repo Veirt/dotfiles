@@ -1,4 +1,3 @@
-local on_attach = require("config.on_attach")
 local utils = require("utils")
 
 require("typescript").setup({
@@ -9,7 +8,6 @@ require("typescript").setup({
     },
     server = { -- pass options to lspconfig's setup method
         on_attach = function(client, bufnr)
-            on_attach(client, bufnr)
             client.server_capabilities.document_formatting = false
             client.server_capabilities.document_range_formatting = false
 

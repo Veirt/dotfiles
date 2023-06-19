@@ -1,11 +1,27 @@
 local null_ls = require("null-ls")
-local lsp = require("lsp-zero")
-local cmp_config = require("config.cmp")
+local lspconfig = require("lspconfig")
+local get_servers = require("mason-lspconfig").get_installed_servers
 
-local on_attach = require("config.on_attach")
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "pyright",
+        "clangd",
+        "tsserver",
+        "bashls",
+        "svelte",
+        "volar",
+        "jsonls",
+    },
+})
+
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
 null_ls.setup({
-    on_attach = on_attach,
     sources = {
         -- null_ls.builtins.formatting.prettier,
         -- null_ls.builtins.diagnostics.eslint,
@@ -45,56 +61,77 @@ null_ls.setup({
     },
 })
 
-lsp.set_preferences({
-    suggest_lsp_servers = true,
-    setup_servers_on_start = true,
-    set_lsp_keymaps = true,
-    configure_diagnostics = true,
-    cmp_capabilities = true,
-    manage_nvim_cmp = true,
-    call_servers = "local",
-    sign_icons = {
-        error = "",
-        warn = "",
-        hint = "",
-        info = "",
-    },
+local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+for _, server_name in ipairs(get_servers()) do
+    lspconfig[server_name].setup({
+        capabilities = lsp_capabilities,
+    })
+end
+
+local utils = require("utils")
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local toggleFormattingStatus = true
+
+local function formatOnSave(bufnr)
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    if toggleFormattingStatus == true then
+        autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({ bufnr = bufnr, async = false })
+            end,
+        })
+    end
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        require("lsp_signature").on_attach({
+            floating_window = false,
+        })
+
+        local buf_set_keymap = utils.buf_map(ev.buf)
+
+        buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+        buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
+        buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
+        buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
+        buf_set_keymap("n", "<leader>D", "<cmd>Telescope lsp_definitions<CR>")
+        buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
+        buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+        buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+        buf_set_keymap("n", "<F2>", "<cmd>Lspsaga rename<CR>")
+        buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+        buf_set_keymap("n", "<leader>er", "<cmd>Telescope diagnostics bufnr=0<CR>")
+        buf_set_keymap("n", "<leader>eR", "<cmd>Telescope diagnostics<CR>")
+        buf_set_keymap("n", "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>")
+        buf_set_keymap("n", "<leader>sd", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>")
+        buf_set_keymap("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>")
+        buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
+        buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
+
+        formatOnSave(ev.buf)
+    end,
 })
 
-lsp.ensure_installed({
-    "pyright",
-    "rust_analyzer",
-    "tsserver",
-    "clangd",
-    "html",
-    "cssls",
-    "jsonls",
-    "emmet_ls",
-    "bashls",
-    "vimls",
-    "yamlls",
-    "dockerls",
-    "intelephense",
-    "lua_ls",
-})
+function ToggleFormatting()
+    local bufnr = vim.api.nvim_get_current_buf()
 
-lsp.nvim_workspace()
-
-lsp.setup_nvim_cmp(cmp_config)
-
-lsp.on_attach(on_attach)
-
-vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = false,
-    float = true,
-})
-
-lsp.skip_server_setup({ "tsserver" })
-
-lsp.setup()
+    if toggleFormattingStatus == false then
+        toggleFormattingStatus = true
+        formatOnSave()
+        print("Formatting enabled")
+    else
+        toggleFormattingStatus = false
+        vim.api.nvim_clear_autocmds({ group = augroup })
+        print("Formatting disabled")
+    end
+end
 
 require("luasnip.loaders.from_vscode").lazy_load()

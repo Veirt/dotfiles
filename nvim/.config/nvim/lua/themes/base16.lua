@@ -31,10 +31,10 @@ local function hl(highlight, fg, bg)
 end
 
 -- Status Line
-hl("StatusLine")
 hl("StatusNormal")
 hl("StatusLineNC", color.base03)
-hl("StatusInactive", color.base03)
+hl("StatusActive", color.base05)
+hl("StatusLine", color.base02) -- inactive
 hl("StatusReplace", color.base08)
 hl("StatusInsert", color.base0B)
 hl("StatusCommand", color.base0A)
@@ -42,9 +42,9 @@ hl("StatusVisual", color.base0D)
 hl("StatusTerminal", color.base0E)
 
 -- Nvim Tree
-hl("NvimTreeFolderName")
-hl("NvimTreeOpenedFolderName")
-hl("NvimTreeEmptyFolderName")
+hl("NvimTreeFolderName", color.base05)
+hl("NvimTreeOpenedFolderName", color.base05)
+hl("NvimTreeEmptyFolderName", color.base05)
 hl("NvimTreeFolderIcon", color.base03)
 hl("NvimTreeGitDirty", color.base08)
 hl("NvimTreeGitNew", color.base0B)
@@ -68,18 +68,23 @@ hl("PmenuSbar", nil, color.base01)
 hl("PmenuThumb", nil, color.base01)
 hl("PmenuSel", nil, color.base02)
 
--- -- CMP
--- hl("CmpItemAbbrMatch", color.base05)
--- hl("CmpItemAbbrMatchFuzzy", color.base05)
+-- CMP
+hl("CmpItemAbbrMatch", color.base05)
+hl("CmpItemAbbrMatchFuzzy", color.base05)
 -- hl("CmpItemAbbr", color.base03)
--- hl("CmpItemKind", color.base0E)
--- hl("CmpItemMenu", color.base0E)
+hl("CmpItemKind", color.base0E)
+hl("CmpItemMenu", color.base0E)
+hl("CmpItemKindSnippet", color.base0E)
 
 -- Number
--- hl("CursorLine")
+hl("CursorLine")
 hl("CursorLineNR")
 hl("LineNr", color.base03)
 
 -- Others
+hl("VertSplit", color.base01, nil)
 hl("NormalFloat", nil, color.base01)
 hl("FloatBorder", color.base01, color.base01)
+
+-- Extra
+cmd("hi StatusLine gui=strikethrough")
