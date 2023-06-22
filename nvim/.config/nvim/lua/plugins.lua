@@ -40,10 +40,12 @@ local plugins = {
         dependencies = {
             -- Completions
             { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
+            { "FelipeLema/cmp-async-path" },
             { "saadparwaiz1/cmp_luasnip" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "hrsh7th/cmp-nvim-lua" },
+            { "hrsh7th/cmp-omni" },
+            { "lukas-reineke/cmp-rg" },
 
             -- Snippets
             {
@@ -91,7 +93,6 @@ local plugins = {
     -- "lervag/vimtex",
     -- "frabjous/knap", -- LaTeX preview
     { "zbirenbaum/copilot.lua",    lazy = true },
-
     "akinsho/bufferline.nvim",                                                  -- Tabline plugin
     "goolord/alpha-nvim",                                                       -- Vim dashboard
     { "famiu/feline.nvim", dependencies = { "kyazdani42/nvim-web-devicons" } }, -- A minimal, stylish and customizable statusline for Neovim written in Lua
