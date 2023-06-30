@@ -20,3 +20,7 @@ alias github="web-search github"
 alias stackoverflow="web-search stackoverflow"
 alias anime="web-search anime"
 alias hi10="web-search hi10"
+
+if type -q zoxide
+    zoxide init fish | source
+end
