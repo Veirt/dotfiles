@@ -113,6 +113,12 @@ local plugins = {
     "sainnhe/gruvbox-material",
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
+    "FrenzyExists/aquarium-vim",
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    "shaunsingh/nord.nvim",
+    "tjdevries/colorbuddy.nvim",
+    "svrana/neosolarized.nvim",
+    "Yazeed1s/oh-lucy.nvim",
 }
 
 require("lazy").setup(plugins)

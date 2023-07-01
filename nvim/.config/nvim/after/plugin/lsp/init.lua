@@ -91,6 +91,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local buf_set_keymap = utils.buf_map(ev.buf)
 
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        -- client.server_capabilities.semanticTokensProvider = nil
+
         buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
         buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
         buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
