@@ -9,7 +9,8 @@ local snippet = {
 }
 
 local sources = {
-    { name = "nvim_lsp",  keyword_length = 3, max_item_count = 30 },
+    { name = "nvim_lsp",  max_item_count = 30 },
+    -- { name = "nvim_lsp_signature_help" },
     { name = "luasnip",   max_item_count = 30 },
     { name = "buffer",    keyword_length = 3 },
     { name = "async_path" },

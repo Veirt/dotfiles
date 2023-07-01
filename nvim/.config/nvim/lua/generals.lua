@@ -1,5 +1,5 @@
 opt.encoding = "utf-8"
-opt.fileencoding = "utf-8"
+-- opt.fileencoding = "utf-8"
 opt.relativenumber = true
 opt.nu = true
 opt.termguicolors = true

@@ -89,12 +89,6 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        require("lsp_signature").on_attach({
-            floating_window = false,
-        })
-
         local buf_set_keymap = utils.buf_map(ev.buf)
 
         buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")

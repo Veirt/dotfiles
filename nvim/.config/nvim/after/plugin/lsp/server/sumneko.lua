@@ -1,6 +1,6 @@
-local lsp = require("lsp-zero")
+local lsp = require("lspconfig")
 
-lsp.configure("lua_ls", {
+lsp["lua_ls"].setup({
     settings = {
         Lua = {
             runtime = {

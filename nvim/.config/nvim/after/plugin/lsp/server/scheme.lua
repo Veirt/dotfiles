@@ -1,5 +1,6 @@
-local lsp = require("lsp-zero")
-lsp.configure("racket_langserver")
+local lsp = require("lspconfig")
+
+lsp["racket_langserver"].setup({})
 
 vim.api.nvim_command([[augroup AutoPairScheme]])
 vim.api.nvim_command(

@@ -23,29 +23,38 @@ local plugins = {
     "JoosepAlviste/nvim-ts-context-commentstring",
     "numToStr/Comment.nvim",
 
+    {
+        "vim-denops/denops.vim",
+        dependencies = {
+            "matsui54/denops-signature_help",
+        },
+    },
+
     -- lsp
     {
-        "VonHeikemen/lsp-zero.nvim",
+        "neovim/nvim-lspconfig",
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" },
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" },
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "lvimuser/lsp-inlayhints.nvim",
             { "jose-elias-alvarez/typescript.nvim", dependencies = { "jose-elias-alvarez/null-ls.nvim" } },
         },
     },
+
     {
         "hrsh7th/nvim-cmp",
         lazy = false,
         dependencies = {
             -- Completions
-            { "hrsh7th/cmp-buffer" },
-            { "FelipeLema/cmp-async-path" },
-            { "saadparwaiz1/cmp_luasnip" },
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-nvim-lua" },
-            { "hrsh7th/cmp-omni" },
-            { "lukas-reineke/cmp-rg" },
+            "hrsh7th/cmp-buffer",
+            "FelipeLema/cmp-async-path",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-omni",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "lukas-reineke/cmp-rg",
 
             -- Snippets
             {
@@ -61,6 +70,11 @@ local plugins = {
     "mfussenegger/nvim-dap",
     "ThePrimeagen/refactoring.nvim",
     { "j-hui/fidget.nvim",             branch = "legacy" },
+    {
+        "linux-cultist/venv-selector.nvim",
+        config = true,
+        event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    },
 
     -- use({ "posva/vim-vue", ft = "vue", opt = true }) -- Syntax with indent for Vue
     { "Vimjas/vim-python-pep8-indent", ft = "python",    lazy = true },
@@ -82,7 +96,6 @@ local plugins = {
     { "ThePrimeagen/harpoon",    dependencies = { "nvim-lua/popup.nvim" }, lazy = true }, -- Get you where you want with the fewest keystrokes.
     { "lewis6991/gitsigns.nvim", lazy = true },                                        -- Super fast git decorations
     { "glepnir/lspsaga.nvim",    event = "LspAttach" },                                -- LSP plugin with highly performant UI
-    "ray-x/lsp_signature.nvim",
     "ur4ltz/surround.nvim",                                                            -- Easily delete, change and add such surroundings in pairs.
     "tpope/vim-sleuth",                                                                -- Automatically adjusts indent
     { "kdheepak/lazygit.nvim",     cmd = "LazyGit" },                                  -- Call lazygit within neovim
