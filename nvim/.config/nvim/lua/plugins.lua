@@ -97,7 +97,7 @@ local plugins = {
     { "lewis6991/gitsigns.nvim", lazy = true },                                        -- Super fast git decorations
     { "glepnir/lspsaga.nvim",    event = "LspAttach" },                                -- LSP plugin with highly performant UI
     "ur4ltz/surround.nvim",                                                            -- Easily delete, change and add such surroundings in pairs.
-    "tpope/vim-sleuth",                                                                -- Automatically adjusts indent
+    "NMAC427/guess-indent.nvim",                                                       -- Automatically adjusts indent
     { "kdheepak/lazygit.nvim",     cmd = "LazyGit" },                                  -- Call lazygit within neovim
     "gcmt/wildfire.vim",                                                               -- Quickly select the closest text object among a group of candidates
     { "andweeb/presence.nvim",     lazy = true },                                      -- Discord Rich Presence
@@ -114,7 +114,6 @@ local plugins = {
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
     "FrenzyExists/aquarium-vim",
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     "shaunsingh/nord.nvim",
     "tjdevries/colorbuddy.nvim",
     "svrana/neosolarized.nvim",
