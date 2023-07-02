@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+SWAY_WALLPAPER="$HOME/.config/sway/conf.d/wallpaper"
+SWAY_WALLPAPER_PATH="$HOME/pictures/wallpapers/current/main"
+SWAY_WEEBPAPER="$HOME/.config/sway/conf.d/weebpaper"
+SWAY_WEEBPAPER_PATH="$HOME/pictures/wallpapers/current/weeb"
+
+# WALLPAPER_PATH="$HOME/pictures/wallpapers/"
+
+# function preview_wallpaper() {
+#     TEMP_SWAY_WALLPAPER="$HOME/.config/sway/conf.d/zwallpaper"
+#     echo "output * bg '$1' fill" >"$TEMP_SWAY_WALLPAPER"
+#     sway reload
+#     rm "$TEMP_SWAY_WALLPAPER"
+# }
+#
+# preview_wallpaper "$(find "$WALLPAPER_PATH" -type f | fzf)"
+
+function setweeb() {
+    echo "output * bg '$SWAY_WEEBPAPER_PATH' fill" >"$SWAY_WEEBPAPER"
+}
+
+function noweeb() {
+    if [ -f "$SWAY_WEEBPAPER" ]; then
+        rm "$SWAY_WEEBPAPER"
+    fi
+}
+
+function toggle_weebpaper() {
+    if [ -f "$SWAY_WEEBPAPER" ]; then
+        noweeb
+    else
+        setweeb
+    fi
+}
+
+if [ "$1" = "weeb" ]; then
+    setweeb
+elif [ "$1" = "main" ]; then
+    noweeb
+elif [ "$1" = "toggle" ]; then
+    toggle_weebpaper
+fi
+
+swaymsg reload

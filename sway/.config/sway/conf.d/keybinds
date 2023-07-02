@@ -6,6 +6,7 @@ bindsym $mod+e exec $GUIFM
 bindsym $mod+r exec rofi -x11 -show drun
 bindsym $mod+s exec rofi -x11 -show ssh -modes ssh
 bindsym $mod+m exec geary
+bindsym Ctrl+Mod1+s exec pape toggle
 
 bindsym $mod+Shift+s  exec ~/.config/sway/scripts/notify-screenshot custom
 bindsym Mod1+Shift+s exec flameshot gui
