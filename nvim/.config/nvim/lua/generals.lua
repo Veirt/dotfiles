@@ -21,7 +21,7 @@ opt.autoindent = true
 opt.cinoptions:append("L0")
 
 opt.showmode = false  -- hide built-in vim mode
-opt.mouse = "a"       -- enable mouse click
+opt.mouse = ""        -- disable mouse click
 opt.ttyfast = true    -- speed up scrolling
 opt.hidden = true     -- change buffer without save
 opt.cursorline = true -- highlight currrent line
