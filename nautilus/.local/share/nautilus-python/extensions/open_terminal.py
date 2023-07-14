@@ -1,5 +1,6 @@
 # https://gitlab.gnome.org/GNOME/nautilus-python/-/blob/master/examples/open-terminal.py
 # This example is contributed by Martin Enlund
+import subprocess
 import os
 from urllib.parse import unquote
 from gi.repository import Nautilus, GObject
@@ -11,7 +12,7 @@ class OpenTerminalExtension(GObject.GObject, Nautilus.MenuProvider):
         filename = unquote(file.get_uri()[7:])
 
         os.chdir(filename)
-        os.system("$TERMINAL --working-directory .")
+        subprocess.Popen(["foot", "--working-directory", "."])
 
     def menu_activate_cb(
         self,
