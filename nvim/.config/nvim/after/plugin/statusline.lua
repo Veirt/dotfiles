@@ -1,202 +1,146 @@
-local present, _ = pcall(require, "feline")
+local modes = {
+    ["n"] = " ",
+    ["nov"] = " ",
+    ["noV"] = " ",
+    ["no"] = " ",
+    ["niI"] = " ",
+    ["niR"] = " ",
+    ["niV"] = " ",
 
-if not present then
-    return
+    ["i"] = " ",
+    ["ic"] = " ",
+    ["ix"] = " ",
+    ["s"] = " ",
+    ["S"] = " ",
+
+    ["v"] = " ",
+    ["V"] = " ",
+    [""] = " ",
+    ["r"] = " ",
+    ["r?"] = " ",
+    ["c"] = " ",
+    ["t"] = " ",
+    ["!"] = " ",
+    ["R"] = " ",
+}
+
+local icons = {
+    ["typescript"] = "󰛦 ",
+    ["python"] = " ",
+    ["java"] = " ",
+    ["html"] = " ",
+    ["css"] = " ",
+    ["scss"] = " ",
+    ["javascript"] = "󰌞 ",
+    ["javascriptreact"] = " ",
+    ["markdown"] = " ",
+    ["sh"] = " ",
+    ["zsh"] = " ",
+    ["vim"] = " ",
+    ["rust"] = " ",
+    ["cpp"] = " ",
+    ["c"] = " ",
+    ["go"] = " ",
+    ["lua"] = " ",
+    ["conf"] = " ",
+    ["haskel"] = " ",
+    ["ruby"] = " ",
+    ["term"] = " ",
+    ["txt"] = "󰈙 ",
+    ["svelte"] = " ",
+}
+
+local function color()
+    local mode = api.nvim_get_mode().mode
+    local mode_color = "%#StatusLine#"
+    if mode == "n" then
+        mode_color = "%#StatusNormal#"
+    elseif mode == "i" or mode == "ic" then
+        mode_color = "%#StatusInsert#"
+    elseif mode == "v" or mode == "V" or mode == "" then
+        mode_color = "%#StatusVisual#"
+    elseif mode == "R" then
+        mode_color = "%#StatusReplace#"
+    elseif mode == "c" then
+        mode_color = "%#StatusCommand#"
+    elseif mode == "t" then
+        mode_color = "%#StatusTerminal#"
+    end
+    return mode_color
 end
 
-opt.termguicolors = true
+local function branch()
+    local cmd = io.popen("git branch --show-current 2>/dev/null")
+    local curr_branch = cmd:read("*l") or cmd:read("*a")
+    cmd:close()
+    if curr_branch ~= "" then
+        return string.format("   " .. curr_branch)
+    else
+        return ""
+    end
+end
 
-local lsp = require("feline.providers.lsp")
-local vi_mode_utils = require("feline.providers.vi_mode")
+local function formatDiagnostic()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local errorCount = #vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
+    local warnCount = #vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.WARN })
+    local hintCount = #vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.HINT })
 
-local force_inactive = {
-    filetypes = {
-        "NvimTree",
-        "alpha",
-        "dbui",
-        "packer",
-        "startify",
-        "fugitive",
-        "fugitiveblame",
-        "help",
-    },
-    buftypes = {
-        "terminal",
-    },
-}
+    local result = ""
 
-local components = {
-    active = { {}, {}, {} },
-    inactive = { {} },
-}
+    if errorCount > 0 then
+        result = result .. " " .. errorCount .. " "
+    end
 
-local colors = {
-    fg = "#D0D0D0",
-    bg = "#1F1F1F",
-    black = "#424242",
-    skyblue = "#8DA3B9",
-    cyan = "#8AA6A2",
-    green = "#8C977D",
-    oceanblue = "#8DA3B9",
-    magenta = "#A988B0",
-    orange = "#D9BC8C",
-    red = "#B66467",
-    violet = "#A988B0",
-    white = "#E8E3E3",
-    yellow = "#D9BC8C",
-}
+    if warnCount > 0 then
+        result = result .. " " .. warnCount .. " "
+    end
 
-components.inactive[1][1] = {
-    hl = {
-        bg = "none",
-    },
-}
+    if hintCount > 0 then
+        result = result .. " " .. hintCount .. " "
+    end
 
--- reusable
-local separator = {
-    str = " ",
-    hl = {
-        bg = "#1F1F1F",
-    },
-}
+    return result
+end
 
--- LEFT
+-- StatusLine Modes
+Status = function()
+    return table.concat({
+        color(), -- mode colors
+        string.format("  %s ", modes[api.nvim_get_mode().mode]):upper(), -- mode
+        "%#StatusActive#", -- middle color
+        branch(),
+        " ",
+        formatDiagnostic(),
+        "%=", -- right align
+        string.format("%s", (icons[vim.bo.filetype] or "")),
+        " %f ",
+        color(), -- mode colors
+        " %l:%c  ", -- line, column
+    })
+end
 
--- vi-mode
-components.active[1][1] = {
-    provider = function()
-        return string.format("  %s ", vi_mode_utils.get_vim_mode())
-    end,
-    hl = function()
-        local val = {
-            bg = "#181818",
-            fg = colors.white,
-            style = "bold",
-        }
+InactiveStatus = function()
+    return table.concat({
+        color(), -- mode colors
+        "%#StatusActive#", -- middle color
+        "%=", -- right align
+        " %f ",
+        color(), -- mode colors
+    })
+end
 
-        return val
-    end,
-    right_sep = separator,
-}
-
--- gitBranch
-components.active[1][2] = {
-    provider = "git_branch",
-    hl = {
-        fg = colors.white,
-        bg = colors.bg,
-        style = "bold",
-    },
-}
-
--- diffAdd
-components.active[1][3] = {
-    provider = "git_diff_added",
-    hl = {
-        fg = colors.green,
-        bg = colors.bg,
-    },
-    left_sep = separator,
-}
--- diffModified
-components.active[1][4] = {
-    provider = "git_diff_changed",
-    hl = {
-        fg = colors.yellow,
-        bg = colors.bg,
-    },
-    left_sep = separator,
-}
--- diffRemove
-components.active[1][5] = {
-    provider = "git_diff_removed",
-    hl = {
-        fg = colors.red,
-        bg = colors.bg,
-    },
-    left_sep = separator,
-}
-
--- RIGHT
-
--- diagnosticErrors
-components.active[3][1] = {
-    provider = "diagnostic_errors",
-    enabled = function()
-        return lsp.diagnostics_exist("Error")
-    end,
-    hl = {
-        fg = colors.red,
-        bg = colors.bg,
-    },
-    right_sep = separator,
-}
--- diagnosticWarn
-components.active[3][2] = {
-    provider = "diagnostic_warnings",
-    enabled = function()
-        return lsp.diagnostics_exist("Warn")
-    end,
-    hl = {
-        fg = colors.yellow,
-        bg = colors.bg,
-    },
-    right_sep = separator,
-}
--- diagnosticHint
-components.active[3][3] = {
-    provider = "diagnostic_hints",
-    enabled = function()
-        return lsp.diagnostics_exist("Hint")
-    end,
-    hl = {
-        fg = "cyan",
-        bg = colors.bg,
-    },
-    right_sep = separator,
-}
--- diagnosticInfo
-components.active[3][4] = {
-    provider = "diagnostic_info",
-    enabled = function()
-        return lsp.diagnostics_exist("Info")
-    end,
-    hl = {
-        fg = "skyblue",
-        bg = colors.bg,
-    },
-    right_sep = separator,
-}
-
--- fileName
-components.active[3][5] = {
-    provider = {
-        name = "file_info",
-        opts = {
-            file_readonly_icon = "",
-            type = "relative",
-        },
-    },
-    hl = {
-        fg = colors.white,
-        bg = colors.bg,
-    },
-    right_sep = separator,
-}
-
--- lineInfo
-components.active[3][6] = {
-    provider = "position",
-    hl = {
-        fg = colors.white,
-        bg = colors.bg,
-    },
-    right_sep = separator,
-}
-
--- INACTIVE
-
-require("feline").setup({
-    components = components,
-    force_inactive = force_inactive,
+-- Execute statusline
+autocmd({ "VimEnter" }, {
+    pattern = "*",
+    command = "set statusline=%!v:lua.Status()",
 })
+
+autocmd({ "BufEnter" }, {
+    pattern = { "help", "startuptime", "qf", "lspinfo" },
+    command = "setlocal statusline=%!v:lua.InactiveStatus()",
+})
+local api = require("nvim-tree.api")
+api.events.subscribe(api.events.Event.TreeOpen, function()
+    vim.cmd([[setlocal statusline=%!v:lua.InactiveStatus()]])
+end)

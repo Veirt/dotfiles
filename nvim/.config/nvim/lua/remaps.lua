@@ -6,7 +6,8 @@ utils.map("i", "<C-s>", "<C-O>:update<CR>")
 utils.map("n", "<C-Q>", ":wq!<CR>")
 utils.map("v", "<C-c>", '"+y')
 utils.map("i", "<C-v>", "<esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia")
-utils.map("n", "<C-c>", ':silent !foot -e bash -c "g++ "%" -o a.out; ./a.out; fish" 2> /dev/null &  <CR>')
+utils.map("n", "<leader>x", "<cmd>!chmod +x %<CR>")
+utils.map("n", "<leader>wq", "<cmd>wq<CR>")
 
 -- ThePrimeagen's remaps
 utils.map("n", "Y", "yg$")
@@ -43,10 +44,9 @@ utils.map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>")
 -- Telescope
 utils.map("n", "<C-p>", "<cmd>lua require('telescope.project').project_files()<CR>")
 utils.map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
-utils.map("n", "<leader>ff", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
-utils.map("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 utils.map("n", "<leader>jl", "<cmd>Telescope jumplist<CR>")
 utils.map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
+utils.map("n", "<leader>sf", "<cmd> lua require('telescope.builtin').find_files()<CR>")
 
 -- Navigator.nvim
 utils.map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>")
@@ -85,13 +85,7 @@ utils.map("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>")
 utils.map("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>")
 utils.map("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>")
 utils.map("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>")
-
--- Wildfire.vim
-utils.map("n", "<CR>", " <Plug>(wildfire-fuel)")
-
--- Knap
-utils.map("n", "<leader>vt", "<cmd>lua require('knap').toggle_autopreviewing()<CR>")
-utils.map("n", "<F5>", "<cmd>lua require('knap').process_once()<CR>")
+utils.map("n", "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<CR>")
 
 -- Copilot
 utils.map("n", "<leader>cpe", "<cmd>Copilot! attach<CR> <cmd>lua print('Copilot attached')<CR>")

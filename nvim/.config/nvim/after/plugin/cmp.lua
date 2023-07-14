@@ -1,25 +1,23 @@
-local cmp = require("cmp")
+local present, cmp = pcall(require, "cmp")
+local luasnip = require("luasnip")
+
+if not present then
+    return
+end
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 local snippet = {
     expand = function(args)
-        require("luasnip").lsp_expand(args.body)
+        luasnip.lsp_expand(args.body)
     end,
 }
 
 local sources = {
-    { name = "nvim_lsp",  max_item_count = 30 },
-    -- { name = "nvim_lsp_signature_help" },
-    { name = "luasnip",   max_item_count = 30 },
-    { name = "buffer",    keyword_length = 3 },
-    { name = "async_path" },
-    {
-        name = "omni",
-        option = {
-            disable_omnifuncs = { "v:lua.vim.lsp.omnifunc" },
-        },
-    },
+    { name = "nvim_lsp", max_item_count = 30 },
+    { name = "nvim_lsp_signature_help" },
+    { name = "luasnip", max_item_count = 30 },
+    { name = "buffer", keyword_length = 3 },
 }
 
 local mapping = cmp.mapping.preset.insert({
@@ -35,6 +33,8 @@ local mapping = cmp.mapping.preset.insert({
     ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.confirm({ select = true })
+        elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
         else
             fallback() -- The fallback function sends an already mapped key. In this case, it's probably `<Tab>`.
         end
@@ -42,6 +42,15 @@ local mapping = cmp.mapping.preset.insert({
         "i",
         "s",
     }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            fallback()
+        elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+        else
+            fallback()
+        end
+    end, { "i", "s" }),
 })
 
 local formatting = {

@@ -60,7 +60,7 @@ nvim_tree.setup({
         root_folder_label = true,
     },
     view = {
-        width = 30,
+        width = 35,
     },
     trash = {
         cmd = "trash",
