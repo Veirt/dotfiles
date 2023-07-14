@@ -49,3 +49,6 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
       && ua-drop-caches \
       && paru -Syyu --noconfirm'
 
+
+alias active-ports="sudo lsof -i -P -n | grep LISTEN"
+alias mkdir-date="mkdir $(date +'%Y-%m-%d')"
