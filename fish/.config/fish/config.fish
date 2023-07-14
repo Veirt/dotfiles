@@ -5,8 +5,8 @@ bind -M insert \cf 'tmux-sessionizer'
 bind \cf 'tmux-sessionizer'
 bind -M insert \ct 'tmux'
 bind \ct 'tmux'
-bind -M insert \cr 'ranger'
-bind \cr 'ranger'
+bind -M insert \cr 'lfcd'
+bind \cr 'lfcd'
 
 source ~/.config/shell_aliases
 
@@ -14,12 +14,14 @@ set -gx WEB_SEARCH_flac 'https://nyaa.si/?f=0&c=2_1&q='
 set -gx WEB_SEARCH_anime 'https://nyaa.si/?f=0&c=1_2&q='
 set -gx WEB_SEARCH_dict 'https://dictionary.cambridge.org/dictionary/english/'
 set -gx WEB_SEARCH_hi10 'https://hi10anime.com/?s='
+set -gx WEB_SEARCH_mal 'https://myanimelist.net/search/all?cat=all&q='
 
 alias google="web-search google"
 alias github="web-search github"
 alias stackoverflow="web-search stackoverflow"
 alias anime="web-search anime"
 alias hi10="web-search hi10"
+alias mal="web-search mal"
 
 if type -q zoxide
     zoxide init fish | source
