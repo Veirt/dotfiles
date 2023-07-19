@@ -14,4 +14,4 @@ require("remaps")
 require("themes")
 
 -- absolutely disable continuous comment frfr no cap.
-vim.cmd([[au! BufEnter * set fo-=c fo-=r fo-=o]])
+vim.cmd([[au! FileType * setlocal  fo-=c fo-=r fo-=o]])
