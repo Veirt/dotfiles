@@ -7,7 +7,7 @@ border-size=0
 background-color=#121214
 progress-color= #7A7A7A
 text-color=#ffffff
-padding=10
+padding=15
 
 format=%s\n%b
 

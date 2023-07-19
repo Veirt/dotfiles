@@ -4,12 +4,10 @@ bindsym $mod+w exec eval $BROWSER
 bindsym $mod+d exec discord
 bindsym $mod+e exec $GUIFM
 bindsym $mod+r exec rofi -x11 -show drun
-bindsym $mod+s exec rofi -x11 -show ssh -modes ssh
 bindsym $mod+m exec geary
 bindsym Ctrl+Mod1+s exec pape toggle
 
 bindsym $mod+Shift+s  exec ~/.config/sway/scripts/notify-screenshot custom
-bindsym Mod1+Shift+s exec flameshot gui
 bindsym Print exec ~/.config/sway/scripts/notify-screenshot screen
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d "[:space:]" | wl-copy
 # ocr

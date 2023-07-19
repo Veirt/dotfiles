@@ -1,17 +1,16 @@
-# Variables
 set $mod Mod4
 
 # Font
-font Ubuntu 12
+font JetBrains Mono 12
 
 # Window borders
-default_border pixel 2
+default_border pixel 3
 default_floating_border none
 
 focus_follows_mouse no
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #343945 #343945 #ffffff #2e9ef4   #343945
+client.focused          #657B83 #657B83 #ffffff #2e9ef4   #657B83
 client.unfocused        #333333 #222222 #888888 #333845   #1A1A1F
 
 smart_borders on
@@ -37,7 +36,6 @@ exec swayidle -w \
 #
     # Kill focused window
     bindsym $mod+q kill
-    bindsym $mod+Shift+q kill
 
     floating_modifier $mod normal
 
