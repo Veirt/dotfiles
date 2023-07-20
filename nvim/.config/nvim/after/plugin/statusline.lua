@@ -1,24 +1,24 @@
 local modes = {
-    ["n"] = " ",
-    ["nov"] = " ",
-    ["noV"] = " ",
-    ["no"] = " ",
-    ["niI"] = " ",
-    ["niR"] = " ",
-    ["niV"] = " ",
+    ["n"] = "󰋜 ",
+    ["nov"] = "󰋜 ",
+    ["noV"] = "󰋜 ",
+    ["no"] = "󰋜 ",
+    ["niI"] = "󰋜 ",
+    ["niR"] = "󰋜 ",
+    ["niV"] = "󰋜 ",
 
-    ["i"] = " ",
-    ["ic"] = " ",
-    ["ix"] = " ",
-    ["s"] = " ",
-    ["S"] = " ",
+    ["i"] = " ",
+    ["ic"] = " ",
+    ["ix"] = " ",
+    ["s"] = " ",
+    ["S"] = " ",
 
-    ["v"] = " ",
-    ["V"] = " ",
-    [""] = " ",
+    ["v"] = "󰈈 ",
+    ["V"] = "󰉸 ",
+    ["CTRL-V"] = "󰉸 ",
     ["r"] = " ",
     ["r?"] = " ",
-    ["c"] = " ",
+    ["c"] = " ",
     ["t"] = " ",
     ["!"] = " ",
     ["R"] = " ",
@@ -71,12 +71,15 @@ end
 
 local function branch()
     local cmd = io.popen("git branch --show-current 2>/dev/null")
-    local curr_branch = cmd:read("*l") or cmd:read("*a")
-    cmd:close()
-    if curr_branch ~= "" then
-        return string.format("   " .. curr_branch)
-    else
-        return ""
+    if cmd then
+        local curr_branch = cmd:read("*l") or cmd:read("*a")
+        cmd:close()
+
+        if curr_branch ~= "" then
+            return string.format(" 󰊢  " .. curr_branch)
+        else
+            return ""
+        end
     end
 end
 
