@@ -33,6 +33,7 @@ mason_lspconfig.setup_handlers({
     ["tsserver"] = require("server.tsserver").setup,
     ["clangd"] = require("server.clangd").setup,
     ["lua_ls"] = require("server.lua_ls").setup,
+    ["texlab"] = require("server.texlab").setup,
 })
 
 null_ls.setup({

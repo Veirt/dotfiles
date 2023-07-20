@@ -90,7 +90,6 @@ local plugins = {
     { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
     -- "olimorris/persisted.nvim", -- Session
     { dir = "~/dev/persisted.nvim" },
-    { "lervag/vimtex", ft = "tex" },
     { "zbirenbaum/copilot.lua", lazy = true },
     -- "akinsho/bufferline.nvim", -- Tabline plugin
     "sainnhe/gruvbox-material",
