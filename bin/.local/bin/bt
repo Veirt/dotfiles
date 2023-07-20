@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rfkill unblock bluetooth
+sudo rfkill unblock bluetooth
 bluetoothctl power on
 
 SELECTED_DEVICE=$(bluetoothctl devices | fzf)
