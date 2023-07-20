@@ -24,6 +24,10 @@ function noweeb() {
     if [ -f "$SWAY_WEEBPAPER" ]; then
         rm "$SWAY_WEEBPAPER"
     fi
+
+    if [ ! -f "SWAY_WALLPAPER" ]; then
+        echo "output * bg '$SWAY_WALLPAPER_PATH' fill" >"$SWAY_WALLPAPER"
+    fi
 }
 
 function toggle_weebpaper() {
