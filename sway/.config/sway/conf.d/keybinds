@@ -1,9 +1,9 @@
 # vim: ft=config
 bindsym $mod+Return exec eval $LAUNCH_TERMINAL
 bindsym $mod+w exec eval $BROWSER
-bindsym $mod+d exec discord
+bindsym $mod+d exec discord || Discord
 bindsym $mod+e exec $GUIFM
-bindsym $mod+r exec rofi -x11 -show drun
+bindsym $mod+r exec wofi --width=25%  --show drun
 bindsym $mod+m exec geary
 bindsym Ctrl+Mod1+s exec pape toggle
 
@@ -11,7 +11,7 @@ bindsym $mod+Shift+s  exec ~/.config/sway/scripts/notify-screenshot custom
 bindsym Print exec ~/.config/sway/scripts/notify-screenshot screen
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d "[:space:]" | wl-copy
 # ocr
-bindsym $mod+o exec grim -g "$(slurp)" - | tesseract -l "idn+eng+jpn" stdin stdout | wl-copy
+bindsym $mod+o exec grim -g "$(slurp)" - | tesseract-ocr -l "idn+eng+jpn" stdin stdout | wl-copy
 
 bindsym XF86AudioRaiseVolume exec ~/.config/sway/scripts/volumectl up
 bindsym XF86AudioLowerVolume exec ~/.config/sway/scripts/volumectl down

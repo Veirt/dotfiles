@@ -8,4 +8,12 @@ exec --no-startup-id fcitx5 --verbose 0
 
 exec --no-startup-id batsignal -b
 
-exec dash ~/.config/sway/scripts/import-gsettings
+exec --no-startup-id mako
+exec --no-startup-id dex /usr/share/applications/pipewire.desktop
+
+exec --no-startup-id runsvdir ~/.runit/runsvdir
+
+# exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
+
+exec ~/.config/sway/scripts/import-gsettings

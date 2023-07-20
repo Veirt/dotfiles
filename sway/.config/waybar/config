@@ -1,7 +1,7 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 48,
+    "height": 50,
     "modules-left": [
         "sway/workspaces",
         "sway/mode"
@@ -28,7 +28,7 @@
         "format-alt-click": "click-right",
         "format-icons": {
             "headphones": "",
-            "headset": "",
+            "headset": "󰋎",
             "phone": "",
             "default": [
                 "",
@@ -42,29 +42,32 @@
         "format-alt": "{icon}",
         "format-alt-click": "click-right",
         "format-icons": [
-            "",
-            "",
-            ""
+            "󰃚",
+            "󰃛",
+            "󰃜",
+            "󰃞",
+            "󰃟",
+            "󰃠"
         ],
-        "on-scroll-up": "~/.local/bin/backlightctl up",
-        "on-scroll-down": "~/.local/bin/backlightctl down"
+        "on-scroll-up": "~/.config/sway/scripts/backlightctl up",
+        "on-scroll-down": "~/.config/sway/scripts/backlightctl down"
     },
     "battery": {
         "format": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
         "format-alt": "{icon}",
         "format-alt-click": "click-right",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
         ],
         "interval": 30,
         "states": {
@@ -77,13 +80,13 @@
         "format-alt": " ",
         "format-alt-click": "click-right",
         "format-wifi": "   Connected",
-        "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-ethernet": "󰈁  {ipaddr}/{cidr}",
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: ({essid}) {ipaddr}",
         "on-click": "nm-connection-editor"
     },
     "clock": {
-        "format": "  {:%a, %d %b %H:%M}",
+        "format": "󰃭  {:%a, %d %b %H:%M}",
         "format-alt": "  {:%I:%M %p}",
         "format-alt-click": "click-right"
     },
