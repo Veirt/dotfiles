@@ -95,6 +95,7 @@ local plugins = {
     "sainnhe/gruvbox-material",
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
+    "nvim-lualine/lualine.nvim",
     { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
 }
 

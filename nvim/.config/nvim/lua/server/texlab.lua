@@ -31,6 +31,7 @@ end
 --     require("lspconfig")["texlab"].setup({
 --         settings = {
 --             texlab = {
+--                 auxDirectory = "build",
 --                 build = {
 --                     executable = "tectonic",
 --                     args = {
@@ -42,11 +43,12 @@ end
 --                         "--keep-intermediates",
 --                     },
 --                     onSave = true,
+--                     forwardSearchAfter = true,
 --                 },
---                 -- forwardSearch = {
---                 --     executable = "zathura",
---                 --     args = { "--synctex-forward", "%l:1:%f", "%p" },
---                 -- },
+--                 forwardSearch = {
+--                     executable = "zathura",
+--                     args = { "--synctex-forward", "%l:1:%f", "%p" },
+--                 },
 --             },
 --         },
 --     })
