@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+OUPTUT_FILE="$(date +'%Y-%m-%d-%s_screenrecord.mp4')"
+output="$(xdg-user-dir VIDEOS)/screenrecord/$OUPTUT_FILE"
+
+if pgrep wf-recorder; then
+    notify-send "Stopping recording."
+    killall -INT wf-recorder
+else
+    notify-send "Starting recording when this notification disappear."
+    sleep 1
+    makoctl dismiss -a
+    wf-recorder -t -f "$output"
+fi
