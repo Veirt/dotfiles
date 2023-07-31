@@ -1,3 +1,6 @@
 [submodule "tmux/.config/tmux/plugins/tmux-pain-control"]
 	path = tmux/.config/tmux/plugins/tmux-pain-control
 	url = https://github.com/tmux-plugins/tmux-pain-control.git
+[submodule "fcitx5/.local/share/fcitx5/themes/FluentDark-fcitx5"]
+	path = fcitx5/.local/share/fcitx5/themes/FluentDark-fcitx5
+	url = https://github.com/Reverier-Xu/FluentDark-fcitx5.git
