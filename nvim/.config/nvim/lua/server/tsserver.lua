@@ -10,7 +10,7 @@ M.setup = function()
             local buf_set_keymap = utils.buf_map(bufnr)
 
             buf_set_keymap("n", "<leader>tsi", ":TSToolsOrganizeImports<CR>")
-            -- buf_set_keymap("n", "<leader>tsr", ":TypescriptRenameFile<CR>")
+            buf_set_keymap("n", "<leader>tsr", ":TypescriptRenameFile<CR>")
             buf_set_keymap("n", "<leader>tsa", ":TSToolsAddMissingImports<CR>")
         end,
         settings = {

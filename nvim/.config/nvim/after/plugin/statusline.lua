@@ -9,11 +9,6 @@ require("lualine").setup({
         theme = custom_iceberg,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-        },
     },
     sections = {
         lualine_a = {
@@ -23,18 +18,10 @@ require("lualine").setup({
                 color = color,
             },
         },
-        lualine_b = { { "branch", icon = "󰊢", color = color }, "diagnostics" },
+        lualine_b = { { "branch", icon = "󰊢 ", color = color }, "diagnostics" },
         lualine_c = {},
         lualine_x = { { "filetype", colored = false, icon_only = true }, { "filename", color = color } },
         lualine_y = {},
-        lualine_z = { "location" },
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
+        lualine_z = { { "location", color = color } },
     },
 })

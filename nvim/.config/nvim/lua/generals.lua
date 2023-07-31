@@ -10,6 +10,7 @@ opt.incsearch = true
 opt.hlsearch = true
 opt.signcolumn = "yes"
 opt.shell = "/bin/bash"
+opt.showtabline = 2
 
 opt.tabstop = 4 -- number of columns occupied by a tab
 opt.softtabstop = 4 -- see multiple spaces as tabstops so <BS> does the right thing
@@ -36,10 +37,3 @@ opt.shortmess:append("c")
 
 opt.ignorecase = true
 opt.smartcase = true
-
-api.nvim_create_user_command("W", "write", {})
-api.nvim_create_user_command("Q", "quit", {})
-
-autocmd("TextYankPost", {
-    command = "lua vim.highlight.on_yank({timeout = 40})",
-})

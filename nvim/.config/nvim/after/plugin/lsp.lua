@@ -1,5 +1,5 @@
-local null_ls = require("null-ls")
 local lspconfig = require("lspconfig")
+local null_ls = require("null-ls")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local utils = require("utils")
@@ -15,15 +15,13 @@ mason_lspconfig.setup({
         "tsserver",
         "rust_analyzer",
         "clangd",
-        "bashls",
+        "texlab",
         "lua_ls",
-        "jsonls",
     },
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
 mason_lspconfig.setup_handlers({
     function(server_name) -- default handler
         lspconfig[server_name].setup({
@@ -38,25 +36,7 @@ mason_lspconfig.setup_handlers({
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.formatting.prettierd.with({
-            filetypes = {
-                "javascript",
-                "javascriptreact",
-                "typescript",
-                "typescriptreact",
-                "vue",
-                "css",
-                "scss",
-                "less",
-                "html",
-                "json",
-                "jsonc",
-                "yaml",
-                "markdown.mdx",
-                "graphql",
-                "handlebars",
-            },
-        }),
+        null_ls.builtins.formatting.prettierd,
         -- null_ls.builtins.formatting.eslint_d,
 
         null_ls.builtins.formatting.emacs_scheme_mode,
@@ -73,6 +53,12 @@ null_ls.setup({
 })
 
 local toggleFormattingStatus = true
+function ToggleFormatting()
+    toggleFormattingStatus = not toggleFormattingStatus
+
+    print("Format on save: " .. tostring(toggleFormattingStatus))
+end
+
 local function formatOnSave(bufnr)
     autocmd("BufWritePre", {
         buffer = bufnr,
@@ -86,12 +72,6 @@ local function formatOnSave(bufnr)
     })
 end
 
-function ToggleFormatting()
-    local bufnr = vim.api.nvim_get_current_buf()
-    toggleFormattingStatus = not toggleFormattingStatus
-    print("Format on save: " .. tostring(toggleFormattingStatus))
-end
-
 autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
@@ -103,7 +83,6 @@ autocmd("LspAttach", {
         buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
         buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
         buf_set_keymap("n", "<C-F>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
-
         buf_set_keymap("n", "<leader>D", "<cmd>Telescope lsp_definitions<CR>")
         buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
         buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")

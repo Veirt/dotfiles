@@ -1,22 +1,25 @@
-local theme = "paradise"
+local base16 = require("base16-colorscheme")
 
-local present, base16 = pcall(require, "base16-colorscheme")
-if not present then
-    return
-end
+local color = {
+    base00 = "#151515FF",
+    base01 = "#1F1F1F",
+    base02 = "#2E2E2E",
+    base03 = "#424242",
+    base04 = "#BBB6B6",
+    base05 = "#E8E3E3",
+    base06 = "#E8E3E3",
+    base07 = "#E8E3E3",
+    base08 = "#B66467",
+    base09 = "#D9BC8C",
+    base0A = "#D9BC8C",
+    base0B = "#8C977D",
+    base0C = "#8AA6A2",
+    base0D = "#8DA3B9",
+    base0E = "#A988B0",
+    base0F = "#BBB6B6",
+}
 
-local present, color = pcall(require, "themes.colors." .. theme)
-if present then
-    base16.setup(color)
-else
-    local ok, err = pcall(cmd, ("colorscheme base16-" .. theme))
-    if not ok then
-        _G.theme = "paradise"
-        color = require("colors." .. _G.theme)
-        base16.setup(color)
-        print(err)
-    end
-end
+base16.setup(color)
 
 -- Highlights
 local function hl(highlight, fg, bg)
@@ -26,7 +29,7 @@ local function hl(highlight, fg, bg)
     if bg == nil then
         bg = "none"
     end
-    cmd("hi " .. highlight .. " guifg=" .. fg .. " guibg=" .. bg)
+    vim.cmd("hi " .. highlight .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
 -- Status Line
@@ -86,4 +89,4 @@ hl("NormalFloat", nil, color.base01)
 hl("FloatBorder", color.base01, color.base01)
 
 -- Extra
-cmd("hi StatusLine gui=strikethrough")
+vim.cmd("hi StatusLine gui=strikethrough")

@@ -18,7 +18,7 @@ telescope.setup({
             previewer = false,
         },
         live_grep = {
-            additional_args = function(opts)
+            additional_args = function()
                 return { "--hidden" }
             end,
         },

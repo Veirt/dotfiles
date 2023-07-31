@@ -1,9 +1,5 @@
-local present, cmp = pcall(require, "cmp")
+local cmp = require("cmp")
 local luasnip = require("luasnip")
-
-if not present then
-    return
-end
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -14,10 +10,11 @@ local snippet = {
 }
 
 local sources = {
-    { name = "nvim_lsp", max_item_count = 30 },
+    { name = "nvim_lsp",               max_item_count = 30 },
     { name = "nvim_lsp_signature_help" },
-    { name = "luasnip", max_item_count = 30 },
-    { name = "buffer", keyword_length = 3 },
+    { name = "luasnip",                max_item_count = 30 },
+    { name = "path" },
+    { name = "buffer",                 keyword_length = 3 },
 }
 
 local mapping = cmp.mapping.preset.insert({
@@ -43,9 +40,7 @@ local mapping = cmp.mapping.preset.insert({
         "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-            fallback()
-        elseif luasnip.jumpable(-1) then
+        if luasnip.jumpable(-1) then
             luasnip.jump(-1)
         else
             fallback()

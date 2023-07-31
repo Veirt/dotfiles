@@ -1,8 +1,12 @@
-local saga = require("lspsaga")
+local present, saga = pcall(require, "lspsaga")
+
+if not present then
+    return
+end
 
 saga.setup({
     ui = {
-        code_action = "",
+        code_action = "󰌵",
     },
     code_action = {
         num_shortcut = true,

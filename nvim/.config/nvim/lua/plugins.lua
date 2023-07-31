@@ -12,6 +12,18 @@ end
 opt.rtp:prepend(lazypath)
 
 local plugins = {
+    -- lsp and debug stuffs
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            -- LSP Support
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "pmizio/typescript-tools.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+            { "j-hui/fidget.nvim", branch = "legacy" },
+        },
+    },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -24,17 +36,8 @@ local plugins = {
         },
     },
 
-    -- lsp and debug stuffs
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            -- LSP Support
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-            "pmizio/typescript-tools.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
-        },
-    },
+    { "Vimjas/vim-python-pep8-indent", ft = "python" },
+    { "dag/vim-fish", ft = "fish" },
 
     {
         "hrsh7th/nvim-cmp",
@@ -42,6 +45,7 @@ local plugins = {
             -- Completions
             "hrsh7th/cmp-buffer",
             "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-nvim-lsp-signature-help",
@@ -55,19 +59,6 @@ local plugins = {
             "onsails/lspkind-nvim", -- vscode-like pictograms
         },
     },
-    { "ThePrimeagen/refactoring.nvim", lazy = true },
-    { "j-hui/fidget.nvim", branch = "legacy" },
-    {
-        "linux-cultist/venv-selector.nvim",
-        config = true,
-        event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    },
-
-    { "Vimjas/vim-python-pep8-indent", ft = "python", lazy = true },
-    { "dag/vim-fish", ft = "fish", lazy = true },
-    { "kyazdani42/nvim-tree.lua", dependencies = "kyazdani42/nvim-web-devicons", lazy = true },
-    "numToStr/Navigator.nvim",
-    "windwp/nvim-autopairs",
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -79,24 +70,35 @@ local plugins = {
                 cond = function()
                     return vim.fn.executable("make") == 1
                 end,
-            }, -- Native fzf
+            },
         },
     },
-    { "ThePrimeagen/harpoon", dependencies = "nvim-lua/popup.nvim", lazy = true }, -- Get you where you want with the fewest keystrokes.
-    { "lewis6991/gitsigns.nvim", lazy = true }, -- Super fast git decorations
-    { "nvimdev/lspsaga.nvim", event = "LspAttach" }, -- LSP plugin with highly performant UI
-    { "ur4ltz/surround.nvim", lazy = true }, -- Easily delete, change and add such surroundings in pairs.
-    { "NMAC427/guess-indent.nvim", lazy = true }, -- Automatically adjusts indent
+    {
+        "linux-cultist/venv-selector.nvim",
+        config = true,
+        event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    },
+    { "ThePrimeagen/harpoon", dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
     { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
-    -- "olimorris/persisted.nvim", -- Session
-    { dir = "~/dev/persisted.nvim" },
     { "zbirenbaum/copilot.lua", lazy = true },
+    "ThePrimeagen/refactoring.nvim",
+    "nvimdev/lspsaga.nvim", -- LSP plugin with highly performant UI
+    "lewis6991/gitsigns.nvim", -- Super fast git decorations
+    "ur4ltz/surround.nvim", -- Easily delete, change and add such surroundings in pairs.
+    "NMAC427/guess-indent.nvim", -- Automatically adjusts indent
+    "kyazdani42/nvim-tree.lua",
+    "numToStr/Navigator.nvim",
+    "windwp/nvim-autopairs",
+    "olimorris/persisted.nvim", -- Session
+    "wakatime/vim-wakatime",
+
     -- "akinsho/bufferline.nvim", -- Tabline plugin
+    "kyazdani42/nvim-web-devicons",
+    { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
     "sainnhe/gruvbox-material",
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
     "nvim-lualine/lualine.nvim",
-    { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
 }
 
 require("lazy").setup(plugins)

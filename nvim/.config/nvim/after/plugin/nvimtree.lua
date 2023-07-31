@@ -8,7 +8,7 @@ nvim_tree.setup({
     disable_netrw = true,
     hijack_netrw = true,
     open_on_tab = false,
-    hijack_cursor = false,
+    hijack_cursor = true,
     update_cwd = true,
     hijack_directories = {
         enable = true,
@@ -28,10 +28,6 @@ nvim_tree.setup({
         update_cwd = true,
         ignore_list = {},
     },
-    system_open = {
-        cmd = nil,
-        args = {},
-    },
     filters = {
         dotfiles = false,
         custom = { "^.git$", "^.cache", "__pycache__", "vendor" },
@@ -41,29 +37,7 @@ nvim_tree.setup({
         ignore = false,
         timeout = 500,
     },
-    renderer = {
-        icons = {
-            webdev_colors = true,
-            glyphs = {
-                default = "",
-                git = {
-                    unstaged = "U",
-                    staged = "S",
-                    unmerged = "",
-                    renamed = "R",
-                    untracked = "*",
-                    deleted = "D",
-                    ignored = "◌",
-                },
-            },
-        },
-        root_folder_label = true,
-    },
     view = {
         width = 35,
-    },
-    trash = {
-        cmd = "trash",
-        require_confirm = true,
     },
 })
