@@ -7,7 +7,7 @@ from typing import List
 
 
 class UpscaleImageWithESRGAN(GObject.GObject, Nautilus.MenuProvider):
-    VALID_MIME_TYPES = "image/jpeg", "image/png"
+    VALID_MIME_TYPES = "image/jpeg", "image/png", "image/webp"
 
     def _upscale_image_with_esrgan(
         self,
