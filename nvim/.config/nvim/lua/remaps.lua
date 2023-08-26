@@ -92,4 +92,19 @@ utils.map("n", "<leader>cpe", "<cmd>Copilot! attach<CR> <cmd>lua print('Copilot 
 utils.map("n", "<leader>cpd", "<cmd>Copilot! detach<CR> <cmd>lua print('Copilot detached')<CR>")
 
 -- Formatting
-utils.map("n", "<leader>df", "<cmd>lua ToggleFormatting()<CR>")
+utils.map("n", "<leader>df", "<cmd>ToggleFormatting<CR>")
+
+utils.map("n", "<A-1>", "<Plug>BufTabLine.Go(1)")
+utils.map("n", "<A-2>", "<Plug>BufTabLine.Go(2)")
+utils.map("n", "<A-3>", "<Plug>BufTabLine.Go(3)")
+utils.map("n", "<A-4>", "<Plug>BufTabLine.Go(4)")
+utils.map("n", "<A-5>", "<Plug>BufTabLine.Go(5)")
+utils.map("n", "<A-6>", "<Plug>BufTabLine.Go(6)")
+utils.map("n", "<A-7>", "<Plug>BufTabLine.Go(7)")
+utils.map("n", "<A-8>", "<Plug>BufTabLine.Go(8)")
+utils.map("n", "<A-9>", "<Plug>BufTabLine.Go(9)")
+utils.map("n", "<A-10>", "<Plug>BufTabLine.Go(10)")
+
+vim.keymap.set("x", "<leader>re", function()
+    require("refactoring").refactor("Extract Function")
+end)

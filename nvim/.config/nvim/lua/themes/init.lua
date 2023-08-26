@@ -14,4 +14,4 @@ vim.cmd([[
     sign define DiagnosticSignHint text=  linehl= texthl=DiagnosticSignHint numhl=
 ]])
 
-require("themes.solarized")
+require("themes.paradise")

@@ -25,6 +25,12 @@ local plugins = {
         },
     },
     {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "jay-babu/mason-nvim-dap.nvim",
+        },
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         dependencies = {
@@ -37,7 +43,8 @@ local plugins = {
     },
 
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
-    { "dag/vim-fish", ft = "fish" },
+    { "dag/vim-fish",                  ft = "fish" },
+    { "iamcco/markdown-preview.nvim",  ft = "markdown", build = "cd app && npm install" },
 
     {
         "hrsh7th/nvim-cmp",
@@ -76,15 +83,15 @@ local plugins = {
     {
         "linux-cultist/venv-selector.nvim",
         config = true,
-        event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+        event = "VeryLazy",                                           -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     },
-    { "ThePrimeagen/harpoon", dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
-    { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
+    { "ThePrimeagen/harpoon",   dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
+    { "kdheepak/lazygit.nvim",  cmd = "LazyGit" },                    -- Call lazygit within neovim
     { "zbirenbaum/copilot.lua", lazy = true },
     "ThePrimeagen/refactoring.nvim",
-    "nvimdev/lspsaga.nvim", -- LSP plugin with highly performant UI
-    "lewis6991/gitsigns.nvim", -- Super fast git decorations
-    "ur4ltz/surround.nvim", -- Easily delete, change and add such surroundings in pairs.
+    "nvimdev/lspsaga.nvim",      -- LSP plugin with highly performant UI
+    "lewis6991/gitsigns.nvim",   -- Super fast git decorations
+    "ur4ltz/surround.nvim",      -- Easily delete, change and add such surroundings in pairs.
     "NMAC427/guess-indent.nvim", -- Automatically adjusts indent
     "kyazdani42/nvim-tree.lua",
     "numToStr/Navigator.nvim",
@@ -92,7 +99,7 @@ local plugins = {
     "olimorris/persisted.nvim", -- Session
     "wakatime/vim-wakatime",
 
-    -- "akinsho/bufferline.nvim", -- Tabline plugin
+    -- "ap/vim-buftabline",
     "kyazdani42/nvim-web-devicons",
     { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
     "sainnhe/gruvbox-material",

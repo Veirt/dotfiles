@@ -42,8 +42,9 @@ require("nvim-treesitter.configs").setup({
         enable = true,
     },
     rainbow = {
-        enable = true,
-        extended_mode = true,
+        enable = false,
+        query = "rainbow-parens",
+        strategy = require("ts-rainbow").strategy.global,
     },
     context_commentstring = {
         enable = true,

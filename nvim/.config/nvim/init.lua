@@ -13,6 +13,7 @@ api.nvim_create_user_command("Q", "quit", {})
 autocmd("TextYankPost", {
     command = "lua vim.highlight.on_yank({timeout = 40})",
 })
+vim.cmd([[autocmd FileType help wincmd L]]) -- help vertical split
 
 require("plugins")
 
