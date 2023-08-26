@@ -7,6 +7,10 @@ bind -M insert \ct 'tmux'
 bind \ct 'tmux'
 bind -M insert \cr 'lfcd'
 bind \cr 'lfcd'
+bind -M insert \cg 'lbg $GUIFM .'
+bind \cg 'lbg $GUIFM .'
+bind -M insert \ce forward-char
+bind \ce forward-char
 
 source ~/.config/shell_aliases
 
