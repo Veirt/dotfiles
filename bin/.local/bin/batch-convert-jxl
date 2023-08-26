@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob
+
+before=$(du -sh)
+for file in ./*.{jpeg,jpg,png} ./**/*.{jpeg,jpg,png}; do
+    new_file=$(echo "$file" | sed -e 's/.[0-9a-z]*$/\.jxl/i')
+
+    echo "$file"
+    cjxl "$file" "$new_file" && rm "$file"
+done
+
+echo "$before"
+du -sh .
