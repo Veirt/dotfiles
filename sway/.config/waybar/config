@@ -17,7 +17,7 @@
     ],
     "sway/workspaces": {
         "format": "{name}",
-        "disable-scroll": true,
+        "disable-scroll": true
     },
     "sway/mode": {
         "format": " {}"
@@ -50,8 +50,8 @@
             "󰃟",
             "󰃠"
         ],
-        "on-scroll-up": "~/.config/sway/scripts/backlightctl up",
-        "on-scroll-down": "~/.config/sway/scripts/backlightctl down"
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
     },
     "battery": {
         "format": "{icon}  {capacity}%",

@@ -1,19 +1,17 @@
 # Startups
 exec --no-startup-id nautilus --gapplication-service
-exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
-
 exec --no-startup-id wlsunset -l $LATITUDE -L $LONGITUDE
-
 exec --no-startup-id fcitx5 --verbose 0
-
 exec --no-startup-id batsignal -b
-
 exec --no-startup-id mako
-exec --no-startup-id dex /usr/share/applications/pipewire.desktop
+exec --no-startup-id mailspring --background
 
+exec --no-startup-id dex /usr/share/applications/pipewire.desktop
 exec --no-startup-id runsvdir ~/.runit/runsvdir
 
-# exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec --no-startup-id dbus-update-activation-environment --all
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
+exec --no-startup-id gnome-keyring-daemon --start --components=secrets
 
 exec ~/.config/sway/scripts/import-gsettings
