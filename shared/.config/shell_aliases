@@ -6,9 +6,9 @@ alias repo="cd ~/dev"
 alias dotfiles="cd ~/.dotfiles"
 
 # replacements
-alias l="exa"
-alias la="exa -la --git --icons --group-directories-first"
-alias ll="exa -ll --git --icons --group-directories-first"
+alias l="eza"
+alias la="eza -la --git --icons --group-directories-first"
+alias ll="eza -ll --git --icons --group-directories-first"
 alias yeet="rm -rf"
 alias v="nvim"
 alias vi="nvim"
