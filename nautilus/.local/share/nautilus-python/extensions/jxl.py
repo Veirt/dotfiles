@@ -32,7 +32,7 @@ class EncodeDecodeJxl(GObject.GObject, Nautilus.MenuProvider):
             file_path_without_extension = Path(file_path).stem
 
             output_dir = unquote(urlparse(file.get_parent_uri()).path)
-            output_name = f"{file_path_without_extension}_waifu2x.png"
+            output_name = f"{file_path_without_extension}.png"
             output_path = f"{output_dir}/{output_name}"
 
             subprocess.Popen(
