@@ -44,7 +44,9 @@ local plugins = {
 
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish",                  ft = "fish" },
-    { "iamcco/markdown-preview.nvim",  ft = "markdown", build = "cd app && npm install" },
+    { "briancollins/vim-jst",          ft = "ejs" },
+    { "iamcco/markdown-preview.nvim",  ft = "markdown",           build = "cd app && npm install" },
+    { "img-paste-devs/img-paste.vim",  ft = { "markdown", "tex" } },
 
     {
         "hrsh7th/nvim-cmp",
@@ -99,7 +101,7 @@ local plugins = {
     "olimorris/persisted.nvim", -- Session
     "wakatime/vim-wakatime",
 
-    -- "ap/vim-buftabline",
+    "ap/vim-buftabline",
     "kyazdani42/nvim-web-devicons",
     { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
     "sainnhe/gruvbox-material",

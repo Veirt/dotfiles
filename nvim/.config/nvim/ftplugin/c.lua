@@ -1,3 +1,7 @@
+if vim.bo.filetype ~= "c" then
+    return
+end
+
 local utils = require("utils")
 
 local exist = vim.fn.findfile("Makefile")
