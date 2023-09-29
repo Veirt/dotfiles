@@ -10,5 +10,5 @@ else
     notify-send "Starting recording when this notification disappear."
     sleep 1
     makoctl dismiss -a
-    wf-recorder -t -f "$output"
+    wf-recorder -x yuv420p -t -f "$output"
 fi
