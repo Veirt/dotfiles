@@ -5,15 +5,26 @@ readonly output="$(xdg-user-dir PICTURES)/screenshots/$CURRENT_DATE"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     if [ "$1" = "screen" ]; then
-        grim "$output"
-        wl-copy <"$output"
+        tmpfile=$(mktemp)
+        if grim - >"$tmpfile"; then
+            mv "$tmpfile" "$output"
+            wl-copy <"$output"
+        else
+            rm "$tmpfile"
+        fi
         if [ -v "$output" ]; then
             notify-send.sh -u critical "Something went wrong." "Can't take a screenshot."
         else
             notify-send.sh -d "$GUIFM $(dirname "$output")" -i "$output" "Screenshot has taken"
         fi
     elif [ "$1" = "custom" ]; then
-        grim -g "$(slurp)" - | wl-copy
+        tmpfile=$(mktemp)
+        if grim -g "$(slurp)" - >"$tmpfile"; then
+            mv "$tmpfile" "$output"
+            wl-copy <"$output"
+        else
+            rm "$tmpfile"
+        fi
     fi
 else
     true
