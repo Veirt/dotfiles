@@ -12,7 +12,7 @@ class OpenTerminalExtension(GObject.GObject, Nautilus.MenuProvider):
         filename = unquote(file.get_uri()[7:])
 
         os.chdir(filename)
-        subprocess.Popen(["foot", "--working-directory", "."])
+        subprocess.Popen(["alacritty", "--working-directory", "."])
 
     def menu_activate_cb(
         self,

@@ -2,8 +2,8 @@
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='foot'
-export LAUNCH_TERMINAL='foot'
+export TERMINAL='alacritty'
+export LAUNCH_TERMINAL='alacritty -e fish'
 export BROWSER='firefox'
 export GUIFM='nautilus'
 export TUIFM='ranger'
@@ -27,6 +27,7 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
 export PATH="$PATH:$ANDROID_ROOT/emulator"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"

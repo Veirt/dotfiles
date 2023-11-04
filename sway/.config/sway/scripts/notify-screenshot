@@ -1,31 +1,50 @@
 #!/bin/bash
 
-CURRENT_DATE="$(date +'%Y-%m-%d-%s_grim.png')"
+CURRENT_DATE="$(date +'%Y-%m-%d-%s.png')"
 readonly output="$(xdg-user-dir PICTURES)/screenshots/$CURRENT_DATE"
 
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    if [ "$1" = "screen" ]; then
-        tmpfile=$(mktemp)
+if [ "$1" = "screen" ]; then
+    tmpfile=$(mktemp)
+
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         if grim - >"$tmpfile"; then
             mv "$tmpfile" "$output"
             wl-copy <"$output"
         else
             rm "$tmpfile"
         fi
-        if [ -v "$output" ]; then
-            notify-send.sh -u critical "Something went wrong." "Can't take a screenshot."
+    else
+        if maim "$tmpfile.png"; then
+            mv "$tmpfile.png" "$output"
+            xclip -sel clip -t image/png "$output"
         else
-            notify-send.sh -d "$GUIFM $(dirname "$output")" -i "$output" "Screenshot has taken"
+            rm "$tmpfile.png"
         fi
-    elif [ "$1" = "custom" ]; then
-        tmpfile=$(mktemp)
+    fi
+
+    if [ -v "$output" ]; then
+        notify-send.sh -u critical "Something went wrong." "Can't take a screenshot."
+    else
+        notify-send.sh -d "$GUIFM $(dirname "$output")" -i "$output" "Screenshot has taken"
+    fi
+
+elif [ "$1" = "custom" ]; then
+    tmpfile=$(mktemp)
+
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         if grim -g "$(slurp)" - >"$tmpfile"; then
             mv "$tmpfile" "$output"
             wl-copy <"$output"
         else
             rm "$tmpfile"
         fi
+    else
+        if maim -s "$tmpfile.png"; then
+            mv "$tmpfile.png" "$output"
+            xclip -sel clip -t image/png "$output"
+        else
+            rm "$tmpfile.png"
+        fi
     fi
-else
-    true
+
 fi
