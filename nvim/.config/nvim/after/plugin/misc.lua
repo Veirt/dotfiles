@@ -25,3 +25,5 @@ require("copilot").setup({
         },
     },
 })
+
+require("wildfire").setup()

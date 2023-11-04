@@ -47,17 +47,17 @@ require("nvim-treesitter.configs").setup({
         strategy = require("ts-rainbow").strategy.global,
     },
     context_commentstring = {
-        enable = true,
+        enable = false,
     },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "<CR>",
-            node_incremental = "<CR>",
-            scope_incremental = "<c-s>",
-            node_decremental = "<M-space>",
-        },
-    },
+    -- incremental_selection = {
+    --     enable = true,
+    --     keymaps = {
+    --         init_selection = "<CR>",
+    --         node_incremental = "<CR>",
+    --         scope_incremental = "<c-s>",
+    --         node_decremental = "<M-space>",
+    --     },
+    -- },
     textobjects = {
         select = {
             enable = true,

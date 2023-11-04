@@ -100,6 +100,7 @@ local plugins = {
     "windwp/nvim-autopairs",
     "olimorris/persisted.nvim", -- Session
     "wakatime/vim-wakatime",
+    "sustech-data/wildfire.nvim",
 
     "ap/vim-buftabline",
     "kyazdani42/nvim-web-devicons",
