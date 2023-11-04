@@ -18,7 +18,7 @@ M.remap_run_on_tmux = function(cmd_to_send)
     local bufnr = api.nvim_get_current_buf()
     local buf_set_keymap = M.buf_map(bufnr)
 
-    local cmd = string.format(":lua require('harpoon.tmux').sendCommand('2', '%s')", cmd_to_send)
+    local cmd = string.format(":lua require('harpoon.tmux').sendCommand('2', '<C-c>%s')", cmd_to_send)
 
     buf_set_keymap("n", "<C-c>", string.format("<cmd>%s<CR>", cmd))
 end
