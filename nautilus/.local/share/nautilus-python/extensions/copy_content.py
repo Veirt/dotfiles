@@ -11,7 +11,8 @@ class CopyContentOfFile(GObject.GObject, Nautilus.MenuProvider):
 
         if subprocess.run(["which", "xclip"]).returncode == 0:
             process = subprocess.Popen(
-                ["xclip ", "-sel", "clip"], stdin=subprocess.PIPE
+                ["xclip", "-sel", "clip", "-target", file.get_mime_type()],
+                stdin=subprocess.PIPE,
             )
         elif subprocess.run(["which", "wl-copy"]).returncode == 0:
             process = subprocess.Popen(["wl-copy"], stdin=subprocess.PIPE)
