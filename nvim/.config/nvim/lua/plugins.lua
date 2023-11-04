@@ -20,7 +20,7 @@ local plugins = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "pmizio/typescript-tools.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
+            "nvimtools/none-ls.nvim",
             { "j-hui/fidget.nvim", branch = "legacy" },
         },
     },
@@ -98,7 +98,7 @@ local plugins = {
     "kyazdani42/nvim-tree.lua",
     "numToStr/Navigator.nvim",
     "windwp/nvim-autopairs",
-    "olimorris/persisted.nvim", -- Session
+    "veirt/persisted.nvim", -- Session
     "wakatime/vim-wakatime",
     "sustech-data/wildfire.nvim",
 

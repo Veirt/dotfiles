@@ -35,7 +35,7 @@ mason_lspconfig.setup_handlers({
     ["clangd"] = require("server.clangd").setup,
     ["lua_ls"] = require("server.lua_ls").setup,
     ["texlab"] = require("server.texlab").setup,
-    ["emmet_language_server"] = require("server.emmet_language_server"),
+    ["emmet_language_server"] = require("server.emmet_language_server").setup,
 })
 
 null_ls.setup({
