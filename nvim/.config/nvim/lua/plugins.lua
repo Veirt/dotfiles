@@ -43,10 +43,10 @@ local plugins = {
     },
 
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
-    { "dag/vim-fish",                  ft = "fish" },
-    { "briancollins/vim-jst",          ft = "ejs" },
-    { "iamcco/markdown-preview.nvim",  ft = "markdown",           build = "cd app && npm install" },
-    { "img-paste-devs/img-paste.vim",  ft = { "markdown", "tex" } },
+    { "dag/vim-fish", ft = "fish" },
+    { "briancollins/vim-jst", ft = "ejs" },
+    { "iamcco/markdown-preview.nvim", ft = "markdown", build = "cd app && npm install" },
+    { "img-paste-devs/img-paste.vim", ft = { "markdown", "tex" } },
 
     {
         "hrsh7th/nvim-cmp",
@@ -85,15 +85,15 @@ local plugins = {
     {
         "linux-cultist/venv-selector.nvim",
         config = true,
-        event = "VeryLazy",                                           -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+        event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     },
-    { "ThePrimeagen/harpoon",   dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
-    { "kdheepak/lazygit.nvim",  cmd = "LazyGit" },                    -- Call lazygit within neovim
+    { "ThePrimeagen/harpoon", dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
+    { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
     { "zbirenbaum/copilot.lua", lazy = true },
     "ThePrimeagen/refactoring.nvim",
-    "nvimdev/lspsaga.nvim",      -- LSP plugin with highly performant UI
-    "lewis6991/gitsigns.nvim",   -- Super fast git decorations
-    "ur4ltz/surround.nvim",      -- Easily delete, change and add such surroundings in pairs.
+    "nvimdev/lspsaga.nvim", -- LSP plugin with highly performant UI
+    "lewis6991/gitsigns.nvim", -- Super fast git decorations
+    "ur4ltz/surround.nvim", -- Easily delete, change and add such surroundings in pairs.
     "NMAC427/guess-indent.nvim", -- Automatically adjusts indent
     "kyazdani42/nvim-tree.lua",
     "numToStr/Navigator.nvim",

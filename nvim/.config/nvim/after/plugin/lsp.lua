@@ -36,6 +36,7 @@ mason_lspconfig.setup_handlers({
     ["lua_ls"] = require("server.lua_ls").setup,
     ["texlab"] = require("server.texlab").setup,
     ["emmet_language_server"] = require("server.emmet_language_server").setup,
+    ["intelephense"] = require("server.intelephense").setup,
 })
 
 null_ls.setup({
@@ -88,7 +89,7 @@ autocmd("LspAttach", {
         buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
         buf_set_keymap("n", "<leader>er", "<cmd>Telescope diagnostics bufnr=0<CR>")
         buf_set_keymap("n", "<leader>eR", "<cmd>Telescope diagnostics<CR>")
-        buf_set_keymap("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>")
+        buf_set_keymap("n", "s", "<cmd>Telescope lsp_document_symbols<CR>")
         buf_set_keymap("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>")
         buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
         buf_set_keymap("n", "<leader>lo", "<cmd>Lspsaga outline<CR>")
