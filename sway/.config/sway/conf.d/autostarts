@@ -4,7 +4,7 @@ exec --no-startup-id wlsunset -l $LATITUDE -L $LONGITUDE
 exec --no-startup-id fcitx5 --verbose 0
 exec --no-startup-id batsignal -b
 exec --no-startup-id mako
-exec --no-startup-id mailspring --background
+exec --no-startup-id mailspring --background --password-store="gnome-libsecret"
 
 exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id /usr/lib/polkit-gnome-authentication-agent-1
