@@ -40,7 +40,17 @@ class UpscaleImageWithESRGAN(GObject.GObject, Nautilus.MenuProvider):
             output_path = f"{output_dir}/{output_name}"
 
             subprocess.Popen(
-                ["waifu2x-ncnn-vulkan", "-n", "3", "-s", "2", "-i", file_path, "-o", output_path]
+                [
+                    "waifu2x-ncnn-vulkan",
+                    "-n",
+                    "3",
+                    "-s",
+                    "2",
+                    "-i",
+                    file_path,
+                    "-o",
+                    output_path,
+                ]
             )
 
     def get_file_items(self, files: List[Nautilus.FileInfo]) -> List[Nautilus.MenuItem]:

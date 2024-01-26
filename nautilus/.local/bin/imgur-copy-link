@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+imgur.sh "$1" | wl-copy
+notify-send "Imgur Link copied to clipboard"
