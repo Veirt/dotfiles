@@ -1,7 +1,7 @@
 set $mod Mod4
 
 # Font
-font JetBrains Mono 12
+font JetBrainsMono NF 12
 
 # Window borders
 default_border pixel 3
