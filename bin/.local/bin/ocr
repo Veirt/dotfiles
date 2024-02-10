@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    text=$(grim -g "$(slurp)" - | tesseract -l "ind+eng+jpn" stdin stdout)
+    notify-send "$text Copied to clipboard"
+    wl-copy "$text"
+    exit 0
+fi
+
+maim -s | tesseract -l "ind+eng+jpn" stdin stdout | xclip -sel clipboard

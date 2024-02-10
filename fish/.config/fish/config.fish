@@ -20,6 +20,9 @@ set -gx WEB_SEARCH_dict 'https://dictionary.cambridge.org/dictionary/english/'
 set -gx WEB_SEARCH_hi10 'https://hi10anime.com/?s='
 set -gx WEB_SEARCH_mal 'https://myanimelist.net/search/all?cat=all&q='
 
+# fix valgrind
+set -x DEBUGINFOD_URLS 'https://debuginfod.archlinux.org'
+
 alias google="web-search google"
 alias github="web-search github"
 alias stackoverflow="web-search stackoverflow"
@@ -30,7 +33,3 @@ alias mal="web-search mal"
 if type -q zoxide
     zoxide init fish | source
 end
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

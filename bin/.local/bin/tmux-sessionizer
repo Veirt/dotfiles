@@ -3,7 +3,7 @@
 if [ $# -eq 1 ]; then
     selected=$1
 else
-    selected=$(fd . "$HOME"/dev --exact-depth 1 -t d -t l --hidden --exec basename {} \; | fzf)
+    selected=$(fd . "$HOME"/dev --exact-depth 1 -t d -t l --hidden -j 1 --exec basename {} \; | fzf)
 fi
 
 if [ -z "$selected" ]; then
