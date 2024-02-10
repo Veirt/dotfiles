@@ -30,7 +30,6 @@ nvim_tree.setup({
     },
     filters = {
         dotfiles = false,
-        custom = { "^.git$", "^.cache", "__pycache__", "vendor" },
     },
     git = {
         enable = true,
@@ -38,6 +37,7 @@ nvim_tree.setup({
         timeout = 500,
     },
     view = {
-        width = 35,
+        width = 40,
+        side = "right",
     },
 })

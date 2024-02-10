@@ -19,9 +19,18 @@ local plugins = {
             -- LSP Support
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "pmizio/typescript-tools.nvim",
+            "yioneko/nvim-vtsls",
+            -- "pmizio/typescript-tools.nvim",
             "nvimtools/none-ls.nvim",
-            { "j-hui/fidget.nvim", branch = "legacy" },
+            "j-hui/fidget.nvim",
+            {
+                "ray-x/lsp_signature.nvim",
+                event = "VeryLazy",
+                opts = {},
+                config = function(_, opts)
+                    require("lsp_signature").setup(opts)
+                end,
+            },
         },
     },
     {
@@ -34,30 +43,30 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         dependencies = {
-            -- "windwp/nvim-ts-autotag",
-            "HiPhish/nvim-ts-rainbow2",
+            "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
             "nvim-treesitter/nvim-treesitter-textobjects",
             "numToStr/Comment.nvim",
+            "IndianBoy42/tree-sitter-just",
+            "RRethy/nvim-treesitter-endwise",
         },
     },
 
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
-    { "briancollins/vim-jst", ft = "ejs" },
     { "iamcco/markdown-preview.nvim", ft = "markdown", build = "cd app && npm install" },
     { "img-paste-devs/img-paste.vim", ft = { "markdown", "tex" } },
+    { "kaarmu/typst.vim", ft = "typst" },
 
     {
-        "hrsh7th/nvim-cmp",
+        "yioneko/nvim-cmp",
         dependencies = {
             -- Completions
             "hrsh7th/cmp-buffer",
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-path",
+            "FelipeLema/cmp-async-path",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
             {
                 "L3MON4D3/LuaSnip",
                 version = "1.*",
@@ -82,25 +91,25 @@ local plugins = {
             },
         },
     },
-    {
-        "linux-cultist/venv-selector.nvim",
-        config = true,
-        event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    },
+
     { "ThePrimeagen/harpoon", dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
     { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
     { "zbirenbaum/copilot.lua", lazy = true },
-    "ThePrimeagen/refactoring.nvim",
+    -- "ThePrimeagen/refactoring.nvim",
     "nvimdev/lspsaga.nvim", -- LSP plugin with highly performant UI
     "lewis6991/gitsigns.nvim", -- Super fast git decorations
     "ur4ltz/surround.nvim", -- Easily delete, change and add such surroundings in pairs.
     "NMAC427/guess-indent.nvim", -- Automatically adjusts indent
     "kyazdani42/nvim-tree.lua",
     "numToStr/Navigator.nvim",
-    "windwp/nvim-autopairs",
-    "veirt/persisted.nvim", -- Session
+    "olimorris/persisted.nvim", -- Session
     "wakatime/vim-wakatime",
     "sustech-data/wildfire.nvim",
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {}, -- this is equalent to setup({}) function
+    },
 
     "ap/vim-buftabline",
     "kyazdani42/nvim-web-devicons",

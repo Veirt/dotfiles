@@ -42,22 +42,16 @@ utils.map("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>")
 utils.map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>")
 
 -- Telescope
-utils.map("n", "<C-p>", "<cmd>lua require('telescope-custom').project_files()<CR>")
+-- utils.map("n", "<C-p>", "<cmd>lua require('telescope-custom').project_files()<CR>")
+utils.map("n", "<C-p>", "<cmd>Telescope find_files<CR>")
 utils.map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
 utils.map("n", "<leader>jl", "<cmd>Telescope jumplist<CR>")
-utils.map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
-utils.map("n", "<leader>sf", "<cmd> lua require('telescope.builtin').find_files()<CR>")
 
 -- Navigator.nvim
 utils.map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>")
 utils.map("n", "<C-k>", "<cmd>lua require('Navigator').up()<CR>")
 utils.map("n", "<C-l>", "<cmd>lua require('Navigator').right()<CR>")
 utils.map("n", "<C-j>", "<cmd>lua require('Navigator').down()<CR>")
-
--- refactoring.nvim
-utils.map("n", "<leader>rp", "<cmd>lua require('refactoring').debug.printf({below = false})<CR>")
-utils.map("v", "<leader>rv", "<cmd>lua require('refactoring').debug.print_var({})<CR>")
-utils.map("n", "<leader>rc", "<cmd>lua require('refactoring').debug.cleanup({})<CR>")
 
 -- Nvimtree
 utils.map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>")
@@ -104,7 +98,3 @@ utils.map("n", "<A-7>", "<Plug>BufTabLine.Go(7)")
 utils.map("n", "<A-8>", "<Plug>BufTabLine.Go(8)")
 utils.map("n", "<A-9>", "<Plug>BufTabLine.Go(9)")
 utils.map("n", "<A-10>", "<Plug>BufTabLine.Go(10)")
-
-vim.keymap.set("x", "<leader>re", function()
-    require("refactoring").refactor("Extract Function")
-end)

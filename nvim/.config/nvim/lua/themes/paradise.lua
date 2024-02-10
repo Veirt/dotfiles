@@ -1,7 +1,7 @@
 local base16 = require("base16-colorscheme")
 
 local color = {
-    base00 = "#151515FF",
+    base00 = "#151515",
     base01 = "#1F1F1F",
     base02 = "#2E2E2E",
     base03 = "#424242",
@@ -54,7 +54,7 @@ hl("NvimTreeGitDeleted", color.base08)
 hl("NvimTreeGitRenamed", color.base0A)
 hl("NvimTreeGitExecFile", color.base0B)
 hl("NvimTreeSpecialFile", color.base0E)
-hl("NvimTreeImageFile", color.base0C)
+hl("NvimTreeImageFile", color.base2C)
 hl("NvimTreeWindowPicker", color.base05, color.base01)
 hl("NvimTreeIndentMarker", color.base03)
 
@@ -78,7 +78,7 @@ hl("CmpItemKind", color.base0E)
 hl("CmpItemMenu", color.base0E)
 hl("CmpItemKindSnippet", color.base0E)
 
--- Number
+-- -- Number
 hl("CursorLine")
 hl("CursorLineNR")
 hl("LineNr", color.base03)
@@ -87,6 +87,11 @@ hl("LineNr", color.base03)
 hl("VertSplit", color.base01, nil)
 hl("NormalFloat", nil, color.base01)
 hl("FloatBorder", color.base01, color.base01)
+
+-- Transparent
+hl("Normal")
+hl("NormalNC")
+hl("NonText")
 
 -- Extra
 vim.cmd("hi StatusLine gui=strikethrough")

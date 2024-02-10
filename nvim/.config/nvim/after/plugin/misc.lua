@@ -1,10 +1,11 @@
 vim.g.buftabline_indicators = true
+vim.g.buftabline_numbers = 2
 
 require("harpoon").setup({ global_settings = { enter_on_sendcmd = true } })
 
 require("surround").setup({ mappings_style = "surround", map_insert_mode = false, prompt = false })
-require("nvim-autopairs").setup({ map_cr = true, disable_in_macro = true })
-require("Navigator").setup({})
+
+require("Navigator").setup()
 require("guess-indent").setup()
 require("copilot").setup({
     filetypes = {

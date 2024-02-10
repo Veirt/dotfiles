@@ -13,7 +13,7 @@ mason.setup()
 mason_lspconfig.setup({
     ensure_installed = {
         "pyright",
-        "tsserver",
+        "vtsls",
         "rust_analyzer",
         "clangd",
         "texlab",
@@ -31,7 +31,7 @@ mason_lspconfig.setup_handlers({
             capabilities = capabilities,
         })
     end,
-    ["tsserver"] = require("server.tsserver").setup,
+    ["vtsls"] = require("server.vtsls").setup(capabilities),
     ["clangd"] = require("server.clangd").setup,
     ["lua_ls"] = require("server.lua_ls").setup,
     ["texlab"] = require("server.texlab").setup,
@@ -45,6 +45,7 @@ null_ls.setup({
 
         -- JS/TS
         null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.rustywind,
         -- null_ls.builtins.formatting.eslint_d,
         -- null_ls.builtins.diagnostics.eslint_d,
 
@@ -94,6 +95,11 @@ autocmd("LspAttach", {
         buf_set_keymap("n", "<leader>el", "<cmd>Lspsaga show_line_diagnostics<CR>")
         buf_set_keymap("n", "<leader>lo", "<cmd>Lspsaga outline<CR>")
         buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
+
+        -- Typescript
+        buf_set_keymap("n", "<leader>tsi", ":VtsExec organize_imports<CR>")
+        buf_set_keymap("n", "<leader>tsr", ":VtsExec rename_file<CR>")
+        buf_set_keymap("n", "<leader>tsa", ":VtsExec add_missing_imports<CR>")
     end,
 })
 
@@ -137,8 +143,11 @@ autocmd("LspAttach", {
 
         -- Tsserver usually works poorly. Sorry you work with bad languages
         -- You can remove this line if you know what you're doing :)
-        if client.name == "tsserver" or client.name == "typescript-tools" or client.name == "html" then
-            return
+        local disabled_list = { "tsserver", "typescript-tools", "html", "lua_ls" }
+        for _, value in pairs(disabled_list) do
+            if string.match(value, client.name) then
+                return
+            end
         end
 
         -- Create an autocmd that will run *before* we save the buffer.

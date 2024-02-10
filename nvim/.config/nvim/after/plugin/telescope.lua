@@ -6,11 +6,22 @@ end
 
 telescope.setup({
     defaults = {
-        file_ignore_patterns = { "node_modules", "vendor", "__pycache__", "target" },
+        file_ignore_patterns = {
+            ".git/",
+            "node_modules",
+            "vendor",
+            "build/",
+            "dist/",
+            ".svelte-kit/",
+            "__pycache__",
+            "venv/",
+        },
     },
     pickers = {
         find_files = {
             theme = "dropdown",
+            no_ignore = false,
+            hidden = true,
             previewer = false,
         },
         git_files = {
@@ -22,7 +33,6 @@ telescope.setup({
                 return { "--hidden" }
             end,
         },
-
         diagnostics = {
             theme = "ivy",
             initial_mode = "normal",
