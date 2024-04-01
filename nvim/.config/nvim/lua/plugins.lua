@@ -20,17 +20,12 @@ local plugins = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "yioneko/nvim-vtsls",
+            "hrsh7th/nvim-cmp",
+            "tamago324/nlsp-settings.nvim",
             -- "pmizio/typescript-tools.nvim",
             "nvimtools/none-ls.nvim",
+            "nvimtools/none-ls-extras.nvim",
             "j-hui/fidget.nvim",
-            {
-                "ray-x/lsp_signature.nvim",
-                event = "VeryLazy",
-                opts = {},
-                config = function(_, opts)
-                    require("lsp_signature").setup(opts)
-                end,
-            },
         },
     },
     {
@@ -47,7 +42,6 @@ local plugins = {
             "JoosepAlviste/nvim-ts-context-commentstring",
             "nvim-treesitter/nvim-treesitter-textobjects",
             "numToStr/Comment.nvim",
-            "IndianBoy42/tree-sitter-just",
             "RRethy/nvim-treesitter-endwise",
         },
     },
@@ -55,11 +49,28 @@ local plugins = {
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
     { "iamcco/markdown-preview.nvim", ft = "markdown", build = "cd app && npm install" },
-    { "img-paste-devs/img-paste.vim", ft = { "markdown", "tex" } },
+    {
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
+    {
+        "HakonHarnes/img-clip.nvim",
+        event = "BufEnter",
+        opts = {},
+        keys = {
+            { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste clipboard image" },
+        },
+    },
     { "kaarmu/typst.vim", ft = "typst" },
+    { "NoahTheDuke/vim-just", ft = "just" },
+    { "olexsmir/gopher.nvim", ft = "go" },
 
     {
-        "yioneko/nvim-cmp",
+        "hrsh7th/nvim-cmp",
         dependencies = {
             -- Completions
             "hrsh7th/cmp-buffer",
@@ -111,7 +122,7 @@ local plugins = {
         opts = {}, -- this is equalent to setup({}) function
     },
 
-    "ap/vim-buftabline",
+    "akinsho/bufferline.nvim",
     "kyazdani42/nvim-web-devicons",
     { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
     "sainnhe/gruvbox-material",

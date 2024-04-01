@@ -1,4 +1,5 @@
 opt.encoding = "utf-8"
+
 opt.relativenumber = true
 opt.nu = true
 opt.termguicolors = true
@@ -10,7 +11,6 @@ opt.incsearch = true
 opt.hlsearch = true
 opt.signcolumn = "yes"
 opt.shell = "/bin/bash"
-opt.showtabline = 2
 
 opt.tabstop = 4 -- number of columns occupied by a tab
 opt.softtabstop = 4 -- see multiple spaces as tabstops so <BS> does the right thing

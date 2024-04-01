@@ -17,9 +17,6 @@ local sources = {
 }
 
 local mapping = cmp.mapping.preset.insert({
-    ["<CR>"] = cmp.mapping(function(fallback)
-        fallback()
-    end), -- <CR> doesn't autocomplete
     ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
     ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),

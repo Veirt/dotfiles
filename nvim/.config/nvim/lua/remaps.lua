@@ -6,7 +6,7 @@ utils.map("i", "<C-s>", "<C-O>:update<CR>")
 utils.map("n", "<C-Q>", ":wq!<CR>")
 utils.map("v", "<C-c>", '"+y')
 utils.map("i", "<C-v>", "<esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia")
-utils.map("n", "<leader>x", "<cmd>!chmod +x %<CR>")
+utils.map("n", "<leader>x", ":silent ! chmod +x %<CR>")
 utils.map("n", "<leader>wq", "<cmd>wq<CR>")
 
 -- ThePrimeagen's remaps
@@ -42,7 +42,6 @@ utils.map("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>")
 utils.map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>")
 
 -- Telescope
--- utils.map("n", "<C-p>", "<cmd>lua require('telescope-custom').project_files()<CR>")
 utils.map("n", "<C-p>", "<cmd>Telescope find_files<CR>")
 utils.map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
 utils.map("n", "<leader>jl", "<cmd>Telescope jumplist<CR>")
@@ -87,14 +86,3 @@ utils.map("n", "<leader>cpd", "<cmd>Copilot! detach<CR> <cmd>lua print('Copilot 
 
 -- Formatting
 utils.map("n", "<leader>df", "<cmd>ToggleFormatting<CR>")
-
-utils.map("n", "<A-1>", "<Plug>BufTabLine.Go(1)")
-utils.map("n", "<A-2>", "<Plug>BufTabLine.Go(2)")
-utils.map("n", "<A-3>", "<Plug>BufTabLine.Go(3)")
-utils.map("n", "<A-4>", "<Plug>BufTabLine.Go(4)")
-utils.map("n", "<A-5>", "<Plug>BufTabLine.Go(5)")
-utils.map("n", "<A-6>", "<Plug>BufTabLine.Go(6)")
-utils.map("n", "<A-7>", "<Plug>BufTabLine.Go(7)")
-utils.map("n", "<A-8>", "<Plug>BufTabLine.Go(8)")
-utils.map("n", "<A-9>", "<Plug>BufTabLine.Go(9)")
-utils.map("n", "<A-10>", "<Plug>BufTabLine.Go(10)")

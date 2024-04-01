@@ -17,6 +17,7 @@ M.setup = function()
             "vue",
             "php",
             "ejs",
+            "templ",
         },
         -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
         -- **Note:** only the options listed in the table are supported.

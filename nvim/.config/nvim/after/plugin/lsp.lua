@@ -24,6 +24,7 @@ mason_lspconfig.setup({
 mason_nvim_dap.setup({ handlers = {} })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 mason_lspconfig.setup_handlers({
     function(server_name) -- default handler
@@ -53,18 +54,20 @@ null_ls.setup({
         null_ls.builtins.formatting.emacs_scheme_mode,
         null_ls.builtins.formatting.raco_fmt,
 
-        -- C/C++
-        null_ls.builtins.formatting.clang_format,
+        -- Python
+        require("none-ls.formatting.ruff"),
+
+        -- -- C/C++
+        -- null_ls.builtins.formatting.clang_format,
+
+        null_ls.builtins.diagnostics.semgrep,
 
         -- sh
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },
         }),
 
-        -- python
-        null_ls.builtins.formatting.black,
-
-        -- lua
+        -- -- lua
         null_ls.builtins.formatting.stylua,
 
         -- docker
@@ -143,7 +146,7 @@ autocmd("LspAttach", {
 
         -- Tsserver usually works poorly. Sorry you work with bad languages
         -- You can remove this line if you know what you're doing :)
-        local disabled_list = { "tsserver", "typescript-tools", "html", "lua_ls" }
+        local disabled_list = { "tsserver", "typescript-tools", "html", "lua_ls", "vtsls" }
         for _, value in pairs(disabled_list) do
             if string.match(value, client.name) then
                 return
