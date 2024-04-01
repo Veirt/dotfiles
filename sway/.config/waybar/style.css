@@ -7,7 +7,6 @@
   border-radius: 0;
   font-family: JetBrainsMono NF;
   font-size: 14px;
-  /* transition-duration: 0.25s; */
 }
 
 window {
@@ -41,14 +40,19 @@ window {
 #clock,
 #tray {
   margin: 5px;
+  /* background: #242424; */
+  /* border-radius: 8px; */
   padding: 10px 10px;
 }
 
 #battery.warning {
-  color: rgba(255, 210, 4, 1);
   color: @warning;
 }
 
 #battery.critical {
   color: @urgent;
+}
+
+#taskbar button.active {
+  color: green;
 }

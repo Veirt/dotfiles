@@ -14,8 +14,6 @@ client.focused          #657B83 #657B83 #ffffff #2e9ef4   #657B83
 client.unfocused        #333333 #222222 #888888 #333845   #1A1A1F
 
 smart_borders on
-smart_gaps off
-gaps inner 10
 
 # Home row direction keys, like vim
 set $left h
