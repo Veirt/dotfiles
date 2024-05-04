@@ -60,14 +60,15 @@ null_ls.setup({
         -- -- C/C++
         -- null_ls.builtins.formatting.clang_format,
 
-        null_ls.builtins.diagnostics.semgrep,
-
         -- sh
         null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "4", "-ci" },
         }),
 
-        -- -- lua
+        -- typst
+        null_ls.builtins.formatting.typstfmt,
+
+        -- lua
         null_ls.builtins.formatting.stylua,
 
         -- docker

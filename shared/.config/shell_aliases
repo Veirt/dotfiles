@@ -41,7 +41,7 @@ alias lg="lazygit"
 alias a="z"
 alias stk="stklos -l ~/dev/sicp/simply.scm"
 alias aout="./a.out"
-alias vestaconfig="vim /mnt/sshfs/hestia/home/orangepi/apps/vesta/config/vesta.toml"
+alias vestaconfig="vim /mnt/sshfs/eir/root/apps/vesta/config/vesta.toml"
 
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
