@@ -55,7 +55,7 @@ null_ls.setup({
         null_ls.builtins.formatting.raco_fmt,
 
         -- Python
-        require("none-ls.formatting.ruff"),
+        null_ls.builtins.formatting.black,
 
         -- -- C/C++
         -- null_ls.builtins.formatting.clang_format,
