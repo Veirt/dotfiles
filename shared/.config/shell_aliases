@@ -42,6 +42,8 @@ alias a="z"
 alias stk="stklos -l ~/dev/sicp/simply.scm"
 alias aout="./a.out"
 alias vestaconfig="vim /mnt/sshfs/eir/root/apps/vesta/config/vesta.toml"
+alias dlog="docker compose logs -f"
+alias dbuild="docker compose up --build"
 
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
