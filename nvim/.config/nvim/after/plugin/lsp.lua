@@ -12,7 +12,7 @@ vim.diagnostic.config({
 mason.setup()
 mason_lspconfig.setup({
     ensure_installed = {
-        "pyright",
+        "basedpyright",
         "vtsls",
         "rust_analyzer",
         "clangd",
