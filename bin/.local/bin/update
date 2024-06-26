@@ -1,0 +1,26 @@
+#!/bin/sh
+
+update() {
+    if command -v apt-get >/dev/null 2>&1; then
+        sudo true
+        apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y
+
+    elif command -v pacman >/dev/null 2>&1; then
+        if command -v paru >/dev/null 2>&1; then
+            paru -Syu --noconfirm --removemake
+            return
+        fi
+
+        sudo true
+        pacman -Syu
+
+    elif command -v apk >/dev/null 2>&1; then
+        doas apk update && doas apk upgrade
+
+    else
+        echo "Not supported."
+        return 1
+    fi
+}
+
+update

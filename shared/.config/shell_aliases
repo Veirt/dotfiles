@@ -1,5 +1,4 @@
 alias c="clear"
-alias update="paru -Syu --noconfirm --removemake"
 
 # quick open folders
 alias repo="cd ~/dev"
