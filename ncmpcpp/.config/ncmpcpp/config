@@ -1,5 +1,5 @@
 lyrics_directory = ~/.local/share/lyrics
-mpd_music_dir = ~/personal/music
+mpd_music_dir = /mnt/storage/music
 
 lines_scrolled = "1"
 
