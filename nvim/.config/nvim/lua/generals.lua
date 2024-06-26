@@ -2,6 +2,9 @@ opt.encoding = "utf-8"
 
 opt.relativenumber = true
 opt.nu = true
+opt.fileformats = "unix,dos"
+opt.fixeol = false
+opt.fixendofline = false
 opt.termguicolors = true
 opt.background = "dark"
 opt.errorbells = false

@@ -46,6 +46,8 @@ local plugins = {
         },
     },
 
+    { "folke/neodev.nvim", opts = {} },
+    { "jlcrochet/vim-razor", ft = "razor" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
     { "iamcco/markdown-preview.nvim", ft = "markdown", build = "cd app && npm install" },
@@ -103,7 +105,6 @@ local plugins = {
         },
     },
 
-    { "ThePrimeagen/harpoon", dependencies = "nvim-lua/popup.nvim" }, -- Get you where you want with the fewest keystrokes.
     { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
     { "zbirenbaum/copilot.lua", lazy = true },
     -- "ThePrimeagen/refactoring.nvim",
@@ -129,6 +130,17 @@ local plugins = {
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
     "nvim-lualine/lualine.nvim",
+
+    {
+        dir = "~/dev/trun.nvim", --
+        dependencies = { "ThePrimeagen/harpoon" },
+        name = "trun.nvim",
+        config = function()
+            require("trun").setup()
+        end,
+    },
+
+    --
 }
 
 require("lazy").setup(plugins)
