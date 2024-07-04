@@ -26,6 +26,7 @@ local plugins = {
             "nvimtools/none-ls.nvim",
             "nvimtools/none-ls-extras.nvim",
             "j-hui/fidget.nvim",
+            "stevearc/conform.nvim",
         },
     },
     {
