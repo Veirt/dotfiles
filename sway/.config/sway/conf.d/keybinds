@@ -7,6 +7,7 @@ bindsym $mod+r exec wofi --width=35%  --show drun
 bindsym $mod+m exec geary
 bindsym Ctrl+Mod1+s exec pape toggle
 bindsym Ctrl+Mod1+r exec exec ~/.config/sway/scripts/record
+bindsym Ctrl+Mod1+k exec exec ~/.config/sway/scripts/record audio
 
 bindsym $mod+Shift+s exec ~/.config/sway/scripts/notify-screenshot custom
 bindsym Print exec ~/.config/sway/scripts/notify-screenshot screen

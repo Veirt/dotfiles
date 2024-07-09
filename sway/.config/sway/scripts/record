@@ -10,5 +10,13 @@ else
     notify-send "Starting recording when this notification disappear."
     sleep 1
     makoctl dismiss -a
+
+    # check parameter, if it equals to audio then record with audio
+    if [ "$1" == "audio" ]; then
+        wf-recorder -x yuv420p -t --audio -f "$output"
+        exit 0
+    fi
+
     wf-recorder -x yuv420p -t -f "$output"
+
 fi
