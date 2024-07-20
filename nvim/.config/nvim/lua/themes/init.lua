@@ -7,11 +7,15 @@ vim.cmd([[
     augroup END
 ]])
 
-vim.cmd([[
-    sign define DiagnosticSignError text=  linehl= texthl=DiagnosticSignError numhl=
-    sign define DiagnosticSignWarn text=  linehl= texthl=DiagnosticSignWarn numhl=
-    sign define DiagnosticSignInfo text=󰌵  linehl= texthl=DiagnosticSignInfo numhl=
-    sign define DiagnosticSignHint text=  linehl= texthl=DiagnosticSignHint numhl=
-]])
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "󰌵",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+    },
+})
 
 require("themes.solarized")

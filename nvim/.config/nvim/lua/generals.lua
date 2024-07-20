@@ -11,7 +11,7 @@ opt.errorbells = false
 opt.wrap = false
 opt.scrolloff = 8
 opt.incsearch = true
-opt.hlsearch = true
+
 opt.signcolumn = "yes"
 opt.shell = "/bin/bash"
 
@@ -40,3 +40,6 @@ opt.shortmess:append("c")
 
 opt.ignorecase = true
 opt.smartcase = true
+
+opt.hlsearch = true
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

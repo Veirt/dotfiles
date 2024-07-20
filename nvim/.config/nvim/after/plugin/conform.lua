@@ -1,8 +1,10 @@
 require("conform").setup({
-    format_on_save = function(bufnr)
+    notify_on_error = false,
+    format_on_save = function()
         if vim.g.disable_autoformat then
             return
         end
+        -- return { async = false, timeout_ms = 500, lsp_format = "fallback" }
         return { timeout_ms = 500, lsp_format = "fallback" }
     end,
     formatters_by_ft = {
@@ -10,7 +12,7 @@ require("conform").setup({
         -- Conform will run multiple formatters sequentially
         python = { "isort", "black" },
         -- Use a sub-list to run only the first available formatter
-        javascript = { { "prettierd", "prettier" } },
+        javascript = { { "biome", "prettierd", "prettier" } },
     },
 })
 

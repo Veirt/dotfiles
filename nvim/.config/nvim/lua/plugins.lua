@@ -17,16 +17,16 @@ local plugins = {
         "neovim/nvim-lspconfig",
         dependencies = {
             -- LSP Support
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
             "yioneko/nvim-vtsls",
             "hrsh7th/nvim-cmp",
             "tamago324/nlsp-settings.nvim",
-            -- "pmizio/typescript-tools.nvim",
-            "nvimtools/none-ls.nvim",
-            "nvimtools/none-ls-extras.nvim",
+            "mfussenegger/nvim-lint",
             "j-hui/fidget.nvim",
             "stevearc/conform.nvim",
+
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "rshkarin/mason-nvim-lint",
         },
     },
     {
