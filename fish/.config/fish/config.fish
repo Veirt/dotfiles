@@ -5,12 +5,16 @@ bind -M insert \cf 'tmux-sessionizer'
 bind \cf 'tmux-sessionizer'
 bind -M insert \ct 'tmux'
 bind \ct 'tmux'
-bind -M insert \cr 'lfcd'
-bind \cr 'lfcd'
+bind -M insert \cr 'yy'
+bind \cr 'yy'
 bind -M insert \cg 'lbg $GUIFM .'
 bind \cg 'lbg $GUIFM .'
 bind -M insert \ce forward-char
 bind \ce forward-char
+
+# fish-ai
+bind -M insert \cP _fish_ai_codify_or_explain
+bind -M insert -k nul _fish_ai_autocomplete_or_fix
 
 source ~/.config/shell_aliases
 

@@ -44,5 +44,6 @@ song_status_format = "♫ %a - %t"
 song_window_title_format = "♫ %a - %t"
 
 browser_sort_mode = name
+browser_sort_format = {%a - }{%t}|{%f} {(%l)}
 
 execute_on_song_change = "~/.config/ncmpcpp/scripts/notify-cover-art"

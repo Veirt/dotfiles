@@ -2,11 +2,11 @@
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='alacritty'
-export LAUNCH_TERMINAL='alacritty -e fish'
+export TERMINAL='foot'
+export LAUNCH_TERMINAL='foot -e fish'
 export BROWSER='firefox'
 export GUIFM='nautilus'
-export TUIFM='ranger'
+export TUIFM='yazi'
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.local/cache"
@@ -33,6 +33,7 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$BUN_INSTALL/bin"
+export PATH="$PATH:$HOME/.dotnet"
 
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"

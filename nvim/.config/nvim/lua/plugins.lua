@@ -19,7 +19,6 @@ local plugins = {
             -- LSP Support
             "yioneko/nvim-vtsls",
             "hrsh7th/nvim-cmp",
-            "tamago324/nlsp-settings.nvim",
             "mfussenegger/nvim-lint",
             "j-hui/fidget.nvim",
             "stevearc/conform.nvim",
@@ -51,14 +50,11 @@ local plugins = {
     { "jlcrochet/vim-razor", ft = "razor" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
-    { "iamcco/markdown-preview.nvim", ft = "markdown", build = "cd app && npm install" },
     {
-        "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        setup = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
+        "MeanderingProgrammer/markdown.nvim",
+        main = "render-markdown",
+        opts = {},
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     },
     {
         "HakonHarnes/img-clip.nvim",
@@ -126,7 +122,7 @@ local plugins = {
 
     "akinsho/bufferline.nvim",
     "kyazdani42/nvim-web-devicons",
-    { "svrana/neosolarized.nvim", dependencies = "tjdevries/colorbuddy.nvim" },
+    "craftzdog/solarized-osaka.nvim",
     "sainnhe/gruvbox-material",
     "EdenEast/nightfox.nvim",
     "RRethy/nvim-base16",
@@ -140,8 +136,6 @@ local plugins = {
             require("trun").setup()
         end,
     },
-
-    --
 }
 
 require("lazy").setup(plugins)

@@ -3,9 +3,6 @@ local lint = require("lint")
 lint.linters_by_ft = {
     dockerfile = { "hadolint" },
     json = { "jsonlint" },
-    markdown = { "vale" },
-    rst = { "vale" },
-    text = { "vale" },
 }
 
 -- Create autocommand which carries out the actual linting
