@@ -4,15 +4,14 @@ require("conform").setup({
         if vim.g.disable_autoformat then
             return
         end
-        -- return { async = false, timeout_ms = 500, lsp_format = "fallback" }
         return { timeout_ms = 500, lsp_format = "fallback" }
     end,
     formatters_by_ft = {
         lua = { "stylua" },
-        -- Conform will run multiple formatters sequentially
         python = { "isort", "black" },
-        -- Use a sub-list to run only the first available formatter
-        javascript = { "prettierd" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        astro = { "prettier", stop_after_first = true },
     },
 })
 

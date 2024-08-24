@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -10,7 +11,7 @@ local snippet = {
 }
 
 local sources = {
-    { name = "nvim_lsp", max_item_count = 30 },
+    { name = "nvim_lsp" },
     { name = "luasnip", max_item_count = 30 },
     { name = "buffer", keyword_length = 3 },
     { name = "async_path" },
@@ -43,16 +44,11 @@ local mapping = cmp.mapping.preset.insert({
 })
 
 local formatting = {
-    format = require("lspkind").cmp_format({
+    format = lspkind.cmp_format({
         mode = "symbol_text",
-        preset = "codicons",
-        menu = {
-            buffer = "[Buffer]",
-            nvim_lsp = "[LSP]",
-            luasnip = "[LuaSnip]",
-            nvim_lua = "[Lua]",
-            latex_symbols = "[Latex]",
-        },
+        maxwidth = 50,
+        ellipsis_char = "...",
+        show_labelDetails = true,
     }),
 }
 

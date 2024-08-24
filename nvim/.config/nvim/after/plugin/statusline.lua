@@ -20,7 +20,7 @@ require("lualine").setup({
         },
         lualine_b = { { "branch", icon = "󰊢 ", color = color }, "diagnostics" },
         lualine_c = {},
-        lualine_x = { { "filetype", colored = false, icon_only = true }, { "filename", color = color } },
+        lualine_x = { { "filetype", colored = false, icon_only = true }, { "filename", path = 1, color = color } },
         lualine_y = {},
         lualine_z = { { "location", color = color } },
     },

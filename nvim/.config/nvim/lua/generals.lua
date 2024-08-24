@@ -13,7 +13,7 @@ opt.scrolloff = 8
 opt.incsearch = true
 
 opt.signcolumn = "yes"
-opt.shell = "/bin/bash"
+opt.shell = "/bin/sh"
 
 opt.tabstop = 4 -- number of columns occupied by a tab
 opt.softtabstop = 4 -- see multiple spaces as tabstops so <BS> does the right thing

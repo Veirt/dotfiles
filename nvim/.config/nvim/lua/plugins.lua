@@ -50,12 +50,7 @@ local plugins = {
     { "jlcrochet/vim-razor", ft = "razor" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
-    {
-        "MeanderingProgrammer/markdown.nvim",
-        main = "render-markdown",
-        opts = {},
-        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-    },
+    { "sophacles/vim-processing", ft = "processing" },
     {
         "HakonHarnes/img-clip.nvim",
         event = "BufEnter",
@@ -103,7 +98,7 @@ local plugins = {
     },
 
     { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
-    { "zbirenbaum/copilot.lua", lazy = true },
+    { "github/copilot.vim" },
     -- "ThePrimeagen/refactoring.nvim",
     "nvimdev/lspsaga.nvim", -- LSP plugin with highly performant UI
     "lewis6991/gitsigns.nvim", -- Super fast git decorations
@@ -122,16 +117,19 @@ local plugins = {
 
     "akinsho/bufferline.nvim",
     "kyazdani42/nvim-web-devicons",
-    "craftzdog/solarized-osaka.nvim",
-    "sainnhe/gruvbox-material",
-    "EdenEast/nightfox.nvim",
-    "RRethy/nvim-base16",
+    {
+        "craftzdog/solarized-osaka.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+    -- "sainnhe/gruvbox-material",
+    -- "EdenEast/nightfox.nvim",
+    -- "RRethy/nvim-base16",
     "nvim-lualine/lualine.nvim",
 
     {
         dir = "~/dev/trun.nvim", --
         dependencies = { "ThePrimeagen/harpoon" },
-        name = "trun.nvim",
         config = function()
             require("trun").setup()
         end,
