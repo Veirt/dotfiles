@@ -1,5 +1,3 @@
-#!/usr/bin/sh
-
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='foot'
@@ -17,23 +15,25 @@ export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export BUN_INSTALL="$HOME/.local/share/bun"
-export ANDROID_SDK_ROOT='/opt/android-sdk'
-
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
-export PATH="$PATH:$ANDROID_ROOT/emulator"
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
+export ANDROID_SDK_ROOT="$HOME/.local/share/android/sdk"
+# export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
+# export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
+# export PATH="$PATH:$ANDROID_ROOT/emulator"
+# export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-export PATH="$PATH:/usr/lib/jvm/default/bin"
+# export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:$HOME/.dotnet"
+export CHROME_EXECUTABLE=google-chrome-stable
+
+export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
 
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"

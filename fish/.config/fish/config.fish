@@ -29,10 +29,12 @@ set -x DEBUGINFOD_URLS 'https://debuginfod.archlinux.org'
 
 alias google="web-search google"
 alias github="web-search github"
-alias stackoverflow="web-search stackoverflow"
 alias anime="web-search anime"
 alias hi10="web-search hi10"
 alias mal="web-search mal"
+alias yt="web-search youtube"
+alias opt="web-search nixoptions"
+alias pkg="web-search nixpkgs"
 
 if type -q zoxide
     zoxide init fish | source

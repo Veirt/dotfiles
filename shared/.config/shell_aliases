@@ -32,7 +32,6 @@ alias ys="yarn start"
 alias yb="yarn build"
 alias pn="pnpm"
 alias pd="pnpm dev"
-alias ps="pnpm start"
 alias pb="pnpm build"
 alias t="tmux"
 alias ta="tmux a"
@@ -58,3 +57,6 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
 
 alias active-ports="sudo lsof -i -P -n | grep LISTEN"
 alias mkdir-date="mkdir $(date +'%Y-%m-%d')"
+
+# nix os
+alias rb="sudo nixos-rebuild switch"

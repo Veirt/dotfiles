@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CURRENT_DATE="$(date +'%Y-%m-%d-%s.png')"
 readonly output="$(xdg-user-dir PICTURES)/screenshots/$CURRENT_DATE"

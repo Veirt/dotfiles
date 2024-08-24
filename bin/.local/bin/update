@@ -17,6 +17,11 @@ update() {
     elif command -v apk >/dev/null 2>&1; then
         doas apk update && doas apk upgrade
 
+    elif command -v nixos-rebuild >/dev/null 2>&1; then
+        sudo true
+
+        sudo nix-channel --update
+        sudo nixos-rebuild switch
     else
         echo "Not supported."
         return 1
