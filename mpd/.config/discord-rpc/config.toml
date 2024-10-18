@@ -1,0 +1,14 @@
+id = 991357231318708254
+# id = 1158353593984876574
+hosts = ["localhost:6600"]
+
+[format]
+details = "$title"
+state = "$artist / $album"
+timestamp = "elapsed"
+large_text = ""
+large_image = "mpd"
+# small_image = "mpd"
+# large_image = "winamp"
+# small_image = "winamp"
+# small_text = "SOVLFUL Music Player"

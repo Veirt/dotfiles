@@ -4,7 +4,7 @@ Requires=mpd.service
 
 [Service]
 
-ExecStart=%h/.cargo/bin/mpd-discord-rpc
+ExecStart=/usr/bin/env mpd-discord-rpc
 
 [Install]
 WantedBy=default.target
