@@ -46,11 +46,20 @@ local plugins = {
         },
     },
 
+    {
+        "akinsho/flutter-tools.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "stevearc/dressing.nvim", -- optional for vim.ui.select
+        },
+        config = true,
+    },
     { "folke/neodev.nvim", opts = {} },
     { "jlcrochet/vim-razor", ft = "razor" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
-    { "sophacles/vim-processing", ft = "processing" },
+    "kkoomen/vim-doge",
     {
         "HakonHarnes/img-clip.nvim",
         event = "BufEnter",
@@ -132,6 +141,27 @@ local plugins = {
         dependencies = { "ThePrimeagen/harpoon" },
         config = function()
             require("trun").setup()
+        end,
+    },
+    {
+        "vyfor/cord.nvim",
+        build = "./build",
+        event = "VeryLazy",
+        opts = {
+            editor = {
+                tooltip = "Neovim",
+            },
+        },
+    },
+
+    {
+        "toppair/peek.nvim",
+        event = { "VeryLazy" },
+        build = "deno task --quiet build:fast",
+        config = function()
+            require("peek").setup()
+            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
         end,
     },
 }

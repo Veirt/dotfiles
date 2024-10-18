@@ -12,6 +12,7 @@ require("conform").setup({
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
         astro = { "prettier", stop_after_first = true },
+        markdown = { "prettierd" },
     },
 })
 

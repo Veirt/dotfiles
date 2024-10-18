@@ -11,7 +11,7 @@ local snippet = {
 }
 
 local sources = {
-    { name = "nvim_lsp" },
+    { name = "nvim_lsp", max_item_count = 60 },
     { name = "luasnip", max_item_count = 30 },
     { name = "buffer", keyword_length = 3 },
     { name = "async_path" },
@@ -62,4 +62,9 @@ cmp.setup({
     completion = completion,
     sources = sources,
     formatting = formatting,
+    window = {
+        completion = {
+            scrollbar = false,
+        },
+    },
 })

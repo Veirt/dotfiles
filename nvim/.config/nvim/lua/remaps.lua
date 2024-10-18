@@ -91,3 +91,4 @@ vim.g.copilot_no_tab_map = true
 
 -- Formatting
 utils.map("n", "<leader>df", "<cmd>ToggleFormatting<CR>")
+utils.map("n", "<leader>dg", "<cmd>DogeGenerate<CR>")
