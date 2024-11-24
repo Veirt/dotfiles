@@ -46,20 +46,10 @@ local plugins = {
         },
     },
 
-    {
-        "akinsho/flutter-tools.nvim",
-        lazy = false,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "stevearc/dressing.nvim", -- optional for vim.ui.select
-        },
-        config = true,
-    },
     { "folke/neodev.nvim", opts = {} },
-    { "jlcrochet/vim-razor", ft = "razor" },
+    -- { "jlcrochet/vim-razor", ft = "razor" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
-    "kkoomen/vim-doge",
     {
         "HakonHarnes/img-clip.nvim",
         event = "BufEnter",
@@ -73,14 +63,13 @@ local plugins = {
     { "olexsmir/gopher.nvim", ft = "go" },
 
     {
-        "hrsh7th/nvim-cmp",
+        "iguanacucumber/magazine.nvim",
+        name = "nvim-cmp",
         dependencies = {
             -- Completions
-            "hrsh7th/cmp-buffer",
-            "saadparwaiz1/cmp_luasnip",
-            "FelipeLema/cmp-async-path",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua",
+            { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+            { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+            { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
             {
                 "L3MON4D3/LuaSnip",
                 version = "1.*",
@@ -152,17 +141,6 @@ local plugins = {
                 tooltip = "Neovim",
             },
         },
-    },
-
-    {
-        "toppair/peek.nvim",
-        event = { "VeryLazy" },
-        build = "deno task --quiet build:fast",
-        config = function()
-            require("peek").setup()
-            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-        end,
     },
 }
 
