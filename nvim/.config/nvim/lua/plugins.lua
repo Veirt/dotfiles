@@ -62,24 +62,68 @@ local plugins = {
     { "NoahTheDuke/vim-just", ft = "just" },
     { "olexsmir/gopher.nvim", ft = "go" },
 
+    -- {
+    --     "iguanacucumber/magazine.nvim",
+    --     name = "nvim-cmp",
+    --     dependencies = {
+    --         -- Completions
+    --         { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    --         { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+    --         { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+    --         "https://codeberg.org/FelipeLema/cmp-async-path",
+    --         {
+    --             "L3MON4D3/LuaSnip",
+    --             version = "1.*",
+    --             build = "make install_jsregexp",
+    --             dependencies = "rafamadriz/friendly-snippets",
+    --         },
+    --
+    --         "onsails/lspkind-nvim", -- vscode-like pictograms
+    --     },
+    -- },
     {
-        "iguanacucumber/magazine.nvim",
-        name = "nvim-cmp",
-        dependencies = {
-            -- Completions
-            { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
-            { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
-            { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-            {
-                "L3MON4D3/LuaSnip",
-                version = "1.*",
-                build = "make install_jsregexp",
-                dependencies = "rafamadriz/friendly-snippets",
+        "saghen/blink.cmp",
+        version = "v0.*",
+        -- !Important! Make sure you're using the latest release of LuaSnip
+        -- `main` does not work at the moment
+        dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+        opts = {
+            keymap = {
+                preset = "super-tab",
+                ["<C-k>"] = { "select_prev", "fallback" },
+                ["<C-j>"] = { "select_next", "fallback" },
             },
-
-            "onsails/lspkind-nvim", -- vscode-like pictograms
+            snippets = {
+                expand = function(snippet)
+                    require("luasnip").lsp_expand(snippet)
+                end,
+                active = function(filter)
+                    if filter and filter.direction then
+                        return require("luasnip").jumpable(filter.direction)
+                    end
+                    return require("luasnip").in_snippet()
+                end,
+                jump = function(direction)
+                    require("luasnip").jump(direction)
+                end,
+            },
+            sources = {
+                default = { "lsp", "path", "luasnip", "buffer" },
+            },
+            signature = { enabled = true },
+            completion = {
+                menu = {
+                    draw = {
+                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
+                    },
+                },
+                documentation = {
+                    auto_show = true,
+                },
+            },
         },
     },
+
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -124,6 +168,21 @@ local plugins = {
     -- "EdenEast/nightfox.nvim",
     -- "RRethy/nvim-base16",
     "nvim-lualine/lualine.nvim",
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            bigfile = { enabled = true },
+            notifier = { enabled = true },
+            quickfile = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+        },
+    },
 
     {
         dir = "~/dev/trun.nvim", --
@@ -141,6 +200,16 @@ local plugins = {
                 tooltip = "Neovim",
             },
         },
+    },
+    {
+        "toppair/peek.nvim",
+        event = { "VeryLazy" },
+        build = "deno task --quiet build:fast",
+        config = function()
+            require("peek").setup()
+            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+        end,
     },
 }
 

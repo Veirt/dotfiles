@@ -13,7 +13,7 @@ require("mason-nvim-lint").setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 mason_lspconfig.setup_handlers({
     function(server_name) -- default handler
         lspconfig[server_name].setup({

@@ -1,10 +1,10 @@
 # vim: ft=config
-bindsym $mod+Return exec eval $LAUNCH_TERMINAL
-bindsym $mod+w exec eval $BROWSER
+bindsym $mod+Return exec 'foot -e fish'
+bindsym $mod+w exec firefox
 bindsym $mod+d exec vesktop
-bindsym $mod+e exec $GUIFM
+bindsym $mod+e exec nautilus
 bindsym $mod+r exec wofi --width=35%  --show drun
-bindsym $mod+m exec geary
+bindsym $mod+m exec mailspring
 bindsym Ctrl+Mod1+s exec pape toggle
 bindsym Ctrl+Mod1+r exec exec ~/.config/sway/scripts/record
 bindsym Ctrl+Mod1+k exec exec ~/.config/sway/scripts/record audio
@@ -33,5 +33,3 @@ bindsym $mod+Shift+w exec 'pgrep wshowkeys && killall wshowkeys || wshowkeys -a 
 bindsym XF86AudioPlay exec playerctl play-pause || mpc toggle
 bindsym XF86AudioNext exec playerctl next || mpc next
 bindsym XF86AudioPrev exec playerctl previous || mpc prev
-
-bindsym Mod1+r exec "/home/veirt/dev/auto-embedcolor/script.sh"

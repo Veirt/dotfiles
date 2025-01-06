@@ -1,10 +1,17 @@
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='foot'
-export LAUNCH_TERMINAL='foot -e fish'
 export BROWSER='firefox'
 export GUIFM='nautilus'
 export TUIFM='yazi'
+
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_QPA_PLATFORM="wayland"
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export MOZ_WEBRENDER=1
+export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.local/cache"
@@ -33,8 +40,6 @@ export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:$HOME/.dotnet"
 export CHROME_EXECUTABLE=google-chrome-stable
 
-export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
-
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"
 
@@ -47,7 +52,4 @@ export FZF_DEFAULT_OPTS="--prompt='❱ ' --bind alt-j:down,alt-k:up"
 if [ -d "$HOME/.personal/profile" ]; then
     for f in "$HOME"/.personal/profile/*; do . "$f"; done
 fi
-
-if [ -d "$HOME/.local/share/rye" ]; then
-    . "$HOME/.local/share/rye/env"
-fi
+. "$HOME/.rye/env"

@@ -11,6 +11,7 @@ require("conform").setup({
         python = { "isort", "black" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
         astro = { "prettier", stop_after_first = true },
         markdown = { "prettierd" },
     },
