@@ -46,8 +46,8 @@ local plugins = {
         },
     },
 
+    -- language supports
     { "folke/neodev.nvim", opts = {} },
-    -- { "jlcrochet/vim-razor", ft = "razor" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
     {
@@ -62,68 +62,14 @@ local plugins = {
     { "NoahTheDuke/vim-just", ft = "just" },
     { "olexsmir/gopher.nvim", ft = "go" },
 
-    -- {
-    --     "iguanacucumber/magazine.nvim",
-    --     name = "nvim-cmp",
-    --     dependencies = {
-    --         -- Completions
-    --         { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
-    --         { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
-    --         { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-    --         "https://codeberg.org/FelipeLema/cmp-async-path",
-    --         {
-    --             "L3MON4D3/LuaSnip",
-    --             version = "1.*",
-    --             build = "make install_jsregexp",
-    --             dependencies = "rafamadriz/friendly-snippets",
-    --         },
-    --
-    --         "onsails/lspkind-nvim", -- vscode-like pictograms
-    --     },
-    -- },
+    -- completion
     {
         "saghen/blink.cmp",
         version = "v0.*",
-        -- !Important! Make sure you're using the latest release of LuaSnip
-        -- `main` does not work at the moment
         dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
-        opts = {
-            keymap = {
-                preset = "super-tab",
-                ["<C-k>"] = { "select_prev", "fallback" },
-                ["<C-j>"] = { "select_next", "fallback" },
-            },
-            snippets = {
-                expand = function(snippet)
-                    require("luasnip").lsp_expand(snippet)
-                end,
-                active = function(filter)
-                    if filter and filter.direction then
-                        return require("luasnip").jumpable(filter.direction)
-                    end
-                    return require("luasnip").in_snippet()
-                end,
-                jump = function(direction)
-                    require("luasnip").jump(direction)
-                end,
-            },
-            sources = {
-                default = { "lsp", "path", "luasnip", "buffer" },
-            },
-            signature = { enabled = true },
-            completion = {
-                menu = {
-                    draw = {
-                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
-                    },
-                },
-                documentation = {
-                    auto_show = true,
-                },
-            },
-        },
     },
 
+    -- improve experience
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -140,9 +86,11 @@ local plugins = {
     },
 
     { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
-    { "github/copilot.vim" },
-    -- "ThePrimeagen/refactoring.nvim",
-    "nvimdev/lspsaga.nvim", -- LSP plugin with highly performant UI
+    "github/copilot.vim",
+    {
+        "jinzhongjia/LspUI.nvim",
+        branch = "main",
+    },
     "lewis6991/gitsigns.nvim", -- Super fast git decorations
     "ur4ltz/surround.nvim", -- Easily delete, change and add such surroundings in pairs.
     "NMAC427/guess-indent.nvim", -- Automatically adjusts indent
@@ -151,38 +99,17 @@ local plugins = {
     "olimorris/persisted.nvim", -- Session
     "wakatime/vim-wakatime",
     "sustech-data/wildfire.nvim",
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        opts = {}, -- this is equalent to setup({}) function
-    },
+    "windwp/nvim-autopairs",
 
+    -- themes
     "akinsho/bufferline.nvim",
     "kyazdani42/nvim-web-devicons",
-    {
-        "craftzdog/solarized-osaka.nvim",
-        lazy = false,
-        priority = 1000,
-    },
+    "craftzdog/solarized-osaka.nvim",
     -- "sainnhe/gruvbox-material",
     -- "EdenEast/nightfox.nvim",
     -- "RRethy/nvim-base16",
     "nvim-lualine/lualine.nvim",
-    {
-        "folke/snacks.nvim",
-        priority = 1000,
-        lazy = false,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-            bigfile = { enabled = true },
-            notifier = { enabled = true },
-            quickfile = { enabled = true },
-            statuscolumn = { enabled = true },
-            words = { enabled = true },
-        },
-    },
+    "folke/snacks.nvim",
 
     {
         dir = "~/dev/trun.nvim", --
@@ -193,24 +120,16 @@ local plugins = {
     },
     {
         "vyfor/cord.nvim",
-        build = "./build",
+        build = ":Cord update",
         event = "VeryLazy",
-        opts = {
-            editor = {
-                tooltip = "Neovim",
-            },
-        },
     },
     {
         "toppair/peek.nvim",
         event = { "VeryLazy" },
         build = "deno task --quiet build:fast",
-        config = function()
-            require("peek").setup()
-            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-        end,
     },
+    "olimorris/codecompanion.nvim",
+    { "echasnovski/mini.diff", branch = "stable" },
 }
 
 require("lazy").setup(plugins)

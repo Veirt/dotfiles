@@ -22,6 +22,7 @@ opt.shiftwidth = 4 -- width for autoindent
 opt.smartindent = true
 opt.autoindent = true
 opt.cinoptions:append("L0")
+opt.jumpoptions = ""
 
 opt.showmode = false -- hide built-in vim mode
 opt.mouse = "a" -- enable mouse click

@@ -83,6 +83,9 @@ utils.map("n", "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<CR>")
 -- Copilot
 utils.map("n", "<leader>cpe", "<cmd>Copilot enable<CR> <cmd>lua print('Copilot attached')<CR>")
 utils.map("n", "<leader>cpd", "<cmd>Copilot disable<CR> <cmd>lua print('Copilot detached')<CR>")
+utils.map("i", "<A-[>", "<Plug>(copilot-previous)")
+utils.map("i", "<A-]>", "<Plug>(copilot-next)")
+utils.map("i", "<A-\\>", "<Plug>(copilot-suggest)")
 vim.keymap.set("i", "<C-e>", 'copilot#Accept("\\<CR>")', {
     expr = true,
     replace_keycodes = false,
@@ -91,4 +94,9 @@ vim.g.copilot_no_tab_map = true
 
 -- Formatting
 utils.map("n", "<leader>df", "<cmd>ToggleFormatting<CR>")
-utils.map("n", "<leader>dg", "<cmd>DogeGenerate<CR>")
+
+-- CodeCompanion
+utils.map("n", "<leader>cc", "<cmd>CodeCompanionChat<CR>")
+
+utils.map("n", "[q", "<cmd>cp<CR>")
+utils.map("n", "]q", "<cmd>cn<CR>")

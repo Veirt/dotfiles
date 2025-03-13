@@ -14,6 +14,7 @@ autocmd("TextYankPost", {
     command = "lua vim.highlight.on_yank({timeout = 40})",
 })
 vim.cmd([[autocmd FileType help wincmd L]]) -- help vertical split
+vim.cmd([[autocmd BufRead,BufNewFile terraform.tfvars set filetype=tf]]) -- help vertical split
 
 require("plugins")
 
