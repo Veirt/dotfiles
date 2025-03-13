@@ -12,10 +12,6 @@ bind \cg 'lbg $GUIFM .'
 bind -M insert \ce forward-char
 bind \ce forward-char
 
-# fish-ai
-bind -M insert \cP _fish_ai_codify_or_explain
-bind -M insert -k nul _fish_ai_autocomplete_or_fix
-
 source ~/.config/shell_aliases
 
 set -gx WEB_SEARCH_flac 'https://nyaa.si/?f=0&c=2_1&q='

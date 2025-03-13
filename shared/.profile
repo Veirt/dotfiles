@@ -28,7 +28,7 @@ export XMODIFIERS=@im=fcitx5
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export BUN_INSTALL="$HOME/.local/share/bun"
-export ANDROID_SDK_ROOT="$HOME/.local/share/android/sdk"
+# export ANDROID_SDK_ROOT="$HOME/.local/share/android/sdk"
 # export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
 # export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
 # export PATH="$PATH:$ANDROID_ROOT/emulator"
@@ -52,4 +52,3 @@ export FZF_DEFAULT_OPTS="--prompt='❱ ' --bind alt-j:down,alt-k:up"
 if [ -d "$HOME/.personal/profile" ]; then
     for f in "$HOME"/.personal/profile/*; do . "$f"; done
 fi
-. "$HOME/.rye/env"
