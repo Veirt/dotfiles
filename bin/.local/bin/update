@@ -1,7 +1,11 @@
 #!/bin/sh
 
 update() {
-    if command -v apt-get >/dev/null 2>&1; then
+    if command -v nala >/dev/null 2>&1; then
+        sudo true
+        nala update && nala dist-upgrade -y && nala autoremove -y
+
+    elif command -v apt-get >/dev/null 2>&1; then
         sudo true
         apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y
 
