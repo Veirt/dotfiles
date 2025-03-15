@@ -92,7 +92,7 @@ local plugins = {
         branch = "main",
     },
     "lewis6991/gitsigns.nvim", -- Super fast git decorations
-    "ur4ltz/surround.nvim", -- Easily delete, change and add such surroundings in pairs.
+    "kylechui/nvim-surround",
     "NMAC427/guess-indent.nvim", -- Automatically adjusts indent
     "kyazdani42/nvim-tree.lua",
     "numToStr/Navigator.nvim",
@@ -130,6 +130,7 @@ local plugins = {
     },
     "olimorris/codecompanion.nvim",
     { "echasnovski/mini.diff", branch = "stable" },
+    "stefandtw/quickfix-reflector.vim",
 }
 
 require("lazy").setup(plugins)

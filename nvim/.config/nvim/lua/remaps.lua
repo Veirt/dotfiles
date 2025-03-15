@@ -98,5 +98,8 @@ utils.map("n", "<leader>df", "<cmd>ToggleFormatting<CR>")
 -- CodeCompanion
 utils.map("n", "<leader>cc", "<cmd>CodeCompanionChat<CR>")
 
+-- Quickfix list
 utils.map("n", "[q", "<cmd>cp<CR>")
 utils.map("n", "]q", "<cmd>cn<CR>")
+utils.map("n", "<A-k>", "<cmd>cp<CR>")
+utils.map("n", "<A-j>", "<cmd>cn<CR>")

@@ -10,7 +10,7 @@ require("bufferline").setup({
 })
 require("harpoon").setup({ global_settings = { enter_on_sendcmd = true } })
 
-require("surround").setup({ mappings_style = "surround", map_insert_mode = false, prompt = false })
+require("nvim-surround").setup({})
 
 require("Navigator").setup({})
 require("guess-indent").setup({})
