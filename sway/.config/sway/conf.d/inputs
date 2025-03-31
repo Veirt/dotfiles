@@ -17,3 +17,13 @@ input type:touchpad {
 
 # fix brightness ghost
 input 0:6:Video_Bus events disabled
+
+output "LG Electronics LG HD PLUS 501NDHBFY769" {
+    mode 1600x900@60Hz
+    pos 100 0
+}
+
+output "RGT 0x1352 0x01010101" {
+    mode 1600x900@60Hz
+    pos 100 0
+}
