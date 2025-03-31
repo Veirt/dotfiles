@@ -4,11 +4,11 @@ require("blink.cmp").setup({
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
     },
-    snippets = {
-        preset = "luasnip",
-    },
+    -- snippets = {
+    --     preset = "luasnip",
+    -- },
     sources = {
-        default = { "lsp", "path", "snippets", "buffer", "codecompanion" },
+        default = { "lsp", "path", "snippets", "buffer" },
     },
     signature = { enabled = true },
     completion = {

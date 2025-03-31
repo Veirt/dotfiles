@@ -18,7 +18,7 @@ M.setup = function()
             -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
             -- (see 💅 `styled-components` support section)
             tsserver_plugins = {},
-            tsserver_max_memory = "auto",
+            tsserver_max_memory = 20000,
             -- described below
             tsserver_format_options = {},
             tsserver_file_preferences = {},

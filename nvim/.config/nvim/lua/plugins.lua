@@ -17,12 +17,13 @@ local plugins = {
         "neovim/nvim-lspconfig",
         dependencies = {
             -- LSP Support
-            "yioneko/nvim-vtsls",
-            "hrsh7th/nvim-cmp",
+            -- "yioneko/nvim-vtsls",
+            "pmizio/typescript-tools.nvim",
+            "dmmulroy/ts-error-translator.nvim",
             "mfussenegger/nvim-lint",
             "j-hui/fidget.nvim",
             "stevearc/conform.nvim",
-
+            "b0o/schemastore.nvim",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "rshkarin/mason-nvim-lint",
@@ -65,8 +66,8 @@ local plugins = {
     -- completion
     {
         "saghen/blink.cmp",
-        version = "v0.*",
-        dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+        version = "v1.*",
+        dependencies = { "rafamadriz/friendly-snippets" },
     },
 
     -- improve experience
@@ -75,6 +76,7 @@ local plugins = {
         branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-frecency.nvim",
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
@@ -128,9 +130,8 @@ local plugins = {
         event = { "VeryLazy" },
         build = "deno task --quiet build:fast",
     },
-    "olimorris/codecompanion.nvim",
-    { "echasnovski/mini.diff", branch = "stable" },
     "stefandtw/quickfix-reflector.vim",
+    "dstein64/vim-startuptime",
 }
 
 require("lazy").setup(plugins)

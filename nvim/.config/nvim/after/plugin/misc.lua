@@ -17,19 +17,6 @@ require("guess-indent").setup({})
 
 require("wildfire").setup()
 
-require("codecompanion").setup({
-    --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
-    strategies = {
-        chat = { adapter = "copilot" },
-        inline = { adapter = "copilot" },
-    },
-    opts = {
-        log_level = "DEBUG",
-    },
-})
-
--- require("mini.diff").setup()
-
 require("nvim-autopairs").setup()
 
 require("cord").setup({
@@ -37,3 +24,5 @@ require("cord").setup({
         tooltip = "Neovim",
     },
 })
+
+require("ts-error-translator").setup()

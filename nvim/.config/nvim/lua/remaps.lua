@@ -95,9 +95,6 @@ vim.g.copilot_no_tab_map = true
 -- Formatting
 utils.map("n", "<leader>df", "<cmd>ToggleFormatting<CR>")
 
--- CodeCompanion
-utils.map("n", "<leader>cc", "<cmd>CodeCompanionChat<CR>")
-
 -- Quickfix list
 utils.map("n", "[q", "<cmd>cp<CR>")
 utils.map("n", "]q", "<cmd>cn<CR>")

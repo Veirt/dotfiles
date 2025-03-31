@@ -5,22 +5,32 @@ local utils = require("utils")
 vim.diagnostic.config({
     virtual_text = false,
 })
+vim.lsp.inlay_hint.enable(false)
 
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-nvim-dap").setup({ ensure_installed = {}, automatic_installation = true })
 require("mason-nvim-lint").setup()
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
--- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = {
+    workspace = {
+        didChangeWatchedFiles = {
+            dynamicRegistration = true,
+        },
+    },
+    textDocument = {
+        formatting = { dynamicRegistration = false },
+    },
+}
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 mason_lspconfig.setup_handlers({
     function(server_name) -- default handler
         lspconfig[server_name].setup({
             capabilities = capabilities,
         })
     end,
-    ["vtsls"] = require("server.vtsls").setup(capabilities),
+    -- ["vtsls"] = require("server.vtsls").setup(capabilities),
+    ["ts_ls"] = require("server.tsserver").setup,
     ["clangd"] = require("server.clangd").setup,
     ["lua_ls"] = require("server.lua_ls").setup,
     ["texlab"] = require("server.texlab").setup,
@@ -36,7 +46,7 @@ autocmd("LspAttach", {
         -- client.server_capabilities.semanticTokensProvider = nil
 
         buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-        buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
+        buf_set_keymap("n", "gh", "<cmd>LspUI hover<CR>")
         buf_set_keymap("n", "<C-F>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
         buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
         buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
@@ -51,13 +61,11 @@ autocmd("LspAttach", {
         buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
         -- Typescript
-        buf_set_keymap("n", "<leader>tsi", ":VtsExec organize_imports<CR>")
-        buf_set_keymap("n", "<leader>tsr", ":VtsExec rename_file<CR>")
-        buf_set_keymap("n", "<leader>tsa", ":VtsExec add_missing_imports<CR>")
+        -- buf_set_keymap("n", "<leader>tsi", ":VtsExec organize_imports<CR>")
+        -- buf_set_keymap("n", "<leader>tsr", ":VtsExec rename_file<CR>")
+        -- buf_set_keymap("n", "<leader>tsa", ":VtsExec add_missing_imports<CR>")
     end,
 })
-
-require("luasnip.loaders.from_vscode").lazy_load()
 
 -- lsp loading status
 require("fidget").setup({})

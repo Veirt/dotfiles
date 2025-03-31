@@ -44,3 +44,9 @@ opt.smartcase = true
 
 opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.g.matchparen_timeout = 2
+vim.g.matchparen_insert_timeout = 2
+
+opt.syntax = "off"
+vim.o.spell = false
