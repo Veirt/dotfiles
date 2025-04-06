@@ -1,4 +1,10 @@
-require("conform").setup({
+local present, conform = pcall(require, "conform")
+
+if not present then
+    return
+end
+
+conform.setup({
     notify_on_error = false,
     format_on_save = function()
         if vim.g.disable_autoformat then
@@ -11,9 +17,12 @@ require("conform").setup({
         python = { "isort", "black" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
         json = { "prettierd", "prettier", stop_after_first = true },
         astro = { "prettier", stop_after_first = true },
         yaml = { "yamlfmt", stop_after_first = true },
+        svelte = { "prettierd" },
         markdown = { "prettierd" },
     },
 })

@@ -29,8 +29,7 @@ mason_lspconfig.setup_handlers({
             capabilities = capabilities,
         })
     end,
-    -- ["vtsls"] = require("server.vtsls").setup(capabilities),
-    ["ts_ls"] = require("server.tsserver").setup,
+    ["ts_ls"] = require("server.ts_ls").setup,
     ["clangd"] = require("server.clangd").setup,
     ["lua_ls"] = require("server.lua_ls").setup,
     ["texlab"] = require("server.texlab").setup,
@@ -47,6 +46,7 @@ autocmd("LspAttach", {
 
         buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
         buf_set_keymap("n", "gh", "<cmd>LspUI hover<CR>")
+        buf_set_keymap("n", "gr", "<cmd>LspUI reference<CR>")
         buf_set_keymap("n", "<C-F>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
         buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
         buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")

@@ -17,7 +17,6 @@ local plugins = {
         "neovim/nvim-lspconfig",
         dependencies = {
             -- LSP Support
-            -- "yioneko/nvim-vtsls",
             "pmizio/typescript-tools.nvim",
             "dmmulroy/ts-error-translator.nvim",
             "mfussenegger/nvim-lint",
@@ -27,12 +26,6 @@ local plugins = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "rshkarin/mason-nvim-lint",
-        },
-    },
-    {
-        "mfussenegger/nvim-dap",
-        dependencies = {
-            "jay-babu/mason-nvim-dap.nvim",
         },
     },
     {
@@ -46,15 +39,19 @@ local plugins = {
             "RRethy/nvim-treesitter-endwise",
         },
     },
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "jay-babu/mason-nvim-dap.nvim",
+        },
+    },
 
     -- language supports
-    { "folke/neodev.nvim", opts = {} },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
     { "dag/vim-fish", ft = "fish" },
     {
         "HakonHarnes/img-clip.nvim",
         event = "BufEnter",
-        opts = {},
         keys = {
             { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste clipboard image" },
         },
@@ -73,7 +70,6 @@ local plugins = {
     -- improve experience
     {
         "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-frecency.nvim",
@@ -86,8 +82,6 @@ local plugins = {
             },
         },
     },
-
-    { "kdheepak/lazygit.nvim", cmd = "LazyGit" }, -- Call lazygit within neovim
     "github/copilot.vim",
     {
         "jinzhongjia/LspUI.nvim",
@@ -102,6 +96,22 @@ local plugins = {
     "wakatime/vim-wakatime",
     "sustech-data/wildfire.nvim",
     "windwp/nvim-autopairs",
+    {
+        "veirt/trun.nvim",
+        dependencies = { "ThePrimeagen/harpoon" },
+    },
+    {
+        "vyfor/cord.nvim",
+        build = ":Cord update",
+        event = "VeryLazy",
+    },
+    {
+        "toppair/peek.nvim",
+        build = "deno task --quiet build:fast",
+        event = { "VeryLazy" },
+    },
+    "stefandtw/quickfix-reflector.vim",
+    -- "dstein64/vim-startuptime",
 
     -- themes
     "akinsho/bufferline.nvim",
@@ -112,26 +122,6 @@ local plugins = {
     -- "RRethy/nvim-base16",
     "nvim-lualine/lualine.nvim",
     "folke/snacks.nvim",
-
-    {
-        dir = "~/dev/trun.nvim", --
-        dependencies = { "ThePrimeagen/harpoon" },
-        config = function()
-            require("trun").setup()
-        end,
-    },
-    {
-        "vyfor/cord.nvim",
-        build = ":Cord update",
-        event = "VeryLazy",
-    },
-    {
-        "toppair/peek.nvim",
-        event = { "VeryLazy" },
-        build = "deno task --quiet build:fast",
-    },
-    "stefandtw/quickfix-reflector.vim",
-    "dstein64/vim-startuptime",
 }
 
 require("lazy").setup(plugins)

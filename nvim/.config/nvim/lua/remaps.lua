@@ -44,7 +44,6 @@ utils.map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>")
 -- Telescope
 utils.map("n", "<C-p>", "<cmd>Telescope find_files<CR>")
 utils.map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
-utils.map("n", "<leader>jl", "<cmd>Telescope jumplist<CR>")
 
 -- Navigator.nvim
 utils.map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>")
@@ -65,7 +64,7 @@ utils.map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
 utils.map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
 utils.map("n", "<leader>hb", "<cmd>Gitsigns blame_line<CR>")
 utils.map("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<CR>")
-utils.map("n", "<leader>gg", "<cmd>LazyGit<CR>")
+utils.map("n", "<leader>gg", "<cmd>lua require('snacks').lazygit()<CR>")
 utils.map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>")
 utils.map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>")
 utils.map("n", "<leader>gs", "<cmd>Telescope git_status<CR>")

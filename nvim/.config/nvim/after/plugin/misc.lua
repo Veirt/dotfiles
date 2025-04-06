@@ -11,18 +11,13 @@ require("bufferline").setup({
 require("harpoon").setup({ global_settings = { enter_on_sendcmd = true } })
 
 require("nvim-surround").setup({})
-
 require("Navigator").setup({})
 require("guess-indent").setup({})
-
 require("wildfire").setup()
-
 require("nvim-autopairs").setup()
-
 require("cord").setup({
     editor = {
         tooltip = "Neovim",
     },
 })
-
 require("ts-error-translator").setup()

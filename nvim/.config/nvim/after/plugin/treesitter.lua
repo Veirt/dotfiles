@@ -1,4 +1,10 @@
-require("nvim-treesitter.configs").setup({
+local present, nvim_treesitter = pcall(require, "nvim-treesitter.configs")
+
+if not present then
+    return
+end
+
+nvim_treesitter.setup({
     ensure_installed = {
         "bash",
         "c",
@@ -38,9 +44,6 @@ require("nvim-treesitter.configs").setup({
         enable = true,
         disable = { "yaml", "html" },
     },
-    autotag = {
-        enable = true,
-    },
     context_commentstring = {
         enable = false,
     },
@@ -67,4 +70,16 @@ require("nvim-treesitter.configs").setup({
             },
         },
     },
+})
+
+require("nvim-ts-autotag").setup({
+    opts = {
+        enable_close = true, -- Auto close tags
+        enable_rename = true, -- Auto rename pairs of tags
+        enable_close_on_slash = false, -- Auto close on trailing </
+    },
+})
+
+require("ts_context_commentstring").setup({
+    enable_autocmd = false,
 })

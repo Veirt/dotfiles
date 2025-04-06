@@ -6,6 +6,7 @@ end
 
 lspui.setup({
     lightbulb = {
+        enable = false,
         icon = "󰌵",
     },
 })

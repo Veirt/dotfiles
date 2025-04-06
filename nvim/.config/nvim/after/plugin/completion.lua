@@ -1,12 +1,15 @@
-require("blink.cmp").setup({
+local present, blink = pcall(require, "blink.cmp")
+
+if not present then
+    return
+end
+
+blink.setup({
     keymap = {
         preset = "super-tab",
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
     },
-    -- snippets = {
-    --     preset = "luasnip",
-    -- },
     sources = {
         default = { "lsp", "path", "snippets", "buffer" },
     },
