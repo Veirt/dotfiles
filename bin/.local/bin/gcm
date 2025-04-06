@@ -1,0 +1,15 @@
+#!/bin/sh
+
+COMMIT_MESSAGES=$(git log --oneline --format=%s -n 20)
+echo "Git Diff: $(git diff --cached), Commit message examples: ${COMMIT_MESSAGES}" | mods --role commit
+
+while true; do
+    gum confirm "Change message?"
+    confirm_result=$?
+
+    if [ "$confirm_result" -eq 0 ]; then
+        mods -C
+    else
+        break
+    fi
+done
