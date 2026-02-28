@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-    require("lspconfig").emmet_language_server.setup({
+    vim.lsp.config("emmet_language_server", {
         filetypes = {
             "css",
             "eruby",
@@ -38,6 +38,7 @@ M.setup = function()
             variables = {},
         },
     })
+    vim.lsp.enable("emmet_language_server")
 end
 
 return M

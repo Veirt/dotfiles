@@ -1,2 +1,2 @@
 for_window [title="Sharing Indicator"] floating enable
-for_window [title="Bitwarden Password Manager"] floating enable
+for_window [title="^Extension: \\(Bitwarden Password Manager\\) - Bitwarden.*$"] floating enable

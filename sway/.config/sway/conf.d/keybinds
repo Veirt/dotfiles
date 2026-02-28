@@ -12,6 +12,7 @@ bindsym Ctrl+Mod1+k exec exec ~/.config/sway/scripts/record audio
 bindsym $mod+Shift+s exec ~/.config/sway/scripts/notify-screenshot custom
 bindsym Print exec ~/.config/sway/scripts/notify-screenshot screen
 bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d "[:space:]" | wl-copy
+
 # ocr
 bindsym $mod+o exec ocr
 

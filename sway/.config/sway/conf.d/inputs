@@ -10,6 +10,7 @@ input type:keyboard {
 input type:touchpad {
     dwt enabled
     tap enabled
+    drag_lock disabled
     natural_scroll enabled
     middle_emulation enabled
     events disabled_on_external_mouse

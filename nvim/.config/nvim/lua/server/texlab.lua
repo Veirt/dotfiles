@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-    require("lspconfig")["texlab"].setup({
+    vim.lsp.config("texlab", {
         settings = {
             texlab = {
                 auxDirectory = "build",
@@ -25,33 +25,7 @@ M.setup = function()
             },
         },
     })
+    vim.lsp.enable("texlab")
 end
-
--- M.setup = function()
---     require("lspconfig")["texlab"].setup({
---         settings = {
---             texlab = {
---                 auxDirectory = "build",
---                 build = {
---                     executable = "tectonic",
---                     args = {
---                         "-X",
---                         "compile",
---                         "%f",
---                         "--synctex",
---                         "--keep-logs",
---                         "--keep-intermediates",
---                     },
---                     onSave = true,
---                     forwardSearchAfter = true,
---                 },
---                 forwardSearch = {
---                     executable = "zathura",
---                     args = { "--synctex-forward", "%l:1:%f", "%p" },
---                 },
---             },
---         },
---     })
--- end
 
 return M

@@ -19,7 +19,17 @@ window {
   padding: 5px 15px;
 }
 
+#tags button {
+  color: #a1a6a6;
+  padding: 5px 15px;
+}
+
 #workspaces button.focused {
+  border-top: 2px solid #d8e4e6;
+  color: #d8e4e6;
+}
+
+#tags button.focused {
   border-top: 2px solid #d8e4e6;
   color: #d8e4e6;
 }

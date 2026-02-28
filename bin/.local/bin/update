@@ -10,8 +10,8 @@ update() {
         apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y
 
     elif command -v pacman >/dev/null 2>&1; then
-        if command -v paru >/dev/null 2>&1; then
-            paru -Syu --noconfirm --removemake
+        if command -v yay >/dev/null 2>&1; then
+            yay -Syu --noconfirm --removemake
             return
         fi
 

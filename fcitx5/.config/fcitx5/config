@@ -11,6 +11,8 @@ EnumerateSkipFirst=False
 ActivateKeys=
 # Deactivate Input Method
 DeactivateKeys=
+# Time limit in milliseconds for triggering modifier key shortcuts
+ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
 0=Super+space

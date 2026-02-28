@@ -2,10 +2,9 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 50,
+    "height": 40,
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
+        "dwl/tags"
     ],
     "modules-right": [
         "pulseaudio",
@@ -15,6 +14,11 @@
         "clock",
         "tray"
     ],
+     "dwl/tags": {
+        "num-tags": 9,
+        "tag-labels": [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ],
+        "disable-click": false
+  },
     "sway/workspaces": {
         "format": "{name}",
         "disable-scroll": true
@@ -82,7 +86,7 @@
         "format-alt-click": "click-right",
         "format-wifi": "   Connected",
         "format-ethernet": "󰈁  {ipaddr}/{cidr}",
-        "format-disconnected": "⚠  Disconnected",
+        "format-disconnected": "!  Disconnected",
         "tooltip-format": "{ifname}: ({essid}) {ipaddr}",
         "on-click": "nm-connection-editor"
     },

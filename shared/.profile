@@ -7,8 +7,11 @@ export TUIFM='yazi'
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORM="wayland"
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
+# export XDG_CURRENT_DESKTOP=sway
+# export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=wlroots
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=wlroots
 export MOZ_WEBRENDER=1
 export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=wayland
@@ -21,10 +24,11 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx5
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export BUN_INSTALL="$HOME/.local/share/bun"
@@ -52,3 +56,4 @@ export FZF_DEFAULT_OPTS="--prompt='❱ ' --bind alt-j:down,alt-k:up"
 if [ -d "$HOME/.personal/profile" ]; then
     for f in "$HOME"/.personal/profile/*; do . "$f"; done
 fi
+. "/home/veirt/.deno/env"

@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-    require("lspconfig").jsonls.setup({
+    vim.lsp.config("jsonls", {
         settings = {
             json = {
                 schemas = require("schemastore").json.schemas(),
@@ -9,6 +9,7 @@ M.setup = function()
             },
         },
     })
+    vim.lsp.enable("jsonls")
 end
 
 return M
