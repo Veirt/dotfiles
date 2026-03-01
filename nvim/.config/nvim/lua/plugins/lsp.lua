@@ -49,10 +49,11 @@ return {
 
         local vtsls_server = require("server.vtsls")
         local jsonls_server = require("server.jsonls")
+        local gopls_server = require("server.gopls")
 
         vtsls_server.setup(capabilities)
-
         jsonls_server.setup()
+        gopls_server.setup()
 
         autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
