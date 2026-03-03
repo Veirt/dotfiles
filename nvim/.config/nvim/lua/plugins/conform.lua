@@ -27,8 +27,8 @@ return {
             formatters_by_ft = {
                 javascript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
                 typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
-                javascriptreact = { "biome-check", "rustywind", stop_after_first = true },
-                typescriptreact = { "biome-check", stop_after_first = true },
+                javascriptreact = { "biome-check", "rustywind", stop_after_first = false },
+                typescriptreact = { "biome-check", "rustywind", stop_after_first = false },
 
                 json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
                 jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
