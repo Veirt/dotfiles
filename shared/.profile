@@ -1,3 +1,7 @@
+if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 export BROWSER='firefox'
@@ -17,14 +21,13 @@ export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=wayland
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.local/cache"
+export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -44,6 +47,10 @@ export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:$HOME/.dotnet"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export CHROME_EXECUTABLE=google-chrome-stable
+
+if [ -f "$HOME/.config/secrets/.local.env" ]; then
+    . "$HOME/.config/secrets/.local.env"
+fi
 
 # configurations
 export PF_INFO="ascii os wm uptime pkgs memory palette"
