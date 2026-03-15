@@ -1,32 +1,45 @@
 {
-  description = "Home Manager configuration for CachyOS/Arch Linux";
+  description = "Home Manager profiles for CachyOS and portable dev hosts";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl.url = "github:nix-community/nixGL";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixgl, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, sops-nix, ... }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
+      mkHome = import ./lib/mkHome.nix {
+        inherit home-manager nixpkgs system;
+        extraModules = [ sops-nix.homeManagerModules.sops ];
+        extraSpecialArgs = { inherit inputs; };
       };
     in {
-      homeConfigurations."veirt" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit unstable system nixgl; };
-        modules = [ ./home/default.nix ];
+      homeConfigurations = {
+        minerva = mkHome {
+          username = "veirt";
+          homeDirectory = "/home/veirt";
+          modules = [ ./home/hosts/minerva.nix ];
+        };
+
+        portable-dev = mkHome {
+          username = "veirt";
+          homeDirectory = "/home/veirt";
+          modules = [ ./home/profiles/portable-dev.nix ];
+        };
+
+        minimal = mkHome {
+          username = "veirt";
+          homeDirectory = "/home/veirt";
+          modules = [ ./home/profiles/minimal.nix ];
+        };
       };
     };
 }
