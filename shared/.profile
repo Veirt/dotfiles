@@ -42,6 +42,7 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:$HOME/.dotnet"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export CHROME_EXECUTABLE=google-chrome-stable
 
 # configurations
