@@ -7,7 +7,6 @@
     ../modules/bun.nix
     ../modules/desktop.nix
     ../modules/dev.nix
-    ../modules/media.nix
   ];
 
   dotfiles.links.packages = lib.mkAfter [

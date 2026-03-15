@@ -16,11 +16,6 @@ in
       type = types.nullOr types.str;
       default = null;
     };
-
-    localEnvFile = mkOption {
-      type = types.str;
-      default = "${config.xdg.configHome}/secrets/.local.env";
-    };
   };
 
   config = mkIf config.dotfiles.secrets.enable {

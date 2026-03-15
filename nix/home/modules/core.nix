@@ -5,11 +5,6 @@ let
 in
 {
   options.dotfiles = {
-    hostName = mkOption {
-      type = types.str;
-      default = "generic";
-    };
-
     root = mkOption {
       type = types.str;
       default = "${config.home.homeDirectory}/.dotfiles";
