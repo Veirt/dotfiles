@@ -64,4 +64,6 @@ export FZF_DEFAULT_OPTS="--prompt='❱ ' --bind alt-j:down,alt-k:up"
 if [ -d "$HOME/.personal/profile" ]; then
     for f in "$HOME"/.personal/profile/*; do . "$f"; done
 fi
-. "/home/veirt/.deno/env"
+if [ -f "$HOME/.deno/env" ]; then
+    . "$HOME/.deno/env"
+fi
