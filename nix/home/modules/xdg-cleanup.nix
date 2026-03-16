@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   home.sessionVariables = {
@@ -27,4 +27,9 @@
     WGETRC = "$HOME/.config/wgetrc";
     SUBVERSION_HOME = "$HOME/.config/subversion";
   };
+
+  home.activation.createGnupgHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.config/gnupg"
+    chmod 700 "$HOME/.config/gnupg"
+  '';
 }

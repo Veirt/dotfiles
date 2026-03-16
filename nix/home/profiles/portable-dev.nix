@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     git
+    lazygit
     gh
     neovim
     tmux

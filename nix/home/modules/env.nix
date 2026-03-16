@@ -12,7 +12,7 @@
     "$HOME/.local/share/bun/bin"
     "$HOME/.local/share/go/bin"
     "$HOME/.local/share/cargo/bin"
-    "$HOME/.config/composer/vendor/bin"
     "$HOME/.local/share/nvim/mason/bin"
+    "$HOME/.nix-profile/bin"
   ];
 }

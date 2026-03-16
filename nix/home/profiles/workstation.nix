@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -7,6 +7,11 @@
     ../modules/bun.nix
     ../modules/desktop.nix
     ../modules/dev.nix
+    ../modules/spotify.nix
+  ];
+
+  home.packages = with pkgs; [
+    light
   ];
 
   dotfiles.links.packages = lib.mkAfter [
