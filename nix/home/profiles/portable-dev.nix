@@ -23,6 +23,5 @@
     go
     rustup
     python3
-    uv
   ];
 }

@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     black
+    google-cloud-sdk
     gopls
     hadolint
     isort
@@ -14,6 +15,7 @@
     prettypst
     stylua
     texlab
+    uv
   ];
 
   dotfiles.bun = {
@@ -23,6 +25,7 @@
       "@biomejs/biome"
       "@fsouza/prettierd"
       "@vtsls/language-server"
+      "aicommit2"
       "emmet-language-server"
       "eslint"
       "eslint_d"
@@ -39,6 +42,17 @@
 
   home.sessionVariables = {
     FZF_DEFAULT_COMMAND = "fd --hidden --follow --exclude '.git' --exclude 'node_modules'";
-    FZF_DEFAULT_OPTS = "--bind alt-j:down,alt-k:up";
+    FZF_DEFAULT_OPTS = "--prompt='❱ ' --bind alt-j:down,alt-k:up";
   };
+
+  xdg.configFile."lazygit/config.yml".text = ''
+    git:
+      overrideGpg: true
+    customCommands:
+      - key: '<c-b>'
+        description: 'Generate AI commit (aicommit2)'
+        command: 'aicommit2'
+        context: 'files'
+        output: 'terminal'
+  '';
 }
