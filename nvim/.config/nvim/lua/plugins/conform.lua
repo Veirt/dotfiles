@@ -37,7 +37,7 @@ return {
                 astro = { "prettierd", "prettier", stop_after_first = true },
                 svelte = { "prettierd", "rustywind" },
                 markdown = { "prettierd", "prettier", stop_after_first = true },
-                tex = { "text-fmt", stop_after_first = true },
+                tex = { "tex-fmt", stop_after_first = true },
                 typst = { "prettypst", stop_after_first = true },
 
                 lua = { "stylua" },
