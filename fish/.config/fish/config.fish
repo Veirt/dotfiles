@@ -1,6 +1,30 @@
 set -U fish_greeting
 fish_vi_key_bindings
 
+function source_home_manager_session
+    set -l hm_session_vars "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+    if not test -f $hm_session_vars
+        return
+    end
+
+    set -l imported_vars (sh -lc 'set -a; . "$1" >/dev/null 2>&1; env -0' sh $hm_session_vars | string split0)
+
+    for entry in $imported_vars
+        set -l parts (string split -m 1 '=' -- $entry)
+
+        if test (count $parts) -eq 2
+            if contains -- $parts[1] PWD SHLVL _ fish_greeting pipestatus status version
+                continue
+            end
+
+            set -gx $parts[1] $parts[2]
+        end
+    end
+end
+
+source_home_manager_session
+
 bind -M insert \cf 'tmux-sessionizer'
 bind \cf 'tmux-sessionizer'
 bind -M insert \ct 'tmux'
