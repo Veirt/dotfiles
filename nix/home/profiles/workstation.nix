@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgsUnstable, lib, ... }:
 
 {
   imports = [
@@ -14,7 +14,7 @@
 
   home.packages = with pkgs; [
     (nativeOptimized light)
-    (nativeOptimized fish)
+    (nativeOptimized pkgsUnstable.fish)
   ];
 
   dotfiles.links.packages = lib.mkAfter [

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
   imports = [
@@ -15,7 +15,10 @@
     prettypst
     stylua
     texlab
-    uv
+    pkgsUnstable.uv
+    pkgsUnstable.just
+    pkgsUnstable.wgo
+    pkgsUnstable.gotop
   ];
 
   dotfiles.bun = {

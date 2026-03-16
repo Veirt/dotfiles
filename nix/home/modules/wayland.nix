@@ -1,9 +1,13 @@
-{ ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
   xdg.configFile."xdg-terminals.list".text = ''
     org.codeberg.dnkl.foot.desktop
   '';
+
+  home.packages = with pkgs; [
+    pkgsUnstable.wbg
+  ];
 
   xdg.configFile."chromium-flags.conf".text = ''
     --ozone-platform-hint=auto

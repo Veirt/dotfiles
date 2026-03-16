@@ -5,11 +5,16 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+
+  pkgsUnstable = import extraSpecialArgs.inputs.nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
 in
 home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
   extraSpecialArgs = extraSpecialArgs // {
-    inherit system username homeDirectory;
+    inherit system username homeDirectory pkgsUnstable;
   };
   modules =
     extraModules
