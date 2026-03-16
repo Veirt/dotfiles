@@ -1,6 +1,8 @@
 { lib, ... }:
 
 {
+  xdg.configFile."wgetrc".text = "";
+
   home.sessionVariables = {
     CARGO_HOME = "$HOME/.local/share/cargo";
     RUSTUP_HOME = "$HOME/.local/share/rustup";

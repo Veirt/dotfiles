@@ -1,0 +1,4 @@
+#!/usr/bin/fish
+
+sudo powertop --auto-tune
+cpupower-gui pr 3000

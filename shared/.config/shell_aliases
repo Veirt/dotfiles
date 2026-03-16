@@ -1,8 +1,6 @@
 alias c="clear"
 
-# quick open folders
-alias repo="cd ~/dev"
-alias dotfiles="cd ~/.dotfiles"
+alias dot="cd ~/.dotfiles"
 
 # replacements
 alias l="eza"
@@ -60,3 +58,5 @@ alias mkdir-date="mkdir $(date +'%Y-%m-%d')"
 
 # nix os
 alias rb="sudo nixos-rebuild switch"
+alias nixpkgs="web-search nixpkgs"
+alias nixoptions="web-search nixoptions"

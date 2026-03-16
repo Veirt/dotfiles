@@ -14,7 +14,6 @@
     GUIFM = "nautilus";
     TUIFM = "yazi";
 
-    GTK_THEME = "Orchis-Grey-Dark-Compact";
     SDL_VIDEODRIVER = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
     XDG_CURRENT_DESKTOP = "wlroots";

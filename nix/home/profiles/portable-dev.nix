@@ -20,7 +20,6 @@
     fzf
     nodejs
     pnpm
-    bun
     go
     rustup
     python3

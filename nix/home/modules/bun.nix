@@ -30,16 +30,25 @@ in
         exit 1
       fi
 
-      if [ ${toString (builtins.length cfg.packages)} -eq 0 ]; then
-        exit 0
+      if [ ${toString (builtins.length cfg.packages)} -ne 0 ]; then
+        export BUN_INSTALL="${config.home.homeDirectory}/.local/share/bun"
+        export PATH="$BUN_INSTALL/bin:$PATH"
+
+        state_dir="${config.home.homeDirectory}/.local/state/dotfiles"
+        state_file="$state_dir/bun-packages"
+        temp_file="$(${pkgs.coreutils}/bin/mktemp)"
+
+        trap '${pkgs.coreutils}/bin/rm -f "$temp_file"' EXIT
+
+        ${pkgs.coreutils}/bin/mkdir -p "$BUN_INSTALL/bin" "$state_dir"
+        ${pkgs.coreutils}/bin/printf '%s\n' ${concatStringsSep " " (map escapeShellArg cfg.packages)} > "$temp_file"
+
+        if ! [ -f "$state_file" ] || ! ${pkgs.diffutils}/bin/cmp -s "$state_file" "$temp_file"; then
+          ${cfg.executable} add --global ${concatStringsSep " " (map escapeShellArg cfg.packages)}
+          ${pkgs.coreutils}/bin/mv "$temp_file" "$state_file"
+          trap - EXIT
+        fi
       fi
-
-      export BUN_INSTALL="${config.home.homeDirectory}/.local/share/bun"
-      export PATH="$BUN_INSTALL/bin:$PATH"
-
-      ${pkgs.coreutils}/bin/mkdir -p "$BUN_INSTALL/bin"
-
-      ${cfg.executable} add --global ${concatStringsSep " " (map escapeShellArg cfg.packages)}
     '';
   };
 }

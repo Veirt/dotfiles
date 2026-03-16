@@ -6,8 +6,8 @@
     ../modules/xdg-cleanup.nix
     ../modules/bun.nix
     ../modules/desktop.nix
+    ../modules/theme.nix
     ../modules/dev.nix
-    ../modules/spotify.nix
   ];
 
   home.packages = with pkgs; [
