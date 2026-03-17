@@ -29,6 +29,7 @@
       "@fsouza/prettierd"
       "@vtsls/language-server"
       "aicommit2"
+      "context-mode"
       "emmet-language-server"
       "eslint"
       "eslint_d"

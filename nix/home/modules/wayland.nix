@@ -39,10 +39,6 @@
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_WEBRENDER = "1";
 
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-
     _JAVA_AWT_WM_NONREPARENTING = "1";
     VDPAU_DRIVER = "radeonsi";
     LIBVA_DRIVER_NAME = "radeonsi";

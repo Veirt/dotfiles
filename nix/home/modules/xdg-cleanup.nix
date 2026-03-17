@@ -22,7 +22,7 @@
     DOCKER_CONFIG = "$HOME/.config/docker";
     GNUPGHOME = "$HOME/.config/gnupg";
     ANDROID_USER_HOME = "$HOME/.local/share/android";
-    ANDROID_HOME = "$HOME/.local/share/android";
+    ANDROID_HOME = lib.mkDefault "$HOME/.local/share/android";
     WINEPREFIX = "$HOME/.local/share/wine";
 
     NSS_CONFIG_DIR = "$HOME/.config/pki/nssdb";

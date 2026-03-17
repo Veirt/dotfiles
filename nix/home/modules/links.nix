@@ -72,12 +72,6 @@ let
       };
     };
 
-    fcitx5 = {
-      xdg = {
-        "fcitx5" = "fcitx5/.config/fcitx5";
-      };
-    };
-
     mpv = {
       xdg = {
         "mpv" = "mpv/.config/mpv";
