@@ -10,8 +10,6 @@ return {
         "j-hui/fidget.nvim",
         "b0o/schemastore.nvim",
         "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "rshkarin/mason-nvim-lint",
     },
 
     config = function()
@@ -22,17 +20,6 @@ return {
 
         require("fidget").setup({})
         require("mason").setup()
-        require("mason-lspconfig").setup({
-            automatic_enable = {
-                exclude = {
-                    "ts_ls",
-                    "clangd",
-                    "vtsls",
-                    "denols",
-                    "jsonls",
-                },
-            },
-        })
 
         local capabilities = {
             workspace = {
@@ -45,6 +32,9 @@ return {
             },
         }
         capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+        vim.lsp.enable("rust_analyzer")
+        vim.lsp.enable("pyrefly")
 
         local vtsls_server = require("server.vtsls")
         local jsonls_server = require("server.jsonls")

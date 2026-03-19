@@ -1,7 +1,14 @@
 { config, lib, ... }:
 
 let
-  inherit (lib) attrNames concatMapStringsSep foldl' mapAttrs mkOption types;
+  inherit (lib)
+    attrNames
+    concatMapStringsSep
+    foldl'
+    mapAttrs
+    mkOption
+    types
+    ;
 
   linkSets = {
     shared = {
@@ -41,12 +48,7 @@ let
     };
 
     xdg = {
-      xdg = {
-        "user-dirs.dirs" = "xdg/.config/user-dirs.dirs";
-      };
-      home = {
-        ".personal" = "xdg/.personal";
-      };
+      home = { };
     };
 
     alacritty = {
@@ -91,15 +93,14 @@ let
     };
   };
 
-  mkSource = relPath:
-    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.root}/${relPath}";
+  mkSource = relPath: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.root}/${relPath}";
 
   selectedLinkSets = map (name: linkSets.${name}) config.dotfiles.links.packages;
 
-  mergeSection = section:
-    foldl' (acc: item: acc // (item.${section} or { })) { } selectedLinkSets;
+  mergeSection = section: foldl' (acc: item: acc // (item.${section} or { })) { } selectedLinkSets;
 
-  mkFiles = attrs:
+  mkFiles =
+    attrs:
     mapAttrs (_target: relPath: {
       source = mkSource relPath;
     }) attrs;
@@ -116,7 +117,9 @@ in
     assertions = [
       {
         assertion = builtins.all (name: builtins.elem name validPackages) config.dotfiles.links.packages;
-        message = "dotfiles.links.packages contains an unknown link set. Valid names: ${concatMapStringsSep ", " (name: name) validPackages}";
+        message = "dotfiles.links.packages contains an unknown link set. Valid names: ${
+          concatMapStringsSep ", " (name: name) validPackages
+        }";
       }
     ];
 

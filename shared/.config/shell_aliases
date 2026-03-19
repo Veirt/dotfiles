@@ -38,8 +38,9 @@ alias vestaconfig="vim /mnt/config/vesta/vesta.toml"
 alias caddyconfig="vim /mnt/sshfs/eir/root/apps/caddy/Caddyfile"
 alias dlog="docker compose logs -f"
 alias dbuild="docker compose up --build"
-alias gmc="geminicommit"
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias todo="vim ~/personal/notes/todo.md"
+alias j="cp ~/personal/notes/5\ -\ Templates/journals.md ~/personal/notes/0\ -\ Journals/$(date +'%Y-%m-%d').md && vim ~/personal/notes/0\ -\ Journals/$(date +'%Y-%m-%d').md"
 
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"

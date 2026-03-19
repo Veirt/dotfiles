@@ -1,5 +1,4 @@
 #!/usr/bin/fish
 
-cpupower-gui pr 3000
 systemctl --user start syncthing
 lbg wayvnc --output=eDP-1 0.0.0.0 -S /tmp/wayvnc-mirror.sock

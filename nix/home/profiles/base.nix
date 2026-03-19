@@ -3,6 +3,7 @@
 {
   imports = [
     ../modules/core.nix
+    ../modules/xdg-user-dirs.nix
     ../modules/env.nix
     ../modules/links.nix
     ../modules/shell.nix

@@ -1,6 +1,5 @@
 #!/usr/bin/fish
 
-cpupower-gui pr 3000
 sudo powertop --auto-tune
 sudo wg-quick up ~/personal/config/delta.conf
 sudo ufw enable

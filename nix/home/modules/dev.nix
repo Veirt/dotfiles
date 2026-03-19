@@ -19,6 +19,7 @@
     pkgsUnstable.just
     pkgsUnstable.wgo
     pkgsUnstable.gotop
+    pkgsUnstable.devenv
   ];
 
   dotfiles.bun = {
@@ -27,9 +28,12 @@
     packages = [
       "@biomejs/biome"
       "@fsouza/prettierd"
+      "@mariozechner/pi-coding-agent"
+      "@openai/codex"
       "@vtsls/language-server"
       "aicommit2"
       "context-mode"
+      "ctx7"
       "emmet-language-server"
       "eslint"
       "eslint_d"

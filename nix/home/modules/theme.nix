@@ -1,10 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   themeName = "Orchis-Grey-Dark-Compact";
   iconThemeName = "Tela-grey-dark";
 in
 {
+  home.sessionVariables = {
+    GTK_THEME = themeName;
+    GTK2_RC_FILES = lib.mkForce " $XDG_CONFIG_HOME/gtk-2.0/gtkrc";
+  };
+
   gtk = {
     enable = true;
     theme = {

@@ -27,11 +27,11 @@ return {
             formatters_by_ft = {
                 javascript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
                 typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
-                javascriptreact = { "biome-check", "rustywind", stop_after_first = false },
-                typescriptreact = { "biome-check", "rustywind", stop_after_first = false },
+                javascriptreact = { "oxfmt", "rustywind", stop_after_first = false },
+                typescriptreact = { "oxfmt", "rustywind", stop_after_first = false },
 
-                json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
-                jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
+                json = { "prettierd", "prettier", stop_after_first = true },
+                jsonc = { "prettierd", "prettier", stop_after_first = true },
 
                 css = { "prettierd", "rustywind", stop_after_first = true },
                 astro = { "prettierd", "prettier", stop_after_first = true },
@@ -39,6 +39,7 @@ return {
                 markdown = { "prettierd", "prettier", stop_after_first = true },
                 tex = { "tex-fmt", stop_after_first = true },
                 typst = { "prettypst", stop_after_first = true },
+                nix = { "nixfmt" },
 
                 lua = { "stylua" },
                 python = { "black", "isort" },

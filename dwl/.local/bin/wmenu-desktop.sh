@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-chosen=$(find /usr/share/applications ~/.local/share/applications -type f -name "*.desktop" \
+chosen=$(find /usr/share/applications ~/.local/share/applications ~/.nix-profile/share/applications -type f -o -type l -name "*.desktop" \
   | sed 's#.*/##;s#.desktop$##' \
   | wmenu -p "Launch:")
 

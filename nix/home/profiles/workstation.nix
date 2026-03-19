@@ -1,9 +1,13 @@
-{ pkgs, pkgsUnstable, lib, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  lib,
+  ...
+}:
 
 {
   imports = [
     ./base.nix
-    ../modules/android.nix
     ../modules/xdg-cleanup.nix
     ../modules/bun.nix
     ../modules/desktop.nix
@@ -17,8 +21,21 @@
   home.packages = with pkgs; [
     (nativeOptimized light)
     (nativeOptimized pkgsUnstable.fish)
-    cpupower-gui
+    pkgsUnstable.nixfmt
+    pkgsUnstable.tinymist
+    powertop
   ];
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
+  };
 
   dotfiles.links.packages = lib.mkAfter [
     "alacritty"
