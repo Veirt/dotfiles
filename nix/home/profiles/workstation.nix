@@ -19,7 +19,7 @@
   ];
 
   home.packages = with pkgs; [
-    (nativeOptimized light)
+    brightnessctl
     (nativeOptimized pkgsUnstable.fish)
     pkgsUnstable.nixfmt
     pkgsUnstable.tinymist

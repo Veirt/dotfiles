@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ "$1" = "up" ]; then
-    light -A 5
+    brightnessctl set 5%+
 elif [ "$1" = "down" ]; then
-    light -U 5
+    brightnessctl set 5%-
 fi
 
 BACKLIGHT=$(printf "%.0f" "$(light)")

@@ -20,6 +20,7 @@
     pkgsUnstable.wgo
     pkgsUnstable.gotop
     pkgsUnstable.devenv
+    pkgsUnstable.ansible
   ];
 
   dotfiles.bun = {
@@ -38,6 +39,7 @@
       "eslint"
       "eslint_d"
       "intelephense"
+      "lefthook"
       "oxfmt"
       "oxlint"
       "prettier"
