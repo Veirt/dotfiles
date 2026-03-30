@@ -18,14 +18,6 @@
     ../modules/dev.nix
   ];
 
-  home.packages = with pkgs; [
-    brightnessctl
-    (nativeOptimized pkgsUnstable.fish)
-    pkgsUnstable.nixfmt
-    pkgsUnstable.tinymist
-    powertop
-  ];
-
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -34,6 +26,8 @@
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
+      "image/png" = [ "org.gnome.gThumb.desktop" ];
+      "image/jpeg" = [ "org.gnome.gThumb.desktop" ];
     };
   };
 

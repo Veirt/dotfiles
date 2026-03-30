@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 
 j() {
-  file="$HOME/personal/notes/0 - Journals/$(date +'%Y-%m-%d').md"
-  template="$HOME/personal/notes/5 - Templates/journals.md"
+  file="$HOME/personal/notes/1 - Journal/$(date +'%Y-%m-%d').md"
+  template="$HOME/personal/notes/6 - Templates/journals.md"
 
   if [ ! -f "$file" ]; then
     cp "$template" "$file"
   fi
 
-  vim "$file"
+  nvim "$file"
 }
 
 

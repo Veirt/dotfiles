@@ -1,6 +1,19 @@
-{ ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
+
+  home.packages = with pkgs; [
+    pkgsUnstable.mailspring
+
+    brightnessctl
+    pamixer
+
+    (nativeOptimized pkgsUnstable.fish)
+    pkgsUnstable.nixfmt
+    pkgsUnstable.tinymist
+    powertop
+  ];
+
   home.sessionVariables = {
     TERMINAL = "foot";
     BROWSER = "firefox";

@@ -21,6 +21,8 @@
     pkgsUnstable.gotop
     pkgsUnstable.devenv
     pkgsUnstable.ansible
+    pkgsUnstable.pyright
+    pkgsUnstable.terraform
   ];
 
   dotfiles.bun = {
@@ -44,6 +46,7 @@
       "oxlint"
       "prettier"
       "rustywind"
+      "svelte-language-server"
       "typescript"
       "typescript-language-server"
       "vscode-langservers-extracted"

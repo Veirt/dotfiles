@@ -93,3 +93,7 @@ end
 if type -q direnv
     direnv hook fish | source
 end
+
+if type -q lure
+    lure fish init | source
+end

@@ -7,6 +7,7 @@ return {
             keymaps = {
                 accept_suggestion = "<C-e>",
             },
+            ignore_filetypes = { "markdown" },
         })
     end,
 }

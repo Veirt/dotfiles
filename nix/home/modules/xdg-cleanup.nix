@@ -20,8 +20,7 @@
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$HOME/.config/java";
 
     NPM_CONFIG_INIT_MODULE = "$XDG_CONFIG_HOME/npm/config/npm-init.js";
-    NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
-    NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
+    NPM_CONFIG_CACHE = "$HOME/.local/cache/npm";
 
     AWS_SHARED_CREDENTIALS_FILE = "$HOME/.config/aws/credentials";
     AWS_CONFIG_FILE = "$HOME/.config/aws/config";
@@ -45,5 +44,10 @@
 
   home.activation.createWakatimeHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$XDG_CONFIG_HOME/wakatime"
+  '';
+
+  home.activation.createNpmHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$XDG_DATA_HOME/npm"
+    mkdir -p "$XDG_DATA_HOME/npm/lib"
   '';
 }
