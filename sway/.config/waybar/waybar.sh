@@ -1,10 +1,1 @@
-#!/bin/sh
-
-# Terminate already running bar instances
-killall -q waybar .waybar-wrapped
-
-# Wait until the processes have been shut down
-while pgrep -x waybar >/dev/null; do sleep 1; done
-
-# Launch main
-waybar -l error
+/nix/store/3rnwmfkj6d3wqcd1d848dfsb0sci8mnp-home-manager-files/.config/waybar/waybar.sh

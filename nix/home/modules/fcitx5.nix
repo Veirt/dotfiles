@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   i18n.inputMethod = {
@@ -102,7 +102,7 @@
   };
 
   home.sessionVariables = {
-    QT_IM_MODULE = "fcitx";
+    QT_IM_MODULE = lib.mkForce "xim";
     XMODIFIERS = "@im=fcitx";
     SDL_IM_MODULE = "fcitx";
   };

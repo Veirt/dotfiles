@@ -38,8 +38,8 @@ alias vestaconfig="vim /mnt/config/vesta/vesta.toml"
 alias caddyconfig="vim /mnt/sshfs/eir/root/apps/caddy/Caddyfile"
 alias dlog="docker compose logs -f"
 alias dbuild="docker compose up --build"
-alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias todo="vim ~/personal/notes/todo.md"
+alias notes="cd ~/personal/notes"
 
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"

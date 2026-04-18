@@ -1,5 +1,5 @@
 {
-  description = "Home Manager profiles for CachyOS and portable dev hosts";
+  description = "Home Manager profiles for minerva and minimal VPS setup";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -28,12 +28,6 @@
           username = "veirt";
           homeDirectory = "/home/veirt";
           modules = [ ./home/hosts/minerva.nix ];
-        };
-
-        portable-dev = mkHome {
-          username = "veirt";
-          homeDirectory = "/home/veirt";
-          modules = [ ./home/profiles/portable-dev.nix ];
         };
 
         minimal = mkHome {

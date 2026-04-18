@@ -1,4 +1,0 @@
-#!/usr/bin/env fish
-
-wlr-randr --output eDP-1 --pos 1424,0 --output HEADLESS-1 --pos 0,278 --scale 1.35
-lbg wayvnc --max-fps=60 -r --output=HEADLESS-1 0.0.0.0 5901 -S /tmp/wayvnc-montablet.sock

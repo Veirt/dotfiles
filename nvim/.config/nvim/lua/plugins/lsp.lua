@@ -36,6 +36,8 @@ return {
         vim.lsp.enable("rust_analyzer")
         vim.lsp.enable("pyrefly")
 
+        vim.lsp.enable("tinymist")
+
         local vtsls_server = require("server.vtsls")
         local jsonls_server = require("server.jsonls")
         local gopls_server = require("server.gopls")

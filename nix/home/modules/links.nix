@@ -26,12 +26,6 @@ let
       };
     };
 
-    fish = {
-      xdg = {
-        "fish" = "fish/.config/fish";
-      };
-    };
-
     nvim = {
       xdg = {
         "nvim" = "nvim/.config/nvim";
@@ -44,11 +38,46 @@ let
       };
       home = {
         ".local/bin/is_vim.c" = "tmux/.local/bin/is_vim.c";
+        ".local/bin/tmux-sessionizer" = "tmux/.local/bin/tmux-sessionizer";
+        ".local/bin/tmux-vim-select-pane" = "tmux/.local/bin/tmux-vim-select-pane";
       };
     };
 
-    xdg = {
-      home = { };
+    wayland = {
+      home = {
+        ".local/bin/backlightctl" = "wayland/.local/bin/backlightctl";
+        ".local/bin/backlight-toggle" = "wayland/.local/bin/backlight-toggle";
+        ".local/bin/notify-send.sh" = "wayland/.local/bin/notify-send.sh";
+        ".local/bin/ocr" = "wayland/.local/bin/ocr";
+        ".local/bin/pape" = "wayland/.local/bin/pape";
+        ".local/bin/record" = "wayland/.local/bin/record";
+        ".local/bin/screenshot" = "wayland/.local/bin/screenshot";
+        ".local/bin/volumectl" = "wayland/.local/bin/volumectl";
+        ".local/bin/wmenu-desktop" = "wayland/.local/bin/wmenu-desktop";
+      };
+    };
+
+    dev = {
+      home = {
+        ".local/bin/cheat" = "dev/.local/bin/cheat";
+        ".local/bin/j" = "dev/.local/bin/j";
+      };
+    };
+
+    media = {
+      home = {
+        ".local/bin/batch-convert-jxl" = "media/.local/bin/batch-convert-jxl";
+      };
+    };
+
+    system = {
+      home = {
+        ".local/bin/bt" = "system/.local/bin/bt";
+        ".local/bin/campus" = "system/.local/bin/campus";
+        ".local/bin/home" = "system/.local/bin/home";
+        ".local/bin/out" = "system/.local/bin/out";
+        ".local/bin/update" = "system/.local/bin/update";
+      };
     };
 
     alacritty = {
@@ -63,34 +92,6 @@ let
       };
     };
 
-    sway = {
-      xdg = {
-        "mako" = "sway/.config/mako";
-        "sway" = "sway/.config/sway";
-        "waybar" = "sway/.config/waybar";
-      };
-      home = {
-        ".local/share/icons" = "sway/.local/share/icons";
-      };
-    };
-
-    mpv = {
-      xdg = {
-        "mpv" = "mpv/.config/mpv";
-      };
-    };
-
-    mpd = {
-      xdg = {
-        "mpd" = "mpd/.config/mpd";
-      };
-    };
-
-    ncmpcpp = {
-      xdg = {
-        "ncmpcpp" = "ncmpcpp/.config/ncmpcpp";
-      };
-    };
   };
 
   mkSource = relPath: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.root}/${relPath}";

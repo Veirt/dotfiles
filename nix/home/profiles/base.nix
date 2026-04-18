@@ -5,6 +5,7 @@
     ../modules/core.nix
     ../modules/xdg-user-dirs.nix
     ../modules/env.nix
+    ../modules/fish.nix
     ../modules/links.nix
     ../modules/shell.nix
     ../modules/secrets.nix
@@ -14,9 +15,7 @@
   dotfiles.links.packages = [
     "shared"
     "bash"
-    "fish"
     "nvim"
     "tmux"
-    "xdg"
   ];
 }

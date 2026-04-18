@@ -5,6 +5,7 @@
     ./scripts/ocr.nix
     ./scripts/colorpicker.nix
   ];
+
   xdg.configFile."xdg-terminals.list".text = ''
     org.codeberg.dnkl.foot.desktop
   '';

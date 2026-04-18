@@ -2,7 +2,6 @@
 
 let
   replacements = {
-    adb = "adb -a";
     c = "clear";
     dot = "cd ~/.dotfiles";
     l = "eza";

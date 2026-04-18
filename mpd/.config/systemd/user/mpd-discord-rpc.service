@@ -4,7 +4,7 @@ Requires=mpd.service
 
 [Service]
 
-ExecStart=/home/veirt/.cargo/bin/mpd-discord-rpc
+ExecStart=/home/veirt/.nix-profile/bin/mpd-discord-rpc
 
 [Install]
 WantedBy=default.target
