@@ -1,5 +1,5 @@
 {
-  description = "Home Manager profiles for minerva and minimal VPS setup";
+  description = "Home Manager profiles for minerva, freya, and minimal VPS setup";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -28,6 +28,12 @@
           username = "veirt";
           homeDirectory = "/home/veirt";
           modules = [ ./home/hosts/minerva.nix ];
+        };
+
+        freya = mkHome {
+          username = "veirt";
+          homeDirectory = "/home/veirt";
+          modules = [ ./home/hosts/freya.nix ];
         };
 
         minimal = mkHome {

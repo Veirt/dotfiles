@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   pkgsUnstable,
   ...
 }:
@@ -11,8 +10,7 @@ in
 {
   programs.fish = {
     enable = true;
-    package =
-      if pkgs ? nativeOptimized then pkgs.nativeOptimized pkgsUnstable.fish else pkgsUnstable.fish;
+    package = pkgsUnstable.fish;
 
     shellAliases = {
       google = "web-search google";

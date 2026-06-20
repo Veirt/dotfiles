@@ -15,6 +15,9 @@
 
   home.packages = with pkgs; [
     pkgsUnstable.mailspring
+    pkgsUnstable.vesktop
+
+    pkgsUnstable.eza
 
     brightnessctl
     pamixer

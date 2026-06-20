@@ -45,7 +45,5 @@
     MOZ_WEBRENDER = "1";
 
     _JAVA_AWT_WM_NONREPARENTING = "1";
-    VDPAU_DRIVER = "radeonsi";
-    LIBVA_DRIVER_NAME = "radeonsi";
   };
 }
