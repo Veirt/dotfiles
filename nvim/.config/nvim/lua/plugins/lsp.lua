@@ -33,9 +33,24 @@ return {
         }
         capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
+        local function typst_project_root(bufname)
+            return vim.fs.root(bufname, { "main.typ", ".git" }) or vim.fn.getcwd()
+        end
+
+        vim.lsp.config("tinymist", {
+            root_dir = function(bufnr, on_dir)
+                local bufname = vim.api.nvim_buf_get_name(bufnr)
+                on_dir(typst_project_root(bufname))
+            end,
+            settings = {
+                tinymist = {
+                    projectResolution = "lockDatabase",
+                },
+            },
+        })
+
         vim.lsp.enable("rust_analyzer")
         vim.lsp.enable("pyrefly")
-
         vim.lsp.enable("tinymist")
 
         local vtsls_server = require("server.vtsls")
@@ -49,7 +64,20 @@ return {
         autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
             callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
                 local buf_set_keymap = utils.buf_map(args.buf)
+                local bufname = vim.api.nvim_buf_get_name(args.buf)
+
+                if client and client.name == "tinymist" then
+                    local root = typst_project_root(bufname)
+                    local main = vim.fs.joinpath(root, "main.typ")
+                    if vim.uv.fs_stat(main) then
+                        client:exec_cmd({
+                            command = "tinymist.pinMain",
+                            arguments = { main },
+                        }, { bufnr = args.buf })
+                    end
+                end
 
                 -- client.server_capabilities.semanticTokensProvider = nil
 

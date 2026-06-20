@@ -47,6 +47,7 @@ let
       home = {
         ".local/bin/backlightctl" = "wayland/.local/bin/backlightctl";
         ".local/bin/backlight-toggle" = "wayland/.local/bin/backlight-toggle";
+        ".local/bin/toggle-touchpad" = "wayland/.local/bin/toggle-touchpad";
         ".local/bin/notify-send.sh" = "wayland/.local/bin/notify-send.sh";
         ".local/bin/ocr" = "wayland/.local/bin/ocr";
         ".local/bin/pape" = "wayland/.local/bin/pape";

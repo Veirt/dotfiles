@@ -16,6 +16,5 @@
     pnpm
     go
     rustup
-    python3
   ];
 }

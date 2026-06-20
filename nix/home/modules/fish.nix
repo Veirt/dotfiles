@@ -1,4 +1,9 @@
-{ config, pkgs, pkgsUnstable, ... }:
+{
+  config,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 
 let
   mkSource = relPath: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.root}/${relPath}";
@@ -6,7 +11,8 @@ in
 {
   programs.fish = {
     enable = true;
-    package = if pkgs ? nativeOptimized then pkgs.nativeOptimized pkgsUnstable.fish else pkgsUnstable.fish;
+    package =
+      if pkgs ? nativeOptimized then pkgs.nativeOptimized pkgsUnstable.fish else pkgsUnstable.fish;
 
     shellAliases = {
       google = "web-search google";
@@ -20,6 +26,10 @@ in
     };
 
     shellInit = ''
+      function q --argument-names prompt
+         pi -p "$prompt"
+      end
+
       function source_local_env --argument-names envfile
           if not test -f $envfile
               return
@@ -84,10 +94,6 @@ in
 
       if type -q direnv
           direnv hook fish | source
-      end
-
-      if type -q lure
-          lure fish init | source
       end
     '';
   };

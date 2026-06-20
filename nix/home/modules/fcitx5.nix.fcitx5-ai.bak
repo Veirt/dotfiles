@@ -72,11 +72,6 @@
             Layout = "";
           };
 
-          "Groups/0/Items/2" = {
-            Name = "ai-compose";
-            Layout = "";
-          };
-
           GroupOrder."0" = "Default";
         };
 
@@ -110,6 +105,5 @@
     QT_IM_MODULE = lib.mkForce "xim";
     XMODIFIERS = "@im=fcitx";
     SDL_IM_MODULE = "fcitx";
-    FCITX_ADDON_DIRS = "/home/veirt/.local/lib/fcitx5";
   };
 }

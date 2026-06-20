@@ -161,7 +161,7 @@ in
     };
 
     Service = {
-      ExecStart = "${config.home.homeDirectory}/.cargo/bin/mpd-discord-rpc";
+      ExecStart = "${config.home.homeDirectory}/.nix-profile/bin/mpd-discord-rpc";
     };
 
     Install.WantedBy = [ "default.target" ];

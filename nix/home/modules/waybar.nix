@@ -77,7 +77,7 @@ in
             "󰃠"
           ];
           on-scroll-up = "brightnessctl set +1%";
-          on-scroll-down = "light set 1%-";
+          on-scroll-down = "brightnessctl set 1%-";
         };
 
         battery = {

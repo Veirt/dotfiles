@@ -2,3 +2,4 @@
 
 systemctl --user start syncthing
 lbg wayvnc --output=eDP-1 0.0.0.0 -S /tmp/wayvnc-mirror.sock
+sudo /home/veirt/.nix-profile/bin/powertop --auto-tune

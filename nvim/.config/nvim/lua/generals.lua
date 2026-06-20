@@ -50,3 +50,5 @@ vim.g.matchparen_insert_timeout = 2
 
 opt.syntax = "off"
 vim.o.spell = false
+vim.o.exrc = true
+vim.o.secure = true
