@@ -64,7 +64,7 @@
     customCommands:
       - key: '<c-b>'
         description: 'Generate AI commit (aicommit2)'
-        command: 'aicommit2'
+        command: 'tiredcommit'
         context: 'files'
         output: 'terminal'
   '';

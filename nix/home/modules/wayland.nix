@@ -12,6 +12,15 @@
 
   home.packages = with pkgs; [
     pkgsUnstable.wbg
+
+    grim
+    slurp
+    wl-clipboard
+    wf-recorder
+    wlsunset
+    wmenu
+    imagemagick
+    wshowkeys
   ];
 
   xdg.configFile."chromium-flags.conf".text = ''

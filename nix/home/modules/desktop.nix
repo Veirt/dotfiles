@@ -23,6 +23,9 @@
     pamixer
     pkgsUnstable.mpd-discord-rpc
 
+    tesseract
+    batsignal
+
     (nativeOptimized pkgsUnstable.neovim)
     pkgsUnstable.nixfmt
     pkgsUnstable.tinymist

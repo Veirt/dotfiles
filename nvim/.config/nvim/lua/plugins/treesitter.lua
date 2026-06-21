@@ -10,6 +10,25 @@ return {
     },
 
     config = function()
+        require("nvim-treesitter.config").setup({})
+
+        local langs = {
+            "bash", "c", "cpp", "css", "dockerfile", "fish", "go",
+            "html", "javascript", "jsdoc", "json", "lua", "markdown",
+            "markdown_inline", "python", "regex", "rust", "scheme",
+            "scss", "sql", "svelte", "toml", "tsx", "typescript",
+            "typst", "vim", "vimdoc", "vue", "yaml",
+        }
+        local installed = require("nvim-treesitter.config").get_installed()
+        local to_install = vim.tbl_filter(function(l)
+            return not vim.tbl_contains(installed, l)
+        end, langs)
+        if #to_install > 0 then
+            vim.schedule(function()
+                require("nvim-treesitter.install").install(to_install)
+            end)
+        end
+
         require("nvim-ts-autotag").setup({})
 
         vim.api.nvim_create_autocmd("FileType", {
