@@ -48,7 +48,7 @@
     GDK_BACKEND = "wayland";
     QT_QPA_PLATFORM = "wayland";
     CLUTTER_BACKEND = "wayland";
-    SDL_VIDEODRIVER = "wayland";
+    SDL_VIDEODRIVER = "wayland,x11";
 
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_WEBRENDER = "1";

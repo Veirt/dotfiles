@@ -50,6 +50,7 @@ M.setup = function(capabilities)
             root_dir = root,
             settings = {
                 vtsls = {
+                    autoUseWorkspaceTsdk = true,
                     tsserver = {
                         globalPlugins = {},
                     },
