@@ -14,6 +14,7 @@ M.setup = function()
             "svelte",
             "pug",
             "typescriptreact",
+            "tsx",
             "vue",
             "php",
             "ejs",

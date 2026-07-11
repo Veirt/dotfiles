@@ -11,13 +11,38 @@ return {
 
     config = function()
         require("nvim-treesitter.config").setup({})
+        require("ts_context_commentstring").setup({})
 
         local langs = {
-            "bash", "c", "cpp", "css", "dockerfile", "fish", "go",
-            "html", "javascript", "jsdoc", "json", "lua", "markdown",
-            "markdown_inline", "python", "regex", "rust", "scheme",
-            "scss", "sql", "svelte", "toml", "tsx", "typescript",
-            "typst", "vim", "vimdoc", "vue", "yaml",
+            "bash",
+            "c",
+            "cpp",
+            "css",
+            "dockerfile",
+            "fish",
+            "go",
+            "html",
+            "javascript",
+            "jsdoc",
+            "json",
+            "lua",
+            "markdown",
+            "markdown_inline",
+            "python",
+            "regex",
+            "rust",
+            "scheme",
+            "scss",
+            "sql",
+            "svelte",
+            "toml",
+            "tsx",
+            "typescript",
+            "typst",
+            "vim",
+            "vimdoc",
+            "vue",
+            "yaml",
         }
         local installed = require("nvim-treesitter.config").get_installed()
         local to_install = vim.tbl_filter(function(l)
@@ -28,6 +53,14 @@ return {
                 require("nvim-treesitter.install").install(to_install)
             end)
         end
+
+        vim.treesitter.language.register("tsx", "typescriptreact")
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "typescriptreact",
+            callback = function(ev)
+                vim.treesitter.start(ev.buf, "tsx")
+            end,
+        })
 
         require("nvim-ts-autotag").setup({})
 

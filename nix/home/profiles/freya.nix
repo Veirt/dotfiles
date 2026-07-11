@@ -4,6 +4,7 @@
   imports = [
     ./base.nix
     ../modules/xdg-cleanup.nix
+    ../modules/mime-apps.nix
     ../modules/desktop.nix
     ../modules/native-builds.nix
     ../modules/wayland.nix

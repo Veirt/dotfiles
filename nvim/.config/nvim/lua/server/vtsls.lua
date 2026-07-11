@@ -46,8 +46,6 @@ M.setup = function(capabilities)
         "vtsls",
         vim.tbl_deep_extend("force", vtsls_base, {
             capabilities = capabilities,
-            single_file_support = false,
-            root_dir = root,
             settings = {
                 vtsls = {
                     autoUseWorkspaceTsdk = true,
