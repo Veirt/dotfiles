@@ -61,7 +61,11 @@ let
     dev = {
       home = {
         ".local/bin/cheat" = "dev/.local/bin/cheat";
+        ".local/bin/dev-sync" = "dev/.local/bin/dev-sync";
         ".local/bin/j" = "dev/.local/bin/j";
+      };
+      xdg = {
+        "dev-sync" = "dev/.config/dev-sync";
       };
     };
 

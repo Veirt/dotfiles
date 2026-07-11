@@ -31,7 +31,10 @@
     packages = [
       "@biomejs/biome"
       "@fsouza/prettierd"
-      "@mariozechner/pi-coding-agent"
+      "@earendil-works/pi-ai"
+      "@earendil-works/pi-coding-agent"
+      "@oh-my-pi/pi-coding-agent"
+      "effect-solutions"
       "@openai/codex"
       "@vtsls/language-server"
       "aicommit2"

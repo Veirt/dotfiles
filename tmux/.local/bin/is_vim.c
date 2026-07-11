@@ -1,288 +1,474 @@
+#define _GNU_SOURCE
+
+#include <ctype.h>
+#include <dirent.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// https://github.com/Collin-T/is_vim
+#include <sys/stat.h>
+#include <sys/sysmacros.h>
+#include <unistd.h>
 
-// structs
+#define COMM_SIZE 16
+#define STAT_BUFFER_SIZE 1024
 
-// use stringref to avoid redundant allocations
-typedef struct __stringref {
-  const char *str;
-  size_t len;
-} stringref;
-
-// a process info struct to contain data
-typedef struct __process_info {
-  unsigned pid, ppid;
-  stringref name, state, tty;
+typedef struct {
+  int pid;
+  int ppid;
+  unsigned tty_major;
+  unsigned tty_minor;
+  char state;
+  char comm[COMM_SIZE];
 } process_info;
 
-// the size of each chunk that is digested
-// at the moment this is 4KB
-#define PROCESS_INFO_DIGEST_SIZE (1 << 12)
+typedef struct {
+  process_info *items;
+  size_t count;
+  size_t capacity;
+} process_list;
 
-#define ZONE_UNINITIALIZED 0
-#define ZONE_PID 1
-#define ZONE_PID_DELIMITER 2
-#define ZONE_PPID 3
-#define ZONE_PPID_DELIMITER 4
-#define ZONE_STATE 5
-#define ZONE_STATE_DELIMITER 6
-#define ZONE_TTY 7
-#define ZONE_TTY_DELIMITER 8
-#define ZONE_NAME 9
+typedef struct {
+  int *items;
+  size_t count;
+  size_t capacity;
+} pid_list;
 
-char *raw_process_info = NULL;
-size_t raw_process_info_size = 0;
-
-process_info *processes = NULL;
-size_t process_count = 0, process_capacity = 0;
-
-int is_line_separator(char c) { return c == '\n' || c == '\0'; }
-
-int is_delimiter(char c) {
-  return c == ' ' || c == '\t' || is_line_separator(c);
+static int is_inactive_state(char state) {
+  return state == 'T' || state == 'X' || state == 'x' || state == 'Z';
 }
 
-int status_is_active(const stringref *status) {
-  int code = status->str[0];
-  return code != 'T' && code != 'X' && code != 'Z';
-}
+static int ends_with(const char *str, size_t *len, const char *suffix) {
+  size_t suffix_len = strlen(suffix);
 
-unsigned parse_pid(const stringref *ref) {
-  unsigned output = 0;
-  for (size_t i = 0; i < ref->len; i++) {
-    output *= 10;
-    output += ref->str[i] - '0';
-  }
-
-  return output;
-}
-
-void trim(stringref *ref) {
-  const char *start = ref->str, *end = &ref->str[ref->len - 1];
-
-  while (is_delimiter(*start))
-    start++;
-
-  while (is_delimiter(*end))
-    end--;
-
-  ref->str = start;
-  ref->len = end - start + 1;
-}
-
-int stringref_equal(const stringref *str1, const stringref *str2) {
-  if (str1->len != str2->len)
+  if (*len < suffix_len)
     return 0;
 
-  return memcmp(str1->str, str2->str, str1->len) == 0;
+  if (memcmp(str + *len - suffix_len, suffix, suffix_len) != 0)
+    return 0;
+
+  *len -= suffix_len;
+  return 1;
 }
 
-int get_ps_output() {
-  FILE *stream = popen("ps ax -o pid=,ppid=,state=,tty=,comm=", "r");
-  size_t digest_count;
-  if (!stream)
-    return EXIT_FAILURE;
+static int is_vim_name(const char *str, size_t len) {
+  size_t i = 0;
 
-  do {
-    raw_process_info = realloc(raw_process_info, raw_process_info_size +
-                                                     PROCESS_INFO_DIGEST_SIZE);
-    if (!raw_process_info)
-      return ENOMEM;
+  if (i < len && str[i] == 'l')
+    i++;
+  if (i < len && str[i] == 'n')
+    i++;
 
-    digest_count = fread(&raw_process_info[raw_process_info_size], 1,
-                         PROCESS_INFO_DIGEST_SIZE, stream);
-    raw_process_info_size += digest_count;
-  } while (digest_count == PROCESS_INFO_DIGEST_SIZE);
+  if (i + 2 > len || str[i] != 'v' || str[i + 1] != 'i')
+    return 0;
+  i += 2;
 
-  fclose(stream);
+  if (i < len && str[i] == 'm')
+    i++;
+  if (i < len && str[i] == 'x')
+    i++;
 
-  return 0;
+  return i == len;
 }
 
-void get_item_offsets(size_t *pid_end, size_t *ppid_end, size_t *state_start,
-                      size_t *tty_start, size_t *name_start) {
-  size_t offset = 0;
+static int is_editor(const char *comm) {
+  size_t len = strlen(comm);
 
-  for (int zone = ZONE_UNINITIALIZED; zone != ZONE_NAME; offset++) {
-    int delimiter = is_delimiter(raw_process_info[offset]);
+  if (len == 0)
+    return 0;
 
-    if (!delimiter && !(zone & 1)) {
-      // even states are delimiters
-      // and so the state changes when a non-delimiter is reached
-
-      if (zone == ZONE_PPID_DELIMITER)
-        *state_start = offset;
-      else if (zone == ZONE_STATE_DELIMITER)
-        *tty_start = offset;
-      else if (zone == ZONE_TTY_DELIMITER)
-        *name_start = offset;
-      zone++;
-
-    } else if (delimiter && (zone & 1)) {
-      // odd states are not delimiters
-      // and so the state changes when a delimiter is reached
-
-      if (zone == ZONE_PID)
-        *pid_end = offset;
-      else if (zone == ZONE_PPID)
-        *ppid_end = offset;
-      zone++;
-    }
-  }
-}
-
-int parse_process_output() {
-  stringref item;
-
-  size_t pid_end, ppid_end, state_start, tty_start, name_start;
-
-  get_item_offsets(&pid_end, &ppid_end, &state_start, &tty_start, &name_start);
-
-  for (size_t offset = 0; offset < raw_process_info_size; process_count++) {
-
-    // resize if necessary
-    if (process_count + 1 >= process_capacity) {
-      process_capacity = (process_count + 1) * 2;
-
-      processes = realloc(processes, sizeof(process_info) * process_capacity);
-      if (!processes)
-        return ENOMEM;
-    }
-
-    // parse pid
-    item.str = &raw_process_info[offset];
-    item.len = pid_end;
-    trim(&item);
-    processes[process_count].pid = parse_pid(&item);
-
-    // parse ppid
-    item.str = &raw_process_info[offset + pid_end];
-    item.len = ppid_end - pid_end;
-    trim(&item);
-    processes[process_count].ppid = parse_pid(&item);
-
-    // parse state
-    item.str = &raw_process_info[offset + state_start];
-    item.len = tty_start - state_start;
-    trim(&item);
-    memcpy(&processes[process_count].state, &item, sizeof(item));
-
-    // parse tty
-    item.str = &raw_process_info[offset + tty_start];
-    item.len = name_start - tty_start;
-    trim(&item);
-    memcpy(&processes[process_count].tty, &item, sizeof(item));
-
-    // parse name
-    // since name goes to the end of the line, we must find the length manually
-    offset += name_start;
-    item.str = &raw_process_info[offset];
-
-    item.len = 0;
-    while (!is_line_separator(raw_process_info[offset++]))
-      item.len++;
-
-    trim(&item);
-    memcpy(&processes[process_count].name, &item, sizeof(item));
+  if (*comm == 'g') {
+    comm++;
+    len--;
   }
 
-  return 0;
+  if (len > 0 && *comm == '.') {
+    comm++;
+    len--;
+  }
+
+  ends_with(comm, &len, "-wrapped");
+  ends_with(comm, &len, "diff");
+
+  if (len == 3 && memcmp(comm, "fzf", len) == 0)
+    return 1;
+
+  if (len == 4 && memcmp(comm, "view", len) == 0)
+    return 1;
+
+  return is_vim_name(comm, len);
 }
 
-int find_vim(const char *tty) {
-  size_t *procs = malloc(sizeof(size_t) * process_count),
-         *pprocs = malloc(sizeof(size_t) * process_count);
-  size_t proc_count = 0, pproc_count = 0;
+static int parse_pid_name(const char *name, int *pid) {
+  char *end = NULL;
+  long value;
 
-  // wrap strings in stringrefs for faster/easier comparing
-  stringref tty_ref, vim_ref, nvim_ref;
+  if (!isdigit((unsigned char)name[0]))
+    return 0;
 
-  tty_ref.str = tty;
-  tty_ref.len = strlen(tty);
+  errno = 0;
+  value = strtol(name, &end, 10);
+  if (errno != 0 || *end != '\0' || value <= 0 || value > 0x7fffffff)
+    return 0;
 
-  vim_ref.str = "vim";
-  vim_ref.len = strlen(vim_ref.str);
+  *pid = (int)value;
+  return 1;
+}
 
-  nvim_ref.str = "nvim";
-  nvim_ref.len = strlen(nvim_ref.str);
+static int parse_pid_arg(const char *arg, int *pid) {
+  char *end = NULL;
+  long value;
 
-  // find initial pids (which must belong to the current tty)
-  for (size_t i = 0; i < process_count; i++) {
-    if (stringref_equal(&tty_ref, &processes[i].tty)) {
-      procs[proc_count++] = i;
+  errno = 0;
+  value = strtol(arg, &end, 10);
+  if (errno != 0 || *end != '\0' || value <= 0 || value > 0x7fffffff)
+    return 0;
+
+  *pid = (int)value;
+  return 1;
+}
+
+static unsigned proc_tty_major(int tty_nr) {
+  return ((unsigned)tty_nr >> 8) & 0xfff;
+}
+
+static unsigned proc_tty_minor(int tty_nr) {
+  unsigned value = (unsigned)tty_nr;
+  return (value & 0xff) | ((value >> 12) & 0xfff00);
+}
+
+static int next_long(const char **input, long *value) {
+  char *end = NULL;
+
+  while (**input == ' ')
+    (*input)++;
+
+  if (**input == '\0')
+    return 0;
+
+  errno = 0;
+  *value = strtol(*input, &end, 10);
+  if (errno != 0 || end == *input)
+    return 0;
+
+  *input = end;
+  return 1;
+}
+
+static int parse_stat_line(const char *line, process_info *process) {
+  const char *left = strchr(line, '(');
+  const char *right = strrchr(line, ')');
+  const char *cursor;
+  char *end = NULL;
+  long pid, ppid, skipped, tty_nr;
+  size_t comm_len;
+
+  if (left == NULL || right == NULL || right <= left)
+    return 0;
+
+  errno = 0;
+  pid = strtol(line, &end, 10);
+  if (errno != 0 || end != left - 1 || pid <= 0 || pid > 0x7fffffff)
+    return 0;
+
+  comm_len = (size_t)(right - left - 1);
+  if (comm_len >= COMM_SIZE)
+    comm_len = COMM_SIZE - 1;
+
+  memset(process, 0, sizeof(*process));
+  process->pid = (int)pid;
+  memcpy(process->comm, left + 1, comm_len);
+  process->comm[comm_len] = '\0';
+
+  cursor = right + 1;
+  while (*cursor == ' ')
+    cursor++;
+  if (*cursor == '\0')
+    return 0;
+
+  process->state = *cursor++;
+
+  if (!next_long(&cursor, &ppid))
+    return 0;
+  process->ppid = (int)ppid;
+
+  if (!next_long(&cursor, &skipped))
+    return 0;
+  if (!next_long(&cursor, &skipped))
+    return 0;
+  if (!next_long(&cursor, &tty_nr))
+    return 0;
+
+  if (tty_nr != 0) {
+    process->tty_major = proc_tty_major((int)tty_nr);
+    process->tty_minor = proc_tty_minor((int)tty_nr);
+  }
+
+  return 1;
+}
+
+static int read_process_stat(int pid, process_info *process) {
+  char path[64];
+  char buffer[STAT_BUFFER_SIZE];
+  ssize_t count;
+  int fd;
+
+  if (snprintf(path, sizeof(path), "/proc/%d/stat", pid) >= (int)sizeof(path))
+    return 0;
+
+  fd = open(path, O_RDONLY | O_CLOEXEC);
+  if (fd < 0)
+    return 0;
+
+  count = read(fd, buffer, sizeof(buffer) - 1);
+  close(fd);
+
+  if (count <= 0)
+    return 0;
+
+  buffer[count] = '\0';
+  return parse_stat_line(buffer, process);
+}
+
+static int pid_list_push(pid_list *list, int pid) {
+  int *items;
+  size_t capacity;
+
+  if (list->count == list->capacity) {
+    capacity = list->capacity == 0 ? 16 : list->capacity * 2;
+    items = realloc(list->items, capacity * sizeof(list->items[0]));
+    if (items == NULL)
+      return 0;
+
+    list->items = items;
+    list->capacity = capacity;
+  }
+
+  list->items[list->count++] = pid;
+  return 1;
+}
+
+static int read_child_pids(int pid, pid_list *children) {
+  char path[96];
+  char buffer[4096];
+  const char *cursor = buffer;
+  ssize_t count;
+  int fd;
+
+  if (snprintf(path, sizeof(path), "/proc/%d/task/%d/children", pid, pid) >=
+      (int)sizeof(path))
+    return 1;
+
+  fd = open(path, O_RDONLY | O_CLOEXEC);
+  if (fd < 0)
+    return 1;
+
+  count = read(fd, buffer, sizeof(buffer) - 1);
+  close(fd);
+  if (count <= 0)
+    return 1;
+
+  buffer[count] = '\0';
+
+  while (*cursor != '\0') {
+    long child_pid;
+
+    while (*cursor == ' ' || *cursor == '\n')
+      cursor++;
+
+    if (*cursor == '\0')
+      break;
+
+    if (!next_long(&cursor, &child_pid))
+      return 1;
+
+    if (child_pid > 0 && child_pid <= 0x7fffffff &&
+        !pid_list_push(children, (int)child_pid))
+      return 0;
+  }
+
+  return 1;
+}
+
+static int process_list_push(process_list *list, const process_info *process) {
+  process_info *items;
+  size_t capacity;
+
+  if (list->count == list->capacity) {
+    capacity = list->capacity == 0 ? 128 : list->capacity * 2;
+    items = realloc(list->items, capacity * sizeof(list->items[0]));
+    if (items == NULL)
+      return 0;
+
+    list->items = items;
+    list->capacity = capacity;
+  }
+
+  list->items[list->count++] = *process;
+  return 1;
+}
+
+static int read_processes(process_list *list) {
+  DIR *proc = opendir("/proc");
+  struct dirent *entry;
+
+  if (proc == NULL)
+    return 0;
+
+  while ((entry = readdir(proc)) != NULL) {
+    process_info process;
+    int pid;
+
+    if (!parse_pid_name(entry->d_name, &pid))
+      continue;
+
+    if (read_process_stat(pid, &process) && !process_list_push(list, &process)) {
+      closedir(proc);
+      return 0;
     }
   }
 
-  while (proc_count > 0) {
-    for (size_t i = 0; i < proc_count; i++) {
-      if ((stringref_equal(&processes[procs[i]].name, &vim_ref) ||
-           stringref_equal(&processes[procs[i]].name, &nvim_ref)) &&
-          status_is_active(&processes[procs[i]].state)) {
+  closedir(proc);
+  return 1;
+}
 
-        free(procs);
-        free(pprocs);
-        return 0;
+static int get_target_tty(const char *arg, unsigned *target_major,
+                          unsigned *target_minor) {
+  char path[256];
+  const char *tty_path = arg;
+  struct stat st;
+
+  if (strncmp(arg, "/dev/", 5) != 0) {
+    if (snprintf(path, sizeof(path), "/dev/%s", arg) >= (int)sizeof(path))
+      return 0;
+    tty_path = path;
+  }
+
+  if (stat(tty_path, &st) != 0 || !S_ISCHR(st.st_mode))
+    return 0;
+
+  *target_major = major(st.st_rdev);
+  *target_minor = minor(st.st_rdev);
+  return 1;
+}
+
+static int process_has_tty(const process_info *process, unsigned tty_major,
+                           unsigned tty_minor) {
+  return process->tty_major == tty_major && process->tty_minor == tty_minor;
+}
+
+static int find_vim(const process_list *list, unsigned tty_major,
+                    unsigned tty_minor) {
+  size_t *frontier = NULL;
+  size_t *next = NULL;
+  size_t frontier_count = 0;
+  int found = 0;
+
+  if (list->count == 0)
+    return 0;
+
+  frontier = malloc(list->count * sizeof(frontier[0]));
+  next = malloc(list->count * sizeof(next[0]));
+  if (frontier == NULL || next == NULL)
+    goto done;
+
+  for (size_t i = 0; i < list->count; i++) {
+    if (process_has_tty(&list->items[i], tty_major, tty_minor))
+      frontier[frontier_count++] = i;
+  }
+
+  while (frontier_count > 0) {
+    size_t next_count = 0;
+
+    for (size_t i = 0; i < frontier_count; i++) {
+      const process_info *process = &list->items[frontier[i]];
+
+      if (!is_inactive_state(process->state) && is_editor(process->comm)) {
+        found = 1;
+        goto done;
       }
     }
 
-    // find child processes
-    // pprocs and procs are swapped to avoid redundant mallocs
-    size_t *tmp = procs;
-    procs = pprocs;
-    pprocs = tmp;
+    for (size_t i = 0; i < frontier_count; i++) {
+      int parent_pid = list->items[frontier[i]].pid;
 
-    pproc_count = proc_count;
-    proc_count = 0;
+      for (size_t j = 0; j < list->count; j++) {
+        if (list->items[j].ppid == parent_pid)
+          next[next_count++] = j;
+      }
+    }
 
-    for (size_t i = 0; i < pproc_count; i++)
-      for (size_t j = 0; j < process_count; j++)
-        if (processes[pprocs[i]].pid == processes[j].ppid)
-          procs[proc_count++] = j;
+    {
+      size_t *tmp = frontier;
+      frontier = next;
+      next = tmp;
+      frontier_count = next_count;
+    }
   }
 
-  free(procs);
-  free(pprocs);
-  return EXIT_FAILURE;
+done:
+  free(frontier);
+  free(next);
+  return found;
 }
 
-void cleanup() {
-  if (processes != NULL) {
-    free(processes);
-    processes = NULL;
+static int find_vim_from_root(int root_pid, unsigned tty_major,
+                              unsigned tty_minor) {
+  pid_list frontier = {0};
+  int found = 0;
+
+  if (!pid_list_push(&frontier, root_pid))
+    goto done;
+
+  for (size_t i = 0; i < frontier.count; i++) {
+    process_info process;
+
+    if (!read_process_stat(frontier.items[i], &process))
+      continue;
+
+    if (i == 0 && !process_has_tty(&process, tty_major, tty_minor))
+      continue;
+
+    if (!is_inactive_state(process.state) && is_editor(process.comm)) {
+      found = 1;
+      goto done;
+    }
+
+    if (!read_child_pids(process.pid, &frontier))
+      goto done;
   }
-  if (raw_process_info != NULL) {
-    free(raw_process_info);
-    raw_process_info = NULL;
-  }
+
+done:
+  free(frontier.items);
+  return found;
 }
 
 int main(int argc, char **argv) {
-  if (argc != 2) {
+  process_list processes = {0};
+  unsigned tty_major = 0, tty_minor = 0;
+  int root_pid = 0;
+  int found;
+
+  if (argc != 2 && argc != 3) {
     fputs("No tty given!\n", stderr);
-    return 1;
-  }
-
-  atexit(cleanup);
-
-  if (get_ps_output() != 0) {
-    cleanup();
     return EXIT_FAILURE;
   }
 
-  if (parse_process_output() != 0) {
-    cleanup();
+  if (!get_target_tty(argv[1], &tty_major, &tty_minor))
+    return EXIT_FAILURE;
+
+  if (argc == 3 && parse_pid_arg(argv[2], &root_pid))
+    return find_vim_from_root(root_pid, tty_major, tty_minor) ? EXIT_SUCCESS
+                                                              : EXIT_FAILURE;
+
+  if (!read_processes(&processes)) {
+    free(processes.items);
     return EXIT_FAILURE;
   }
 
-  int exit_code;
-  if (strncmp(argv[1], "/dev/", 5) == 0)
-    exit_code = find_vim(&argv[1][5]);
-  else
-    exit_code = find_vim(argv[1]);
+  found = find_vim(&processes, tty_major, tty_minor);
+  free(processes.items);
 
-  cleanup();
-  return exit_code;
+  return found ? EXIT_SUCCESS : EXIT_FAILURE;
 }

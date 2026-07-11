@@ -1,0 +1,44 @@
+# rsync exclude patterns for dev-sync.
+# This intentionally does not exclude .env files.
+
+# Git metadata stays managed by git, not rsync.
+.git/
+
+# Dependencies and vendored/generated package trees.
+node_modules/
+.venv/
+vendor/
+
+# Build outputs and compiled artifacts.
+target/
+build/
+dist/
+out/
+obj/
+
+# Tool and framework caches.
+.dart_tool/
+.gradle/
+.cocoindex-code/
+.next/
+.nuxt/
+.svelte-kit/
+.output/
+.turbo/
+
+# Python caches.
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# TypeScript and Terraform caches.
+*.tsbuildinfo
+.terraform/
+
+# OS/editor junk.
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

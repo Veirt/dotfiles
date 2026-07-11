@@ -29,7 +29,6 @@
     (nativeOptimized pkgsUnstable.neovim)
     pkgsUnstable.nixfmt
     pkgsUnstable.tinymist
-    powertop
 
     pkgs.corefonts
   ];

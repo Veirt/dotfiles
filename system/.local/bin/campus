@@ -1,5 +1,4 @@
 #!/usr/bin/fish
 
-sudo powertop --auto-tune
 sudo wg-quick up ~/personal/config/delta.conf
 sudo ufw enable

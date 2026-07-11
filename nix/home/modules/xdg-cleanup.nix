@@ -11,6 +11,7 @@
     GOPATH = "$HOME/.local/share/go";
     PNPM_HOME = "$HOME/.local/share/pnpm";
     BUN_INSTALL = "$HOME/.local/share/bun";
+    FVM_CACHE_PATH = "$HOME/.local/share/fvm";
 
     npm_config_userconfig = "$HOME/.config/npm/npmrc";
     NODE_REPL_HISTORY = "$HOME/.local/share/node_history";
@@ -49,5 +50,9 @@
   home.activation.createNpmHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$XDG_DATA_HOME/npm"
     mkdir -p "$XDG_DATA_HOME/npm/lib"
+  '';
+
+  home.activation.createFvmHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.local/share/fvm"
   '';
 }

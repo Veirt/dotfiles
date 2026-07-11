@@ -1,0 +1,934 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import base64
+import difflib
+import json
+import os
+import shlex
+import socket
+import subprocess
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+
+DEFAULT_ROOT = "~/dev"
+DEFAULT_EXCLUDES = [
+    ".git/",
+    "node_modules/",
+    ".venv/",
+    "vendor/",
+    "target/",
+    "build/",
+    "dist/",
+    "out/",
+    ".dart_tool/",
+    ".gradle/",
+    ".cocoindex-code/",
+    "obj/",
+    ".next/",
+    ".nuxt/",
+    ".svelte-kit/",
+    ".output/",
+    ".turbo/",
+    "__pycache__/",
+    "*.pyc",
+    ".mypy_cache/",
+    ".pytest_cache/",
+    ".ruff_cache/",
+    "*.tsbuildinfo",
+    ".terraform/",
+    ".DS_Store",
+    "Thumbs.db",
+    "*.swp",
+    "*.swo",
+]
+
+REMOTE_PROBE = r'''
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+
+def run(args):
+    try:
+        cp = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    except FileNotFoundError as exc:
+        return {"ok": False, "stdout": "", "stderr": str(exc), "code": 127}
+    return {
+        "ok": cp.returncode == 0,
+        "stdout": cp.stdout.rstrip("\n"),
+        "stderr": cp.stderr.rstrip("\n"),
+        "code": cp.returncode,
+    }
+
+
+def git_info(path):
+    inside = run(["git", "-C", str(path), "rev-parse", "--is-inside-work-tree"])
+    if not inside["ok"] or inside["stdout"] != "true":
+        return None
+
+    def out(*args):
+        result = run(["git", "-C", str(path), *args])
+        return result["stdout"] if result["ok"] else None
+
+    branch = out("branch", "--show-current")
+    head = out("rev-parse", "HEAD")
+    top = out("rev-parse", "--show-toplevel")
+    status = out("status", "--porcelain=v1", "--untracked-files=all")
+    upstream = out("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
+    ahead = None
+    behind = None
+    if upstream:
+        counts = out("rev-list", "--left-right", "--count", "HEAD...@{u}")
+        if counts:
+            parts = counts.split()
+            if len(parts) == 2:
+                ahead = int(parts[0])
+                behind = int(parts[1])
+
+    return {
+        "branch": branch or None,
+        "head": head,
+        "top": top,
+        "dirty": bool(status),
+        "status": status.splitlines() if status else [],
+        "upstream": upstream,
+        "ahead": ahead,
+        "behind": behind,
+    }
+
+
+def project_state(root_arg, project):
+    root = Path(os.path.expanduser(root_arg))
+    path = root / project
+    exists = path.exists()
+    is_dir = path.is_dir()
+    return {
+        "root": str(root),
+        "project": project,
+        "path": str(path),
+        "exists": exists,
+        "is_dir": is_dir,
+        "git": git_info(path) if is_dir else None,
+    }
+
+
+print(json.dumps(project_state(sys.argv[1], sys.argv[2])))
+'''
+
+REMOTE_INVENTORY = r'''
+import json
+import os
+import sys
+from pathlib import Path
+
+root = Path(os.path.expanduser(sys.argv[1]))
+projects = []
+if root.is_dir():
+    projects = sorted(path.name for path in root.iterdir() if path.is_dir() and not path.name.startswith("."))
+print(json.dumps({"root": str(root), "projects": projects}))
+'''
+
+REMOTE_READ_FILE = r'''
+import base64
+import json
+import os
+import sys
+from pathlib import Path
+
+path = Path(os.path.expanduser(sys.argv[1]))
+if not path.exists():
+    print(json.dumps({"exists": False, "is_file": False, "data": None}))
+elif not path.is_file():
+    print(json.dumps({"exists": True, "is_file": False, "data": None}))
+else:
+    print(json.dumps({"exists": True, "is_file": True, "data": base64.b64encode(path.read_bytes()).decode("ascii")}))
+'''
+
+
+@dataclass(frozen=True)
+class Side:
+    key: str
+    label: str
+    host: str | None
+    path: str
+    state: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class RsyncChange:
+    code: str
+    path: str
+
+    @property
+    def is_dir(self) -> bool:
+        return len(self.code) > 1 and self.code[1] == "d"
+
+    @property
+    def is_delete(self) -> bool:
+        return self.code.startswith("*deleting")
+
+
+@dataclass
+class Plan:
+    safe: bool
+    reasons: list[str]
+    advice: list[str]
+    directions: list[tuple[str, str]]
+    changes: dict[tuple[str, str], list[RsyncChange]]
+    deletes: dict[tuple[str, str], list[RsyncChange]]
+    conflicts: list[str]
+    env_conflicts: list[str]
+
+
+def run(args: list[str], *, check: bool = False) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=check)
+
+
+def die(message: str, code: int = 1) -> None:
+    print(message, file=sys.stderr)
+    raise SystemExit(code)
+
+
+def short_commit(value: str | None) -> str:
+    return value[:12] if value else "none"
+
+
+def detect_peer() -> str:
+    host = socket.gethostname().split(".", 1)[0].lower()
+    if host.startswith("freya"):
+        return "minerva"
+    return "freya"
+
+
+def detect_local_label() -> str:
+    return socket.gethostname().split(".", 1)[0] or "local"
+
+
+def script_config_dir() -> Path | None:
+    try:
+        script = Path(__file__).resolve()
+    except OSError:
+        return None
+    for parent in script.parents:
+        candidate = parent / ".config" / "dev-sync"
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def config_dir() -> Path | None:
+    xdg = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "dev-sync"
+    if xdg.exists():
+        return xdg
+    return script_config_dir()
+
+
+def read_lines(path: Path) -> list[str]:
+    lines: list[str] = []
+    for raw in path.read_text().splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        lines.append(line)
+    return lines
+
+
+def configured_excludes() -> list[str]:
+    cfg = config_dir()
+    if not cfg:
+        return DEFAULT_EXCLUDES
+    excludes = cfg / "excludes"
+    if not excludes.exists():
+        return DEFAULT_EXCLUDES
+    values = read_lines(excludes)
+    return values or DEFAULT_EXCLUDES
+
+
+def validate_project(project: str) -> None:
+    if not project or project in {".", ".."} or "/" in project or "\x00" in project:
+        die(f"Invalid project name: {project!r}")
+
+
+def local_project_state(root: str, project: str) -> dict[str, Any]:
+    path = Path(root).expanduser() / project
+    exists = path.exists()
+    is_dir = path.is_dir()
+    return {
+        "root": str(Path(root).expanduser()),
+        "project": project,
+        "path": str(path),
+        "exists": exists,
+        "is_dir": is_dir,
+        "git": git_info(path) if is_dir else None,
+    }
+
+
+def git_run(path: Path, *args: str) -> tuple[bool, str]:
+    try:
+        cp = run(["git", "-C", str(path), *args])
+    except FileNotFoundError:
+        return False, "git not found"
+    return cp.returncode == 0, cp.stdout.rstrip("\n")
+
+
+def git_info(path: Path) -> dict[str, Any] | None:
+    ok, inside = git_run(path, "rev-parse", "--is-inside-work-tree")
+    if not ok or inside != "true":
+        return None
+
+    def out(*args: str) -> str | None:
+        ok, value = git_run(path, *args)
+        return value if ok else None
+
+    branch = out("branch", "--show-current")
+    head = out("rev-parse", "HEAD")
+    top = out("rev-parse", "--show-toplevel")
+    status = out("status", "--porcelain=v1", "--untracked-files=all")
+    upstream = out("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
+    ahead = None
+    behind = None
+    if upstream:
+        counts = out("rev-list", "--left-right", "--count", "HEAD...@{u}")
+        if counts:
+            parts = counts.split()
+            if len(parts) == 2:
+                ahead = int(parts[0])
+                behind = int(parts[1])
+
+    return {
+        "branch": branch or None,
+        "head": head,
+        "top": top,
+        "dirty": bool(status),
+        "status": status.splitlines() if status else [],
+        "upstream": upstream,
+        "ahead": ahead,
+        "behind": behind,
+    }
+
+
+def remote_project_state(peer: str, root: str, project: str) -> dict[str, Any]:
+    inner = "python3 -c {} {} {}".format(
+        shlex.quote(REMOTE_PROBE),
+        shlex.quote(root),
+        shlex.quote(project),
+    )
+    remote_cmd = "bash -lc " + shlex.quote(inner)
+    cp = run(["ssh", peer, remote_cmd])
+    if cp.returncode != 0:
+        die(f"Failed to inspect {peer}:\n{cp.stderr.strip() or cp.stdout.strip()}")
+    try:
+        return json.loads(cp.stdout)
+    except json.JSONDecodeError as exc:
+        die(f"Failed to parse {peer} probe output: {exc}\n{cp.stdout}")
+
+
+def local_inventory(root: str) -> dict[str, Any]:
+    path = Path(root).expanduser()
+    projects = sorted(item.name for item in path.iterdir() if item.is_dir() and not item.name.startswith(".")) if path.is_dir() else []
+    return {"root": str(path), "projects": projects}
+
+
+def remote_inventory(peer: str, root: str) -> dict[str, Any]:
+    inner = "python3 -c {} {}".format(shlex.quote(REMOTE_INVENTORY), shlex.quote(root))
+    remote_cmd = "bash -lc " + shlex.quote(inner)
+    cp = run(["ssh", peer, remote_cmd])
+    if cp.returncode != 0:
+        die(f"Failed to inspect {peer}:\n{cp.stderr.strip() or cp.stdout.strip()}")
+    try:
+        return json.loads(cp.stdout)
+    except json.JSONDecodeError as exc:
+        die(f"Failed to parse {peer} inventory output: {exc}\n{cp.stdout}")
+
+
+def read_side_file(side: Side, rel_path: str) -> bytes | None:
+    path = str(Path(side.path) / rel_path)
+    if side.key == "local":
+        file_path = Path(path)
+        if not file_path.is_file():
+            return None
+        return file_path.read_bytes()
+
+    assert side.host is not None
+    inner = "python3 -c {} {}".format(shlex.quote(REMOTE_READ_FILE), shlex.quote(path))
+    remote_cmd = "bash -lc " + shlex.quote(inner)
+    cp = run(["ssh", side.host, remote_cmd])
+    if cp.returncode != 0:
+        die(f"Failed to read {side.label}:{rel_path}:\n{cp.stderr.strip() or cp.stdout.strip()}")
+    try:
+        payload = json.loads(cp.stdout)
+    except json.JSONDecodeError as exc:
+        die(f"Failed to parse {side.label}:{rel_path} read output: {exc}\n{cp.stdout}")
+    if not payload["exists"] or not payload["is_file"]:
+        return None
+    return base64.b64decode(payload["data"])
+
+
+def build_sides(args: argparse.Namespace, project: str) -> dict[str, Side]:
+    local_state = local_project_state(args.root, project)
+    remote_state = remote_project_state(args.peer, args.root, project)
+    return {
+        "local": Side("local", args.local_name, None, local_state["path"], local_state),
+        "remote": Side("remote", args.peer_name, args.peer, remote_state["path"], remote_state),
+    }
+
+
+def git_summary(git: dict[str, Any] | None) -> str:
+    if git is None:
+        return "not a git repo"
+    dirty = "dirty" if git["dirty"] else "clean"
+    branch = git["branch"] or "detached"
+    upstream = git["upstream"] or "no upstream"
+    ahead = git["ahead"]
+    behind = git["behind"]
+    if ahead is not None and behind is not None:
+        upstream = f"{upstream}, ahead {ahead}, behind {behind}"
+    return f"{branch} {short_commit(git['head'])}, {dirty}, {upstream}"
+
+
+def print_status(sides: dict[str, Side]) -> None:
+    for side in sides.values():
+        state = side.state
+        print(f"{side.label}:")
+        print(f"  path: {state['path']}")
+        if not state["exists"]:
+            print("  state: missing")
+            continue
+        if not state["is_dir"]:
+            print("  state: exists but is not a directory")
+            continue
+        print("  state: directory")
+        print(f"  git: {git_summary(state['git'])}")
+        git = state["git"]
+        if git and git["dirty"]:
+            print_limited("  dirty files", git["status"])
+
+
+def print_limited(title: str, values: list[str], limit: int = 20) -> None:
+    print(f"{title}:")
+    for value in values[:limit]:
+        print(f"    {value}")
+    if len(values) > limit:
+        print(f"    ... {len(values) - limit} more")
+
+
+def ask_yes_no(question: str, *, default: bool = False) -> bool:
+    if not sys.stdin.isatty():
+        die(f"Interactive confirmation required: {question}")
+    suffix = "[Y/n]" if default else "[y/N]"
+    while True:
+        answer = input(f"{question} {suffix} ").strip().lower()
+        if not answer:
+            return default
+        if answer in {"y", "yes"}:
+            return True
+        if answer in {"n", "no"}:
+            return False
+        print("Please answer y or n.")
+
+
+def git_advice(local: Side, remote: Side) -> list[str]:
+    advice: list[str] = []
+    for side in (local, remote):
+        git = side.state["git"]
+        if not git:
+            continue
+        if git["behind"]:
+            advice.append(f"{side.label} should pull Git changes first: cd {side.path} && git pull")
+        if git["ahead"]:
+            advice.append(f"{side.label} has commits not on upstream yet: cd {side.path} && git push")
+    if not advice:
+        advice.append("Git commits differ. Align the repositories with git first, then run dev-sync again.")
+    return advice
+
+
+def base_plan() -> Plan:
+    return Plan(safe=True, reasons=[], advice=[], directions=[], changes={}, deletes={}, conflicts=[], env_conflicts=[])
+
+
+def analyze_git_safety(sides: dict[str, Side]) -> Plan:
+    plan = base_plan()
+    local = sides["local"]
+    remote = sides["remote"]
+    local_state = local.state
+    remote_state = remote.state
+
+    if not local_state["exists"] and not remote_state["exists"]:
+        plan.safe = False
+        plan.reasons.append("Project is missing on both sides.")
+        return plan
+
+    if local_state["exists"] and not local_state["is_dir"]:
+        plan.safe = False
+        plan.reasons.append(f"{local.label} path exists but is not a directory: {local.path}")
+    if remote_state["exists"] and not remote_state["is_dir"]:
+        plan.safe = False
+        plan.reasons.append(f"{remote.label} path exists but is not a directory: {remote.path}")
+    if not plan.safe:
+        return plan
+
+    local_git = local_state["git"]
+    remote_git = remote_state["git"]
+
+    if local_state["exists"] != remote_state["exists"]:
+        source = local if local_state["exists"] else remote
+        dest = remote if source is local else local
+        if source.state["git"]:
+            plan.safe = False
+            plan.reasons.append(
+                f"{dest.label} is missing a Git repo. Because .git is excluded, clone/fetch it with git before rsync."
+            )
+            plan.advice.append(f"Create {dest.label}:{dest.path} from the Git remote, then run dev-sync again.")
+            return plan
+        plan.directions.append((source.key, dest.key))
+        return plan
+
+    if bool(local_git) != bool(remote_git):
+        plan.safe = False
+        plan.reasons.append("One side is a Git repo and the other side is not.")
+        return plan
+
+    if not local_git and not remote_git:
+        plan.directions.extend([("local", "remote"), ("remote", "local")])
+        return plan
+
+    assert local_git is not None and remote_git is not None
+
+    if local_git["dirty"] and remote_git["dirty"]:
+        plan.safe = False
+        plan.reasons.append("Both sides have uncommitted Git changes.")
+        plan.advice.append("Resolve or commit/stash one side before syncing.")
+        return plan
+
+    if local_git["branch"] != remote_git["branch"]:
+        plan.safe = False
+        plan.reasons.append(
+            f"Branches differ: {local.label}={local_git['branch'] or 'detached'}, {remote.label}={remote_git['branch'] or 'detached'}."
+        )
+        plan.advice.append("Checkout the same branch on both machines before syncing.")
+        return plan
+
+    if local_git["head"] != remote_git["head"]:
+        plan.safe = False
+        plan.reasons.append(
+            f"Git commits differ: {local.label}={short_commit(local_git['head'])}, {remote.label}={short_commit(remote_git['head'])}."
+        )
+        plan.advice.extend(git_advice(local, remote))
+        return plan
+
+    if local_git["dirty"]:
+        plan.directions.append(("local", "remote"))
+        plan.advice.append(f"{local.label} is dirty and {remote.label} is clean, so this run treats {local.label} as the source.")
+        return plan
+
+    if remote_git["dirty"]:
+        plan.directions.append(("remote", "local"))
+        plan.advice.append(f"{remote.label} is dirty and {local.label} is clean, so this run treats {remote.label} as the source.")
+        return plan
+
+    plan.directions.extend([("local", "remote"), ("remote", "local")])
+    return plan
+
+
+def rsync_endpoint(side: Side) -> str:
+    path = side.path.rstrip("/") + "/"
+    if side.key == "local":
+        return path
+    return f"{side.host}:{shlex.quote(path)}"
+
+
+def rsync_file_endpoint(side: Side, rel_path: str) -> str:
+    path = side.path.rstrip("/") + "/" + rel_path
+    if side.key == "local":
+        return path
+    return f"{side.host}:{shlex.quote(path)}"
+
+
+def rsync_command(
+    source: Side,
+    dest: Side,
+    excludes: list[str],
+    *,
+    dry_run: bool,
+    delete: bool = False,
+    extra_excludes: list[str] | None = None,
+) -> list[str]:
+    cmd = [
+        "rsync",
+        "-a",
+        "--checksum",
+        "--no-times",
+        "--no-owner",
+        "--no-group",
+        "--itemize-changes",
+        "--out-format=%i\t%n",
+    ]
+    if dry_run:
+        cmd.append("--dry-run")
+    if delete:
+        cmd.append("--delete")
+    for pattern in excludes:
+        cmd.append(f"--exclude={pattern}")
+    for pattern in extra_excludes or []:
+        cmd.append(f"--exclude={pattern}")
+    cmd.extend([rsync_endpoint(source), rsync_endpoint(dest)])
+    return cmd
+
+
+def parse_rsync(stdout: str) -> list[RsyncChange]:
+    changes: list[RsyncChange] = []
+    for line in stdout.splitlines():
+        if not line or "\t" not in line:
+            continue
+        code, path = line.split("\t", 1)
+        if len(code) < 2:
+            continue
+        changes.append(RsyncChange(code, path))
+    return changes
+
+
+def rsync_file_command(source: Side, dest: Side, rel_path: str, *, dry_run: bool) -> list[str]:
+    cmd = ["rsync", "-a", "--checksum", "--no-times", "--no-owner", "--no-group", "--itemize-changes"]
+    if dry_run:
+        cmd.append("--dry-run")
+    cmd.extend([rsync_file_endpoint(source, rel_path), rsync_file_endpoint(dest, rel_path)])
+    return cmd
+
+
+def dry_run_rsync(
+    source: Side,
+    dest: Side,
+    excludes: list[str],
+    *,
+    delete: bool = False,
+    extra_excludes: list[str] | None = None,
+) -> list[RsyncChange]:
+    cp = run(rsync_command(source, dest, excludes, dry_run=True, delete=delete, extra_excludes=extra_excludes))
+    if cp.returncode not in {0, 23, 24}:
+        die(f"rsync dry-run failed ({source.label} -> {dest.label}):\n{cp.stderr.strip()}")
+    return parse_rsync(cp.stdout)
+
+
+def apply_rsync(source: Side, dest: Side, excludes: list[str], *, delete: bool, extra_excludes: list[str]) -> None:
+    cmd = rsync_command(source, dest, excludes, dry_run=False, delete=delete, extra_excludes=extra_excludes)
+    suffix = " with deletions" if delete else ""
+    print(f"Applying {source.label} -> {dest.label}{suffix}")
+    cp = subprocess.run(cmd, text=True)
+    if cp.returncode != 0:
+        raise SystemExit(cp.returncode)
+
+
+def apply_rsync_file(source: Side, dest: Side, rel_path: str) -> None:
+    print(f"Applying {source.label}:{rel_path} -> {dest.label}:{rel_path}")
+    cp = subprocess.run(rsync_file_command(source, dest, rel_path, dry_run=False), text=True)
+    if cp.returncode != 0:
+        raise SystemExit(cp.returncode)
+
+
+def delete_missing_path(source: Side, dest: Side, rel_path: str) -> None:
+    print(f"Deleting {dest.label}:{rel_path}")
+    cmd = ["rsync", "-a", "--delete-missing-args", rsync_file_endpoint(source, rel_path), rsync_file_endpoint(dest, rel_path)]
+    cp = subprocess.run(cmd, text=True)
+    if cp.returncode != 0:
+        raise SystemExit(cp.returncode)
+
+
+def content_paths(changes: list[RsyncChange]) -> set[str]:
+    paths: set[str] = set()
+    for change in changes:
+        if change.is_dir:
+            continue
+        code = change.code
+        if change.is_delete:
+            continue
+        if "+" in code or code.startswith(("<", ">")) or len(code) > 3 and code[2] in {"c", "s"}:
+            paths.add(change.path)
+    return paths
+
+
+def filter_changes(changes: list[RsyncChange], excluded_paths: set[str]) -> list[RsyncChange]:
+    return [change for change in changes if change.path not in excluded_paths]
+
+
+def is_env_path(path: str) -> bool:
+    return path == ".env" or path.endswith("/.env")
+
+
+def delete_path(change: RsyncChange) -> str:
+    return change.path.rstrip("/")
+
+
+def compact_delete_paths(changes: list[RsyncChange]) -> list[str]:
+    result: list[str] = []
+    for path in sorted({delete_path(change) for change in changes}):
+        if not path or path == ".":
+            continue
+        if any(path == parent or path.startswith(parent + "/") for parent in result):
+            continue
+        result.append(path)
+    return result
+
+
+def decode_for_diff(data: bytes | None) -> list[str]:
+    if data is None:
+        return ["<missing>\n"]
+    return data.decode("utf-8", errors="replace").splitlines(keepends=True)
+
+
+def show_env_diff(left: Side, right: Side, rel_path: str) -> None:
+    left_data = read_side_file(left, rel_path)
+    right_data = read_side_file(right, rel_path)
+    diff = difflib.unified_diff(
+        decode_for_diff(left_data),
+        decode_for_diff(right_data),
+        fromfile=f"{left.label}:{rel_path}",
+        tofile=f"{right.label}:{rel_path}",
+    )
+    print(f"\n.env conflict: {rel_path}")
+    for line in diff:
+        print(line, end="")
+    if left_data is not None and right_data is not None and not left_data.endswith(b"\n") and not right_data.endswith(b"\n"):
+        print()
+
+
+def apply_env_conflicts(plan: Plan, sides: dict[str, Side]) -> None:
+    if not plan.env_conflicts:
+        return
+    local = sides["local"]
+    remote = sides["remote"]
+    for rel_path in plan.env_conflicts:
+        show_env_diff(local, remote, rel_path)
+        if ask_yes_no(f"Use {local.label}:{rel_path} and overwrite {remote.label}?", default=False):
+            apply_rsync_file(local, remote, rel_path)
+            continue
+        if ask_yes_no(f"Use {remote.label}:{rel_path} and overwrite {local.label}?", default=False):
+            apply_rsync_file(remote, local, rel_path)
+            continue
+        print(f"Skipping {rel_path}")
+
+
+def apply_deletions(plan: Plan, sides: dict[str, Side]) -> None:
+    for source_key, dest_key in plan.directions:
+        source = sides[source_key]
+        dest = sides[dest_key]
+        paths = compact_delete_paths(plan.deletes.get((source_key, dest_key), []))
+        if not paths:
+            continue
+        print(f"\nDelete candidates on {dest.label} missing from {source.label}:")
+        for path in paths[:50]:
+            print(f"  {path}")
+        if len(paths) > 50:
+            print(f"  ... {len(paths) - 50} more")
+        if not ask_yes_no(f"Delete these {len(paths)} item(s) from {dest.label}?", default=False):
+            print(f"Keeping one-sided files on {dest.label}; they may be copied to {source.label}.")
+            continue
+        for path in paths:
+            delete_missing_path(source, dest, path)
+
+
+def attach_rsync_plan(plan: Plan, sides: dict[str, Side], excludes: list[str]) -> Plan:
+    if not plan.safe:
+        return plan
+    for source_key, dest_key in plan.directions:
+        source = sides[source_key]
+        dest = sides[dest_key]
+        plan.changes[(source_key, dest_key)] = dry_run_rsync(source, dest, excludes)
+        plan.deletes[(source_key, dest_key)] = [
+            change for change in dry_run_rsync(source, dest, excludes, delete=True) if change.is_delete
+        ]
+
+    env_paths = sorted(
+        {
+            path
+            for changes in plan.changes.values()
+            for path in content_paths(changes)
+            if is_env_path(path)
+        }
+    )
+    for path in env_paths:
+        local_data = read_side_file(sides["local"], path)
+        remote_data = read_side_file(sides["remote"], path)
+        if local_data is not None and remote_data is not None and local_data != remote_data:
+            plan.env_conflicts.append(path)
+
+    if plan.env_conflicts:
+        env_conflicts = set(plan.env_conflicts)
+        plan.advice.append(".env differs on both sides; --apply will show a diff and ask which side should win.")
+        for key in list(plan.changes):
+            plan.changes[key] = filter_changes(plan.changes[key], env_conflicts)
+        for key in list(plan.deletes):
+            plan.deletes[key] = filter_changes(plan.deletes[key], env_conflicts)
+
+    if len(plan.directions) == 2:
+        first = plan.directions[0]
+        second = plan.directions[1]
+        conflicts = content_paths(plan.changes[first]) & content_paths(plan.changes[second])
+        if conflicts:
+            plan.safe = False
+            plan.reasons.append("Both sides changed the same path, so rsync cannot choose a winner safely.")
+            plan.advice.append("Resolve these paths manually, then run dev-sync again.")
+            plan.conflicts = sorted(conflicts)
+    return plan
+
+
+def print_plan(plan: Plan, sides: dict[str, Side]) -> None:
+    if plan.safe:
+        print("Plan: safe")
+    else:
+        print("Plan: refused")
+    for reason in plan.reasons:
+        print(f"  reason: {reason}")
+    for advice in plan.advice:
+        print(f"  advice: {advice}")
+    if plan.conflicts:
+        print_limited("  conflicting paths", plan.conflicts)
+    if plan.env_conflicts:
+        print_limited("  .env conflicts", plan.env_conflicts)
+    if not plan.safe:
+        return
+    if not plan.directions:
+        print("  rsync: no transfer needed")
+        return
+    total = 0
+    for source_key, dest_key in plan.directions:
+        source = sides[source_key]
+        dest = sides[dest_key]
+        changes = plan.changes.get((source_key, dest_key), [])
+        total += len(changes)
+        print(f"  rsync: {source.label} -> {dest.label}, {len(changes)} item(s)")
+        for change in changes[:30]:
+            print(f"    {change.code} {change.path}")
+        if len(changes) > 30:
+            print(f"    ... {len(changes) - 30} more")
+        deletes = plan.deletes.get((source_key, dest_key), [])
+        if deletes:
+            print(f"  delete candidates on {dest.label} if matching {source.label}: {len(deletes)} item(s)")
+            for change in deletes[:30]:
+                print(f"    {change.path}")
+            if len(deletes) > 30:
+                print(f"    ... {len(deletes) - 30} more")
+    if total == 0:
+        print("  rsync: no file differences after excludes")
+    print("  note: deletions require an interactive y/n prompt during --apply")
+
+
+def command_list(args: argparse.Namespace) -> None:
+    command_inventory(args)
+
+
+def command_inventory(args: argparse.Namespace) -> None:
+    local = local_inventory(args.root)
+    remote = remote_inventory(args.peer, args.root)
+    local_projects = set(local["projects"])
+    remote_projects = set(remote["projects"])
+
+    print(f"{args.local_name}: {local['root']}")
+    print(f"{args.peer_name}: {remote['root']}")
+    print()
+    inventory_groups = [
+        ("on both", sorted(local_projects & remote_projects)),
+        (f"only on {args.local_name}", sorted(local_projects - remote_projects)),
+        (f"only on {args.peer_name}", sorted(remote_projects - local_projects)),
+    ]
+    for title, projects in inventory_groups:
+        print(f"{title} ({len(projects)}):")
+        for project in projects:
+            print(f"  {project}")
+        if not projects:
+            print("  none")
+
+
+def command_status(args: argparse.Namespace) -> None:
+    validate_project(args.project)
+    sides = build_sides(args, args.project)
+    print_status(sides)
+
+
+def build_plan(args: argparse.Namespace) -> tuple[dict[str, Side], Plan, list[str]]:
+    validate_project(args.project)
+    sides = build_sides(args, args.project)
+    excludes = configured_excludes()
+    plan = analyze_git_safety(sides)
+    plan = attach_rsync_plan(plan, sides, excludes)
+    return sides, plan, excludes
+
+
+def command_plan(args: argparse.Namespace) -> None:
+    sides, plan, _excludes = build_plan(args)
+    print_status(sides)
+    print()
+    print_plan(plan, sides)
+
+
+def command_sync(args: argparse.Namespace) -> None:
+    sides, plan, excludes = build_plan(args)
+    print_status(sides)
+    print()
+    print_plan(plan, sides)
+    if not plan.safe:
+        raise SystemExit(2)
+    if not args.apply:
+        print("\nDry run only. Re-run with --apply to sync.")
+        return
+    if not plan.directions:
+        return
+    apply_env_conflicts(plan, sides)
+    apply_deletions(plan, sides)
+    for source_key, dest_key in plan.directions:
+        if not plan.changes.get((source_key, dest_key)):
+            continue
+        apply_rsync(sides[source_key], sides[dest_key], excludes, delete=False, extra_excludes=plan.env_conflicts)
+
+
+def parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Safely sync selected ~/dev projects between minerva and freya.")
+    parser.add_argument("--peer", default=detect_peer(), help="SSH host for the other machine")
+    parser.add_argument("--peer-name", default=None, help="Display name for the peer machine")
+    parser.add_argument("--local-name", default=detect_local_label(), help="Display name for this machine")
+    parser.add_argument("--root", default=DEFAULT_ROOT, help="Project root on both machines")
+
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    subparsers.add_parser("list", help="Alias for inventory")
+    subparsers.add_parser("inventory", help="List project folders on both machines")
+
+    status = subparsers.add_parser("status", help="Show local and peer Git state")
+    status.add_argument("project")
+
+    plan = subparsers.add_parser("plan", help="Show the sync plan without applying it")
+    plan.add_argument("project")
+
+    sync = subparsers.add_parser("sync", help="Plan and optionally apply a safe sync")
+    sync.add_argument("project")
+    sync.add_argument("--apply", action="store_true", help="Apply the planned rsync transfers")
+
+    return parser
+
+
+def main() -> None:
+    args = parser().parse_args()
+    if args.peer_name is None:
+        args.peer_name = args.peer
+    if args.command == "list":
+        command_list(args)
+    elif args.command == "inventory":
+        command_inventory(args)
+    elif args.command == "status":
+        command_status(args)
+    elif args.command == "plan":
+        command_plan(args)
+    elif args.command == "sync":
+        command_sync(args)
+    else:
+        raise AssertionError(args.command)
+
+
+if __name__ == "__main__":
+    main()

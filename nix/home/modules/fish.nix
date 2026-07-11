@@ -1,6 +1,5 @@
 {
   config,
-  pkgsUnstable,
   ...
 }:
 
@@ -10,7 +9,6 @@ in
 {
   programs.fish = {
     enable = true;
-    package = pkgsUnstable.fish;
 
     shellAliases = {
       google = "web-search google";
