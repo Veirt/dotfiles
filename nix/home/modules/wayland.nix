@@ -3,7 +3,6 @@
 {
   imports = [
     ./scripts/ocr.nix
-    ./scripts/colorpicker.nix
   ];
 
   xdg.configFile."xdg-terminals.list".text = ''
@@ -16,11 +15,13 @@
     grim
     slurp
     wl-clipboard
-    wf-recorder
+    wl-screenrec
     wlsunset
     wmenu
     imagemagick
     wshowkeys
+    hyprpicker
+    xdg-terminal-exec
   ];
 
   xdg.configFile."chromium-flags.conf".text = ''

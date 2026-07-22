@@ -16,7 +16,7 @@
     ../modules/native-builds.nix
     ../modules/wayland.nix
     ../modules/waybar.nix
-    ../modules/mako.nix
+    ../modules/swaync.nix
     ../modules/media.nix
     ../modules/theme.nix
     ../modules/dev.nix

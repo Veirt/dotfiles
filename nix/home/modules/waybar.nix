@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   mkSource = relPath: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.root}/${relPath}";
@@ -6,13 +6,14 @@ in
 {
   programs.waybar = {
     enable = true;
+    package = inputs.waybar.packages.${pkgs.system}.default;
     style = ../../../waybar/.config/waybar/style.css;
     settings = [
       {
         layer = "bottom";
         position = "top";
         height = 40;
-        modules-left = [ "dwl/tags" ];
+        modules-left = [ "mango/workspaces" ];
         modules-right = [
           "pulseaudio"
           "backlight"
@@ -22,20 +23,11 @@ in
           "tray"
         ];
 
-        "dwl/tags" = {
-          num-tags = 9;
-          tag-labels = [
-            "1"
-            "2"
-            "3"
-            "4"
-            "5"
-            "6"
-            "7"
-            "8"
-            "9"
-          ];
-          disable-click = false;
+        "mango/workspaces" = {
+          format = "{value}";
+          hide-empty = false;
+          on-click = "activate";
+          on-click-right = "toggle";
         };
 
         "sway/workspaces" = {
@@ -130,9 +122,4 @@ in
   };
 
   xdg.configFile."waybar/waybar.sh".source = mkSource "waybar/.config/waybar/waybar.sh";
-
-  home.file = {
-    ".local/share/icons/brightness.png".source = mkSource "icons/.local/share/icons/brightness.png";
-    ".local/share/icons/volume.png".source = mkSource "icons/.local/share/icons/volume.png";
-  };
 }

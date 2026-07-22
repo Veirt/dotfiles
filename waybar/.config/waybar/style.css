@@ -24,7 +24,8 @@ window {
   padding: 5px 15px;
 }
 
-#workspaces button.focused {
+#workspaces button.focused,
+#workspaces button.active {
   border-top: 2px solid #d8e4e6;
   color: #d8e4e6;
 }

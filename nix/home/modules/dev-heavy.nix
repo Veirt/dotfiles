@@ -22,7 +22,7 @@
     pkgsUnstable.devbox
     pkgsUnstable.ansible
     pkgsUnstable.pyright
-    pkgsUnstable.terraform
+    terraform
   ];
 
   dotfiles.bun = {
@@ -36,7 +36,8 @@
       "@oh-my-pi/pi-coding-agent"
       "effect-solutions"
       "@openai/codex"
-      "@vtsls/language-server"
+      "@anthropic-ai/claude-code"
+      "@typescript/native-preview"
       "aicommit2"
       "context-mode"
       "ctx7"

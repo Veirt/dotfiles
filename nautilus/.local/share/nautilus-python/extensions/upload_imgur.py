@@ -1,3 +1,6 @@
+from gi import require_version
+require_version('Nautilus', '4.1')
+
 from urllib.parse import urlparse, unquote
 from gi.repository import Nautilus, GObject
 import subprocess

@@ -105,8 +105,9 @@ return {
                 -- folds, provided by Neovim
                 -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                 -- vim.wo.foldmethod = "expr"
-                -- indentation, provided by nvim-treesitter
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                -- disabled: treesitter indent is experimental and buggy for ts/js
+                -- relies on built-in autoindent + smartindent + cindent from generals.lua
+                -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             end,
         })
 

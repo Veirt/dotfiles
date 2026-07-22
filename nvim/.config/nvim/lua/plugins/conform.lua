@@ -52,15 +52,6 @@ return {
             end)
         end
 
-        local function web_formatter_then_rustywind(bufnr)
-            for _, formatter in ipairs({ "biome", "oxfmt", "prettierd", "prettier" }) do
-                if conform.get_formatter_info(formatter, bufnr).available then
-                    return { formatter, "rustywind" }
-                end
-            end
-            return { "rustywind" }
-        end
-
         conform.setup({
             notify_on_error = true,
 
@@ -93,15 +84,15 @@ return {
             formatters_by_ft = {
                 javascript = { "biome", "oxfmt", "prettierd", stop_after_first = true },
                 typescript = { "biome", "oxfmt", "prettierd", stop_after_first = true },
-                javascriptreact = web_formatter_then_rustywind,
-                typescriptreact = web_formatter_then_rustywind,
+                javascriptreact = { "biome", "oxfmt", "prettierd", stop_after_first = true },
+                typescriptreact = { "biome", "oxfmt", "prettierd", stop_after_first = true },
 
                 json = { "biome", "prettierd", "prettier", stop_after_first = true },
                 jsonc = { "biome", "prettierd", "prettier", stop_after_first = true },
 
-                css = { "biome", "prettierd", "rustywind", stop_after_first = true },
+                css = { "biome", "prettierd", stop_after_first = true },
                 astro = { "prettierd", "prettier", stop_after_first = true },
-                svelte = { "prettierd", "rustywind" },
+                svelte = { "prettierd" },
                 markdown = { "prettierd", "prettier", stop_after_first = true },
                 tex = { "tex-fmt", stop_after_first = true },
                 typst = { "prettypst", stop_after_first = true },

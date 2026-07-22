@@ -1,3 +1,6 @@
+from gi import require_version
+require_version('Nautilus', '4.1')
+
 from urllib.parse import urlparse, unquote
 import subprocess
 from pathlib import Path

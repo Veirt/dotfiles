@@ -45,15 +45,11 @@ let
 
     wayland = {
       home = {
-        ".local/bin/backlightctl" = "wayland/.local/bin/backlightctl";
-        ".local/bin/backlight-toggle" = "wayland/.local/bin/backlight-toggle";
         ".local/bin/toggle-touchpad" = "wayland/.local/bin/toggle-touchpad";
-        ".local/bin/notify-send.sh" = "wayland/.local/bin/notify-send.sh";
         ".local/bin/ocr" = "wayland/.local/bin/ocr";
         ".local/bin/pape" = "wayland/.local/bin/pape";
         ".local/bin/record" = "wayland/.local/bin/record";
         ".local/bin/screenshot" = "wayland/.local/bin/screenshot";
-        ".local/bin/volumectl" = "wayland/.local/bin/volumectl";
         ".local/bin/wmenu-desktop" = "wayland/.local/bin/wmenu-desktop";
       };
     };
@@ -94,6 +90,18 @@ let
     foot = {
       xdg = {
         "foot" = "foot/.config/foot";
+      };
+    };
+
+    nautilus = {
+      home = {
+        ".local/share/nautilus-python/extensions/upload_imgur.py" = "nautilus/.local/share/nautilus-python/extensions/upload_imgur.py";
+        ".local/share/nautilus-python/extensions/jxl.py" = "nautilus/.local/share/nautilus-python/extensions/jxl.py";
+        ".local/share/nautilus-python/extensions/copy_content.py" = "nautilus/.local/share/nautilus-python/extensions/copy_content.py";
+        ".local/share/nautilus-python/extensions/open_terminal.py" = "nautilus/.local/share/nautilus-python/extensions/open_terminal.py";
+        ".local/share/nautilus-python/extensions/upscale.py" = "nautilus/.local/share/nautilus-python/extensions/upscale.py";
+        ".local/bin/imgur-copy-link" = "nautilus/.local/bin/imgur-copy-link";
+        ".local/bin/imgur.sh" = "nautilus/.local/bin/imgur.sh";
       };
     };
 

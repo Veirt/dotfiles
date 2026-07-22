@@ -26,6 +26,9 @@
     tesseract
     batsignal
 
+    libnotify
+    pkgsUnstable.swayosd
+
     (nativeOptimized pkgsUnstable.neovim)
     pkgsUnstable.nixfmt
     pkgsUnstable.tinymist

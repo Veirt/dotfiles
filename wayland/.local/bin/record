@@ -3,20 +3,19 @@
 OUPTUT_FILE="$(date +'%Y-%m-%d-%s_screenrecord.mp4')"
 output="$(xdg-user-dir VIDEOS)/screenrecord/$OUPTUT_FILE"
 
-if pgrep wf-recorder; then
+if pgrep wl-screenrec; then
     notify-send "Stopping recording."
-    killall -INT wf-recorder
+    killall -INT wl-screenrec
 else
-    notify-send "Starting recording when this notification disappear."
+    notify-send "Starting recording…"
     sleep 1
-    makoctl dismiss -a
+    swaync-client --close-latest
 
     # check parameter, if it equals to audio then record with audio
     if [ "$1" == "audio" ]; then
-        wf-recorder -x yuv420p -t --audio -f "$output"
+        wl-screenrec --audio -f "$output"
         exit 0
     fi
 
-    wf-recorder -x yuv420p -t -f "$output"
-
+    wl-screenrec -f "$output"
 fi

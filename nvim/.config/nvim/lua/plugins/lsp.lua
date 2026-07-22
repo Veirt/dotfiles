@@ -4,7 +4,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         -- LSP Support
-        "yioneko/nvim-vtsls",
         { "nvim-flutter/flutter-tools.nvim", ft = "dart" },
         "dmmulroy/ts-error-translator.nvim",
         "j-hui/fidget.nvim",
@@ -54,10 +53,12 @@ return {
         vim.lsp.enable("tinymist")
 
         local vtsls_server = require("server.vtsls")
+        local tsgo_server = require("server.tsgo")
         local jsonls_server = require("server.jsonls")
         local gopls_server = require("server.gopls")
 
-        vtsls_server.setup(capabilities)
+        -- vtsls_server.setup(capabilities)
+        tsgo_server.setup(capabilities)
         jsonls_server.setup()
         gopls_server.setup()
 
@@ -101,6 +102,9 @@ return {
                 buf_set_keymap("n", "<leader>tsi", ":VtsExec organize_imports<CR>")
                 buf_set_keymap("n", "<leader>tsr", ":VtsExec rename_file<CR>")
                 buf_set_keymap("n", "<leader>tsa", ":VtsExec add_missing_imports<CR>")
+                buf_set_keymap("n", "<leader>tss", ":VtsExec sort_imports<CR>")
+                buf_set_keymap("n", "<leader>tsu", ":VtsExec unused_files<CR>")
+                buf_set_keymap("n", "<leader>tsf", ":VtsExec fix_all<CR>")
             end,
         })
     end,

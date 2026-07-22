@@ -23,9 +23,9 @@ if [ "$1" = "screen" ]; then
     fi
 
     if [ -v "$output" ]; then
-        notify-send.sh -u critical "Something went wrong." "Can't take a screenshot."
+        notify-send -u critical "Something went wrong." "Can't take a screenshot."
     else
-        notify-send.sh -d "$GUIFM $(dirname "$output")" -i "$output" "Screenshot has taken"
+        notify-send "Screenshot has taken" --icon="$output"
     fi
 
 elif [ "$1" = "custom" ]; then

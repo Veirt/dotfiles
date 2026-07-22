@@ -14,6 +14,11 @@ let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        terraform = extraSpecialArgs.inputs.nixpkgs-terraform.packages.${system}."terraform-1.14.6";
+      })
+    ];
   };
 
   pkgsUnstable = import extraSpecialArgs.inputs.nixpkgs-unstable {
@@ -39,6 +44,7 @@ home-manager.lib.homeManagerConfiguration {
       (
         { ... }:
         {
+          nixpkgs.config.allowUnfree = true;
           home.username = username;
           home.homeDirectory = homeDirectory;
         }

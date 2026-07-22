@@ -9,7 +9,7 @@
     ../modules/native-builds.nix
     ../modules/wayland.nix
     ../modules/waybar.nix
-    ../modules/mako.nix
+    ../modules/swaync.nix
     ../modules/fcitx5.nix
     ../modules/media.nix
     ../modules/theme.nix
@@ -24,5 +24,6 @@
     "dev"
     "system"
     "media"
+    "nautilus"
   ];
 }

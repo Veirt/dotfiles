@@ -1,87 +1,60 @@
 local M = {}
 
-local uv = vim.uv
-
-local function file_exists(path)
-    return uv.fs_stat(path) ~= nil
-end
-
-local function get_root()
-    local markers = {
-        "deno.json",
-        "deno.jsonc",
-        "package.json",
-        ".git",
+local function root_dir(bufnr, on_dir)
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    local start = (#bufname > 0) and vim.fs.dirname(bufname) or vim.uv.cwd()
+    local root = vim.fs.root(start, {
+        "package-lock.json",
+        "yarn.lock",
+        "pnpm-lock.yaml",
+        "bun.lock",
+        "bun.lockb",
         "tsconfig.json",
         "jsconfig.json",
-    }
-
-    local buf = vim.api.nvim_get_current_buf()
-    local bufname = vim.api.nvim_buf_get_name(buf)
-    local start_dir = (#bufname > 0) and vim.fs.dirname(bufname) or uv.cwd()
-
-    local root = vim.fs.root(start_dir, markers)
-    return root or uv.cwd()
-end
-
-local function is_deno_project(root)
-    return file_exists(root .. "/deno.json") or file_exists(root .. "/deno.jsonc")
-end
-
-local function has_eslint_config(root)
-    return file_exists(root .. "/.eslintrc.js")
-        or file_exists(root .. "/.eslintrc.json")
-        or file_exists(root .. "/.eslintrc.yaml")
-        or file_exists(root .. "/.eslintrc.yml")
+        ".git",
+    }) or vim.uv.cwd()
+    if on_dir then
+        on_dir(root)
+    else
+        return root
+    end
 end
 
 M.setup = function(capabilities)
-    local root = get_root()
-    local deno_mode = is_deno_project(root)
-    local eslint_mode = has_eslint_config(root)
-
-    local vtsls_base = require("vtsls").lspconfig or {}
-
-    vim.lsp.config(
-        "vtsls",
-        vim.tbl_deep_extend("force", vtsls_base, {
-            capabilities = capabilities,
-            settings = {
-                vtsls = {
-                    autoUseWorkspaceTsdk = true,
-                    tsserver = {
-                        globalPlugins = {},
-                    },
-                },
-            },
-        })
-    )
-
-    vim.lsp.config("denols", {
-        capabilities = capabilities,
-        single_file_support = false,
-        root_dir = root,
-        init_options = {
-            enable = true,
-            lint = true,
-            unstable = true,
-        },
-    })
-
-    vim.lsp.config("eslint", {
-        capabilities = capabilities,
-        root_dir = root,
-    })
-
-    if deno_mode then
-        vim.lsp.enable("denols")
-    else
-        vim.lsp.enable("vtsls")
-
-        if eslint_mode then
-            vim.lsp.enable("eslint")
-        end
+    local vtsls = vim.fn.exepath("vtsls")
+    if vtsls == "" then
+        vim.notify("vtsls executable not found in Neovim's PATH", vim.log.levels.ERROR)
+        return
     end
+
+    vim.lsp.config("vtsls", {
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+            if vim.lsp.inlay_hint then
+                vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+            end
+        end,
+        cmd = function(dispatchers, config)
+            local command = vtsls
+            local root = (config or {}).root_dir
+            if root then
+                local local_command = vim.fs.joinpath(root, "node_modules/.bin/vtsls")
+                if vim.fn.executable(local_command) == 1 then
+                    command = local_command
+                end
+            end
+            return vim.lsp.rpc.start({ command, "--stdio" }, dispatchers)
+        end,
+        filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+        },
+        root_dir = root_dir,
+    })
+
+    vim.lsp.enable("vtsls")
 end
 
 return M

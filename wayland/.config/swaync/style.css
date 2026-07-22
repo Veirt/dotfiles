@@ -1,0 +1,241 @@
+/* swaync notification center */
+
+@define-color background #121214;
+@define-color text #ffffff;
+@define-color text-secondary #a1a6a6;
+@define-color border #333333;
+@define-color urgent-bg #9c2220;
+@define-color accent #657B83;
+
+* {
+  all: unset;
+  font-family: JetBrainsMono NF;
+  font-size: 13px;
+}
+
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification {
+  background: @background;
+  border: 1px solid @border;
+  border-radius: 0;
+  margin: 4px 8px;
+  padding: 12px;
+  box-shadow: none;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 0;
+}
+
+.close-button {
+  background: transparent;
+  color: @text-secondary;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  margin: 0 0 0 4px;
+}
+
+.close-button:hover {
+  color: @text;
+}
+
+.notification-default-action {
+  padding: 4px;
+  margin: 0;
+  border-radius: 0;
+}
+
+.notification-default-action:hover {
+  background: #1a1a1f;
+}
+
+.notification-default-action:not(:only-child) {
+  border-bottom: 1px solid @border;
+}
+
+/* Urgency colors */
+.low {
+  /* no special styling */
+}
+
+.normal {
+  /* default */
+}
+
+.critical {
+  background: @urgent-bg;
+  border-color: @urgent-bg;
+}
+
+/* Notification content */
+.notification-content .summary {
+  color: @text;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.notification-content .body {
+  color: @text-secondary;
+  margin-top: 4px;
+}
+
+.notification-content .image {
+  margin-right: 8px;
+}
+
+/* Control center */
+.control-center {
+  background: @background;
+  border: 1px solid @border;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.control-center-header {
+  background: transparent;
+  padding: 12px 16px;
+  border-bottom: 1px solid @border;
+}
+
+.control-center-header .widget-title {
+  color: @text;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.control-center-header .widget-title button {
+  color: @text-secondary;
+  padding: 4px 8px;
+  border-radius: 0;
+}
+
+.control-center-header .widget-title button:hover {
+  color: @text;
+  background: #1a1a1f;
+}
+
+/* DND toggle */
+.dnd-button {
+  color: @text-secondary;
+  padding: 4px 8px;
+  border-radius: 0;
+}
+
+.dnd-button:hover {
+  color: @text;
+  background: #1a1a1f;
+}
+
+.dnd-button > state {
+  color: @accent;
+}
+
+/* MPRIS widget */
+.widget-mpris {
+  background: transparent;
+  border-bottom: 1px solid @border;
+  padding: 12px 16px;
+}
+
+.widget-mpris > box > button {
+  color: @text-secondary;
+  border-radius: 0;
+}
+
+.widget-mpris > box > button:hover {
+  color: @text;
+  background: #1a1a1f;
+}
+
+.widget-mpris-player {
+  padding: 4px 0;
+}
+
+.widget-mpris-title {
+  color: @text;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.widget-mpris-subtitle {
+  color: @text-secondary;
+  font-size: 12px;
+}
+
+/* Volume widget */
+.widget-volume {
+  background: transparent;
+  border-bottom: 1px solid @border;
+  padding: 12px 16px;
+}
+
+.widget-volume > box > button {
+  color: @text-secondary;
+  border-radius: 0;
+}
+
+.widget-volume > box > button:hover {
+  color: @text;
+  background: #1a1a1f;
+}
+
+/* Inhibitors widget */
+.widget-inhibitors {
+  background: transparent;
+  border-bottom: 1px solid @border;
+  padding: 12px 16px;
+}
+
+.widget-inhibitors button {
+  color: @text-secondary;
+  padding: 4px 8px;
+  border-radius: 0;
+}
+
+.widget-inhibitors button:hover {
+  color: @text;
+  background: #1a1a1f;
+}
+
+/* Buttons grid */
+.widget-buttons-grid {
+  background: transparent;
+  border-bottom: 1px solid @border;
+  padding: 12px 16px;
+}
+
+.widget-buttons-grid > box > button {
+  color: @text-secondary;
+  padding: 8px;
+  border-radius: 0;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.widget-buttons-grid > box > button:hover {
+  color: @text;
+  background: #1a1a1f;
+}
+
+/* Scrollbar */
+.control-center list {
+  background: transparent;
+}
+
+scrollbar {
+  background: transparent;
+}
+
+scrollbar slider {
+  background: @border;
+  border-radius: 0;
+  min-width: 4px;
+}
