@@ -9,10 +9,13 @@
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
 
+      # Directories (used by Firefox's "Show in folder" action)
+      "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+
       # Documents
-      "application/pdf" = [ "zathura.desktop" ];
-      "application/epub+zip" = [ "zathura.desktop" ];
-      "application/postscript" = [ "zathura.desktop" ];
+      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
+      "application/epub+zip" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
+      "application/postscript" = [ "org.pwmt.zathura-ps.desktop" ];
 
       # Text / editor placeholders
       "text/plain" = [ "nvim.desktop" ];

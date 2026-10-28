@@ -1,10 +1,10 @@
-{ pkgs, pkgsUnstable, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
 
   programs.zathura = {
     enable = true;
-    package = pkgsUnstable.zathura;
+    package = if config.dotfiles.preferSystemPackages then pkgs.emptyDirectory else pkgsUnstable.zathura;
 
     options = {
       selection-clipboard = "clipboard";
@@ -23,7 +23,6 @@
     pamixer
     pkgsUnstable.mpd-discord-rpc
 
-    tesseract
     batsignal
 
     libnotify
@@ -34,6 +33,8 @@
     pkgsUnstable.tinymist
 
     pkgs.corefonts
+  ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+    tesseract
   ];
 
   home.sessionVariables = {

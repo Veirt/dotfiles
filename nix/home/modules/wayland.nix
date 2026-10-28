@@ -1,4 +1,4 @@
-{ pkgs, pkgsUnstable, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
   imports = [
@@ -12,16 +12,17 @@
   home.packages = with pkgs; [
     pkgsUnstable.wbg
 
-    grim
-    slurp
     wl-clipboard
     wl-screenrec
     wlsunset
-    wmenu
     imagemagick
-    wshowkeys
     hyprpicker
     xdg-terminal-exec
+  ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+    grim
+    slurp
+    wmenu
+    wshowkeys
   ];
 
   xdg.configFile."chromium-flags.conf".text = ''

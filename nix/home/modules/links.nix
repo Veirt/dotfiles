@@ -91,6 +91,9 @@ let
       xdg = {
         "foot" = "foot/.config/foot";
       };
+      home = {
+        ".local/bin/foot-tmux" = "foot/.local/bin/foot-tmux";
+      };
     };
 
     nautilus = {

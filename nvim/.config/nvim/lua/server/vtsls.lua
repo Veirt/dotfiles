@@ -30,6 +30,16 @@ M.setup = function(capabilities)
     vim.lsp.config("vtsls", {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
+            -- vtsls is an import-actions-only companion to tsgo.
+            client.server_capabilities.completionProvider = nil
+            client.server_capabilities.hoverProvider = nil
+            client.server_capabilities.definitionProvider = nil
+            client.server_capabilities.referencesProvider = nil
+            client.server_capabilities.renameProvider = nil
+            client.server_capabilities.documentFormattingProvider = nil
+            client.server_capabilities.documentRangeFormattingProvider = nil
+            client.handlers["textDocument/publishDiagnostics"] = function() end
+
             if vim.lsp.inlay_hint then
                 vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
             end

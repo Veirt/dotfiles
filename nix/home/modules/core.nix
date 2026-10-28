@@ -9,6 +9,12 @@ in
       type = types.str;
       default = "${config.home.homeDirectory}/.dotfiles";
     };
+
+    preferSystemPackages = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Prefer host-installed packages when an equivalent system package is available.";
+    };
   };
 
   config = {

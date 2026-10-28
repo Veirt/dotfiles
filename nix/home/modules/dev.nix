@@ -1,20 +1,21 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
   home.packages = with pkgs; [
-    git
     lazygit
     gh
-    tmux
-    ripgrep
     fd
     jq
     direnv
     zoxide
     fzf
+    rustup
+  ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+    git
+    tmux
+    ripgrep
     nodejs
     pnpm
-    go
-    rustup
+    pkgsUnstable.go
   ];
 }

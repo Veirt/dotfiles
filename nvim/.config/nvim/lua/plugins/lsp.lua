@@ -53,12 +53,13 @@ return {
         vim.lsp.enable("tinymist")
 
         local vtsls_server = require("server.vtsls")
-        local tsgo_server = require("server.tsgo")
+        local tsc_server = require("server.tsc")
         local jsonls_server = require("server.jsonls")
         local gopls_server = require("server.gopls")
 
+        -- tsc provides normal language features; vtsls only provides import actions.
         -- vtsls_server.setup(capabilities)
-        tsgo_server.setup(capabilities)
+        tsc_server.setup(capabilities)
         jsonls_server.setup()
         gopls_server.setup()
 
@@ -99,12 +100,8 @@ return {
                 buf_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>")
 
                 -- Typescript
-                buf_set_keymap("n", "<leader>tsi", ":VtsExec organize_imports<CR>")
-                buf_set_keymap("n", "<leader>tsr", ":VtsExec rename_file<CR>")
-                buf_set_keymap("n", "<leader>tsa", ":VtsExec add_missing_imports<CR>")
-                buf_set_keymap("n", "<leader>tss", ":VtsExec sort_imports<CR>")
-                buf_set_keymap("n", "<leader>tsu", ":VtsExec unused_files<CR>")
-                buf_set_keymap("n", "<leader>tsf", ":VtsExec fix_all<CR>")
+                buf_set_keymap("n", "<leader>tsi", "<cmd>lua vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } } })<CR>")
+                buf_set_keymap("n", "<leader>tsa", "<cmd>lua vim.lsp.buf.code_action({ context = { diagnostics = vim.diagnostic.get(0) } })<CR>")
             end,
         })
     end,

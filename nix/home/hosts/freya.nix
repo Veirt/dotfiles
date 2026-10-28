@@ -6,6 +6,7 @@
   ];
 
   dotfiles.root = "/home/veirt/.dotfiles";
+  dotfiles.preferSystemPackages = true;
 
   home.sessionVariables = {
     VDPAU_DRIVER = "nvidia";
