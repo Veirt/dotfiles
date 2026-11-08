@@ -10,15 +10,15 @@
   '';
 
   home.packages = with pkgs; [
-    pkgsUnstable.wbg
-
     wl-clipboard
+    cliphist
     wl-screenrec
-    wlsunset
     imagemagick
     hyprpicker
     xdg-terminal-exec
   ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+    pkgsUnstable.wbg
+    wlsunset
     grim
     slurp
     wmenu
@@ -41,16 +41,14 @@
     --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE
   '';
 
+  # Session identity (XDG_CURRENT_DESKTOP / XDG_SESSION_TYPE) is set by the
+  # compositor so it does not leak into TTY or SSH sessions.
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "wlroots";
-    XDG_SESSION_DESKTOP = "wlroots";
 
-    GDK_BACKEND = "wayland";
-    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    QT_QPA_PLATFORM = "wayland;xcb";
     CLUTTER_BACKEND = "wayland";
-    SDL_VIDEODRIVER = "wayland,x11";
 
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_WEBRENDER = "1";

@@ -26,15 +26,18 @@
     batsignal
 
     libnotify
-    pkgsUnstable.swayosd
 
-    (nativeOptimized pkgsUnstable.neovim)
+    (if config.dotfiles.nativeBuilds.enable
+    then nativeOptimized pkgsUnstable.neovim
+    else pkgsUnstable.neovim)
     pkgsUnstable.nixfmt
     pkgsUnstable.tinymist
 
     pkgs.corefonts
+    pkgsUnstable.satty
   ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
     tesseract
+    pkgsUnstable.swayosd
   ];
 
   home.sessionVariables = {

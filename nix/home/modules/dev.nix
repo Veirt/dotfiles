@@ -9,6 +9,7 @@
     direnv
     zoxide
     fzf
+    atuin
     rustup
   ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
     git

@@ -6,7 +6,10 @@ in
 {
   programs.waybar = {
     enable = true;
-    package = inputs.waybar.packages.${pkgs.system}.default;
+    package =
+      if config.dotfiles.preferSystemPackages
+      then pkgs.emptyDirectory
+      else inputs.waybar.packages.${pkgs.system}.default;
     style = ../../../waybar/.config/waybar/style.css;
     settings = [
       {

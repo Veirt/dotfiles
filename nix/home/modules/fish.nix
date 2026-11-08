@@ -63,8 +63,6 @@ in
       set -gx WEB_SEARCH_hi10 'https://hi10anime.com/?s='
       set -gx WEB_SEARCH_mal 'https://myanimelist.net/search/all?cat=all&q='
 
-      # fix valgrind
-      set -gx DEBUGINFOD_URLS 'https://debuginfod.archlinux.org'
     '';
 
     interactiveShellInit = ''

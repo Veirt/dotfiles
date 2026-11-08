@@ -6,7 +6,7 @@ in
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "/mnt/storage/music";
+    musicDirectory = config.dotfiles.paths.music;
 
     extraConfig = ''
       log_file "syslog"
