@@ -28,7 +28,7 @@
 
   dotfiles.bun = {
     enable = true;
-    executable = "/usr/bin/bun";
+    executable = lib.mkDefault "/usr/bin/bun";
     packages = [
       "9router@0.5.104"
       "@agegr/pi-web@0.12.2"

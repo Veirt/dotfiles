@@ -82,6 +82,10 @@ in
 
       source ~/.config/shell_aliases
 
+      if type -q mise
+          mise activate fish | source
+      end
+
       if type -q zoxide
           zoxide init fish | source
       end

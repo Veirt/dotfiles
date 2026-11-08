@@ -10,6 +10,7 @@
     zoxide
     fzf
     atuin
+    mise
     rustup
   ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
     git
