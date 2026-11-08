@@ -15,10 +15,9 @@
 
     npm_config_userconfig = "$HOME/.config/npm/npmrc";
     NODE_REPL_HISTORY = "$HOME/.local/share/node_history";
-    HISTFILE = "$HOME/.local/share/bash/history";
     PYTHONPYCACHEPREFIX = "$HOME/.cache/python";
     GRADLE_USER_HOME = "$HOME/.local/share/gradle";
-    _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$HOME/.config/java";
+    JAVA_TOOL_OPTIONS = "-Djava.util.prefs.userRoot=$HOME/.config/java";
 
     NPM_CONFIG_INIT_MODULE = "$XDG_CONFIG_HOME/npm/config/npm-init.js";
     NPM_CONFIG_CACHE = "$HOME/.local/cache/npm";

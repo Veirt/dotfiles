@@ -15,3 +15,8 @@ fi
 if [ -f "$HOME/.deno/env" ]; then
     . "$HOME/.deno/env"
 fi
+
+# Vite+ bin (https://viteplus.dev)
+if [ -f "$HOME/.vite-plus/env" ]; then
+    . "$HOME/.vite-plus/env"
+fi
