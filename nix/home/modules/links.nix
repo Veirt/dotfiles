@@ -76,6 +76,7 @@ let
         ".local/bin/bt" = "system/.local/bin/bt";
         ".local/bin/campus" = "system/.local/bin/campus";
         ".local/bin/home" = "system/.local/bin/home";
+        ".local/bin/prime-run" = "system/.local/bin/prime-run";
         ".local/bin/out" = "system/.local/bin/out";
         ".local/bin/update" = "system/.local/bin/update";
       };

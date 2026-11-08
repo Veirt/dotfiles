@@ -1,0 +1,9 @@
+#!/bin/sh
+# Run a command on the discrete NVIDIA GPU (PRIME render offload).
+# freya is a MUXless Optimus laptop: Intel drives the panel, so games render on
+# the GTX 1050 and present through the Intel framebuffer.
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export __VK_LAYER_NV_optimus=NVIDIA_only
+
+exec "$@"
