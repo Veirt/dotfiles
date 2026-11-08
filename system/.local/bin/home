@@ -2,8 +2,10 @@
 
 if command -q systemctl
     systemctl --user start syncthing
-else
-    sudo rc-service syncthing start
+else if not pgrep -x syncthing >/dev/null
+    # OpenRC has no per-user unit; run syncthing as the user who owns the state.
+    nohup syncthing serve --no-browser >/dev/null 2>&1 &
+    disown
 end
 
 lbg wayvnc --output=eDP-1 0.0.0.0 -S /tmp/wayvnc-mirror.sock
