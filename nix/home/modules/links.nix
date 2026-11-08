@@ -96,6 +96,13 @@ let
       };
     };
 
+    mangowc = {
+      xdg = {
+        "mango" = "mangowc/.config/mango";
+        "xdg-desktop-portal/mango-portals.conf" = "mangowc/.config/xdg-desktop-portal/mango-portals.conf";
+      };
+    };
+
     nautilus = {
       home = {
         ".local/share/nautilus-python/extensions/upload_imgur.py" = "nautilus/.local/share/nautilus-python/extensions/upload_imgur.py";

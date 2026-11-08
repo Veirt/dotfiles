@@ -27,5 +27,6 @@
     "alacritty"
     "foot"
     "wayland"
+    "mangowc"
   ];
 }

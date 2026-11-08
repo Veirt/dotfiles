@@ -24,6 +24,7 @@
     "dev"
     "system"
     "media"
+    "mangowc"
     "nautilus"
   ];
 }
