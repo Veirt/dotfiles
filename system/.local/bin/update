@@ -3,7 +3,10 @@
 update() {
     if command -v emerge >/dev/null 2>&1; then
         sudo true
-        sudo emaint sync -a && sudo emerge -avuDN @world
+        # Prefer the cgroup-limited wrapper when the host provides one.
+        EMERGE=emerge
+        command -v emerge-capped >/dev/null 2>&1 && EMERGE=emerge-capped
+        sudo emaint sync -a && sudo "$EMERGE" -avuDN @world
         return
     fi
 
