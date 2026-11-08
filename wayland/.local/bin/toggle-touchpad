@@ -1,13 +1,26 @@
 #!/bin/bash
+# Toggle the first i2c-hid touchpad on the machine.
 
-DEVICE_PATH="/sys/bus/i2c/devices/i2c-PNP0C50:0e"
-DEVICE_NAME="i2c-PNP0C50:0e"
+DEVICE=""
+for d in /sys/bus/i2c/devices/i2c-*; do
+    [ -e "$d/driver" ] || continue
+    if [ "$(basename "$(readlink -f "$d/driver")")" = "i2c_hid_acpi" ]; then
+        DEVICE="$(basename "$d")"
+        break
+    fi
+done
 
-if [ -e "$DEVICE_PATH/driver/unbind" ]; then
-    echo "$DEVICE_NAME" | sudo tee "$DEVICE_PATH/driver/unbind" > /dev/null
-    notify-send "Touchpad" "Disabled"
-else
-    echo "$DEVICE_NAME" | sudo tee /sys/bus/i2c/drivers/i2c_hid_acpi/bind > /dev/null
-    notify-send "Touchpad" "Enabled"
+if [ -z "$DEVICE" ]; then
+    notify-send "Touchpad" "No i2c-hid touchpad found"
+    exit 1
 fi
 
+BASE="/sys/bus/i2c/devices/$DEVICE"
+
+if [ -e "$BASE/driver/unbind" ]; then
+    echo "$DEVICE" | sudo tee "$BASE/driver/unbind" > /dev/null
+    notify-send "Touchpad" "Disabled"
+else
+    echo "$DEVICE" | sudo tee /sys/bus/i2c/drivers/i2c_hid_acpi/bind > /dev/null
+    notify-send "Touchpad" "Enabled"
+fi

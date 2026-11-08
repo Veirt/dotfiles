@@ -1,4 +1,9 @@
 #!/usr/bin/fish
 
-systemctl --user start syncthing
+if command -q systemctl
+    systemctl --user start syncthing
+else
+    sudo rc-service syncthing start
+end
+
 lbg wayvnc --output=eDP-1 0.0.0.0 -S /tmp/wayvnc-mirror.sock

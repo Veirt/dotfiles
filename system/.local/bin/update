@@ -1,6 +1,12 @@
 #!/bin/sh
 
 update() {
+    if command -v emerge >/dev/null 2>&1; then
+        sudo true
+        sudo emaint sync -a && sudo emerge -avuDN @world
+        return
+    fi
+
     if command -v nala >/dev/null 2>&1; then
         sudo true
         nala update && nala dist-upgrade -y && nala autoremove -y

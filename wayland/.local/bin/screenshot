@@ -22,7 +22,7 @@ if [ "$1" = "screen" ]; then
         fi
     fi
 
-    if [ -v "$output" ]; then
+    if [ ! -f "$output" ]; then
         notify-send -u critical "Something went wrong." "Can't take a screenshot."
     else
         notify-send "Screenshot has taken" --icon="$output"
