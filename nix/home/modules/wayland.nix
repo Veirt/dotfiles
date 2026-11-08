@@ -16,13 +16,14 @@
     imagemagick
     hyprpicker
     xdg-terminal-exec
+    # Not packaged in Gentoo or guru; always come from Nix.
+    wshowkeys
   ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
     pkgsUnstable.wbg
     wlsunset
     grim
     slurp
     wmenu
-    wshowkeys
   ];
 
   xdg.configFile."chromium-flags.conf".text = ''

@@ -11,7 +11,6 @@
   # The backup's gpg-private.asc is empty, so gpg-agent has no SSH key here.
   dotfiles.sshAgent = "ssh";
   dotfiles.nativeBuilds.enable = true;
-  dotfiles.paths.music = "/home/veirt/personal/music";
   dotfiles.bun.executable = "${pkgsUnstable.bun}/bin/bun";
 
   home.packages = [ pkgsUnstable.bun ];
