@@ -6,10 +6,9 @@ in
 {
   programs.waybar = {
     enable = true;
-    package =
-      if config.dotfiles.preferSystemPackages
-      then pkgs.emptyDirectory
-      else inputs.waybar.packages.${pkgs.system}.default;
+    # Gentoo's gui-apps/waybar does not expose the mango modules yet
+    # (Gentoo bug 979643), so the flake build is used on every host.
+    package = inputs.waybar.packages.${pkgs.system}.default;
     style = ../../../waybar/.config/waybar/style.css;
     settings = [
       {
