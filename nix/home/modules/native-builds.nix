@@ -1,7 +1,7 @@
-{ ... }:
+{ config, lib, ... }:
 
 {
-  nixpkgs.overlays = [
+  nixpkgs.overlays = lib.mkIf config.dotfiles.nativeBuilds.enable [
     (final: prev: {
       nativeOptimized = pkg:
         pkg.overrideAttrs (old: {
