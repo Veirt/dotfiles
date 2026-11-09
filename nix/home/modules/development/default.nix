@@ -3,10 +3,11 @@
 {
   # Nix provides mise and the shell utilities needed before project runtimes
   # are activated. Language runtimes, LSPs, formatters, and dev CLIs live in
-  # dev/.config/mise/config.toml.
+  # nix/home/files/mise/config.toml.
   home.packages = [ pkgsUnstable.mise ] ++ (with pkgs; [
     fd
     jq
+    unzip
     direnv
     zoxide
     fzf
@@ -22,32 +23,25 @@
     FZF_DEFAULT_OPTS = "--prompt='❱ ' --bind alt-j:down,alt-k:up";
   };
 
+  home.file = {
+    ".local/bin/cheat".source = ../../files/dev/bin/cheat;
+    ".local/bin/dev-sync".source = ../../files/dev/bin/dev-sync;
+    ".local/bin/j".source = ../../files/dev/bin/j;
+  };
+
+  xdg.configFile."dev-sync".source = ../../files/dev/dev-sync;
+
   xdg.configFile."mise/config.toml" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.dotfiles.root}/dev/.config/mise/config.toml";
-    force = true;
+    source = ../../files/mise/config.toml;
   };
 
   xdg.configFile."mise/mise.lock" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.dotfiles.root}/dev/.config/mise/mise.lock";
-    force = true;
+    source = ../../files/mise/mise.lock;
   };
 
   xdg.configFile."mise/locks" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.dotfiles.root}/dev/.config/mise/locks";
-    force = true;
+    source = ../../files/mise/locks;
   };
 
-  xdg.configFile."lazygit/config.yml".text = ''
-    git:
-      overrideGpg: true
-    customCommands:
-      - key: '<c-b>'
-        description: 'Generate AI commit'
-        command: 'tiredcommit'
-        context: 'files'
-        output: 'terminal'
-  '';
+  xdg.configFile."lazygit/config.yml".source = ../../files/lazygit/config.yml;
 }

@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+description="Syncthing for veirt"
+command="/home/veirt/.nix-profile/bin/syncthing"
+command_args="serve --no-browser --no-restart --home=/home/veirt/.local/state/syncthing"
+command_user="veirt:veirt"
+supervisor="supervise-daemon"
+export HOME="/home/veirt"
+
+depend() {
+  need localmount
+  after net
+}

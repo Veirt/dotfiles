@@ -3,14 +3,9 @@
 {
   imports = [
     ../modules/core.nix
-    ../modules/env.nix
-    ../modules/fish.nix
-    ../modules/links.nix
-  ];
-
-  dotfiles.links.packages = [
-    "shared"
-    "nvim"
+    ../modules/environment
+    ../modules/shell
+    ../modules/programs/neovim.nix
   ];
 
   home.packages = with pkgs; [

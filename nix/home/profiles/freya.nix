@@ -1,29 +1,16 @@
-{ lib, ... }:
+{ ... }:
 
 {
   imports = [
     ./base.nix
-    ../modules/xdg-cleanup.nix
-    ../modules/mime-apps.nix
-    ../modules/desktop.nix
+    ../modules/desktop
+    ../modules/desktop/vibepanel.nix
+    ../modules/desktop/vicinae.nix
+    ../modules/desktop/mango-freya-shell.nix
     ../modules/native-builds.nix
-    ../modules/wayland.nix
-    ../modules/waybar.nix
-    ../modules/swaync.nix
-    ../modules/fcitx5.nix
-    ../modules/media.nix
-    ../modules/theme.nix
+    ../modules/applications/media.nix
+    ../modules/applications/nautilus.nix
+    ../modules/applications/system-tools.nix
     ../modules/development
-  ];
-
-  dotfiles.links.packages = lib.mkAfter [
-    "alacritty"
-    "foot"
-    "wayland"
-    "dev"
-    "system"
-    "media"
-    "mangowc"
-    "nautilus"
   ];
 }

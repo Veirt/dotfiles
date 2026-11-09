@@ -3,19 +3,10 @@
 {
   imports = [
     ../modules/core.nix
-    ../modules/xdg-user-dirs.nix
-    ../modules/env.nix
-    ../modules/fish.nix
-    ../modules/links.nix
-    ../modules/shell.nix
+    ../modules/environment
+    ../modules/shell
+    ../modules/programs
     ../modules/secrets.nix
     ../modules/security.nix
-  ];
-
-  dotfiles.links.packages = [
-    "shared"
-    "bash"
-    "nvim"
-    "tmux"
   ];
 }

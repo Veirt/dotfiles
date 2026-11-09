@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+geometry="$(slurp)" || exit 0
+[ -n "$geometry" ] || exit 0
+
+output_dir="$(xdg-user-dir PICTURES)/screenshots"
+mkdir -p "$output_dir"
+
+grim -g "$geometry" - | satty \
+  --filename - \
+  --output-filename "$output_dir/%Y-%m-%d_%H-%M-%S.png" \
+  --copy-command wl-copy

@@ -3,10 +3,9 @@
 {
   imports = [
     ../profiles/workstation.nix
-    ../modules/zapfast.nix
+    ../modules/applications/zapfast.nix
   ];
 
-  dotfiles.root = "/home/veirt/.dotfiles";
   dotfiles.initSystem = "systemd";
   dotfiles.nativeBuilds.enable = true;
 

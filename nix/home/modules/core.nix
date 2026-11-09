@@ -5,11 +5,6 @@ let
 in
 {
   options.dotfiles = {
-    root = mkOption {
-      type = types.str;
-      default = "${config.home.homeDirectory}/.dotfiles";
-    };
-
     preferSystemPackages = mkOption {
       type = types.bool;
       default = false;

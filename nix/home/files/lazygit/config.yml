@@ -1,0 +1,8 @@
+git:
+  overrideGpg: true
+customCommands:
+  - key: '<c-b>'
+    description: 'Generate AI commit'
+    command: 'tiredcommit'
+    context: 'files'
+    output: 'terminal'
