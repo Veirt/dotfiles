@@ -5,7 +5,6 @@
   # are activated. Language runtimes, LSPs, formatters, and dev CLIs live in
   # nix/home/files/mise/config.toml.
   home.packages = [ pkgsUnstable.mise ] ++ (with pkgs; [
-    fd
     jq
     unzip
     direnv
@@ -13,6 +12,7 @@
     fzf
     atuin
   ]) ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+    pkgs.fd
     pkgs.git
     pkgs.tmux
     pkgs.ripgrep

@@ -1,4 +1,4 @@
-{ pkgs, pkgsUnstable, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
   imports = [
@@ -14,8 +14,9 @@
   # The backup's gpg-private.asc is empty, so gpg-agent has no SSH key here.
   dotfiles.sshAgent = "ssh";
   dotfiles.nativeBuilds.enable = true;
-  home.packages = [
+  home.packages = lib.optionals (!config.dotfiles.preferSystemPackages) [
     pkgsUnstable.yazi
+  ] ++ [
     pkgsUnstable.syncthing
     pkgsUnstable.gotop
     pkgsUnstable.typst
@@ -31,7 +32,6 @@
     pkgsUnstable.tcpdump
     pkgsUnstable.iperf3
     pkgsUnstable.rclone
-    pkgsUnstable.ripgrep
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif

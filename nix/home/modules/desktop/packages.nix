@@ -26,8 +26,6 @@
       pkgsUnstable.mailspring
       pkgsUnstable.vesktop
 
-      pkgsUnstable.eza
-
       brightnessctl
       pamixer
 
@@ -35,12 +33,6 @@
 
       libnotify
 
-      (
-        if config.dotfiles.nativeBuilds.enable then
-          nativeOptimized pkgsUnstable.neovim
-        else
-          pkgsUnstable.neovim
-      )
       pkgsUnstable.nixfmt
       pkgsUnstable.tinymist
 
@@ -51,6 +43,13 @@
       pkgsUnstable.mpd-discord-rpc
     ]
     ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+      pkgsUnstable.eza
+      (
+        if config.dotfiles.nativeBuilds.enable then
+          nativeOptimized pkgsUnstable.neovim
+        else
+          pkgsUnstable.neovim
+      )
       tesseract
     ];
 

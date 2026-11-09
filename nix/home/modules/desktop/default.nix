@@ -7,7 +7,6 @@
     ./fcitx5.nix
     ./mime-apps.nix
     ./wayland.nix
-    ./noctalia.nix
     ./gnome.nix
     ./theme.nix
   ];

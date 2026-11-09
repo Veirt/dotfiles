@@ -1,8 +1,20 @@
-{ ... }:
+{ config, pkgs, ... }:
+
+let
+  systemFishSupport = pkgs.runCommand "fish-home-manager-support" { } ''
+    mkdir -p "$out/bin" "$out/share/fish/tools"
+    ln -s "${pkgs.fish}/bin/fish_indent" "$out/bin/fish_indent"
+    ln -s "${pkgs.fish}/share/fish/tools/create_manpage_completions.py" \
+      "$out/share/fish/tools/create_manpage_completions.py"
+  '';
+in
 
 {
   programs.fish = {
     enable = true;
+    # Home Manager needs these build helpers to format Fish config and create
+    # completions. Keep the Fish executable itself on the host when preferred.
+    package = if config.dotfiles.preferSystemPackages then systemFishSupport else pkgs.fish;
 
     shellAliases = {
       google = "web-search google";
