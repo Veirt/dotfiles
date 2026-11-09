@@ -50,7 +50,7 @@ in
 
     # systemd user services do not exist under OpenRC.
     systemd.user.startServices =
-      if config.dotfiles.initSystem == "systemd" then "sd-switch" else "none";
+      if config.dotfiles.initSystem == "systemd" then "sd-switch" else false;
 
     programs.home-manager.enable = true;
   };

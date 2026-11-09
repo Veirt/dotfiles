@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -13,8 +13,7 @@
     ../modules/fcitx5.nix
     ../modules/media.nix
     ../modules/theme.nix
-    ../modules/dev.nix
-    ../modules/dev-heavy.nix
+    ../modules/development
   ];
 
   dotfiles.links.packages = lib.mkAfter [

@@ -18,7 +18,9 @@ return {
         vim.lsp.inlay_hint.enable(false)
 
         require("fidget").setup({})
-        require("mason").setup()
+        -- LSP executables are pinned and exposed by mise; keep Mason's PATH
+        -- untouched so stale Mason installs cannot shadow them.
+        require("mason").setup({ PATH = "skip" })
 
         local capabilities = {
             workspace = {

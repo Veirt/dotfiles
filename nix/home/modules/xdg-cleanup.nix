@@ -9,8 +9,6 @@
     CARGO_HOME = "$HOME/.local/share/cargo";
     RUSTUP_HOME = "$HOME/.local/share/rustup";
     GOPATH = "$HOME/.local/share/go";
-    PNPM_HOME = "$HOME/.local/share/pnpm";
-    BUN_INSTALL = "$HOME/.local/share/bun";
     FVM_CACHE_PATH = "$HOME/.local/share/fvm";
 
     npm_config_userconfig = "$HOME/.config/npm/npmrc";
@@ -43,12 +41,12 @@
   '';
 
   home.activation.createWakatimeHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "$XDG_CONFIG_HOME/wakatime"
+    mkdir -p "${config.xdg.configHome}/wakatime"
   '';
 
   home.activation.createNpmHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "$XDG_DATA_HOME/npm"
-    mkdir -p "$XDG_DATA_HOME/npm/lib"
+    mkdir -p "${config.xdg.dataHome}/npm"
+    mkdir -p "${config.xdg.dataHome}/npm/lib"
   '';
 
   home.activation.createFvmHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

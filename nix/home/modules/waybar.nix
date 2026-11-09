@@ -6,16 +6,16 @@ in
 {
   programs.waybar = {
     enable = true;
-    # Gentoo's gui-apps/waybar does not expose the mango modules yet
-    # (Gentoo bug 979643), so the flake build is used on every host.
-    package = inputs.waybar.packages.${pkgs.system}.default;
+    # Binary comes from gui-apps/waybar on hosts that prefer system packages;
+    # this module then only manages the config.
+    package = if config.dotfiles.preferSystemPackages then pkgs.emptyDirectory else pkgs.waybar;
     style = ../../../waybar/.config/waybar/style.css;
     settings = [
       {
         layer = "bottom";
         position = "top";
         height = 40;
-        modules-left = [ "mango/workspaces" ];
+        modules-left = [ ];
         modules-right = [
           "pulseaudio"
           "backlight"
@@ -24,13 +24,6 @@ in
           "clock"
           "tray"
         ];
-
-        "mango/workspaces" = {
-          format = "{value}";
-          hide-empty = false;
-          on-click = "activate";
-          on-click-right = "toggle";
-        };
 
         "sway/workspaces" = {
           format = "{name}";

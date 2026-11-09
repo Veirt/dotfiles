@@ -3,6 +3,7 @@
 {
   imports = [
     ../profiles/workstation.nix
+    ../modules/zapfast.nix
   ];
 
   dotfiles.root = "/home/veirt/.dotfiles";

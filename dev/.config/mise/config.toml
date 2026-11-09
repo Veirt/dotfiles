@@ -1,0 +1,56 @@
+# Personal defaults for development tools. Project mise.toml files override
+# these versions when a repository needs its own toolchain.
+
+[tools]
+# Language runtimes and package managers
+node = "26"
+bun = "1.4.4"
+go = "1.27.3"
+rust = "stable"
+python = "3.14.10"
+uv = "0.13.7"
+"npm:pnpm" = "12.18.0"
+
+# General development and infrastructure tools
+"aqua:cli/cli" = "2.103.3"
+"aqua:jesseduffield/lazygit" = "0.66.3"
+"aqua:casey/just" = "1.59.0"
+"aqua:hashicorp/terraform" = "1.17.1"
+"aqua:hashicorp/terraform-ls" = "0.39.1"
+"aqua:hadolint/hadolint" = "2.15.1"
+"aqua:tree-sitter/tree-sitter" = "0.27.2"
+"aqua:evilmartians/lefthook" = "2.2.2"
+"go:github.com/bokwoon95/wgo" = "0.7.2"
+"pipx:ansible" = "14.6.0"
+
+# Language servers, formatters, and linters
+"go:golang.org/x/tools/gopls" = "0.24.0"
+"aqua:LuaLS/lua-language-server" = "3.19.2"
+"aqua:JohnnyMorganz/StyLua" = "2.6.0"
+"github:latex-lsp/texlab" = "5.26.0"
+"cargo:https://github.com/antonWetzel/prettypst" = { version = "tag:2.0.0", crate = "prettypst" }
+"aqua:Myriad-Dreamin/tinymist" = "0.15.12"
+"aqua:rust-lang/rust-analyzer" = "2026-11-09"
+"pipx:black" = "26.10.1"
+"pipx:isort" = "9.0.2"
+"pipx:pyrefly" = "1.4.1"
+"npm:pyright" = "1.1.414"
+"npm:intelephense" = "1.18.5"
+"npm:emmet-language-server" = { version = "0.1.3", allow_low_downloads = true }
+"npm:svelte-language-server" = { version = "0.18.5", trust_policy_excludes = ["svelte@4.2.20"] }
+"npm:typescript" = "7.0.2"
+"npm:typescript-language-server" = "6.0.2"
+"npm:@typescript/native-preview" = "7.0.0-dev.20260707.2"
+"npm:@vtsls/language-server" = "0.3.0"
+"npm:vscode-langservers-extracted" = "4.10.0"
+"npm:oxfmt" = "0.73.0"
+"npm:oxlint" = "1.88.0"
+
+# Development CLIs are managed by mise's npm backend (embedded aube by default).
+"npm:@charmland/crush" = { version = "0.98.1", trust_policy_excludes = ["@charmland/crush@0.98.1"] }
+"npm:@earendil-works/pi-ai" = "1.3.0"
+"npm:@earendil-works/pi-coding-agent" = "1.3.0"
+"npm:@oh-my-pi/pi-coding-agent" = "18.11.3"
+"npm:cline" = "3.0.73"
+"npm:command-code" = "1.84.0"
+"npm:effect-solutions" = { version = "0.5.3", trust_policy_excludes = ["@effect/platform-bun@4.0.0-beta.59", "effect@4.0.0-beta.59"] }

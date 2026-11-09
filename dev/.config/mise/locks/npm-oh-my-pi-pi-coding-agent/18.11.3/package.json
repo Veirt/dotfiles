@@ -1,0 +1,7 @@
+{
+  "name": "mise-npm-install",
+  "private": true,
+  "dependencies": {
+    "@oh-my-pi/pi-coding-agent": "18.11.3"
+  }
+}
