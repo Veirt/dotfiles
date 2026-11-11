@@ -37,7 +37,6 @@
       pkgsUnstable.tinymist
 
       pkgs.corefonts
-      pkgsUnstable.satty
     ]
     ++ lib.optionals (config.dotfiles.initSystem == "systemd") [
       pkgsUnstable.mpd-discord-rpc

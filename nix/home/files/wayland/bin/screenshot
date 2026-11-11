@@ -1,13 +1,80 @@
 #!/usr/bin/env bash
+# Region / window / fullscreen capture, saved + copied to the clipboard.
+#   screenshot [region|window|full]   (default: region)
 set -euo pipefail
 
-geometry="$(slurp)" || exit 0
-[ -n "$geometry" ] || exit 0
+mode="${1:-region}"
+case "$mode" in
+  region | window | full) ;;
+  *)
+    echo "usage: $(basename "$0") [region|window|full]" >&2
+    exit 2
+    ;;
+esac
 
-output_dir="$(xdg-user-dir PICTURES)/screenshots"
-mkdir -p "$output_dir"
+out_dir="$(xdg-user-dir PICTURES)/screenshots"
+mkdir -p "$out_dir"
+file="$out_dir/$(date +%Y-%m-%d_%H-%M-%S).png"
 
-grim -g "$geometry" - | satty \
-  --filename - \
-  --output-filename "$output_dir/%Y-%m-%d_%H-%M-%S.png" \
-  --copy-command wl-copy
+tmp="$(mktemp -t screenshot-XXXXXX.png)"
+trap 'rm -f "$tmp"' EXIT
+
+# Freeze the screen while the region is being selected so it does not change
+# under the cursor. Falls back to a live screen if wayfreeze is unavailable.
+with_freeze() {
+  if ! command -v wayfreeze >/dev/null; then
+    "$@"
+    return
+  fi
+
+  local fifo pid rc=0
+  fifo="$(mktemp -u).fifo"
+  mkfifo "$fifo"
+  wayfreeze --after-freeze-timeout 100 --after-freeze-cmd "echo > $fifo" &
+  pid=$!
+  read -r < "$fifo"
+
+  "$@" || rc=$?
+
+  kill "$pid" 2>/dev/null || true
+  rm -f "$fifo"
+  return "$rc"
+}
+
+window_geometry() {
+  command -v mmsg >/dev/null && command -v jq >/dev/null || return 0
+  mmsg get focusing-client 2>/dev/null |
+    jq -r 'if (.width // 0) > 0 and (.height // 0) > 0
+           then "\(.x),\(.y) \(.width)x\(.height)" else empty end'
+}
+
+capture() {
+  local geo=""
+
+  case "$mode" in
+    region)
+      geo="$(slurp -d)" || return 0
+      [ -n "$geo" ] || return 0
+      grim -g "$geo" "$tmp"
+      ;;
+    window)
+      geo="$(window_geometry)"
+      [ -n "$geo" ] || return 0
+      grim -g "$geo" "$tmp"
+      ;;
+    full)
+      grim "$tmp"
+      ;;
+  esac
+}
+
+if [ "$mode" = region ]; then
+  with_freeze capture || exit 0
+else
+  capture || exit 0
+fi
+
+[ -s "$tmp" ] || exit 0
+
+cp "$tmp" "$file"
+wl-copy --type image/png < "$file"

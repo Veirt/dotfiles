@@ -20,7 +20,7 @@ in
     background_opacity = 0.0
 
     [widgets]
-    left = [ { group = ["workspaces" }, "window_title" ]
+    left = [ { group = ["workspaces"] } ]
     center = ["media"]
     right = ["tray", { group = ["cpu", "memory"] }, "quick_settings", "battery", "clock", "notifications"]
     border_radius = 42

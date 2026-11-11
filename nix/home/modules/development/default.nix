@@ -7,7 +7,6 @@
   home.packages = [ pkgsUnstable.mise ] ++ (with pkgs; [
     jq
     unzip
-    direnv
     zoxide
     fzf
     atuin
@@ -16,7 +15,17 @@
     pkgs.git
     pkgs.tmux
     pkgs.ripgrep
-  ];
+  ] ++ (with pkgsUnstable; [
+    ast-grep
+    hyperfine
+    mprocs
+    trippy
+  ]);
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   home.sessionVariables = {
     FZF_DEFAULT_COMMAND = "fd --hidden --follow --exclude '.git' --exclude 'node_modules'";

@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     vibepanel.url = "github:prankstr/vibepanel";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +26,10 @@
         inherit home-manager nixpkgs system;
         extraModules = [
           sops-nix.homeManagerModules.sops
+          inputs.nix-index-database.homeModules.default
+          ({ ... }: {
+            programs.nix-index-database.comma.enable = true;
+          })
         ];
         extraSpecialArgs = { inherit inputs; };
       };

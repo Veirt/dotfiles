@@ -14,6 +14,7 @@
     hyprpicker
     xdg-terminal-exec
     # Not packaged in Gentoo or guru; always come from Nix.
+    wayfreeze
     wshowkeys
   ] ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
     grim
@@ -31,6 +32,15 @@
     GDK_BACKEND = "wayland,x11";
     QT_QPA_PLATFORM = "wayland;xcb";
     CLUTTER_BACKEND = "wayland";
+
+    # Non-NixOS only: nixpkgs' glvnd ships no EGL vendor definitions (NixOS
+    # normally bridges them via /run/opengl-driver, which does not exist here),
+    # so Nix-built GL apps picked up from a keybind die with "failed to create
+    # EGL display" (wdisplays and other GTK4/Qt apps hit the same wall).
+    # Point glvnd at the host's vendor files so Nix apps use the system GPU
+    # stack, exactly as native apps already do.
+    __EGL_VENDOR_LIBRARY_FILENAMES =
+      "/usr/share/glvnd/egl_vendor.d/10_nvidia.json:/usr/share/glvnd/egl_vendor.d/50_mesa.json";
 
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_WEBRENDER = "1";
