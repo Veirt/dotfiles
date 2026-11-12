@@ -48,7 +48,6 @@ uv = "0.13.7"
 
 # Development CLIs are managed by mise's npm backend (embedded aube by default).
 "npm:@charmland/crush" = { version = "0.98.1", trust_policy_excludes = ["@charmland/crush@0.98.1"] }
-"npm:@earendil-works/pi-ai" = "1.3.0"
 "npm:@earendil-works/pi-coding-agent" = "1.3.0"
 "npm:@oh-my-pi/pi-coding-agent" = "18.11.3"
 "npm:cline" = "3.0.73"

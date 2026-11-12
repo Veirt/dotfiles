@@ -18,7 +18,10 @@
     };
   };
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts.monospace = [ "0xProto Nerd Font" ];
+  };
 
   home.packages =
     with pkgs;
@@ -37,6 +40,7 @@
       pkgsUnstable.tinymist
 
       pkgs.corefonts
+      pkgs.nerd-fonts._0xproto
     ]
     ++ lib.optionals (config.dotfiles.initSystem == "systemd") [
       pkgsUnstable.mpd-discord-rpc

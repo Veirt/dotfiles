@@ -34,16 +34,16 @@ TERM = "xterm-256color"
 size = 13.5
 
 [font.bold]
-family = "JetBrainsMono NF"
+family = "0xProto Nerd Font"
 
 [font.bold_italic]
-family = "JetBrainsMono NF"
+family = "0xProto Nerd Font"
 
 [font.italic]
-family = "JetBrainsMono NF"
+family = "0xProto Nerd Font"
 
 [font.normal]
-family = "JetBrainsMono NF"
+family = "0xProto Nerd Font"
 
 [font.offset]
 x = 1

@@ -5,6 +5,8 @@
     enable = true;
     type = "fcitx5";
     fcitx5 = {
+      waylandFrontend = true;
+
       addons = with pkgs; [
         fcitx5-mozc
         fcitx5-gtk
@@ -107,7 +109,6 @@
   };
 
   home.sessionVariables = {
-    QT_IM_MODULE = lib.mkForce "xim";
     XMODIFIERS = "@im=fcitx";
     SDL_IM_MODULE = "fcitx";
     FCITX_ADDON_DIRS = "/home/veirt/.local/lib/fcitx5";

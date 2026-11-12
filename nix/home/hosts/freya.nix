@@ -32,7 +32,7 @@
     pkgsUnstable.tcpdump
     pkgsUnstable.iperf3
     pkgsUnstable.rclone
-    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
   ];
