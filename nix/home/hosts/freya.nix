@@ -32,6 +32,7 @@
     pkgsUnstable.tcpdump
     pkgsUnstable.iperf3
     pkgsUnstable.rclone
+    pkgsUnstable.prometheus-node-exporter
     pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
@@ -39,6 +40,11 @@
 
   home.file.".local/share/freya/syncthing.openrc" = {
     source = ../files/freya/syncthing.openrc;
+    executable = true;
+  };
+
+  home.file.".local/share/freya/node-exporter.openrc" = {
+    source = ../files/freya/node-exporter.openrc;
     executable = true;
   };
 

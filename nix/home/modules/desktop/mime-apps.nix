@@ -1,4 +1,18 @@
 { ... }: {
+  # Keep the stable desktop ID used by our MIME defaults and Vicinae shortcuts,
+  # even though this host's Firefox package registers as firefox-bin.desktop.
+  xdg.desktopEntries.firefox = {
+    name = "Firefox";
+    genericName = "Web Browser";
+    exec = "firefox-bin --name=firefox-bin %u";
+    icon = "firefox-bin";
+    mimeType = [ "text/html" "x-scheme-handler/http" "x-scheme-handler/https" ];
+    categories = [ "Network" "WebBrowser" ];
+    startupNotify = true;
+    noDisplay = true;
+    settings.StartupWMClass = "firefox";
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

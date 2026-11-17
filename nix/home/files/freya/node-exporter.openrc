@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+description="Prometheus node_exporter"
+command="/home/veirt/.nix-profile/bin/node_exporter"
+command_args="--web.listen-address=:9100"
+supervisor="supervise-daemon"
+
+depend() {
+  need localmount
+  after net
+}

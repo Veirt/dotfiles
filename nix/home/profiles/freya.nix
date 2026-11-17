@@ -6,7 +6,6 @@
     ../modules/desktop
     ../modules/desktop/vibepanel.nix
     ../modules/desktop/vicinae.nix
-    ../modules/desktop/mango-freya-shell.nix
     ../modules/native-builds.nix
     ../modules/applications/media.nix
     ../modules/applications/nautilus.nix
