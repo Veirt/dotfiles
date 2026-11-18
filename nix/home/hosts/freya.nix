@@ -36,6 +36,7 @@
     pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
+    pkgs.noto-fonts
   ];
 
   home.file.".local/share/freya/syncthing.openrc" = {
