@@ -1,20 +1,43 @@
 #!/usr/bin/env bash
 
-OUPTUT_FILE="$(date +'%Y-%m-%d-%s_screenrecord.mp4')"
-output="$(xdg-user-dir VIDEOS)/screenrecord/$OUPTUT_FILE"
+set -euo pipefail
 
-if pgrep wl-screenrec; then
-    notify-send "Stopping recording."
-    killall -INT wl-screenrec
+if [ "${1:-}" = "status" ]; then
+    pid="$(pgrep -x wl-screenrec | head -n1 || true)"
+    if [ -n "$pid" ]; then
+        elapsed="$(ps -o etimes= -p "$pid" 2>/dev/null | tr -d ' ' || echo 0)"
+        elapsed="${elapsed:-0}"
+        printf '{"text": "%02d:%02d", "alt": "recording", "class": "recording", "tooltip": "Recording — click to stop"}\n' \
+            "$((elapsed / 60))" "$((elapsed % 60))"
+    else
+        printf '{"text": "", "alt": "idle", "class": "idle", "tooltip": "Left-click: Record | Right-click: Record with audio"}\n'
+    fi
+    exit 0
+fi
+
+output_dir="$(xdg-user-dir VIDEOS)/screenrecord"
+mkdir -p "$output_dir"
+output_file="$(date +'%Y-%m-%d-%s_screenrecord.mp4')"
+output="$output_dir/$output_file"
+
+if pgrep -x wl-screenrec >/dev/null; then
+    notify-send "Stopping recording." || true
+    pkill -INT -x wl-screenrec
 else
-    notify-send "Starting recording…"
+    notify-send "Starting recording…" || true
     sleep 1
 
-    # check parameter, if it equals to audio then record with audio
-    if [ "$1" == "audio" ]; then
-        wl-screenrec --audio -f "$output"
-        exit 0
+    output_flag=()
+    if command -v mmsg >/dev/null 2>&1; then
+        monitor="$(mmsg get cursorpos 2>/dev/null | sed -n 's/.*"monitor":"\([^"]*\)".*/\1/p')"
+        if [ -n "$monitor" ]; then
+            output_flag=(-o "$monitor")
+        fi
     fi
 
-    wl-screenrec -f "$output"
+    if [ "${1:-}" = "audio" ]; then
+        nohup wl-screenrec "${output_flag[@]}" --audio -f "$output" >/dev/null 2>&1 &
+    else
+        nohup wl-screenrec "${output_flag[@]}" -f "$output" >/dev/null 2>&1 &
+    fi
 fi

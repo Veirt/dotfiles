@@ -22,7 +22,7 @@ in
     [widgets]
     left = [ { group = ["workspaces"] } ]
     center = ["media"]
-    right = ["tray", { group = ["cpu", "memory"] }, "quick_settings", "battery", "clock", "notifications"]
+    right = ["tray", { group = ["cpu", "memory"] }, { group = ["custom-record", "quick_settings"] }, "battery", "clock", "notifications"]
     border_radius = 42
     background_opacity = 0.88
     popover_background_opacity = 0.97
@@ -34,6 +34,17 @@ in
 
     [widgets.clock]
     format = "%a, %d %b  %H:%M"
+
+    [widgets.custom-record]
+    icon = "glyph:●"
+    exec = "$HOME/.local/bin/record status"
+    interval = 1
+    on_click = "$HOME/.local/bin/record"
+    on_click_right = "$HOME/.local/bin/record audio"
+
+    [widgets.custom-record.icons]
+    idle = "glyph:●"
+    recording = "media-playback-stop-symbolic"
 
     [theme]
     mode = "auto"
@@ -62,5 +73,16 @@ in
 
     [advanced]
     compositor = "mango"
+  '';
+
+  xdg.configFile."vibepanel/style.css".text = ''
+    .custom-record.recording {
+      color: #f38ba8;
+    }
+
+    .custom-record.recording .custom-icon-glyph,
+    .custom-record.recording image {
+      color: #f38ba8;
+    }
   '';
 }
