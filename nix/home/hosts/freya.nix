@@ -58,6 +58,7 @@
   home.sessionVariables = {
     # The eDP panel is wired to the Intel UHD 630; VA-API must use iHD.
     LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVERS_PATH = "${pkgs.intel-media-driver}/lib/dri";
     DEBUGINFOD_URLS = "https://debuginfod.gentoo.org";
   };
 }
