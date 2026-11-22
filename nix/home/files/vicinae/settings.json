@@ -1,18 +1,28 @@
 {
-   "$schema": "https://vicinae.com/schemas/config.json",
-   "fallbacks": [
-      "files:search",
-      "shortcuts:sct-de5a24ad-9318-450d-ba74-163ba5fd695e"
-   ],
-   "providers": {
-      "snippets": {
-         "preferences": {
-            "enabled": true,
-            "undo": true,
-            "layout": "",
-            "prePasteDelay": "0",
-            "keyDelay": "2"
-         }
-      }
-   }
+    "$schema": "https://vicinae.com/schemas/config.json",
+    "fallbacks": [
+        "files:search",
+        "shortcuts:sct-de5a24ad-9318-450d-ba74-163ba5fd695e"
+    ],
+    "providers": {
+        "files": {
+            "enabled": false,
+            "preferences": {
+                "autoIndexing": false,
+                "indexingPaths": [
+                    "/home/veirt"
+                ],
+                "excludedIndexingPaths": []
+            }
+        },
+        "snippets": {
+            "preferences": {
+                "enabled": true,
+                "undo": true,
+                "layout": "",
+                "prePasteDelay": "0",
+                "keyDelay": "2"
+            }
+        }
+    }
 }

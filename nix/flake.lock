@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "app-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795184420,
+        "narHash": "sha256-m9iO5eVOgDg2UQgPU2D3uL+338Ifc9SdqfX3tS81o3A=",
+        "owner": "kem-a",
+        "repo": "AppManager",
+        "rev": "930c2b8a19710c45966ba4d2996c8173e6697155",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kem-a",
+        "repo": "AppManager",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1772080396,
@@ -92,11 +112,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1794537146,
-        "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
+        "lastModified": 1795085501,
+        "narHash": "sha256-S5keGWzaKpuXo9MNoIC2FfTIuTyTnx8P4NhYJMEsTLI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
+        "rev": "0bb8272318b4ca41bf0edc6224df3e3e3046b70d",
         "type": "github"
       },
       "original": {
@@ -124,6 +144,7 @@
     },
     "root": {
       "inputs": {
+        "app-manager": "app-manager",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
@@ -196,11 +217,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1794923117,
-        "narHash": "sha256-i4AVAAsQFgz1YghR/mWLGQ6PXWhRbqp2jCDO/kgH8co=",
+        "lastModified": 1795026444,
+        "narHash": "sha256-e+a8MRC+59lFi7FH3h+xHj5ZP9Dgh35qKgzjFK6nEE4=",
         "owner": "prankstr",
         "repo": "vibepanel",
-        "rev": "da74733604f9136d702d9f3c4d53a8f4e948dbc0",
+        "rev": "1668fccad134b05a5347a2bca2899548392ba036",
         "type": "github"
       },
       "original": {

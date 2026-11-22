@@ -3,6 +3,7 @@
 {
   imports = [
     ../profiles/workstation.nix
+    ../modules/applications/app-manager.nix
     ../modules/applications/zapfast.nix
   ];
 

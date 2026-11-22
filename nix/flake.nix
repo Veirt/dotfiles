@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    app-manager = {
+      url = "github:kem-a/AppManager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     vibepanel.url = "github:prankstr/vibepanel";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

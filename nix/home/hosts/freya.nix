@@ -3,8 +3,10 @@
 {
   imports = [
     ../profiles/freya.nix
+    ../modules/applications/app-manager.nix
     ../modules/applications/firefox-fastfox.nix
     ../modules/applications/firefox-psd.nix
+    ../modules/applications/openbot.nix
     ../modules/applications/spotify.nix
     ../modules/applications/zapfast.nix
   ];

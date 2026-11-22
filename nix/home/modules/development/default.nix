@@ -4,7 +4,10 @@
   # Nix provides mise and the shell utilities needed before project runtimes
   # are activated. Language runtimes, LSPs, formatters, and dev CLIs live in
   # nix/home/files/mise/config.toml.
-  home.packages = [ pkgsUnstable.mise ] ++ (with pkgs; [
+  home.packages = [
+    pkgsUnstable.mise
+    (pkgsUnstable.callPackage ./cccc-package.nix { })
+  ] ++ (with pkgs; [
     jq
     unzip
     zoxide
@@ -36,20 +39,17 @@
     ".local/bin/cheat".source = ../../files/dev/bin/cheat;
     ".local/bin/dev-sync".source = ../../files/dev/bin/dev-sync;
     ".local/bin/j".source = ../../files/dev/bin/j;
+    ".local/bin/mise-tools-update" = {
+      source = ../../files/dev/bin/mise-tools-update;
+      executable = true;
+    };
   };
 
   xdg.configFile."dev-sync".source = ../../files/dev/dev-sync;
 
-  xdg.configFile."mise/config.toml" = {
-    source = ../../files/mise/config.toml;
-  };
-
-  xdg.configFile."mise/mise.lock" = {
-    source = ../../files/mise/mise.lock;
-  };
-
-  xdg.configFile."mise/locks" = {
-    source = ../../files/mise/locks;
+  xdg.configFile."mise" = {
+    source = ../../files/mise;
+    recursive = false;
   };
 
   xdg.configFile."lazygit/config.yml".source = ../../files/lazygit/config.yml;

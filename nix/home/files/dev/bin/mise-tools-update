@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+dotfiles_dir="${DOTFILES_DIR:-$HOME/.dotfiles}"
+mise_config="$dotfiles_dir/nix/home/files/mise/config.toml"
+flake_dir="$dotfiles_dir/nix"
+
+if [[ ! -f "$mise_config" || ! -f "$flake_dir/flake.nix" ]]; then
+  echo "mise-tools-update: dotfiles flake not found under $dotfiles_dir" >&2
+  exit 1
+fi
+
+echo "Upgrading global Mise tools..."
+MISE_CONFIG_FILE="$mise_config" mise upgrade --global --bump "$@"
+
+echo "Activating updated Mise config..."
+home-manager switch --flake "path:$flake_dir#freya"
+
+echo "Installing configured tools from the lockfile..."
+mise --locked install
