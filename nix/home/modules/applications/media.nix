@@ -1,6 +1,8 @@
 { config, lib, pkgs, pkgsUnstable, ... }:
 
 {
+  home.packages = [ pkgsUnstable.yt-dlp ];
+
   services.mpd = lib.mkIf (config.dotfiles.initSystem == "systemd") {
     enable = true;
     musicDirectory = config.dotfiles.paths.music;
