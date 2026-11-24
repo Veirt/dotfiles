@@ -4,8 +4,6 @@
   imports = [
     ./base.nix
     ../modules/desktop
-    ../modules/desktop/vibepanel.nix
-    ../modules/desktop/vicinae.nix
     ../modules/native-builds.nix
     ../modules/applications/media.nix
     ../modules/applications/nautilus.nix
