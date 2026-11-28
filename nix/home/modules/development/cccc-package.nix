@@ -6,14 +6,14 @@
 
 let
   pname = "moznion-cccc";
-  version = "1.9.2";
+  version = "1.10.1";
 in
 stdenvNoCC.mkDerivation {
   inherit pname version;
 
   src = fetchurl {
     url = "https://github.com/moznion/cccc/releases/download/v${version}/cccc-v${version}-x86_64-unknown-linux-musl.tar.gz";
-    hash = "sha256-65ZNX6naqMtVdJlyKGXNicvXd2RIWJndzk4KWiy2Z6U=";
+    hash = "sha256-6jvS3iK+hN/1csH6e0vXtznw9822FYXrE4RLgPYaxhA=";
   };
 
   sourceRoot = ".";

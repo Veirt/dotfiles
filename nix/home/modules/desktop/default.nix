@@ -3,7 +3,7 @@
 {
   imports = [
     ./files.nix
-    ./vibepanel.nix
+    ./illogical-impulse.nix
     ./vicinae.nix
     ./packages.nix
     ./fcitx5.nix

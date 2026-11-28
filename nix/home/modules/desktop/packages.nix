@@ -6,12 +6,24 @@
   ...
 }:
 
+let
+  systemVesktop = pkgs.writeShellScriptBin "vesktop" ''
+    unset LIBVA_DRIVERS_PATH
+    if [ -n "''${WAYLAND_DISPLAY:-}" ]; then
+      exec /usr/bin/vesktop-bin \
+        --ozone-platform-hint=auto \
+        --enable-features=WaylandWindowDecorations \
+        --enable-wayland-ime=true \
+        "$@"
+    fi
+    exec /usr/bin/vesktop-bin "$@"
+  '';
+in
 {
 
   programs.zathura = {
     enable = true;
-    package =
-      if config.dotfiles.preferSystemPackages then pkgs.emptyDirectory else pkgsUnstable.zathura;
+    package = pkgsUnstable.zathura;
 
     options = {
       selection-clipboard = "clipboard";
@@ -27,7 +39,6 @@
     with pkgs;
     [
       pkgsUnstable.mailspring
-      pkgsUnstable.vesktop
 
       brightnessctl
       pamixer
@@ -46,6 +57,7 @@
       pkgsUnstable.mpd-discord-rpc
     ]
     ++ lib.optionals (!config.dotfiles.preferSystemPackages) [
+      pkgsUnstable.vesktop
       pkgsUnstable.eza
       (
         if config.dotfiles.nativeBuilds.enable then
@@ -54,6 +66,9 @@
           pkgsUnstable.neovim
       )
       tesseract
+    ]
+    ++ lib.optionals config.dotfiles.preferSystemPackages [
+      systemVesktop
     ];
 
   home.sessionVariables = {

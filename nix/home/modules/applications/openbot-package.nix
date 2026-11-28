@@ -4,13 +4,15 @@
   fetchurl,
   appimageTools,
   buildFHSEnv,
+  mesa,
+  writeShellScript,
 }:
 let
   pname = "openbot";
-  version = "0.74.0";
+  version = "0.81.0";
   src = fetchurl {
     url = "https://github.com/nightly-labs/openbot/releases/download/v${version}/OpenBot-${version}-x86_64.AppImage";
-    hash = "sha256-A526eP2PniKV/G7R7cglxraopowewCSA6+HKvhOQi2k=";
+    hash = "sha256-uOli1C/XgHpdKYnTvKwVmUd8UvcHt5/wVhEuc9X9k6M=";
   };
   meta = {
     description = "Local-first multi-agent desktop workspace";
@@ -39,8 +41,13 @@ buildFHSEnv (
   appimageTools.defaultFhsEnvArgs
   // {
     inherit pname version meta;
-    targetPkgs = pkgs: appimageTools.defaultFhsEnvArgs.targetPkgs pkgs ++ [ pkgs.libsecret ];
-    runScript = "${contents}/openbot";
+    targetPkgs = pkgs: appimageTools.defaultFhsEnvArgs.targetPkgs pkgs ++ [ pkgs.libsecret mesa ];
+    runScript = writeShellScript "openbot-run" ''
+      export GBM_BACKENDS_PATH="${mesa}/lib/gbm"
+      export LIBGL_DRIVERS_PATH="${mesa}/lib/dri"
+      export __EGL_VENDOR_LIBRARY_FILENAMES="${mesa}/share/glvnd/egl_vendor.d/50_mesa.json"
+      exec "${contents}/openbot" "$@"
+    '';
     extraInstallCommands = ''
       install -Dm444 ${contents}/openbot.desktop $out/share/applications/openbot.desktop
       substituteInPlace $out/share/applications/openbot.desktop \

@@ -27,9 +27,9 @@
       "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
 
       # Documents
-      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
-      "application/epub+zip" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
-      "application/postscript" = [ "org.pwmt.zathura-ps.desktop" ];
+      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" "org.pwmt.zathura.desktop" ];
+      "application/epub+zip" = [ "org.pwmt.zathura-pdf-mupdf.desktop" "org.pwmt.zathura.desktop" ];
+      "application/postscript" = [ "org.pwmt.zathura-ps.desktop" "org.pwmt.zathura.desktop" ];
 
       # Text / editor placeholders
       "text/plain" = [ "nvim.desktop" ];

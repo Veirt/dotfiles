@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+description="NoteBook FanControl service"
+command="/home/veirt/.nix-profile/bin/nbfc_service"
+command_args="--config-file /etc/nbfc/nbfc.json"
+supervisor="supervise-daemon"
+
+depend() {
+  need localmount
+  after modules
+}
+
+start_pre() {
+  checkpath --directory --mode 0755 /var/lib/nbfc
+  /home/veirt/.nix-profile/bin/nbfc wait-for-hwmon
+}

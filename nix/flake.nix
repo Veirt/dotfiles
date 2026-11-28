@@ -8,7 +8,6 @@
       url = "github:kem-a/AppManager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    vibepanel.url = "github:prankstr/vibepanel";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

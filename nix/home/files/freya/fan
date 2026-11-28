@@ -1,0 +1,94 @@
+#!/bin/sh
+set -eu
+
+NBFC="${NBFC:-nbfc}"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  fan [status]              Show status for all fans
+  fan watch                 Watch fan status every 1s
+  fan max                   Set all fans to 100%
+  fan auto                  Restore profile auto control for all fans
+  fan <0-100>               Set all fans to percentage
+  fan <cpu|gpu> max         Set CPU or GPU fan to 100%
+  fan <cpu|gpu> auto        Restore auto control for CPU or GPU fan
+  fan <cpu|gpu> <0-100>     Set CPU or GPU fan to percentage
+EOF
+}
+
+is_percent() {
+  case "$1" in
+    ""|*[!0-9]*) return 1 ;;
+  esac
+  [ "$1" -ge 0 ] && [ "$1" -le 100 ]
+}
+
+set_fan() {
+  target_flag="$1"
+  mode="$2"
+  case "$mode" in
+    max)
+      if [ -n "$target_flag" ]; then
+        exec "$NBFC" set "$target_flag" "$fan_idx" -s 100
+      else
+        exec "$NBFC" set -s 100
+      fi
+      ;;
+    auto)
+      if [ -n "$target_flag" ]; then
+        exec "$NBFC" set "$target_flag" "$fan_idx" -a
+      else
+        exec "$NBFC" set -a
+      fi
+      ;;
+    *)
+      if ! is_percent "$mode"; then
+        usage >&2
+        exit 1
+      fi
+      if [ -n "$target_flag" ]; then
+        exec "$NBFC" set "$target_flag" "$fan_idx" -s "$mode"
+      else
+        exec "$NBFC" set -s "$mode"
+      fi
+      ;;
+  esac
+}
+
+case "${1:-status}" in
+  -h|--help|help)
+    usage
+    exit 0
+    ;;
+  status)
+    [ "$#" -le 1 ] || { usage >&2; exit 1; }
+    exec "$NBFC" status -a
+    ;;
+  watch)
+    [ "$#" -eq 1 ] || { usage >&2; exit 1; }
+    exec "$NBFC" status -a -w 1
+    ;;
+  max|auto)
+    [ "$#" -eq 1 ] || { usage >&2; exit 1; }
+    fan_idx=""
+    set_fan "" "$1"
+    ;;
+  cpu|gpu)
+    [ "$#" -eq 2 ] || { usage >&2; exit 1; }
+    if [ "$1" = "cpu" ]; then
+      fan_idx=0
+    else
+      fan_idx=1
+    fi
+    set_fan "-f" "$2"
+    ;;
+  *)
+    if [ "$#" -eq 1 ] && is_percent "$1"; then
+      fan_idx=""
+      set_fan "" "$1"
+    fi
+    usage >&2
+    exit 1
+    ;;
+esac

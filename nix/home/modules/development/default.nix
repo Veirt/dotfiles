@@ -7,6 +7,7 @@
   home.packages = [
     pkgsUnstable.mise
     (pkgsUnstable.callPackage ./cccc-package.nix { })
+    (pkgsUnstable.callPackage ./ketch-package.nix { })
   ] ++ (with pkgs; [
     jq
     unzip
